@@ -1,0 +1,236 @@
+name: "CI - SQLFluff Changed Files"
+
+trigger:
+  branches:
+    include: ["*"]
+
+pr:
+  branches:
+    include: ["*"]
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  DBT_PROJECT_DIR: "hv_edp_dbt"
+  DBT_THREADS: "1"
+  SQLFLUFF_PROCESSES: "1"
+
+jobs:
+- job: SQLFluffCI
+  displayName: "Lint changed SQL with SQLFluff (dbt templater)"
+  timeoutInMinutes: 25
+  workspace:
+    clean: outputs
+
+  steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
+  - task: UsePythonVersion@0
+    displayName: "Use Python 3.11"
+    inputs:
+      versionSpec: "3.11"
+
+  - task: Bash@3
+    displayName: "Install dbt + SQLFluff"
+    inputs:
+      targetType: inline
+      script: |
+        set -euo pipefail
+        python -m pip install --upgrade pip
+        python -m pip install \
+          "dbt-core==1.10.11" \
+          "dbt-snowflake==1.10.1" \
+          "sqlfluff==3.4.2" \
+          "sqlfluff-templater-dbt==3.4.2"
+        dbt --version
+        sqlfluff --version
+
+  - task: DownloadSecureFile@1
+    name: snowflakeKey
+    displayName: "Download Snowflake private key (.p8)"
+    inputs:
+      secureFile: "snowflake_key.p8"
+
+  - task: Bash@3
+    displayName: "Create dbt profile (key-pair auth)"
+    inputs:
+      targetType: inline
+      script: |
+        set -euo pipefail
+        PROFILES_DIR="$(Agent.TempDirectory)/dbt_profiles"
+        mkdir -p "$PROFILES_DIR"
+        KEYPATH="$PROFILES_DIR/snowflake_key.p8"
+
+        cp "$(snowflakeKey.secureFilePath)" "$KEYPATH"
+        chmod 600 "$KEYPATH"
+
+        PF="$PROFILES_DIR/profiles.yml"
+        printf 'hv_edp_dbt:\n'                                >  "$PF"
+        printf '  target: ci\n'                               >> "$PF"
+        printf '  outputs:\n'                                 >> "$PF"
+        printf '    ci:\n'                                    >> "$PF"
+        printf '      type: snowflake\n'                      >> "$PF"
+        printf '      account: "%s"\n'   "${SF_ACCOUNT}"      >> "$PF"
+        printf '      user: "%s"\n'      "${SF_USER}"         >> "$PF"
+        printf '      role: "%s"\n'      "${SF_ROLE}"         >> "$PF"
+        printf '      database: "%s"\n'  "${SF_DATABASE}"     >> "$PF"
+        printf '      warehouse: "%s"\n' "${SF_WAREHOUSE}"    >> "$PF"
+        printf '      schema: "%s"\n'    "${SF_SCHEMA}"       >> "$PF"
+        printf '      threads: %s\n'     "${DBT_THREADS}"     >> "$PF"
+        printf '      private_key_path: "%s"\n' "$KEYPATH"    >> "$PF"
+        if [ -n "${SF_PRIVATE_KEY_PASSPHRASE:-}" ]; then
+          printf '      private_key_passphrase: "%s"\n' "${SF_PRIVATE_KEY_PASSPHRASE}" >> "$PF"
+        fi
+
+        echo "##vso[task.setvariable variable=DBT_PROFILES_DIR]$PROFILES_DIR"
+        echo "profiles.yml written to: $PF"
+    env:
+      SF_ACCOUNT: $(SF_ACCOUNT)
+      SF_USER: $(SF_USER)
+      SF_ROLE: $(SF_ROLE)
+      SF_DATABASE: $(SF_DATABASE)
+      SF_WAREHOUSE: $(SF_WAREHOUSE)
+      SF_SCHEMA: $(SF_SCHEMA)
+      SF_PRIVATE_KEY_PASSPHRASE: $(SF_PRIVATE_KEY_PASSPHRASE)
+      DBT_THREADS: $(DBT_THREADS)
+
+  - task: Bash@3
+    displayName: "dbt deps"
+    inputs:
+      targetType: inline
+      script: |
+        set -euo pipefail
+        cd "$(DBT_PROJECT_DIR)"
+        if [ -f "packages.yml" ]; then
+          dbt deps --profiles-dir "$(DBT_PROFILES_DIR)"
+        else
+          echo "No packages.yml; skipping dbt deps."
+        fi
+    env:
+      DBT_PROJECT_DIR: $(DBT_PROJECT_DIR)
+      DBT_PROFILES_DIR: $(DBT_PROFILES_DIR)
+
+  - task: Bash@3
+    displayName: "dbt parse (prepare manifest)"
+    inputs:
+      targetType: inline
+      script: |
+        set -o pipefail
+        cd "$(DBT_PROJECT_DIR)"
+        dbt parse --no-partial-parse --profiles-dir "$(DBT_PROFILES_DIR)"
+    env:
+      DBT_PROJECT_DIR: $(DBT_PROJECT_DIR)
+      DBT_PROFILES_DIR: $(DBT_PROFILES_DIR)
+
+  - task: Bash@3
+    displayName: "Resolve changed .sql files"
+    inputs:
+      targetType: inline
+      script: |
+        set -euo pipefail
+        git fetch --no-tags --prune --depth=50 origin
+
+        CUR_BRANCH="${BUILD_SOURCEBRANCHNAME-}"
+        PR_TARGET_RAW="${SYSTEM_PULLREQUEST_TARGETBRANCH-}"
+        PR_TARGET="${PR_TARGET_RAW#refs/heads/}"
+
+        if [ -n "${PR_TARGET}" ]; then
+          echo "Detected PR build -> target branch: ${PR_TARGET}"
+          BASE_REF="$(git merge-base HEAD "origin/${PR_TARGET}" || true)"
+        else
+          echo "Detected non-PR build on branch: ${CUR_BRANCH:-unknown}"
+          BASE_REF="$(git rev-parse HEAD~1 || true)"
+        fi
+
+        if [ -z "${BASE_REF}" ]; then
+          FALLBACK="${PR_TARGET:-${CUR_BRANCH:-main}}"
+          echo "BASE_REF empty; falling back to origin/${FALLBACK}"
+          BASE_REF="origin/${FALLBACK}"
+        fi
+
+        echo "Diff base: ${BASE_REF}"
+
+        git diff --name-only --diff-filter=AM "${BASE_REF}"...HEAD -- "*.sql" > changed_sql.lst || true
+
+        if [ ! -s changed_sql.lst ]; then
+          echo "No SQL files changed."
+          echo "##vso[task.setvariable variable=HAS_CHANGED_SQL]false"
+        else
+          echo "Changed SQL files:"
+          cat changed_sql.lst
+          echo "##vso[task.setvariable variable=HAS_CHANGED_SQL]true"
+        fi
+
+  - task: Bash@3
+    displayName: "SQLFluff lint (print human + JSON)"
+    condition: and(succeeded(), eq(variables['HAS_CHANGED_SQL'], 'true'))
+    inputs:
+      targetType: inline
+      script: |
+        set -euo pipefail
+        mapfile -t FILES < changed_sql.lst
+        if [ "${#FILES[@]}" -eq 0 ]; then
+          echo "No changed .sql files; skipping lint."
+          exit 0
+        fi
+
+        echo "Linting ${#FILES[@]} changed file(s)..."
+
+        # Run once to produce JSON
+        set +e
+        sqlfluff lint "${FILES[@]}" \
+          --templater dbt \
+          --dialect snowflake \
+          --processes "$(SQLFLUFF_PROCESSES)" \
+          --disable-progress-bar \
+          --nocolor \
+          --format json > lint.json 2> lint.err
+        RC=$?
+        set -e
+
+        # Print JSON output
+        echo "----- SQLFLUFF_COMBINED_JSON_START -----"
+        if [ -s lint.json ]; then
+          cat lint.json
+        else
+          echo "[]"
+        fi
+        echo
+        echo "----- SQLFLUFF_COMBINED_JSON_END -----"
+
+        # Print human-readable report
+        echo "----- SQLFLUFF_HUMAN_START -----"
+        set +e
+        sqlfluff lint "${FILES[@]}" \
+          --templater dbt \
+          --dialect snowflake \
+          --processes "$(SQLFLUFF_PROCESSES)" \
+          --disable-progress-bar \
+          --nocolor
+        set -e
+        echo "----- SQLFLUFF_HUMAN_END -----"
+
+        # Fail if violations found
+        if [ "$RC" -ne 0 ]; then
+          echo "SQLFluff reported violations. Failing the job."
+          exit 1
+        fi
+    env:
+      DBT_PROFILES_DIR: $(DBT_PROFILES_DIR)
+      SQLFLUFF_PROCESSES: $(SQLFLUFF_PROCESSES)
+
+  - task: Bash@3
+    displayName: "Cleanup key"
+    condition: always()
+    inputs:
+      targetType: inline
+      script: |
+        set -euo pipefail
+        rm -f "$(DBT_PROFILES_DIR)/snowflake_key.p8" || true
+        rm -rf "$(DBT_PROFILES_DIR)" || true
+    env:
+      DBT_PROFILES_DIR: $(DBT_PROFILES_DIR)

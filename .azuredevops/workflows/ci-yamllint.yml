@@ -1,0 +1,58 @@
+name: "CI - YAMLlint Changed Files"
+
+trigger:
+  branches:
+    include:
+      - '*'
+      - main
+
+pr:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+  - job: YAMLLintCI
+    timeoutInMinutes: 10
+    displayName: 'Lint changed .yml files with yamllint'
+
+    workspace:
+      clean: outputs
+
+    steps:
+      - checkout: self
+        fetchDepth: 0
+        clean: true
+
+      - script: |
+          echo "Build.SourceVersion: $(Build.SourceVersion)"
+        displayName: Print Build.SourceVersion
+
+      - script: |
+          pip install yamllint
+        displayName: Install yamllint
+
+      - script: |
+          yamllint --version
+          echo "All YAML changes in this commit:"
+          git diff --no-commit-id --name-only -r origin/main | grep '\.yml$' ||
+          echo "No YAML files changed."
+        displayName: Test yamllint Install, List changed .yml files
+
+      - script: |
+          changed=( $(git diff --no-commit-id --name-only -r origin/main | grep '\.yml$') )
+          if [[ "${#changed[@]}" -gt 0 ]]; then
+            for filename in "${changed[@]}"; do
+              if [[ -f "$filename" ]]; then
+                echo "Linting $filename" && yamllint "$filename"
+              else
+                echo "File not found: $filename"
+              fi
+            done
+          else
+            echo "No YAML files to lint."
+          fi
+        displayName: Lint changed .yml files

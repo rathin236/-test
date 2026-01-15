@@ -1,0 +1,59 @@
+name: "CI - Python Changed Files"
+
+trigger:
+  branches:
+    include:
+      - '*'
+      - main
+
+pr:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+  - job: PythonCI
+    timeoutInMinutes: 10
+    displayName: 'Lint changed .py files with Ruff'
+
+    workspace:
+      clean: outputs
+
+    steps:
+      - checkout: self
+        fetchDepth: 0
+        clean: true
+
+      - script: |
+          echo "Build.SourceVersion: $(Build.SourceVersion)"
+        displayName: Print Build.SourceVersion
+
+      - script: |
+          pip install ruff
+        displayName: Install Ruff
+
+      - script: |
+          ruff --version
+          echo "All Python changes in this commit:"
+          git diff --no-commit-id --name-only -r origin/main | grep '\.py$' ||
+          echo "No Python files changed."
+        displayName: Test Ruff Install, List changed .py files
+
+      - script: |
+          changed=( $(git diff --no-commit-id --name-only -r origin/main | grep '\.py$') )
+
+          if [[ "${#changed[@]}" -gt 0 ]]; then
+            for filename in "${changed[@]}"; do
+              if [[ -f "$filename" ]]; then
+                echo "Linting $filename" && ruff check "$filename"
+              else
+                echo "File not found: $filename"
+              fi
+            done
+          else
+            echo "No Python files to lint."
+          fi
+        displayName: Lint changed .py files

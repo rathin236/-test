@@ -1,0 +1,76 @@
+name: "Nightly - Python Full Lint + Tests"
+
+# Scheduled trigger - runs nightly at 2 AM UTC
+schedules:
+  - cron: "0 2 * * *"
+    displayName: "Nightly 2 AM UTC"
+    branches:
+      include:
+        - main
+    always: true
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+  - job: PythonFull
+    timeoutInMinutes: 30
+    displayName: 'Lint repo with Ruff + run all unit tests'
+
+    workspace:
+      clean: outputs
+
+    steps:
+      - checkout: self
+        fetchDepth: 1
+        clean: true
+
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3.11'
+        displayName: 'Use Python 3.11'
+
+      - script: |
+          pip install pytest pytest-azurepipelines pytest-cov ruff
+        displayName: Install Pytest, Pytest Code Coverage and Ruff
+
+      - script: |
+          echo "Ruff Version:" && ruff --version
+          echo "Pytest Version:" && pytest --version
+          echo "All Python files:"
+          git ls-files | grep '\.py$'
+        displayName: Test Installs, List all files for CI
+
+      - script: |
+          echo "Analyzing the code with Ruff..."
+          ruff check .
+        displayName: Analyzing the code with Ruff
+        continueOnError: true
+
+      - script: |
+          echo "Running all Python unit tests..."
+          pytest tests/ \
+            --doctest-modules \
+            --junitxml=junit/test-results.xml \
+            --cov=hv_edp_dagster \
+            --cov-report=xml \
+            --cov-report=html
+        displayName: Run all Python unit tests
+        condition: always()
+        continueOnError: false
+
+      - task: PublishTestResults@2
+        condition: succeededOrFailed()
+        inputs:
+          testResultsFiles: '**/test-results.xml'
+          testRunTitle: 'Python Unit Tests'
+
+      - task: PublishCodeCoverageResults@1
+        condition: succeededOrFailed()
+        inputs:
+          codeCoverageTool: Cobertura
+          summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
+          reportDirectory: '$(System.DefaultWorkingDirectory)/htmlcov'

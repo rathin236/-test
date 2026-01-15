@@ -1,0 +1,185 @@
+name: "CI - Gold Layer Docs & PK Tests"
+
+trigger: none
+
+pr:
+  branches:
+    include: ["*"]
+
+pool:
+  vmImage: "ubuntu-latest"
+
+jobs:
+- job: GoldDocsTestsGate
+  displayName: "PR Gate - Gold models must have docs & PK tests"
+  condition: eq(variables['Build.Reason'], 'PullRequest')
+
+  steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
+  - task: UsePythonVersion@0
+    displayName: "Use Python 3.11"
+    inputs:
+      versionSpec: "3.11"
+
+  - task: Bash@3
+    displayName: "Install PyYAML (parser)"
+    inputs:
+      targetType: inline
+      script: |
+        set -euo pipefail
+        python -m pip install --upgrade pip
+        python -m pip install pyyaml
+
+  - task: Bash@3
+    displayName: "Resolve changed gold .sql files (PR vs target)"
+    inputs:
+      targetType: inline
+      script: |
+        set -euo pipefail
+        git fetch --no-tags --prune --depth=50 origin
+
+        PR_TARGET_RAW="${SYSTEM_PULLREQUEST_TARGETBRANCH-}"
+        PR_TARGET="${PR_TARGET_RAW#refs/heads/}"
+        if [ -z "$PR_TARGET" ]; then
+          echo "Not a PR build—exiting this job cleanly."
+          echo "##vso[task.setvariable variable=HAS_CHANGED_GOLD]false"
+          exit 0
+        fi
+
+        BASE_REF="$(git merge-base HEAD "origin/${PR_TARGET}" || true)"
+        if [ -z "$BASE_REF" ]; then
+          echo "Merge-base not found; using origin/${PR_TARGET}"
+          BASE_REF="origin/${PR_TARGET}"
+        fi
+        echo "Diff base: ${BASE_REF}"
+
+        # Added/Modified/Renamed gold models
+        git diff --name-only --diff-filter=AMR "${BASE_REF}"...HEAD -- "hv_edp_dbt/models/gold/**/*.sql" > changed_gold_sql.lst || true
+
+        if [ ! -s changed_gold_sql.lst ]; then
+          echo "No gold SQL files changed in this PR."
+          echo "##vso[task.setvariable variable=HAS_CHANGED_GOLD]false"
+        else
+          echo "Changed gold SQL files:"
+          cat changed_gold_sql.lst
+          echo "##vso[task.setvariable variable=HAS_CHANGED_GOLD]true"
+        fi
+    env:
+      SYSTEM_PULLREQUEST_TARGETBRANCH: $(System.PullRequest.TargetBranch)
+
+  - task: Bash@3
+    displayName: "Validate gold docs & PK tests"
+    condition: eq(variables['HAS_CHANGED_GOLD'], 'true')
+    inputs:
+      targetType: inline
+      script: |
+        set -euo pipefail
+        python - <<'PY'
+        import os, sys, glob, json, yaml
+
+        # Collect changed gold models
+        try:
+            with open("changed_gold_sql.lst", "r", encoding="utf-8") as f:
+                changed = [ln.strip() for ln in f if ln.strip()]
+        except FileNotFoundError:
+            changed = []
+
+        if not changed:
+            print("No gold SQL files changed; nothing to validate.")
+            sys.exit(0)
+
+        def find_model_def(model_name: str, start_dir: str):
+            """
+            Search upward from start_dir for a schema YAML which defines models.name == model_name.
+            Stop when reaching the 'models' directory or repo root.
+            """
+            cur = start_dir
+            while True:
+                ymls = glob.glob(os.path.join(cur, "*.yml")) + glob.glob(os.path.join(cur, "*.yaml"))
+                for yp in ymls:
+                    try:
+                        with open(yp, "r", encoding="utf-8") as fh:
+                            doc = yaml.safe_load(fh) or {}
+                    except Exception:
+                        continue
+                    models = doc.get("models") or []
+                    if isinstance(models, dict):
+                        models = [models]
+                    for m in models:
+                        if isinstance(m, dict) and m.get("name") == model_name:
+                            return m, yp
+                parent = os.path.dirname(cur)
+                if os.path.basename(cur) == "models" or parent == cur:
+                    break
+                cur = parent
+            return None, None
+
+        def col_tests(col):
+            """Return (has_unique, has_not_null) based on a column's tests."""
+            tests = col.get("tests") or col.get("data_tests") or []
+            u = nn = False
+            for t in tests:
+                if isinstance(t, str):
+                    if t == "unique": u = True
+                    if t == "not_null": nn = True
+                elif isinstance(t, dict):
+                    if "unique" in t: u = True
+                    if "not_null" in t: nn = True
+            return u, nn
+
+        failures = {}
+        for sql_path in changed:
+            model = os.path.splitext(os.path.basename(sql_path))[0]
+            model_dir = os.path.dirname(sql_path)
+
+            mdef, ypath = find_model_def(model, model_dir)
+            errs = []
+
+            if not mdef:
+                errs.append("No schema YAML entry found. Create a schema.yml with this model under models/gold/**.")
+            else:
+                # Model description
+                desc = mdef.get("description")
+                if not isinstance(desc, str) or not desc.strip():
+                    errs.append("Model description is missing or empty in schema YAML.")
+
+                # Columns & descriptions
+                cols = mdef.get("columns") or []
+                if not cols:
+                    errs.append("No columns documented (add 'columns:' with descriptions).")
+                else:
+                    missing = [c.get("name", "<unknown>") for c in cols
+                               if not isinstance(c.get("description"), str) or not c.get("description").strip()]
+                    if missing:
+                        errs.append(f"Missing column descriptions for: {', '.join(missing)}")
+
+                    # PK tests: require at least one column with both unique and not_null
+                    if not any(all(x) for x in (col_tests(c) for c in cols)):
+                        errs.append("No column has BOTH tests: unique + not_null (add to the PK column).")
+
+            if errs:
+                failures[sql_path] = {
+                    "model": model,
+                    "schema_yml": ypath or "(not found)",
+                    "errors": errs,
+                }
+
+        if failures:
+            print("❌ Gold docs & tests check failed:\n")
+            for path, info in failures.items():
+                print(f"- {path}  (model: {info['model']})")
+                print(f"  schema file: {info['schema_yml']}")
+                for e in info["errors"]:
+                    print(f"  • {e}")
+                print()
+            print("----- GOLD_DOCS_TESTS_JSON_START -----")
+            print(json.dumps(failures, indent=2))
+            print("----- GOLD_DOCS_TESTS_JSON_END -----")
+            sys.exit(1)
+
+        print("✅ Gold docs & PK tests check passed for changed models.")
+        PY
