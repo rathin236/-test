@@ -1,0 +1,127 @@
+models:
+  - name: obt_donations
+    description: |
+      This model provides a comprehensive view of corporate donation requests and
+      their approval status from SharePoint. It transforms raw donation request
+      data by parsing JSON fields into readable labels and expanding region
+      abbreviations to full names. This model is used for tracking donation
+      requests, analyzing approval workflows, monitoring donation amounts, and
+      reporting on corporate giving activities.
+    columns:
+      - name: id
+        description: Unique identifier for each donation request record.
+        tests:
+          - unique
+          - not_null
+
+      - name: phone_number
+        description: Contact phone number for the donation requester.
+
+      - name: email_address
+        description: Contact email address for the donation requester.
+
+      - name: mail_address
+        description: Mailing address of the donation requester or organization.
+
+      - name: org_name
+        description: Name of the organization requesting the donation.
+
+      - name: event_date
+        description: Date of the event or activity for which the donation is requested.
+
+      - name: who_benefits
+        description: Description of who will benefit from the donation or event.
+
+      - name: request_amount
+        description: The amount of money being requested for the donation.
+
+      - name: donation_recognition
+        description: Details about how the donor will be recognized for the donation.
+
+      - name: recommending_employee_name
+        description: Name of the Cooke employee who recommended this donation request.
+
+      - name: request_status
+        description: Current status of the donation request (e.g., pending, approved, rejected).
+
+      - name: requester_name
+        description: Name of the person making the donation request.
+
+      - name: approval_1
+        description: First level of approval for the donation request.
+
+      - name: approval_2
+        description: Second level of approval for the donation request.
+
+      - name: approver_2_comments
+        description: Comments from the second approver regarding the donation request.
+
+      - name: approver_1_comments
+        description: Comments from the first approver regarding the donation request.
+
+      - name: employee_recommended
+        description: Whether the donation request was recommended by a Cooke employee.
+
+      - name: donated_amount
+        description: The actual amount donated (may differ from requested amount).
+
+      - name: cheque_number
+        description: Cheque number if the donation was made via cheque payment.
+
+      - name: modified
+        description: Timestamp of when the donation request record was last modified.
+
+      - name: created
+        description: Timestamp of when the donation request record was created.
+
+      - name: attachments
+        description: Count or reference to supporting documents attached to the request.
+
+      - name: notes
+        description: General notes related to the donation request.
+
+      - name: processing_notes
+        description: Internal processing notes for the donation request.
+
+      - name: requesting_for_label
+        description: |
+          Parsed label from the requesting_for JSON field indicating what the
+          donation is being requested for. Extracted from JSON if available,
+          otherwise falls back to the raw string value.
+
+      - name: previous_support
+        description: |
+          Parsed label from the previous_support JSON field indicating whether
+          Cooke has provided previous support to this organization. Extracted
+          from JSON if available, otherwise falls back to the raw string value.
+
+      - name: registered_charity
+        description: |
+          Parsed label from the registered_charity JSON field indicating whether
+          the requesting organization is a registered charity. Extracted from
+          JSON if available, otherwise falls back to the raw string value.
+
+      - name: request_type
+        description: |
+          Parsed label from the request_type JSON field indicating the type of
+          donation request (e.g., monetary, product, sponsorship). Extracted
+          from JSON if available, otherwise falls back to the raw string value.
+
+      - name: recommended_by_employee
+        description: |
+          Parsed label from the recommended_by_employee JSON field indicating
+          whether the request was recommended by a Cooke employee. Extracted
+          from JSON if available, otherwise falls back to the raw string value.
+
+      - name: supporting_file
+        description: |
+          URL to the supporting file/document for the donation request.
+          Extracted from the supporting_file JSON field if available.
+
+      - name: region
+        description: |
+          Full name of the region where the donation request originates.
+          Expanded from abbreviations (e.g., 'NS' → 'Nova Scotia', 'NB' →
+          'New Brunswick', 'ON' → 'Ontario'). Supports Canadian provinces, US states,
+          and country-level regions. Returns 'Unknown' if the region code is
+          not recognized.

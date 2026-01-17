@@ -1,0 +1,60 @@
+version: 2
+
+sources:
+  - name: ardoq
+    description: ""
+    database: staging_prod
+    tables:
+      - name: components
+        description: ""
+        columns:
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""
+
+      - name: references
+        description: ""
+        columns:
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""
+
+      - name: workspaces
+        description: ""
+        columns:
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""

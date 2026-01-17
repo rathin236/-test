@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: boomi_process_reporting
+    description: "dataset for PowerBi Integration Dashboard"
+    columns:
+      - name: atomname
+        description: "Name of the atom running the process"
+
+      - name: processid
+        description: "ID of the Boomi process "
+
+      - name: processname
+        description: "Name of the process in Boomi"
+
+      - name: status
+        description: " 'COMPLETE', 'ABORTED' or 'ERROR'"
+
+      - name: executiontype
+        description: "'exec_sched' or 'exec_listener'"
+
+      - name: executiontime
+        description: "Time of execution of the Boomi Process"
+
+      - name: executionid
+        description: "The execution id of the Boomi Process"
+
+      - name: executionduration
+        description: "Execution time in milliseconds"
+
+      - name: inbounddocumentcount
+        description: "Number of documents sent within the process"
+
+      - name: inbounddocumentsize
+        description: "Size of the documents sent in the process"
+
+      - name: outbounddocumentcount
+        description: "Number of documents retrieved from the process"
+
+      - name: outbounddocumentsize
+        description: "Size of the documents retrieved from the process"
+
+      - name: insert_date
+        description: "Date the process was inserted into Snowflake"
+
+      - name: start_date
+        description: "date the process ran on Boomi"
+
+      - name: end_date
+        description: "date the process ran on Boomi"

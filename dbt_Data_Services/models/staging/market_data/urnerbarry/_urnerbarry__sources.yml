@@ -1,0 +1,58 @@
+version: 2
+
+sources:
+  - name: view_src
+    freshness:
+      warn_after:
+        count: 4
+        period: hour
+      error_after:
+        count: 24
+        period: hour
+    description: ""
+    database: cdw_prod
+    schema: view_src
+    tables:
+      - name: urnerbarry_myitems
+        description: ""
+        columns:
+          - name: insert_date
+            description: ""
+          - name: date_key
+            description: ""
+          - name: cat
+            description: ""
+          - name: comcode
+            description: ""
+          - name: currency
+            description: ""
+          - name: description
+            description: ""
+          - name: marketdata_high
+            description: ""
+          - name: marketdata_loads
+            description: ""
+          - name: marketdata_low
+            description: ""
+          - name: marketdata_marketintervaltypeid
+            description: ""
+          - name: marketdata_pounds
+            description: ""
+          - name: marketdata_quotedate
+            description: ""
+          - name: marketdata_savg
+            description: ""
+          - name: marketdata_trades
+            description: ""
+          - name: marketdata_weeknumber
+            description: ""
+          - name: marketdata_wtdavg
+            description: ""
+          - name: measurement
+            description: ""
+          - name: sortorder
+            description: ""
+          - name: source
+            description: ""
+          - name: subcategory
+            description: ""

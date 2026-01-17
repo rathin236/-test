@@ -1,0 +1,604 @@
+version: 2
+
+models:
+  - name: int_fishtalk__ext_containers_v2
+    description: ""
+    columns:
+      - name: containerid
+        description: "The unique ID of the unit"
+        tests:
+          - unique
+          - not_null
+
+      - name: containername
+        description: "This is the name of the unit"
+
+      - name: groupid
+        description: >
+          "If the unit belongs to a grouping of units (typically departments),
+          this is the ID of the group the unit belongs to. The group information
+          is found in the view 'Ext_OrganisationGroups_v2' based on this key.
+          If NULL, the unit does not belong to any grouping"
+
+      - name: orgunitid
+        description: >
+          "The ID of the site this units belongs to. The site is found in the view 'Ext_Organisation_v2'
+          based on this key. Due to technicalities in the system, the column is nullable,
+          but there will never be any rows in this view with a NULL value in this column"
+
+      - name: parentid
+        description: >
+          "This is the ID of the parent organization unit.
+          For example, sites typically belong to a company,
+          which then would be the parent. If the organization unit
+          has no parent (a top level organizational unit), the value is NULL"
+
+      - name: typeid
+        description: "Unit type Open system (in sea/water) or closed system (land based)"
+
+      - name: feedmethodid
+        description: "Unit feeding method"
+
+      - name: standid
+        description: "The ID of the stand associated with the unit (If applicable)"
+
+      - name: sortindex
+        description: ""
+
+      - name: active
+        description: "Is the stand active, true or false (boolean)"
+
+  - name: int_fishtalk__ext_daily_status_values_v2
+    columns:
+      - name: populationid
+        description: "This is the unique ID of the population"
+        tests:
+          - not_null
+
+      - name: statusdate
+        description: "The date of the status update"
+
+      - name: statustime
+        description: "The timestamp of the status update"
+
+      - name: starttype
+        description: "The type of status:0 = Opening status for the population 1 = Daily status for the population
+        2 = Closing status for the population"
+
+      - name: startcount
+        description: "The beginning number of fish"
+
+      - name: startbiomasskg
+        description: "The beginning weight of fish"
+
+      - name: enddate
+        description: "The date of the status update"
+
+      - name: endtype
+        description: "The type of status:\n0 = Opening status for the population 1 = Daily status for the population
+        2 = Closing status for the population"
+
+      - name: endcount
+        description: "The ending number of fish"
+
+      - name: endbiomasskg
+        description: "The ending weight of fish"
+
+      - name: feedusekg
+        description: "Daily feed use in Kg"
+
+      - name: mortalitycount
+        description: "The number of mortalities for the status period"
+
+      - name: mortalitykg
+        description: "The weight of mortalities (in Kg) for the status period"
+
+      - name: escapecount
+        description: "The number of escapes for the status period"
+
+      - name: escapekg
+        description: "The weight of escapes for the status period"
+
+      - name: cullingcount
+        description: "The number of culls for the status period"
+
+      - name: cullingkg
+        description: "The weight of culls for the status period"
+
+      - name: lostinsamplescount
+        description: "The number of fish lost due to samples for the status period"
+
+      - name: lostinsampleskg
+        description: "The weight of fish lost due to samples for the status period"
+
+      - name: lostinspawningcount
+        description: "The number of fish lost due to spawning for the status period"
+
+      - name: lostinspawningkg
+        description: "The weight of fish lost due to spawning for the status period"
+
+      - name: inputcount
+        description: "The number of fish input for the status period"
+
+      - name: inputkg
+        description: "The weight of fish input for the status period"
+
+      - name: harvestcount
+        description: "The number of fish harvested in the status period"
+
+      - name: harvestkg
+        description: "The weight of fish harvested in the status period"
+
+      - name: salescount
+        description: "The number of fish sold for the status period"
+
+      - name: saleskg
+        description: "The weight of fish sold for the status period"
+
+      - name: deviationcount
+        description: "The number of fish adjusted (in transfer, harvest, sales, escapes, samples etc) for the status
+        period"
+
+      - name: deviationkg
+        description: "The weight of of fish in Kgadjusted (in transfer, harvest, sales, escapes, samples etc) for
+        the status period"
+
+      - name: harvestdiscardcount
+        description: "The number of fish discarded in harvest for the status period"
+
+      - name: harvestdiscardskg
+        description: "The weight of fish discarded in KG for the status period"
+
+      - name: growthkg
+        description: ""
+
+      - name: grossgrowthkg
+        description: ""
+
+      - name: calcfeedamountkg
+        description: ""
+
+      - name: atu
+        description: ""
+
+      - name: avgtemp
+        description: ""
+
+      - name: isfasting
+        description: ""
+
+      - name: growthkgexdiscards
+        description: ""
+
+      - name: reasonfornotfeeding
+        description: ""
+
+      - name: reasonfornotcheckingmortality
+        description: ""
+
+      - name: volume
+        description: ""
+
+  - name: int_fishtalk__ext_status_values_v2
+    columns:
+      - name: populationid
+        description: "This is the unique ID of the Population. The population is found in the view
+        \"Ext_Populations_v2\" based on this value"
+        tests:
+          - not_null
+
+      - name: statusdate
+        description: "The date of the status"
+
+      - name: statustime
+        description: "The time of the status"
+
+      - name: statustype
+        description: "The type of status: 0 = Opening status for the population. 1=Daily status for the population.
+        2=Closing status for the population"
+
+      - name: currentcount
+        description: "The number of fish"
+
+      - name: currentbiomasskg
+        description: "The biomass measured in Kg"
+
+      - name: feedamountkg
+        description: "The accumulated feed consumption in Kg since input. This is the total for all feed types, use
+        the view \"Ext_FeedUseStatusValues_v1\" to get feed use per feed type"
+      - name: harvestcount
+        description: "The accumulated number of fish harvested since input. Note that populations are always
+        terminated when harvested, so the only status with a value > 0 in this field is the closing status for a
+        population harvested"
+
+      - name: harvestbiomasskg
+        description: "The accumulated biomass in Kg Harvested since input. Note that populations are always
+        terminated when harvested, so the only status with a value > 0 in this field is the closing status
+        for a population harvested"
+
+      - name: inputcount
+        description: "The accumulated number of fish input since and including the first input"
+
+      - name: inputbiomasskg
+        description: "The accumulated biomass in Kg input since and including first input"
+
+      - name: salescount
+        description: "The accumulated number of fish sold since input. Note that populations are always
+        terminated when sold, so the only status with a value > 0 in this field is the closing status
+        for a population sold"
+
+      - name: salesbiomasskg
+        description: "The accumulated biomass in Kg sold since input. Note that populations are always
+        terminated when sold, so the only status with a value > 0 in this field is the closing status
+        for a population sold"
+
+      - name: mortalitycount
+        description: "The accumulated number of fish mortality since input. This is the total value
+        for all mortality causes, use the view `Ext_MortalityStatusValues_v1` to get the mortality
+        per mortality cause"
+
+      - name: mortalitybiomasskg
+        description: "The accumulated biomass in Kg Mortality since input. This is the total value
+        for all mortality causes, use the view `Ext_MortalityStatusValues_v1` to get the mortality
+        per mortality cause"
+
+      - name: cullingcount
+        description: "The accumulated number of fish culled since input"
+
+      - name: cullingbiomasskg
+        description: "The accumulated biomass in Kg culled since input"
+
+      - name: lostinsamplescount
+        description: "The accumulated number of fish lost due to samples since input"
+
+      - name: lostinsamplesbiomasskg
+        description: "The accumulated biomass in Kg lost due to samples since input"
+
+      - name: escapecount
+        description: "The accumulated number of fish escaped since input"
+
+      - name: escapebiomasskg
+        description: "The accumulated biomass in Kg escaped since input"
+
+      - name: deviationcount
+        description: "The accumulated number of fish adjusted since input (in transfer, harvest, sales, escapes,
+        samples etc)"
+
+      - name: deviationbiomasskg
+        description: "The accumulated biomass in Kg adjusted since input (in transfer, harvest, sales, escapes,
+        amples etc)"
+
+      - name: harvestdiscardcount
+        description: "The accumulated number of fish registered as discards in harvest registration since input"
+
+      - name: harvestdiscardbiomasskg
+        description: "The accumulated biomass in Kg registered as discards in harvest registration since input"
+
+      - name: lostinspawningcount
+        description: "The accumulated number of fish not returned from spawning since input"
+
+      - name: lostinspawningbiomasskg
+        description: "The accumulated biomass in Kg not returned from spawning since input"
+
+      - name: closingdeviationcount
+        description: "The number of fish deviation related to the closing of the group if the group is
+        closed due to mortality, culling, escape or similar"
+
+      - name: closingdeviationbiomasskg
+        description: "The biomass in Kg deviation related to the closing of the group if the group is
+        closed due to mortality, culling, escape or similar"
+
+      - name: temperature
+        description: ""
+
+      - name: calcfeedamountkg
+        description: ""
+
+      - name: atu
+        description: ""
+
+      - name: isfasting
+        description: ""
+
+      - name: volume
+        description: ""
+
+      - name: reasonfornotfeeding
+        description: ""
+
+      - name: reasonfornotcheckingmortality
+        description: ""
+
+  - name: int_fishtalk__ext_daily_mortality_values_v2
+    description: ""
+    columns:
+      - name: populationid
+        description: ""
+
+      - name: mortalitycauseid
+        description: ""
+
+      - name: statusdate
+        description: ""
+
+      - name: mortalitycount
+        description: ""
+
+      - name: mortalitybiomasskg
+        description: ""
+
+  - name: int_fishtalk__ext_feed_delivery_v2
+    description: ""
+    columns:
+      - name: feedreceptionid
+        description: ""
+
+      - name: price
+        description: ""
+
+      - name: feedtypeid
+        description: ""
+
+      - name: feedbatchid
+        description: ""
+
+      - name: feedstoreid
+        description: ""
+
+      - name: supplierid
+        description: ""
+
+      - name: batchnumber
+        description: ""
+
+      - name: ordernumber
+        description: ""
+
+      - name: receptiontime
+        description: ""
+
+      - name: receptiondate
+        description: ""
+
+      - name: shippingdate
+        description: ""
+
+      - name: amountkg
+        description: ""
+
+  - name: int_fishtalk__ext_feed_store_v2
+    description: ""
+    columns:
+      - name: feedstorename
+        description: ""
+
+      - name: feedstoreid
+        description: ""
+
+      - name: orgunitid
+        description: ""
+
+      - name: active
+        description: ""
+
+      - name: capacity
+        description: ""
+
+      - name: feedstoretypeid
+        description: ""
+
+  - name: int_fishtalk__ext_grouped_organisation_v2
+    description: ""
+    columns:
+      - name: containerid
+        description: ""
+        tests:
+          - relationships:
+                to: ref('int_fishtalk__ext_containers_v2')
+                field: containerid
+
+      - name: container
+        description: ""
+
+      - name: site
+        description: ""
+
+      - name: company
+        description: ""
+
+      - name: enterprise
+        description: ""
+
+      - name: sitegroup
+        description: ""
+
+      - name: companygroup
+        description: ""
+
+      - name: siteid
+        description: ""
+
+      - name: companyid
+        description: ""
+
+      - name: enterpriseid
+        description: ""
+
+      - name: sitegroupid
+        description: ""
+
+      - name: companygroupid
+        description: ""
+
+      - name: containergroupid
+        description: ""
+
+      - name: containergroup
+        description: ""
+
+      - name: prodstage
+        description: ""
+
+      - name: standname
+        description: ""
+
+      - name: standid
+        description: ""
+
+  - name: int_fishtalk__ext_mortality_status_values_v2
+    description: ""
+    columns:
+      - name: populationid
+        description: ""
+        tests:
+          - not_null
+
+      - name: mortalitycauseid
+        description: ""
+
+      - name: statusdate
+        description: ""
+
+      - name: statustype
+        description: ""
+
+      - name: statustime
+        description: ""
+
+      - name: mortalitycount
+        description: ""
+
+      - name: mortalitybiomasskg
+        description: ""
+
+  - name: int_fishtalk__ext_organisation_groups_v2
+    description: ""
+    columns:
+      - name: groupid
+        description: ""
+
+      - name: groupname
+        description: ""
+
+      - name: parent
+        description: ""
+
+      - name: grouptype
+        description: ""
+
+  - name: int_fishtalk__ext_organisation_v2
+    description: ""
+    columns:
+      - name: orgunitid
+        description: ""
+        tests:
+          - not_null
+
+      - name: orgunitname
+        description: ""
+
+      - name: groupid
+        description: ""
+
+      - name: parentorgunitid
+        description: ""
+
+      - name: orgunittypeid
+        description: ""
+
+      - name: location_
+        description: ""
+
+      - name: longitude
+        description: ""
+
+      - name: county
+        description: ""
+
+      - name: latitude
+        description: ""
+
+      - name: active
+        description: ""
+
+      - name: type_
+        description: ""
+
+      - name: prodstage
+        description: ""
+
+      - name: parentid
+        description: ""
+
+  - name: int_fishtalk__ext_populations_v2
+    description: ""
+    columns:
+      - name: populationid
+        description: ""
+        tests:
+          - not_null
+
+      - name: containerid
+        description: ""
+        tests:
+          - not_null
+
+      - name: populationname
+        description: ""
+
+      - name: speciesid
+        description: ""
+
+      - name: starttime
+        description: ""
+
+      - name: endtime
+        description: ""
+
+      - name: inputyear
+        description: ""
+
+      - name: inputnumber
+        description: ""
+
+      - name: runningnumber
+        description: ""
+
+      - name: fishgroup
+        description: ""
+
+      - name: startdate
+        description: ""
+
+      - name: enddate
+        description: ""
+
+  - name: int_fishtalk__ext_stands_v2
+    description: ""
+    columns:
+      - name: standid
+        description: ""
+
+      - name: orgunitid
+        description: ""
+
+      - name: standname
+        description: ""
+
+      - name: groupid
+        description: ""
+
+  - name: int_fishtalk__ext_mortality_causes_v2
+    description: ""
+    columns:
+      - name: mortalitycauseid
+        description: ""
+
+      - name: name_
+        description: ""
+
+      - name: mortalitycausegroupid
+        description: ""
+
+      - name: textid
+        description: ""

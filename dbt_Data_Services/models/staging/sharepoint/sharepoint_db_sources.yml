@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: sharepoint
+    description: ""
+    database: sharepoint
+    schema: donations_sharepoint
+    tables:
+      - name: donation_request_management_active_requests
+        description: "sharepoint list data for donations crated by Eric"

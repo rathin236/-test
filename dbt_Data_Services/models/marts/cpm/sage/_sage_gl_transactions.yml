@@ -1,0 +1,110 @@
+version: 2
+
+models:
+  - name: sage_100_cpm__v_ber_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the BER entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_bim_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the BIM entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_bio_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the BIO entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_del_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the DEL entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_far_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the FAR entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_fon_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the FON entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_ine_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the INE entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_lar_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the LAR entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_roy_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the ROY entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_sas_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the SAS entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_sea_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the SEA entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique
+
+  - name: sage_100_cpm__v_tor_gl_transactions
+    description: "Sage 100 CPM general ledger transactions mart for the TOR entity."
+    columns:
+      - name: surrogate_key
+        description: "Surrogate key uniquely identifying each GL transaction line, generated from transaction date, journal entry number, account number, and transaction amount."
+        tests:
+          - not_null
+          - unique

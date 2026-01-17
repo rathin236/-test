@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: int_abs__gl_transactions
+    description: "Intermediate mdoel for aquacultura balear sau gl transactions"
+  - name: int_basa__gl_transactions
+    description: "Intermediate mdoel for basademar sl gl transactions"
+  - name: int_bgps__gl_transactions
+    description: "Intermediate mdoel for blue green piscifactoria sures gl transactions"
+  - name: int_bsslu__gl_transactions
+    description: "Intermediate mdoel for bersolaz spain s_l_u gl transactions"
+  - name: int_cdps__gl_transactions
+    description: "Intermediate mdoel for cultivos del ponto slu gl transactions"
+  - name: int_cul__gl_transactions
+    description: "Intermediate mdoel for culmarex gl transactions"
+  - name: int_gmbs__gl_transactions
+    description: "Intermediate mdoel for granja marina bahia sp gl transactions"
+  - name: int_ls__gl_transactions
+    description: "Intermediate mdoel for lebeche spain gl transactions"
+  - name: int_pas__gl_transactions
+    description: "Intermediate mdoel for piscifactoria aguadulce slu gl transactions"
+  - name: int_prs__gl_transactions
+    description: "Intermediate mdoel for pescaviva real slu gl transactions"

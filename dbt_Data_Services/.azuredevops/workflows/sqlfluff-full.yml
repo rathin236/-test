@@ -1,0 +1,187 @@
+# azure-pipelines.yml — Parallel SQLFluff (dbt templater), 4 shards, prints errors
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  DBT_PROJECT_DIR: "."
+  DBT_EDI_PALLET_WEIGHT_LB: "40"
+
+stages:
+  - stage: Lint
+  displayName: "Nightly - Sqlfluff Full Repo Parallel Lint"
+  jobs:
+    - job: LintShard
+    displayName: "SQLFluff — shard $(SHARD_INDEX)/$(SHARD_TOTAL)"
+    timeoutInMinutes: 0
+    strategy:
+      maxParallel: 4
+      matrix:
+        shard1: {SHARD_INDEX: "1", SHARD_TOTAL: "4"}
+        shard2: {SHARD_INDEX: "2", SHARD_TOTAL: "4"}
+        shard3: {SHARD_INDEX: "3", SHARD_TOTAL: "4"}
+        shard4: {SHARD_INDEX: "4", SHARD_TOTAL: "4"}
+    steps:
+      - checkout: self
+      fetchDepth: 0
+      clean: true
+
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: "3.11"
+
+    - task: Bash@3
+      displayName: "Install dbt + SQLFluff"
+      inputs:
+        targetType: inline
+        script: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          pip install \
+            "dbt-core==1.10.11" \
+            "dbt-snowflake==1.10.1" \
+            "sqlfluff==3.4.2" \
+            "sqlfluff-templater-dbt==3.4.2" \
+            pyyaml
+          dbt --version
+          sqlfluff --version
+
+    - task: DownloadSecureFile@1
+      name: snowflakeKey
+      inputs:
+        secureFile: "dbt_snowflake_key.p8"
+
+    - task: Bash@3
+      displayName: "Create dbt profile (Snowflake connection)"
+      inputs:
+        targetType: inline
+        script: |
+          set -euo pipefail
+          PROFILES_DIR="$(Agent.TempDirectory)/dbt_profiles"
+          mkdir -p "$PROFILES_DIR"
+
+          cp "$(snowflakeKey.secureFilePath)" "$PROFILES_DIR/dbt_snowflake_key.p8" || true
+          chmod 600 "$PROFILES_DIR/dbt_snowflake_key.p8" || true
+
+          profiles_file="$PROFILES_DIR/profiles.yml"
+
+          printf 'default:\n'                                   >  "$profiles_file"
+          printf '  target: ci\n'                               >> "$profiles_file"
+          printf '  outputs:\n'                                 >> "$profiles_file"
+          printf '    ci:\n'                                    >> "$profiles_file"
+          printf '      type: snowflake\n'                      >> "$profiles_file"
+          printf '      account: "%s"\n'      "${SF_ACCOUNT:-account}"   >> "$profiles_file"
+          printf '      user: "%s"\n'         "${SF_USER:-user}"         >> "$profiles_file"
+          printf '      role: "%s"\n'         "${SF_ROLE:-role}"         >> "$profiles_file"
+          printf '      database: "%s"\n'     "${SF_DATABASE:-DB}"       >> "$profiles_file"
+          printf '      warehouse: "%s"\n'    "${SF_WAREHOUSE:-WH}"      >> "$profiles_file"
+          printf '      schema: "%s"\n'       "${SF_SCHEMA:-SCHEMA}"     >> "$profiles_file"
+          printf '      threads: 4\n'                                   >> "$profiles_file"
+          KEYPATH="$PROFILES_DIR/dbt_snowflake_key.p8"
+          printf '      private_key_path: "%s"\n' "$KEYPATH"            >> "$profiles_file"
+
+          if [ -n "${SF_PRIVATE_KEY_PASSPHRASE:-}" ]; then
+            printf '      private_key_passphrase: "%s"\n' "$SF_PRIVATE_KEY_PASSPHRASE" >> "$profiles_file"
+            echo "Passphrase: set (masked)"
+          else
+            echo "Passphrase: NOT set (OK if key is unencrypted)"
+          fi
+
+          echo "##vso[task.setvariable variable=DBT_PROFILES_DIR]$PROFILES_DIR"
+          echo "profiles.yml created at: $profiles_file"
+      env:
+        SF_ACCOUNT: $(SF_ACCOUNT)
+        SF_USER: $(SF_USER)
+        SF_ROLE: $(SF_ROLE)
+        SF_DATABASE: $(SF_DATABASE)
+        SF_WAREHOUSE: $(SF_WAREHOUSE)
+        SF_SCHEMA: $(SF_SCHEMA)
+        SF_PRIVATE_KEY_PASSPHRASE: $(SF_PRIVATE_KEY_PASSPHRASE)
+
+    - task: Bash@3
+      displayName: "dbt deps (safe)"
+      inputs:
+        targetType: inline
+        script: |
+          set -euo pipefail
+          if [ -f "$(DBT_PROJECT_DIR)/packages.yml" ]; then
+            dbt deps --profiles-dir "$(DBT_PROFILES_DIR)" --project-dir "$(DBT_PROJECT_DIR)"
+          else
+            echo "No packages.yml; skipping dbt deps."
+          fi
+      env:
+        DBT_PROFILES_DIR: $(DBT_PROFILES_DIR)
+        DBT_EDI_PALLET_WEIGHT_LB: $(DBT_EDI_PALLET_WEIGHT_LB)
+
+    - task: Bash@3
+      displayName: "Write .sqlfluffignore"
+      inputs:
+        targetType: inline
+        script: |
+          cat > .sqlfluffignore <<'IGN'
+          .archive/
+          target/
+          dbt_packages/
+          node_modules/
+          .venv/
+          .git/
+          *.md
+          IGN
+
+    - task: Bash@3
+      displayName: "SQLFluff lint (show errors, sharded)"
+      inputs:
+        targetType: inline
+        script: |
+          set -euo pipefail
+          SHARD_INDEX="${SHARD_INDEX:-1}"    # 1-based
+          SHARD_TOTAL="${SHARD_TOTAL:-4}"
+
+          # Collect SQL files from dbt dirs
+          mapfile -d '' FILES < <(find models macros snapshots tests analyses -type f -name '*.sql' -print0 2>/dev/null)
+
+          if [ "${#FILES[@]}" -eq 0 ]; then
+            echo "No SQL files to lint in dbt dirs."
+            exit 0
+          fi
+
+          # Assign to this shard
+          SEL=()
+          for i in "${!FILES[@]}"; do
+            idx=$(( (i % SHARD_TOTAL) + 1 ))
+            if [ "$idx" -eq "$SHARD_INDEX" ]; then
+              SEL+=("${FILES[$i]}")
+            fi
+          done
+          if [ "${#SEL[@]}" -eq 0 ]; then
+            echo "Shard $SHARD_INDEX/$SHARD_TOTAL: no files assigned."
+            exit 0
+          fi
+
+          echo "Shard $SHARD_INDEX/$SHARD_TOTAL linting ${#SEL[@]} file(s)..."
+
+          # Print violations straight to the log; fail on errors
+          sqlfluff lint "${SEL[@]}" \
+            --templater dbt \
+            --dialect snowflake \
+            --processes 1 \
+            --disable-progress-bar \
+            --nocolor
+      env:
+        SHARD_INDEX: $(SHARD_INDEX)
+        SHARD_TOTAL: $(SHARD_TOTAL)
+        DBT_PROFILES_DIR: $(DBT_PROFILES_DIR)
+        DBT_PROJECT_DIR: $(DBT_PROJECT_DIR)
+        DBT_EDI_PALLET_WEIGHT_LB: $(DBT_EDI_PALLET_WEIGHT_LB)
+
+    - task: Bash@3
+      displayName: "Cleanup secure key"
+      condition: always()
+      inputs:
+        targetType: inline
+        script: |
+          set -euo pipefail
+          rm -f "$(DBT_PROFILES_DIR)/dbt_snowflake_key.p8" || true
+          rm -rf "$(DBT_PROFILES_DIR)" || true
+      env:
+        DBT_PROFILES_DIR: $(DBT_PROFILES_DIR)

@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+When working on this project, ALWAYS prioritize simplicity and avoid overengineering:
+
+- Keep solutions simple and straightforward
+- Use the most direct approach that solves the problem
+- Avoid adding unnecessary abstractions, layers, or complexity
+- Don't create elaborate patterns or frameworks unless absolutely necessary
+- Prefer clear, readable code over "clever" solutions
+- If a simple solution works, don't refactor it into something more complex
+- Avoid premature optimization or over-architecting
+- When in doubt, choose the simpler option
+- Never add features, patterns, or code that aren't explicitly needed
+- Focus on solving the immediate problem, not building for hypothetical future needs

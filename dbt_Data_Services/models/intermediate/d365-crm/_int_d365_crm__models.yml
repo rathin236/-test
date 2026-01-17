@@ -1,0 +1,503 @@
+version: 2
+
+models:
+  - name: int_d365_crm__importdata_products
+    description: ""
+    columns:
+      - name: status
+        description: "Import Status either NEW-to be imported as new row, UPDATE-exist but needs update"
+      - name: source
+        description: "The data source`s system"
+      - name: company
+        description: "Company"
+      - name: productstructure
+        description: "For sales products, should be PRODUCT. For attributes, should be PRODUCT FAMILY"
+      - name: producttype
+        description: "Defaulted to Sales Inventory"
+      - name: productid
+        description: "Defaulted to source system Product ID"
+      - name: productdesc
+        description: "Product description"
+      - name: unitgroup
+        description: "Unit of measure schedule for the product"
+      - name: unit
+        description: "Default inventory unit"
+      - name: gpproductid
+        description: "GP Product ID"
+      - name: d365productid
+        description: "D365 Product ID"
+      - name: crmproductid
+        description: "CRM Product ID"
+      - name: uomscheduleid
+        description: "The Unit Of Measure Schedule ID"
+      - name: uomid
+        description: "The Unit of Measure ID"
+      - name: companyid
+        description: "The Company ID"
+
+  - name: int_d365_crm__d365product
+    description: ""
+    columns:
+      - name: status
+        description: "Import Status either NEW-to be imported as new row, UPDATE-exist but needs update"
+      - name: source
+        description: "The data source`s system"
+      - name: company
+        description: "Company"
+      - name: productstructure
+        description: "For sales products, should be PRODUCT. For attributes, should be PRODUCT FAMILY"
+      - name: producttype
+        description: "Defaulted to Sales Inventory"
+      - name: productid
+        description: "Defaulted to source system Product ID"
+      - name: productdesc
+        description: "Product description"
+      - name: unitgroup
+        description: "Unit of measure schedule for the product"
+      - name: unit
+        description: "Default inventory unit"
+      - name: gpproductid
+        description: "GP Product ID"
+      - name: d365productid
+        description: "D365 Product ID"
+      - name: crmproductid
+        description: "CRM Product ID"
+      - name: uomscheduleid
+        description: "The Unit Of Measure Schedule ID"
+      - name: uomid
+        description: "The Unit of Measure ID"
+      - name: companyid
+        description: "The Company ID"
+
+  - name: int_d365_crm__d365uom
+    description: ""
+    columns:
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: productid
+        description: ""
+      - name: baseunitname
+        description: ""
+      - name: description
+        description: ""
+      - name: uomscheduleid
+        description: ""
+      - name: uomid
+        description: ""
+      - name: company
+        description: ""
+      - name: unitgroupname
+        description: ""
+
+  - name: int_d365_crm__crm_importcustomers
+    description: ""
+    columns:
+      - name: company
+        description: ""
+
+      - name: accountstatusuid
+        description: ""
+
+      - name: status
+        description: ""
+
+      - name: source
+        description: ""
+
+      - name: accountnum
+        description: ""
+
+      - name: name
+        description: ""
+
+      - name: invoiceaccount
+        description: ""
+
+      - name: custgroup
+        description: ""
+
+      - name: invoicinganddeliveryonhold
+        description: ""
+
+      - name: accountstatus
+        description: ""
+      - name: currency
+        description: ""
+      - name: employeeresponsibleid
+        description: ""
+      - name: employeeresponsible
+        description: ""
+      - name: paytermid
+        description: ""
+      - name: street
+        description: ""
+      - name: city
+        description: ""
+      - name: state
+        description: ""
+      - name: county
+        description: ""
+      - name: zipcode
+        description: ""
+      - name: country
+        description: ""
+      - name: ownertype
+        description: ""
+      - name: companyuid
+        description: ""
+      - name: accountuid
+        description: ""
+      - name: currencyuid
+        description: ""
+      - name: errorlog
+        description: ""
+
+  - name: int_d365_crm__crm_new_product_price_list
+    description: ""
+    columns:
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: company
+        description: ""
+      - name: pricelist
+        description: ""
+      - name: pricelistid
+        description: ""
+      - name: unit
+        description: ""
+      - name: amount
+        description: ""
+      - name: currency
+        description: ""
+      - name: quantsellopt
+        description: ""
+      - name: roundpolicy
+        description: ""
+      - name: productuid
+        description: ""
+      - name: uomscheduleid
+        description: ""
+      - name: productid
+        description: ""
+
+  - name: int_d365_crm__crm_product_price_list
+    description: ""
+    columns:
+      - name: source
+        description: ""
+      - name: productid
+        description: ""
+      - name: pricelist
+        description: ""
+      - name: pricelistid
+        description: ""
+      - name: unit
+        description: ""
+      - name: amount
+        description: ""
+      - name: currency
+        description: ""
+      - name: quantsellopt
+        description: ""
+      - name: roundpolicy
+        description: ""
+      - name: productuid
+        description: ""
+      - name: uomscheduleid
+        description: ""
+      - name: status
+        description: ""
+      - name: company
+        description: ""
+
+  - name: int_d365_crm__crmcustomer
+    description: ""
+    columns:
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: company
+        description: ""
+      - name: name
+        description: ""
+      - name: custgroup
+        description: ""
+      - name: invoicinganddeliveryonhold
+        description: ""
+      - name: accountstatus
+        description: ""
+      - name: currency
+        description: ""
+      - name: employeeresponsibleid
+        description: ""
+      - name: employeeresponsible
+        description: ""
+      - name: paytermid
+        description: ""
+      - name: street
+        description: ""
+      - name: city
+        description: ""
+      - name: state
+        description: ""
+      - name: county
+        description: ""
+      - name: zipcode
+        description: ""
+      - name: country
+        description: ""
+      - name: companyuid
+        description: ""
+      - name: accountuid
+        description: ""
+      - name: accountstatusuid
+        description: ""
+      - name: currencyuid
+        description: ""
+      - name: errorlog
+        description: ""
+      - name: accountnum
+        description: ""
+      - name: invoiceaccount
+        description: ""
+      - name: ownertype
+        description: ""
+
+  - name: int_d365_crm__crmproduct
+    description: ""
+    columns:
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: productstructure
+        description: ""
+      - name: producttype
+        description: ""
+      - name: productid
+        description: ""
+      - name: productdesc
+        description: ""
+      - name: unitgroup
+        description: ""
+      - name: unit
+        description: ""
+      - name: gpproductid
+        description: ""
+      - name: d365productid
+        description: ""
+      - name: crmproductid
+        description: ""
+      - name: uomscheduleid
+        description: ""
+      - name: uomid
+        description: ""
+      - name: companyid
+        description: ""
+      - name: company
+        description: ""
+
+  - name: int_d365_crm__crmunits
+    description: ""
+    columns:
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: company
+        description: ""
+      - name: unitgroup
+        description: ""
+      - name: baseunit
+        description: ""
+      - name: fromunit
+        description: ""
+      - name: tounit
+        description: ""
+      - name: conversionfactor
+        description: ""
+      - name: uomscheduleeditlink
+        description: ""
+      - name: productid
+        description: ""
+
+  - name: int_d365_crm__crmuom
+    description: ""
+    columns:
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: company
+        description: ""
+      - name: unitgroupname
+        description: ""
+      - name: baseunitname
+        description: ""
+      - name: description
+        description: ""
+      - name: uomscheduleid
+        description: ""
+      - name: uomid
+        description: ""
+      - name: productid
+        description: ""
+
+  - name: int_d365_crm__d365_importcustomers
+    description: ""
+    columns:
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: company
+        description: ""
+      - name: name
+        description: ""
+      - name: invoiceaccount
+        description: ""
+      - name: custgroup
+        description: ""
+      - name: invoicinganddeliveryonhold
+        description: ""
+      - name: accountstatus
+        description: ""
+      - name: currency
+        description: ""
+      - name: employeeresponsibleid
+        description: ""
+      - name: employeeresponsible
+        description: ""
+      - name: paytermid
+        description: ""
+      - name: street
+        description: ""
+      - name: city
+        description: ""
+      - name: state
+        description: ""
+      - name: county
+        description: ""
+      - name: zipcode
+        description: ""
+      - name: country
+        description: ""
+      - name: ownertype
+        description: ""
+      - name: companyuid
+        description: ""
+      - name: accountuid
+        description: ""
+      - name: accountstatusuid
+        description: ""
+      - name: currencyuid
+        description: ""
+      - name: errorlog
+        description: ""
+      - name: accountnum
+        description: ""
+
+  - name: int_d365_crm__d365customer
+    description: ""
+    columns:
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: company
+        description: ""
+      - name: name
+        description: ""
+      - name: invoiceaccount
+        description: ""
+      - name: custgroup
+        description: ""
+      - name: invoicinganddeliveryonhold
+        description: ""
+      - name: accountstatus
+        description: ""
+      - name: currency
+        description: ""
+      - name: employeeresponsibleid
+        description: ""
+      - name: paytermid
+        description: ""
+      - name: street
+        description: ""
+      - name: city
+        description: ""
+      - name: state
+        description: ""
+      - name: county
+        description: ""
+      - name: zipcode
+        description: ""
+      - name: country
+        description: ""
+      - name: ownertype
+        description: ""
+      - name: companyuid
+        description: ""
+      - name: accountuid
+        description: ""
+      - name: accountstatusuid
+        description: ""
+      - name: currencyuid
+        description: ""
+      - name: accountnum
+        description: ""
+      - name: employeeresponsible
+        description: ""
+      - name: errorlog
+        description: ""
+
+  - name: int_d365_crm__d365units
+    description: ""
+    columns:
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: productid
+        description: ""
+      - name: baseunit
+        description: ""
+      - name: fromunit
+        description: ""
+      - name: tounit
+        description: ""
+      - name: conversionfactor
+        description: ""
+      - name: uomscheduleeditlink
+        description: ""
+      - name: company
+        description: ""
+      - name: unitgroup
+        description: ""
+
+  - name: int_d365_crm__importdata_unit_groups
+    description: ""
+    columns:
+      - name: uomscheduleid
+        description: ""
+      - name: uomid
+        description: ""
+      - name: status
+        description: ""
+      - name: source
+        description: ""
+      - name: company
+        description: ""
+      - name: productid
+        description: ""
+      - name: unitgroupname
+        description: ""
+      - name: baseunitname
+        description: ""
+      - name: description
+        description: ""

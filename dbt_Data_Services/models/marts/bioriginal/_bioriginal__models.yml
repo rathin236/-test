@@ -1,0 +1,189 @@
+version: 2
+
+models:
+  - name: dim__business_partners
+    description: "Dimension table with business partner names and Id numbers"
+    columns:
+      - name: "customer_bp_id"
+        description: "Unique business partner ID"
+        constraints:
+          - type: primary_key  # not enforced by snowflake, will warn & include
+        tests:
+          - unique  # need this test because primary_key constraint is not enforced
+      - name: "customer_name"
+        description: "Actual customer name"
+  - name: dim__employees
+    description: "Dimension table with employees assigned to business partner ids"
+    columns:
+      - name: "customer_bp_id"
+        description: "Unique business partner ID"
+        constraints:
+          - type: primary_key  # not enforced by snowflake, will warn & include
+        tests:
+          - unique  # need this test because primary_key constraint is not enforced
+      - name: "sales_rep_id"
+        description: "Sales rep Id number"
+      - name: "sales_rep_name"
+        description: "Sales rep name"
+      - name: "customer_service_rep_id"
+        description: "Customer service rep ID number"
+      - name: "customer_service_rep_name"
+        description: "Customer service rep name"
+  - name: dim__exchange_rates
+    description: "Daily exchange rates from XREF currency exchange rates data. If data is not available for a
+    specific day the rate will be taken from the last day available, this is marked as date effective"
+    columns:
+      - name: date_day
+        description: "Unique day for exchange rate"
+        constraints:
+          - type: primary_key  # not enforced by snowflake, will warn & include
+        tests:
+          - unique  # need this test because primary_key constraint is not enforced
+      - name: date_effective
+        description: "Starting date the exchange rate was effective"
+        tests:
+          - not_null
+      - name: cad_usd
+        description: "Conversion rate from CAD to USD"
+        tests:
+          - not_null
+      - name: eur_usd
+        description: "Conversion rate from Euros to USD"
+        tests:
+          - not_null
+      - name: jpy_usd
+        description: "Conversion rate from Japanese Yen to USD"
+        tests:
+          - not_null
+  - name: dim__items
+    description: "Item level attributes"
+    columns:
+      - name: "item_key"
+        description: "Surrogate unique item ID. Concatenation of item number and company code. Item numbers
+        alone are not unique and may be present for multiple companies"
+        constraints:
+          - type: primary_key  # not enforced by snowflake, will warn & include
+        tests:
+          - unique  # need this test because primary_key constraint is not enforced
+      - name: "item_description"
+        description: "Actual item description"
+      - name: "product_category_grouping_description"
+        description: "Description of product category group from raw data"
+      - name: "product_category_grouping_summary"
+        description: "Sanitized product category group which only uses the following categories: dairy,
+        liquid coconut, marine, nutraceutical, pet, plant, solid coconut, supplies, trading, other"
+      - name: "product_category_description"
+        description: "Description of product category. (not the same as category group)"
+      - name: company_code
+        description: "Company codes"
+      - name: "standard_cost"
+        description: "TODO"
+  - name: dim__sales_order_status
+    description: "Sales order status by order number"
+    columns:
+      - name: "order_number"
+        description: "Unique order number"
+        constraints:
+          - type: primary_key  # not enforced by snowflake, will warn & include
+        tests:
+          - unique  # need this test because primary_key constraint is not enforced
+      - name: "sales_order_status"
+        description: "Numeric sales order status code"
+      - name: "sales_order_status_name"
+        description: "Actual name of sales order status"
+      - name: "sales_order_status_summary"
+        description: "Sanitized sales order status group which only uses the following categories: open orders,
+        invoiced orders, canceled orders"
+  - name: dim__company_code
+    description: "Company code and company name cross reference"
+    columns:
+      - name: "company_code"
+        description: "numeric company code"
+      - name: "company_code_name"
+        description: "Company code name / operating area"
+  - name: fct__orders_lines_items
+    description: "Main fact table detailing order transactions at the order number, line number,
+    sequence number and company code"
+    columns:
+      - name: order_line_seq_comp_key
+        description: "Unique surrogate key"
+        constraints:
+          - type: primary_key  # not enforced by snowflake, will warn & include
+        tests:
+          - unique  # need this test because primary_key constraint is not enforced
+      - name: order_number
+        description: "Order number"
+      - name: line_number
+        description: "Line numbers for order numbers"
+      - name: sequence_number
+        description: "Sequence numbers for line numbers"
+      - name: company_coode
+        description: "company codes. 100 = North America, 200 = europe, 600 = Asia"
+      - name: customer_bp_id
+        description: "Customer business partner id"
+        meta:
+          secondary_key: true
+      - name: contract_number
+        description: "Contract number"
+        meta:
+          secondary_key: true
+      - name: item_number
+        description: "Item number"
+        meta:
+          secondary_key: true
+      - name: delivery_date
+        description: "Scheduled delivery date"
+      - name: quantity
+        description: "Quantity of the sale"
+      - name: sales_unint
+        description: "Unit of the sale"
+      - name: sales_currency
+        description: "Currency unit of the sale"
+      - name: total_amount_sales_currency
+        description: "Amount in sales currency for that line"
+      - name: total_amount_usd
+        description: "Amount of sale converted to USD"
+      - name: price_sales_currency
+        description: "Price per unit of sale in sales currency"
+      - name: total_cogs_home_currency
+        description: "Total cost of goods sold in home currency"
+      - name: margin_usd
+        description: "Margin in USD"
+      - name: margin_percent
+        description: "Margin (USD) percent"
+      - name: cad_usd
+        description: "CAD to USD conversion rate for line"
+      - name: eur_usd
+        description: "EUR to USD conversion rate for line"
+      - name: jpy_usd
+        description: "JPY to USD conversion rate for line"
+      - name: date_key
+        description: "Date key in yyyy-mm-dd format"
+        meta:
+          secondary_key: true
+      - name: item_key
+        description: "Surrogate key: item number + company code"
+        meta:
+          secondary_key: true
+      - name: consingment_flag
+        description: "Flags the order as consingment or not"
+        meta:
+          flag: true
+      - name: invoice_date
+        description: "Timestamp for invoice date"
+      - name: total_cogs_usd
+        description: "Total cost of goods sold in USD"
+      - name: contract_flag
+        description: "Flags the order as contract or not"
+        meta:
+          flag: true
+      - name: open_order_flag
+        description: "Flags the order as open or not"
+        meta:
+          flag: true
+      - name: six_months_flag
+        description: "Flags the order occuring in the next six months or not"
+        meta:
+          flag: true
+  - name: fct__budget_data
+    description: "Budget Data"

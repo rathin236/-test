@@ -1,0 +1,618 @@
+version: 2
+
+models:
+  - name: edi_856_all_details
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "shipment_net_weight_kg > 0"
+          config:
+            severity: warn
+      - dbt_utils.expression_is_true:
+          expression: "shipment_net_weight_lb > 0"
+          config:
+            severity: warn
+      - dbt_utils.expression_is_true:
+          expression: "shipment_gross_weight_kg > 0"
+          config:
+            severity: warn
+      - dbt_utils.expression_is_true:
+          expression: "shipment_gross_weight_lb > 0"
+          config:
+            severity: warn
+      - dbt_utils.expression_is_true:
+          expression: "item_pallet_net_weight_kg > 0"
+          config:
+            severity: warn
+      - dbt_utils.expression_is_true:
+          expression: "item_pallet_net_weight_lb > 0"
+          config:
+            severity: warn
+    description: ""
+    columns:
+      - name: order_id
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: client_id
+        description: ""
+
+      - name: source
+        description: ""
+
+      - name: date_created
+        description: ""
+
+      - name: header_entity_id_code
+        description: ""
+
+      - name: transaction_purpose
+        description: ""
+
+      - name: bol_number
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ship_date
+        description: ""
+
+      - name: ship_time
+        description: ""
+
+      - name: ship_datetime
+        description: ""
+
+      - name: delivery_date
+        description: ""
+
+      - name: edi_division
+        description: ""
+
+      - name: number_of_pallets
+        description: ""
+
+      - name: packaging_code
+        description: ""
+
+      - name: shipment_volume
+        description: ""
+
+      - name: volume_uom
+        description: ""
+
+      - name: routing_seq_code
+        description: ""
+
+      - name: trans_type_code
+        description: ""
+
+      - name: routing
+        description: ""
+
+      - name: fob
+        description: ""
+
+      - name: equipment_desc_code
+        description: ""
+
+      - name: address_entity_id_code
+        description: ""
+
+      - name: edi_bill_to_id_code
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: accounting_id_code
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ship_name
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ship_address_1
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ship_address_2
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ship_city
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ship_state
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ship_zip
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ship_country
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: contact_phone
+        description: ""
+
+      - name: phone_fax
+        description: ""
+
+      - name: po_number
+        description: ""
+
+      - name: po_date
+        description: ""
+
+      - name: sales_order_number
+        description: ""
+
+      - name: ref_num_qual
+        description: ""
+
+      - name: id_code
+        description: ""
+
+      - name: id_code_qual
+        description: ""
+
+      - name: id_type
+        description: ""
+
+      - name: id
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: pallet_type
+        description: ""
+
+      - name: pallet_layers
+        description: ""
+
+      - name: pallet_blocks
+        description: ""
+
+      - name: pallet_pack
+        description: ""
+
+      - name: case_code
+        description: ""
+
+      - name: upc_code
+        description: ""
+
+      - name: qty_shipped
+        description: ""
+
+      - name: qty_ordered
+        description: ""
+
+      - name: qty_uom
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: unit_price
+        description: ""
+
+      - name: unit_price_uom
+        description: ""
+
+      - name: is_catch_wgt
+        description: ""
+
+      - name: net_unit_price
+        description: ""
+
+      - name: extended_net_price
+        description: ""
+
+      - name: item_number
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: item_description
+        description: ""
+
+      - name: erp_item_code
+        description: ""
+
+      - name: po_line_id
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: number_of_cases
+        description: ""
+
+      - name: serial_lot_number
+        description: ""
+
+      - name: production_date
+        description: ""
+
+      - name: expiry_date
+        description: ""
+
+      - name: shipment_net_weight_kg
+        description: ""
+
+      - name: shipment_net_weight_lb
+        description: ""
+
+      - name: shipment_gross_weight_kg
+        description: ""
+
+      - name: shipment_gross_weight_lb
+        description: ""
+
+      - name: item_pallet_net_weight_kg
+        description: ""
+
+      - name: item_pallet_net_weight_lb
+        description: ""
+
+      - name: physical_pallet_weight_lb
+        description: ""
+
+      - name: physical_pallet_weight_kg
+        description: ""
+
+  - name: edi_856_address_group
+    description: ""
+    columns:
+      - name: entity_id_code
+        description: ""
+
+      - name: edi_bill_to_id_code
+        description: ""
+
+      - name: accounting_id_code
+        description: ""
+
+      - name: name_
+        description: ""
+
+      - name: address_1
+        description: ""
+
+      - name: address_2
+        description: ""
+
+      - name: city
+        description: ""
+
+      - name: state
+        description: ""
+
+      - name: zip
+        description: ""
+
+      - name: contact_phone
+        description: ""
+
+      - name: phone_fax
+        description: ""
+
+      - name: country
+        description: ""
+
+      - name: order_id
+        description: ""
+
+      - name: incremental_uid
+        description: ""
+
+  - name: edi_856_advance_ship_notice
+    description: ""
+    columns:
+      - name: client_id
+        description: ""
+
+      - name: source
+        description: ""
+
+      - name: order_id
+        description: ""
+
+      - name: filename
+        description: ""
+
+      - name: date_created
+        description: ""
+
+      - name: incremental_uid
+        description: ""
+
+  - name: edi_856_equipment_group
+    description: ""
+    columns:
+      - name: order_id
+        description: ""
+
+      - name: equipment_desc_code
+        description: ""
+
+  - name: edi_856_header_group
+    description: ""
+    columns:
+      - name: entity_id_code
+        description: ""
+
+      - name: bol_number
+        description: ""
+
+      - name: edi_division
+        description: ""
+
+      - name: order_id
+        description: ""
+
+      - name: actualshipdate
+        description: ""
+
+      - name: transaction_purpose
+        description: ""
+
+      - name: asn_date
+        description: ""
+
+      - name: asn_time
+        description: ""
+
+      - name: ship_date
+        description: ""
+
+      - name: ship_time
+        description: ""
+
+      - name: delivery_date
+        description: ""
+
+  - name: edi_856_item_group
+    description: ""
+    columns:
+      - name: unit_price
+        description: ""
+
+      - name: gross_weight_pp_uom
+        description: ""
+
+      - name: order_id
+        description: ""
+
+      - name: uomschedulesk
+        description: ""
+
+      - name: weightuomsk
+        description: ""
+
+      - name: pallet_id
+        description: ""
+
+      - name: cooke_item_id
+        description: ""
+
+      - name: uom
+        description: ""
+
+      - name: serial_lot_number
+        description: ""
+
+      - name: net_unit_price
+        description: ""
+
+      - name: extended_net_price
+        description: ""
+
+      - name: number_of_cases
+        description: ""
+
+      - name: gross_weight_kg
+        description: ""
+
+      - name: gross_weight_lb
+        description: ""
+
+      - name: case_code
+        description: ""
+
+      - name: upc_code
+        description: ""
+
+      - name: qty_ordered
+        description: ""
+
+      - name: qty_shipped
+        description: ""
+
+      - name: is_catch_wgt
+        description: ""
+
+      - name: unit_price_uom
+        description: ""
+
+      - name: item_number
+        description: ""
+
+      - name: item_description
+        description: ""
+
+      - name: po_line_id
+        description: ""
+
+      - name: production_date
+        description: ""
+
+      - name: expiry_date
+        description: ""
+
+  - name: edi_856_order_group
+    description: ""
+    columns:
+      - name: po_number
+        description: ""
+
+      - name: scac
+        description: ""
+
+      - name: ref_num_qual
+        description: ""
+
+      - name: order_id
+        description: ""
+
+      - name: po_date
+        description: ""
+
+  - name: edi_856_pallet_group_sscc
+    description: ""
+    columns:
+      - name: id_type
+        description: ""
+
+      - name: pallet_type
+        description: ""
+
+      - name: pallet_layers
+        description: ""
+
+      - name: pallet_blocks
+        description: ""
+
+      - name: pallet_pack
+        description: ""
+
+      - name: pallet_net_weight_lb
+        description: ""
+
+      - name: pallet_net_weight_kg
+        description: ""
+
+      - name: pallet_weight_uom
+        description: ""
+
+      - name: order_id
+        description: ""
+
+      - name: cooke_item_id
+        description: ""
+
+      - name: pallet_id
+        description: ""
+
+      - name: id
+        description: ""
+
+      - name: sscc_checksum
+        description: ""
+
+  - name: edi_856_routing_group
+    description: ""
+    columns:
+      - name: shipment_net_weight_kg
+        description: ""
+
+      - name: shipment_net_weight_lb
+        description: ""
+
+      - name: shipment_gross_weight_kg
+        description: ""
+
+      - name: shipment_gross_weight_lb
+        description: ""
+
+      - name: shipment_volume
+        description: ""
+
+      - name: volume_uom
+        description: ""
+
+      - name: routing_seq_code
+        description: ""
+
+      - name: id_code_qual
+        description: ""
+
+      - name: id_code
+        description: ""
+
+      - name: routing
+        description: ""
+
+      - name: fob
+        description: ""
+
+      - name: order_id
+        description: ""
+
+      - name: number_of_pallets
+        description: ""
+
+      - name: number_of_cases
+        description: ""
+
+      - name: packaging_code
+        description: ""
+
+      - name: trans_type_code
+        description: ""
+
+  - name: edi_856_sender_group
+    description: ""
+    columns:
+      - name: client_id
+        description: ""
+
+      - name: source
+        description: ""
+
+      - name: order_id
+        description: ""
+
+      - name: date_created
+        description: ""

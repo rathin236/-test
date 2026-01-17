@@ -1,0 +1,71 @@
+models:
+  - name: fct_gp__paid_invoices
+    description:
+      This model consolidates paid invoice data from the GP system, providing
+      a comprehensive view of transactions, including amounts in various currencies,
+      payment terms, and vendor details. It is used to analyze payment behaviors and
+      financial metrics related to invoices.
+    columns:
+      - name: transaction_id
+        description: A unique identifier for each transaction.
+      - name: company_id
+        description: The identifier for the company associated with the transaction.
+      - name: vendor_id
+        description: The identifier for the vendor involved in the transaction.
+      - name: document_type_id
+        description: The identifier for the type of document related to the transaction.
+      - name: currency_id
+        description: The identifier for the currency used in the transaction.
+      - name: voucher
+        description: The voucher number associated with the transaction.
+      - name: bach_number
+        description: The batch number for the transaction.
+      - name: pymtrmid
+        description: The payment terms identifier for the transaction.
+      - name: userid
+        description: The identifier for the user who processed the transaction.
+      - name: document_number
+        description: The document number for the transaction.
+      - name: document_date
+        description: The date the document was created.
+      - name: gl_posting_date
+        description: The date the transaction was posted to the general ledger.
+      - name: due_date
+        description: The date the payment is due.
+      - name: po_number
+        description: The purchase order number associated with the transaction.
+      - name: company_currency
+        description: The currency used by the company for the transaction.
+      - name: functional_document_amount
+        description: The document amount in the company's functional currency.
+      - name: functional_transaction_amount
+        description: The transaction amount in the company's functional currency.
+      - name: originating_document_amount
+        description: The original document amount before currency conversion.
+      - name: originating_transaction_amount
+        description: The original transaction amount before currency conversion.
+      - name: cad_amount
+        description: The transaction amount in Canadian dollars.
+      - name: usd_amount
+        description: The transaction amount in US dollars.
+      - name: cad_purchase_amount
+        description: The purchase amount in Canadian dollars.
+      - name: usd_purchase_amount
+        description: The purchase amount in US dollars.
+      - name: days_to_pay
+        description: The number of days taken to pay the invoice.
+      - name: days_to_overdue
+        description: The number of days the payment is overdue.
+      - name: sk_vendor_global
+        description: A surrogate key for the global vendor.
+      - name: sk_doctype_global
+        description: A surrogate key for the global document type.
+      - name: status
+        description: The status of the transaction.
+      - name: source_type
+        description: The source system of the transaction, which is 'GP'.
+      - name: sk_ap_global
+        description: A surrogate key for the global accounts payable.
+        tests:
+          - unique
+          - not_null

@@ -1,0 +1,189 @@
+---
+alwaysApply: true
+---
+# Team Collaboration & Workflow
+
+## Git Workflow
+
+### Branch Naming
+Follow consistent naming conventions:
+- **Features**: `feature-<domain>-<description>`
+  - Example: `feature-global-sales-add-customer-segments`
+  - Example: `feature-finance-ap-aging-analysis`
+- **Bugs**: `bug-<domain>-<fix-description>`
+  - Example: `bug-d365-sales-currency-conversion`
+- **Updates**: `update-<description>`
+  - Example: `update-staging-column-names`
+
+### Commit Messages
+Write clear, descriptive commit messages:
+
+**Format:**
+```
+<type>: <domain> - <description>
+
+<optional detailed explanation>
+```
+
+**Types:**
+- `feat:` - New feature or model
+- `fix:` - Bug fix
+- `update:` - Update to existing code
+- `docs:` - Documentation only
+- `refactor:` - Code refactoring
+- `test:` - Adding or updating tests
+
+**Examples:**
+```
+feat: global-sales - Add customer lifetime value model
+
+Adds fct_customer_lifetime_value to calculate CLV metrics
+using order history from D365 and Northscope systems.
+```
+
+```
+fix: staging-d365 - Correct currency conversion macro call
+
+Updates stg_d365__sales_orders to use convert_to_usd_adjusted
+instead of convert_to_usd for accurate multi-currency handling.
+```
+
+## Pull Requests
+
+### PR Requirements
+
+**Before Creating PR:**
+1. ✅ All tests pass locally: `dbt build --select <your-models>`
+2. ✅ SQLFluff passes: `sqlfluff lint models/your_model.sql --dialect snowflake`
+3. ✅ yamllint passes: `yamllint models/your_model.yml`
+4. ✅ Documentation added/updated
+5. ✅ Models tested in dev environment
+
+**PR Description Must Include:**
+- **Purpose**: What problem does this solve?
+- **Changes**: What models/files were added/modified?
+- **Testing**: How was it validated?
+- **Lineage**: Screenshot of dbt lineage graph showing downstream impacts
+- **Deployment Notes**: Any special considerations?
+- **Rollback Plan**: How to revert if needed
+
+### Code Review Guidelines
+
+**As a Reviewer:**
+- ✅ Verify all CI checks pass (SQLFluff, yamllint, dbt tests)
+- ✅ Confirm `dbt build -s <models_in_pr>` runs successfully
+- ✅ Check code follows style guide and naming conventions
+- ✅ Validate tests exist and are appropriate
+- ✅ Review documentation completeness
+- ✅ Check for security concerns (no secrets, proper permissions)
+
+**As an Author:**
+- Respond to all review comments
+- Address requested changes or explain why not
+- Update PR description if scope changes
+- Tag appropriate reviewers (domain experts)
+
+**Review Priorities:**
+- High: Mart models (end-user facing)
+- Medium: Intermediate models (business logic)
+- Low: Staging models (basic cleaning)
+
+### PR Size Guidelines
+- **Small PRs preferred**: Focused on single feature/fix
+- **Large PRs**: Break into smaller, sequential PRs when possible
+- **Rule of thumb**: If PR has 10+ files, consider splitting
+
+## Communication
+
+### Asking for Help
+When stuck or need guidance:
+1. Check README.md for existing documentation
+2. Search codebase for similar patterns
+3. Ask in team channel with:
+   - What you're trying to do
+   - What you've tried
+   - Error messages (if any)
+   - Relevant model names
+
+### Sharing Knowledge
+- Document new patterns in model YAML comments
+- Update README.md for new workflows
+- Share learnings in team discussions
+- Create reusable macros for common patterns
+
+### Escalation
+- **Technical issues**: Analytics Engineering Team
+- **Access/permissions**: Request through IT ticketing
+- **dbt Cloud issues**: Contact dbt support or team lead
+- **Urgent production issues**: Follow incident management process
+
+## Onboarding New Team Members
+
+### First Steps
+1. Read `README.md` completely
+2. Set up local development environment
+3. Run `dbt debug` to verify connection
+4. Review existing models in your domain
+5. Start with small staging model changes
+
+### Learning Path
+- **Week 1**: Staging models, basic dbt concepts
+- **Week 2**: Intermediate models, business logic
+- **Week 3**: Mart models, full transformations
+- **Week 4**: Independent contribution
+
+### Mentorship
+- Pair with experienced team member for first PR
+- Request code review from domain expert
+- Ask questions early and often
+
+## Domain Ownership
+
+### Understanding Domain Boundaries
+- **Global Sales**: D365, Northscope, CRM systems
+- **Finance**: AP, AR, spend analysis, financial reporting
+- **Global Inventory**: Inventory tracking, valuations
+- **Saltwater**: Farming, biological inventory, aquaculture
+- **IT Operations**: Snowflake, Power BI, system metrics
+- **CPM**: Fishtalk, OneStream, SAP integration
+
+### Cross-Domain Work
+- Coordinate with domain owners before major changes
+- Document dependencies in PR description
+- Test cross-domain impacts thoroughly
+
+## Deployment Practices
+
+### Development
+- Always test in `dev` environment first
+- Use personal schema: `dbt_<username>`
+- Test upstream and downstream impacts
+
+### Production Deployment
+- ✅ Never deploy on Fridays (weekend risk)
+- ✅ Have rollback plan documented
+- ✅ Test in dev first
+- ✅ Review lineage for downstream impacts
+- ✅ Communicate changes to stakeholders
+
+### Deployment Checklist
+- [ ] All tests pass
+- [ ] Documentation complete
+- [ ] PR approved
+- [ ] Rollback plan ready
+- [ ] Stakeholders notified (if major change)
+- [ ] Deployment during business hours (when possible)
+
+## Conflict Resolution
+
+### Merge Conflicts
+- Resolve conflicts locally
+- Test after resolving: `dbt compile`
+- Communicate with team if large conflicts
+- Don't force push to main branch
+
+### Code Disagreements
+- Discuss in PR comments (respectful and constructive)
+- Escalate to team lead if needed
+- Focus on what's best for the project
+- Document decisions in PR or README

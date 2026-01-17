@@ -1,0 +1,1260 @@
+version: 2
+
+sources:
+  - name: culmarex_dw_dbo
+    description: ""
+    database: navision
+    tables:
+      - name: nav_onestream
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: originating_credit_amount
+            description: ""
+          - name: originating_debit_amount
+            description: ""
+          - name: originating_master_id
+            description: ""
+          - name: transaction_currency
+            description: ""
+          - name: department_description
+            description: ""
+          - name: voided
+            description: ""
+          - name: account_number
+            description: ""
+          - name: reference_text
+            description: ""
+          - name: cost_center
+            description: ""
+          - name: account_description
+            description: ""
+          - name: natural_number
+            description: ""
+          - name: originating_master_name
+            description: ""
+          - name: cost_center_description
+            description: ""
+          - name: transaction_status
+            description: ""
+          - name: journal_entry_no
+            description: ""
+          - name: accounting_currency_debit_amount
+            description: ""
+          - name: accounting_currency_credit_amount
+            description: ""
+          - name: originating_document_number
+            description: ""
+          - name: originating_posting_date
+            description: ""
+          - name: transaction_date
+            description: ""
+          - name: period_number
+            description: ""
+          - name: company
+            description: ""
+          - name: exchange_rate
+            description: ""
+          - name: description
+            description: ""
+          - name: department
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: nav_onestream_accountschedule
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: line_no_
+            description: ""
+          - name: value
+            description: ""
+          - name: totaling_type
+            description: ""
+          - name: schedule_name
+            description: ""
+          - name: amount_type
+            description: ""
+          - name: description
+            description: ""
+          - name: cost_object_totaling
+            description: ""
+          - name: row_type
+            description: ""
+          - name: show_opposite_sign
+            description: ""
+          - name: show
+            description: ""
+          - name: indentation
+            description: ""
+          - name: analysis_view_name
+            description: ""
+          - name: positive_only
+            description: ""
+          - name: cost_center_totaling
+            description: ""
+          - name: name
+            description: ""
+          - name: type
+            description: ""
+          - name: company
+            description: ""
+          - name: totaling
+            description: ""
+          - name: reverse_sign
+            description: ""
+          - name: row_description
+            description: ""
+          - name: row_no_
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: nav_onestream_g_l_account
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: tax_area_code
+            description: ""
+          - name: cost_type_no_
+            description: ""
+          - name: income_stmt__bal__acc_
+            description: ""
+          - name: company
+            description: ""
+          - name: indentation
+            description: ""
+          - name: id_company
+            description: ""
+          - name: consol__credit_acc_
+            description: ""
+          - name: account_category
+            description: ""
+          - name: debit_credit
+            description: ""
+          - name: direct_posting
+            description: ""
+          - name: no_
+            description: ""
+          - name: account_subcategory_entry_no_
+            description: ""
+          - name: picture
+            description: ""
+          - name: name
+            description: ""
+          - name: reconciliation_account
+            description: ""
+          - name: tax_group_code
+            description: ""
+          - name: global_dimension_1_code
+            description: ""
+          - name: no__of_blank_lines
+            description: ""
+          - name: vat_bus__posting_group
+            description: ""
+          - name: omit_default_descr__in_jnl_
+            description: ""
+          - name: global_dimension_2_code
+            description: ""
+          - name: automatic_ext__texts
+            description: ""
+          - name: consol__debit_acc_
+            description: ""
+          - name: consol__translation_method
+            description: ""
+          - name: cuenta_irpf
+            description: ""
+          - name: account_type
+            description: ""
+          - name: new_page
+            description: ""
+          - name: gen__prod__posting_group
+            description: ""
+          - name: vat_prod__posting_group
+            description: ""
+          - name: default_deferral_template_code
+            description: ""
+          - name: search_name
+            description: ""
+          - name: income_balance
+            description: ""
+          - name: gen__bus__posting_group
+            description: ""
+          - name: exchange_rate_adjustment
+            description: ""
+          - name: ignore_in_347_report
+            description: ""
+          - name: default_ic_partner_g_l_acc__no
+            description: ""
+          - name: ignore_discounts
+            description: ""
+          - name: tax_liable
+            description: ""
+          - name: blocked
+            description: ""
+          - name: last_date_modified
+            description: ""
+          - name: gen__posting_type
+            description: ""
+          - name: totaling
+            description: ""
+          - name: id_nav
+            description: ""
+          - name: no__2
+            description: ""
+          - name: last_modified_date_time
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: nav_onestream_g_l_entry
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: business_unit_code
+            description: ""
+          - name: updated
+            description: ""
+          - name: bal__account_type
+            description: ""
+          - name: bill_no_
+            description: ""
+          - name: debit_amount
+            description: ""
+          - name: reversed_by_entry_no_
+            description: ""
+          - name: journal_batch_name
+            description: ""
+          - name: cod__granja
+            description: ""
+          - name: job_no_
+            description: ""
+          - name: add__currency_credit_amount
+            description: ""
+          - name: fa_entry_type
+            description: ""
+          - name: quantity
+            description: ""
+          - name: old_g_l_account_no_
+            description: ""
+          - name: source_no_
+            description: ""
+          - name: reversed
+            description: ""
+          - name: ic_partner_code
+            description: ""
+          - name: document_type
+            description: ""
+          - name: document_date
+            description: ""
+          - name: use_tax
+            description: ""
+          - name: vat_prod__posting_group
+            description: ""
+          - name: last_modified_datetime
+            description: ""
+          - name: vat_bus__posting_group
+            description: ""
+          - name: document_no_
+            description: ""
+          - name: period_trans__no_
+            description: ""
+          - name: system_created_entry
+            description: ""
+          - name: amount
+            description: ""
+          - name: cod__departamento
+            description: ""
+          - name: albaran_asociado
+            description: ""
+          - name: g_l_account_no_
+            description: ""
+          - name: global_dimension_2_code
+            description: ""
+          - name: external_document_no_
+            description: ""
+          - name: user_id
+            description: ""
+          - name: reversed_entry_no_
+            description: ""
+          - name: prior_year_entry
+            description: ""
+          - name: vat_amount
+            description: ""
+          - name: new_g_l_account_no_
+            description: ""
+          - name: credit_amount
+            description: ""
+          - name: posting_date
+            description: ""
+          - name: reason_code
+            description: ""
+          - name: additional_currency_amount
+            description: ""
+          - name: gen__bus__posting_group
+            description: ""
+          - name: gen__posting_type
+            description: ""
+          - name: tax_group_code
+            description: ""
+          - name: gen__prod__posting_group
+            description: ""
+          - name: description
+            description: ""
+          - name: tax_liable
+            description: ""
+          - name: description2
+            description: ""
+          - name: source_code
+            description: ""
+          - name: prod__order_no_
+            description: ""
+          - name: fa_entry_no_
+            description: ""
+          - name: company
+            description: ""
+          - name: add__currency_debit_amount
+            description: ""
+          - name: entry_no_
+            description: ""
+          - name: dimension_set_id
+            description: ""
+          - name: close_income_statement_dim__id
+            description: ""
+          - name: tax_area_code
+            description: ""
+          - name: global_dimension_1_code
+            description: ""
+          - name: transaction_no_
+            description: ""
+          - name: bal__account_no_
+            description: ""
+          - name: no__series
+            description: ""
+          - name: source_type
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: nav_onestream_customer
+        description: "Staging table for NAVISION.CULMAREX_DW_DBO.NAV_ONESTREAM_CUSTOMER"
+        columns:
+          - name: id
+            description: "Customer ID"
+          - name: disable_search_by_name
+            description: "Disable search by name"
+          - name: clave_de_factura
+            description: "Invoice key"
+          - name: shipping_agent_code
+            description: "Shipping agent code"
+          - name: name
+            description: "Customer name"
+          - name: emisor_edi
+            description: "EDI sender"
+          - name: credit_limit__lcy_
+            description: "Credit limit (LCY)"
+          - name: usuario_comercial
+            description: "Commercial user"
+          - name: incoterms
+            description: "Incoterms"
+          - name: imprimir_albaran_packing_list
+            description: "Print packing list"
+          - name: no__serie_factura_venta
+            description: "Sales invoice series"
+          - name: imprimir_ventas_piezas
+            description: "Print sales pieces"
+          - name: home_page
+            description: "Home page"
+          - name: packing_tmp
+            description: "Packing temporary"
+          - name: no__copias_albaran
+            description: "Number of packing copies"
+          - name: factura_edi
+            description: "EDI invoice"
+          - name: contact_id
+            description: "Contact ID"
+          - name: county
+            description: "County"
+          - name: payment_terms_id
+            description: "Payment terms ID"
+          - name: no__contrato
+            description: "Contract number"
+          - name: formato_exportacion_edi
+            description: "EDI export format"
+          - name: gen__bus__posting_group
+            description: "General business posting group"
+          - name: search_name
+            description: "Search name"
+          - name: ic_partner_code
+            description: "IC partner code"
+          - name: tipo_cliente
+            description: "Customer type"
+          - name: picture
+            description: "Picture"
+          - name: chain_name
+            description: "Chain name"
+          - name: no__serie_registro_abono
+            description: "Credit memo registration series"
+          - name: post_code
+            description: "Post code"
+          - name: gln
+            description: "Global Location Number (GLN)"
+          - name: tax_liable
+            description: "Tax liable"
+          - name: permitiriesgo0_wau
+            description: "Permitiriesgo0 WAU"
+          - name: imprimir_alb_comercial
+            description: "Print commercial packing"
+          - name: shipping_time
+            description: "Shipping time"
+          - name: fax_no_
+            description: "Fax number"
+          - name: e_mail
+            description: "Email"
+          - name: no__series
+            description: "Series number"
+          - name: ship_to_code
+            description: "Ship to code"
+          - name: exportar_edi
+            description: "Export EDI"
+          - name: agrupacion_facturacion
+            description: "Billing grouping"
+          - name: doc_externo_en_alb_
+            description: "External document on packing slip"
+          - name: our_account_no_
+            description: "Our account number"
+          - name: fecha_creacion
+            description: "Creation date"
+          - name: last_modified_date_time
+            description: "Last modified date and time"
+          - name: reminder_terms_code
+            description: "Reminder terms code"
+          - name: shipment_method_id
+            description: "Shipment method ID"
+          - name: validate_eu_vat_reg__no_
+            description: "Validate EU VAT registration number"
+          - name: collection_method
+            description: "Collection method"
+          - name: departamento_edi
+            description: "EDI department"
+          - name: statistics_group
+            description: "Statistics group"
+          - name: no__telefono_ventas
+            description: "Sales phone number"
+          - name: location_code
+            description: "Location code"
+          - name: non_paymt__periods_code
+            description: "Non-payment periods code"
+          - name: telefono_departamento
+            description: "Department phone number"
+          - name: contact
+            description: "Contact"
+          - name: tipo_identificacion
+            description: "Identification type"
+          - name: cc_vendedor
+            description: "Vendor CC"
+          - name: plantilla_exportacion_edi
+            description: "EDI export template"
+          - name: use_gln_in_electronic_document
+            description: "Use GLN in electronic document"
+          - name: no__serie_abono_venta
+            description: "Sales credit memo series"
+          - name: preferred_bank_account_code
+            description: "Preferred bank account code"
+          - name: eori_number
+            description: "EORI number"
+          - name: country_region_code
+            description: "Country/region code"
+          - name: partner_type
+            description: "Partner type"
+          - name: telex_answer_back
+            description: "Telex answer back"
+          - name: combine_shipments
+            description: "Combine shipments"
+          - name: reserve
+            description: "Reserve"
+          - name: document_sending_profile
+            description: "Document sending profile"
+          - name: no__serie_registro_factura
+            description: "Invoice registration series"
+          - name: destino
+            description: "Destination"
+          - name: prepayment__
+            description: "Prepayment"
+          - name: application_method
+            description: "Application method"
+          - name: print_statements
+            description: "Print statements"
+          - name: tax_area_id
+            description: "Tax area ID"
+          - name: email_por_destinatario
+            description: "Email per recipient"
+          - name: language_code
+            description: "Language code"
+          - name: address_2
+            description: "Address line 2"
+          - name: shipment_method_code
+            description: "Shipment method code"
+          - name: blocked
+            description: "Blocked"
+          - name: saldo_proveedor
+            description: "Supplier balance"
+          - name: qpaga_edi
+            description: "EDI payment"
+          - name: bill_to_customer_no_
+            description: "Bill to customer number"
+          - name: cash_flow_payment_terms_code
+            description: "Cash flow payment terms code"
+          - name: fax_departamento
+            description: "Department fax"
+          - name: shipping_agent_service_code
+            description: "Shipping agent service code"
+          - name: shipping_advice
+            description: "Shipping advice"
+          - name: contact_graph_id
+            description: "Contact graph ID"
+          - name: cod__proveedor_en_cliente
+            description: "Supplier code in customer"
+          - name: budgeted_amount
+            description: "Budgeted amount"
+          - name: cod__cliente_grupo_kyriba
+            description: "Customer code Kyriba group"
+          - name: payment_days_code
+            description: "Payment days code"
+          - name: address
+            description: "Address"
+          - name: amount
+            description: "Amount"
+          - name: prices_including_vat
+            description: "Prices including VAT"
+          - name: not_in_aeat
+            description: "Not in AEAT"
+          - name: clave_de_abono
+            description: "Credit key"
+          - name: no_
+            description: "Number"
+          - name: cliente_edi
+            description: "EDI client"
+          - name: name_2
+            description: "Secondary name"
+          - name: service_zone_code
+            description: "Service zone code"
+          - name: payment_method_id
+            description: "Payment method ID"
+          - name: id_nav
+            description: "NAV ID"
+          - name: contact_type
+            description: "Contact type"
+          - name: responsibility_center
+            description: "Responsibility center"
+          - name: vat_registration_no_
+            description: "VAT registration number"
+          - name: tipo_albaran
+            description: "Packing slip type"
+          - name: empresa_asociada
+            description: "Associated company"
+          - name: email_envio_facturas
+            description: "Invoice sending email"
+          - name: customer_price_group
+            description: "Customer price group"
+          - name: last_date_modified
+            description: "Last date modified"
+          - name: cta_contable
+            description: "Accounting account"
+          - name: grupo_irpf
+            description: "IRPF group"
+          - name: territory_code
+            description: "Territory code"
+          - name: global_dimension_1_code
+            description: "Global dimension 1 code"
+          - name: last_statement_no_
+            description: "Last statement number"
+          - name: fecha__ult_mod__coface
+            description: "Last modification date COFACE"
+          - name: customer_disc__group
+            description: "Customer discount group"
+          - name: currency_code
+            description: "Currency code"
+          - name: cod__idioma_carta_culmarex
+            description: "Culmarex letter language code"
+          - name: primary_contact_no_
+            description: "Primary contact number"
+          - name: city
+            description: "City"
+          - name: cod__plantilla_mailing
+            description: "Mailing template code"
+          - name: tax_area_code
+            description: "Tax area code"
+          - name: fin__charge_terms_code
+            description: "Finance charge terms code"
+          - name: global_dimension_2_code
+            description: "Global dimension 2 code"
+          - name: copy_sell_to_addr__to_qte_from
+            description: "Copy sell-to address to quote-from"
+          - name: base_calendar_code
+            description: "Base calendar code"
+          - name: salesperson_code
+            description: "Salesperson code"
+          - name: cod__pais_formato_edi
+            description: "EDI format country code"
+          - name: cod__agrupacion_informes
+            description: "Reports grouping code"
+          - name: payment_method_code
+            description: "Payment method code"
+          - name: vat_bus__posting_group
+            description: "VAT business posting group"
+          - name: company
+            description: "Company"
+          - name: invoice_copies
+            description: "Invoice copies"
+          - name: customer_posting_group
+            description: "Customer posting group"
+          - name: payment_terms_code
+            description: "Payment terms code"
+          - name: invoice_disc__code
+            description: "Invoice discount code"
+          - name: allow_line_disc_
+            description: "Allow line discount"
+          - name: privacy_blocked
+            description: "Privacy blocked"
+          - name: currency_id
+            description: "Currency ID"
+          - name: phone_no_
+            description: "Phone number"
+          - name: image
+            description: "Image"
+          - name: receptor_edi
+            description: "EDI receiver"
+          - name: block_payment_tolerance
+            description: "Block payment tolerance"
+          - name: contacto_ventas
+            description: "Sales contact"
+          - name: telex_no_
+            description: "Telex number"
+          - name: place_of_export
+            description: "Place of export"
+          - name: cod__proveedores
+            description: "Supplier code"
+          - name: priority
+            description: "Priority"
+          - name: _fivetran_deleted
+            description: "Fivetran deleted flag"
+          - name: _fivetran_synced
+            description: "Fivetran sync timestamp"
+
+      - name: nav_onestream_cust__ledger_entry
+        description: "Staging table for NAVISION.CULMAREX_DW_DBO.NAV_ONESTREAM_CUST__LEDGER_ENTRY"
+        columns:
+          - name: id
+            description: "Ledger entry ID"
+          - name: due_date
+            description: "Due date"
+          - name: applies_to_id
+            description: "Applies to ID"
+          - name: no__cheque_recibido
+            description: "Received check number"
+          - name: fecha_vencimiento_cheque
+            description: "Check expiration date"
+          - name: journal_batch_name
+            description: "Journal batch name"
+          - name: bill_no_
+            description: "Bill number"
+          - name: adjusted_currency_factor
+            description: "Adjusted currency factor"
+          - name: remaining_pmt__disc__possible
+            description: "Remaining payment discount possible"
+          - name: posting_date
+            description: "Posting date"
+          - name: currency_code
+            description: "Currency code"
+          - name: applying_entry
+            description: "Applying entry"
+          - name: entry_no_
+            description: "Entry number"
+          - name: transaction_no_
+            description: "Transaction number"
+          - name: pmt__tolerance__lcy_
+            description: "Payment tolerance in LCY"
+          - name: max__payment_tolerance
+            description: "Maximum payment tolerance"
+          - name: prepayment
+            description: "Prepayment"
+          - name: profit__lcy_
+            description: "Profit in LCY"
+          - name: closed_by_amount
+            description: "Closed by amount"
+          - name: applies_to_doc__type
+            description: "Applies to document type"
+          - name: global_dimension_1_code
+            description: "Global dimension 1 code"
+          - name: reason_code
+            description: "Reason code"
+          - name: amount__lcy__stats_
+            description: "Amount in LCY statistics"
+          - name: succeeded_vat_registration_no_
+            description: "Succeeded VAT registration number"
+          - name: cr__memo_type
+            description: "Credit memo type"
+          - name: document_situation
+            description: "Document situation"
+          - name: special_scheme_code
+            description: "Special scheme code"
+          - name: salesperson_code
+            description: "Salesperson code"
+          - name: applies_to_bill_no_
+            description: "Applies to bill number"
+          - name: source_code
+            description: "Source code"
+          - name: payment_method_code
+            description: "Payment method code"
+          - name: bal__account_type
+            description: "Balance account type"
+          - name: last_issued_reminder_level
+            description: "Last issued reminder level"
+          - name: original_currency_factor
+            description: "Original currency factor"
+          - name: closed_at_date
+            description: "Closed at date"
+          - name: closed_by_currency_code
+            description: "Closed by currency code"
+          - name: on_hold
+            description: "On hold"
+          - name: description
+            description: "Description"
+          - name: exported_to_payment_file
+            description: "Exported to payment file"
+          - name: open
+            description: "Open"
+          - name: user_id
+            description: "User ID"
+          - name: venta_a_
+            description: "Venta A"
+          - name: correction_type
+            description: "Correction type"
+          - name: payment_reference
+            description: "Payment reference"
+          - name: original_pmt__disc__possible
+            description: "Original payment discount possible"
+          - name: pmt__disc__given__lcy_
+            description: "Payment discount given in LCY"
+          - name: corrected_invoice_no_
+            description: "Corrected invoice number"
+          - name: company
+            description: "Company"
+          - name: no__series
+            description: "Series number"
+          - name: document_no_
+            description: "Document number"
+          - name: remaining_amount__lcy__stats_
+            description: "Remaining amount in LCY statistics"
+          - name: reversed_by_entry_no_
+            description: "Reversed by entry number"
+          - name: ic_partner_code
+            description: "IC partner code"
+          - name: document_status
+            description: "Document status"
+          - name: pmt__disc__tolerance_date
+            description: "Payment discount tolerance date"
+          - name: reversed_entry_no_
+            description: "Reversed entry number"
+          - name: payment_terms_code
+            description: "Payment terms code"
+          - name: amount_to_apply
+            description: "Amount to apply"
+          - name: reversed
+            description: "Reversed"
+          - name: sell_to_customer_no_
+            description: "Sell to customer number"
+          - name: document_type
+            description: "Document type"
+          - name: inv__discount__lcy_
+            description: "Invoice discount in LCY"
+          - name: closed_by_amount__lcy_
+            description: "Closed by amount in LCY"
+          - name: pmt__discount_date
+            description: "Payment discount date"
+          - name: closed_by_entry_no_
+            description: "Closed by entry number"
+          - name: document_date
+            description: "Document date"
+          - name: invoice_type
+            description: "Invoice type"
+          - name: sales__lcy_
+            description: "Sales in LCY"
+          - name: customer_posting_group
+            description: "Customer posting group"
+          - name: direct_debit_mandate_id
+            description: "Direct debit mandate ID"
+          - name: recipient_bank_account
+            description: "Recipient bank account"
+          - name: applies_to_ext__doc__no_
+            description: "Applies to external document number"
+          - name: customer_name
+            description: "Customer name"
+          - name: bal__account_no_
+            description: "Balance account number"
+          - name: accepted_payment_tolerance
+            description: "Accepted payment tolerance"
+          - name: message_to_recipient
+            description: "Message to recipient"
+          - name: accepted_pmt__disc__tolerance
+            description: "Accepted payment discount tolerance"
+          - name: customer_no_
+            description: "Customer number"
+          - name: succeeded_company_name
+            description: "Succeeded company name"
+          - name: positive
+            description: "Positive"
+          - name: external_document_no_
+            description: "External document number"
+          - name: description2
+            description: "Description 2"
+          - name: dimension_set_id
+            description: "Dimension set ID"
+          - name: calculate_interest
+            description: "Calculate interest"
+          - name: applies_to_doc__no_
+            description: "Applies to document number"
+          - name: id_type
+            description: "ID type"
+          - name: closed_by_currency_amount
+            description: "Closed by currency amount"
+          - name: closing_interest_calculated
+            description: "Closing interest calculated"
+          - name: global_dimension_2_code
+            description: "Global dimension 2 code"
+          - name: _fivetran_deleted
+            description: "Fivetran deleted flag"
+          - name: _fivetran_synced
+            description: "Fivetran sync timestamp"
+
+      - name: nav_onestream_g_l_account_category
+        description: "Staging table for NAVISION.CULMAREX_DW_DBO.NAV_ONESTREAM_G_L_ACCOUNT_CATEGORY"
+        columns:
+          - name: id
+            description: "General Ledger Account Category ID"
+          - name: sibling_sequence_no_
+            description: "Sibling sequence number"
+          - name: additional_report_definition
+            description: "Additional report definition"
+          - name: id_company
+            description: "Company ID"
+          - name: system_generated
+            description: "System generated"
+          - name: entry_no_
+            description: "Entry number"
+          - name: account_category
+            description: "Account category"
+          - name: company
+            description: "Company"
+          - name: indentation
+            description: "Indentation"
+          - name: parent_entry_no_
+            description: "Parent entry number"
+          - name: description
+            description: "Description"
+          - name: income_balance
+            description: "Income balance"
+          - name: presentation_order
+            description: "Presentation order"
+          - name: _fivetran_deleted
+            description: "Fivetran deleted flag"
+          - name: _fivetran_synced
+            description: "Fivetran sync timestamp"
+
+      - name: nav_onestream_vendor
+        description: "Staging table for NAVISION.CULMAREX_DW_DBO.NAV_ONESTREAM_VENDOR"
+        columns:
+          - name: id
+            description: "Vendor ID"
+          - name: cod__banco_kiriba
+            description: "Bank Kiriba code"
+          - name: shipping_agent_code
+            description: "Shipping agent code"
+          - name: genera_json_ped__compra
+            description: "Generates JSON for purchase order"
+          - name: contact
+            description: "Contact"
+          - name: budgeted_amount
+            description: "Budgeted amount"
+          - name: invoice_disc__code
+            description: "Invoice discount code"
+          - name: last_date_modified
+            description: "Last date modified"
+          - name: tax_area_code
+            description: "Tax area code"
+          - name: ic_partner_code
+            description: "IC partner code"
+          - name: lead_time_calculation
+            description: "Lead time calculation"
+          - name: no__series
+            description: "Series number"
+          - name: location_code
+            description: "Location code"
+          - name: fecha_caducidad_cert__resid_
+            description: "Certificate expiry date"
+          - name: creditor_no_
+            description: "Creditor number"
+          - name: block_payment_tolerance
+            description: "Block payment tolerance"
+          - name: no__serie_abono_compra
+            description: "Purchase credit memo series"
+          - name: city
+            description: "City"
+          - name: grupo_irpf
+            description: "IRPF group"
+          - name: cod__retencion
+            description: "Retention code"
+          - name: company
+            description: "Company"
+          - name: no_
+            description: "Vendor number"
+          - name: gln
+            description: "Global Location Number (GLN)"
+          - name: country_region_code
+            description: "Country/region code"
+          - name: application_method
+            description: "Application method"
+          - name: mail_envio_json
+            description: "JSON send email"
+          - name: vat_registration_no_
+            description: "VAT registration number"
+          - name: payment_days_code
+            description: "Payment days code"
+          - name: validate_eu_vat_reg__no_
+            description: "Validate EU VAT registration number"
+          - name: payment_method_code
+            description: "Payment method code"
+          - name: payment_terms_code
+            description: "Payment terms code"
+          - name: empresa_asociada
+            description: "Associated company"
+          - name: blocked
+            description: "Blocked"
+          - name: telex_answer_back
+            description: "Telex answer back"
+          - name: cod__cliente
+            description: "Customer code"
+          - name: currency_code
+            description: "Currency code"
+          - name: priority
+            description: "Priority"
+          - name: tax_liable
+            description: "Tax liable"
+          - name: telex_no_
+            description: "Telex number"
+          - name: tipo_proveedor_sii
+            description: "SII provider type"
+          - name: privacy_blocked
+            description: "Privacy blocked"
+          - name: responsibility_center
+            description: "Responsibility center"
+          - name: saldo_cliente
+            description: "Customer balance"
+          - name: address_2
+            description: "Address line 2"
+          - name: fin__charge_terms_code
+            description: "Finance charge terms code"
+          - name: picture
+            description: "Picture"
+          - name: no__cliente_skretting
+            description: "Skretting customer number"
+          - name: gen__bus__posting_group
+            description: "General business posting group"
+          - name: proveedor_dua
+            description: "DUA provider"
+          - name: disable_search_by_name
+            description: "Disable search by name"
+          - name: eori_number
+            description: "EORI number"
+          - name: preferred_bank_account_code
+            description: "Preferred bank account code"
+          - name: id_nav
+            description: "NAV ID"
+          - name: shipment_method_code
+            description: "Shipment method code"
+          - name: primary_contact_no_
+            description: "Primary contact number"
+          - name: base_calendar_code
+            description: "Base calendar code"
+          - name: proveedor_generico_dua
+            description: "Generic DUA provider"
+          - name: territory_code
+            description: "Territory code"
+          - name: clave_de_factura
+            description: "Invoice key"
+          - name: cc_vendedor
+            description: "Vendor CC"
+          - name: payment_terms_id
+            description: "Payment terms ID"
+          - name: payment_method_id
+            description: "Payment method ID"
+          - name: image
+            description: "Image"
+          - name: home_page
+            description: "Home page"
+          - name: post_code
+            description: "Post code"
+          - name: cash_flow_payment_terms_code
+            description: "Cash flow payment terms code"
+          - name: informar_a_kiriba
+            description: "Inform Kiriba"
+          - name: fax_no_
+            description: "Fax number"
+          - name: e_mail
+            description: "Email"
+          - name: county
+            description: "County"
+          - name: tipo_identificacion
+            description: "Identification type"
+          - name: vat_bus__posting_group
+            description: "VAT business posting group"
+          - name: global_dimension_2_code
+            description: "Global dimension 2 code"
+          - name: statistics_group
+            description: "Statistics group"
+          - name: language_code
+            description: "Language code"
+          - name: search_name
+            description: "Search name"
+          - name: prices_including_vat
+            description: "Prices including VAT"
+          - name: partner_type
+            description: "Partner type"
+          - name: last_modified_date_time
+            description: "Last modified date and time"
+          - name: currency_id
+            description: "Currency ID"
+          - name: phone_no_
+            description: "Phone number"
+          - name: non_paymt__periods_code
+            description: "Non-payment periods code"
+          - name: our_account_no_
+            description: "Our account number"
+          - name: global_dimension_1_code
+            description: "Global dimension 1 code"
+          - name: email_por_destinatario
+            description: "Email per recipient"
+          - name: name
+            description: "Vendor name"
+          - name: self_employed
+            description: "Self-employed"
+          - name: pay_to_vendor_no_
+            description: "Pay to vendor number"
+          - name: name_2
+            description: "Secondary name"
+          - name: prepayment__
+            description: "Prepayment"
+          - name: purchaser_code
+            description: "Purchaser code"
+          - name: document_sending_profile
+            description: "Document sending profile"
+          - name: no_replica_referencias_cruzada
+            description: "No replica cross references"
+          - name: cod__plantilla_mailing
+            description: "Mailing template code"
+          - name: no__serie_factura_compra
+            description: "Purchase invoice series"
+          - name: pagare_no_a_la_orden
+            description: "Non-order promissory note"
+          - name: clave_de_abono
+            description: "Credit key"
+          - name: kiriba_sent_date
+            description: "Kiriba sent date"
+          - name: address
+            description: "Address"
+          - name: vendor_posting_group
+            description: "Vendor posting group"
+          - name: _fivetran_deleted
+            description: "Fivetran deleted flag"
+          - name: _fivetran_synced
+            description: "Fivetran sync timestamp"
+
+      - name: nav_onestream_vendor_ledger_entry
+        description: "Staging table for NAVISION.CULMAREX_DW_DBO.NAV_ONESTREAM_VENDOR_LEDGER_ENTRY"
+        columns:
+          - name: id
+            description: "Vendor ledger entry ID"
+          - name: description2
+            description: "Additional description"
+          - name: pmt__disc__tolerance_date
+            description: "Payment discount tolerance date"
+          - name: succeeded_vat_registration_no_
+            description: "Succeeded VAT registration number"
+          - name: special_scheme_code
+            description: "Special scheme code"
+          - name: closed_by_currency_amount
+            description: "Closed by currency amount"
+          - name: correction_type
+            description: "Correction type"
+          - name: no__series
+            description: "Series number"
+          - name: buy_from_vendor_no_
+            description: "Buy from vendor number"
+          - name: remaining_amount__lcy__stats_
+            description: "Remaining amount in LCY statistics"
+          - name: applies_to_doc__type
+            description: "Applies to document type"
+          - name: company
+            description: "Company"
+          - name: bal__account_type
+            description: "Balance account type"
+          - name: currency_code
+            description: "Currency code"
+          - name: reversed_by_entry_no_
+            description: "Reversed by entry number"
+          - name: transaction_no_
+            description: "Transaction number"
+          - name: document_type
+            description: "Document type"
+          - name: closed_by_amount__lcy_
+            description: "Closed by amount in LCY"
+          - name: applies_to_ext__doc__no_
+            description: "Applies to external document number"
+          - name: due_date
+            description: "Due date"
+          - name: applies_to_bill_no_
+            description: "Applies to bill number"
+          - name: payment_terms_code
+            description: "Payment terms code"
+          - name: purchaser_code
+            description: "Purchaser code"
+          - name: original_pmt__disc__possible
+            description: "Original payment discount possible"
+          - name: max__payment_tolerance
+            description: "Maximum payment tolerance"
+          - name: closed_at_date
+            description: "Closed at date"
+          - name: applies_to_doc__no_
+            description: "Applies to document number"
+          - name: on_hold
+            description: "On hold status"
+          - name: autodocument_no_
+            description: "Autodocument number"
+          - name: journal_batch_name
+            description: "Journal batch name"
+          - name: pmt__tolerance__lcy_
+            description: "Payment tolerance in LCY"
+          - name: vendor_no_
+            description: "Vendor number"
+          - name: closed_by_amount
+            description: "Closed by amount"
+          - name: amount__lcy__stats_
+            description: "Amount in LCY statistics"
+          - name: open
+            description: "Open status"
+          - name: exported_to_payment_file
+            description: "Exported to payment file"
+          - name: vendor_name
+            description: "Vendor name"
+          - name: closed_by_entry_no_
+            description: "Closed by entry number"
+          - name: closed_by_currency_code
+            description: "Closed by currency code"
+          - name: purchase__lcy_
+            description: "Purchase in LCY"
+          - name: recipient_bank_account
+            description: "Recipient bank account"
+          - name: description
+            description: "Description"
+          - name: document_situation
+            description: "Document situation"
+          - name: source_code
+            description: "Source code"
+          - name: ic_partner_code
+            description: "IC partner code"
+          - name: id_type
+            description: "ID type"
+          - name: payment_reference
+            description: "Payment reference"
+          - name: bal__account_no_
+            description: "Balance account number"
+          - name: reason_code
+            description: "Reason code"
+          - name: accepted_payment_tolerance
+            description: "Accepted payment tolerance"
+          - name: prepayment
+            description: "Prepayment"
+          - name: adjusted_currency_factor
+            description: "Adjusted currency factor"
+          - name: bill_no_
+            description: "Bill number"
+          - name: pmt__disc__rcd__lcy_
+            description: "Payment discount received in LCY"
+          - name: vendor_posting_group
+            description: "Vendor posting group"
+          - name: creditor_no_
+            description: "Creditor number"
+          - name: document_date
+            description: "Document date"
+          - name: document_status
+            description: "Document status"
+          - name: amount_to_apply
+            description: "Amount to apply"
+          - name: reversed_entry_no_
+            description: "Reversed entry number"
+          - name: entry_no_
+            description: "Entry number"
+          - name: accepted_pmt__disc__tolerance
+            description: "Accepted payment discount tolerance"
+          - name: applying_entry
+            description: "Applying entry"
+          - name: applies_to_id
+            description: "Applies to ID"
+          - name: external_document_no_
+            description: "External document number"
+          - name: corrected_invoice_no_
+            description: "Corrected invoice number"
+          - name: positive
+            description: "Positive status"
+          - name: payment_method_code
+            description: "Payment method code"
+          - name: generated_autodocument
+            description: "Generated autodocument"
+          - name: invoice_type
+            description: "Invoice type"
+          - name: message_to_recipient
+            description: "Message to recipient"
+          - name: original_currency_factor
+            description: "Original currency factor"
+          - name: global_dimension_1_code
+            description: "Global dimension 1 code"
+          - name: remaining_pmt__disc__possible
+            description: "Remaining payment discount possible"
+          - name: succeeded_company_name
+            description: "Succeeded company name"
+          - name: posting_date
+            description: "Posting date"
+          - name: global_dimension_2_code
+            description: "Global dimension 2 code"
+          - name: inv__discount__lcy_
+            description: "Invoice discount in LCY"
+          - name: user_id
+            description: "User ID"
+          - name: cr__memo_type
+            description: "Credit memo type"
+          - name: pmt__discount_date
+            description: "Payment discount date"
+          - name: document_no_
+            description: "Document number"
+          - name: dimension_set_id
+            description: "Dimension set ID"
+          - name: reversed
+            description: "Reversed status"
+          - name: _fivetran_deleted
+            description: "Fivetran deleted flag"
+          - name: _fivetran_synced
+            description: "Fivetran sync timestamp"

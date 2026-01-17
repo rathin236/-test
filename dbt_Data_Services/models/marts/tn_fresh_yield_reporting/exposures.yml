@@ -1,0 +1,25 @@
+version: 2
+
+exposures:
+  # TN Fresh Yield Reporting
+  - name: tn_fresh_yield_reporting
+    label: True North Fresh Yield Reporting Datasets
+    type: dashboard
+    maturity: low
+    url: ""    # Add URL here when ready
+    tags: ["True_North_Fresh", "FBD", "YieldReporting"]
+    description: >
+      Datasets to support yield reporting in Power BI.
+
+    depends_on:
+      - ref('tn_fresh_dim_item')
+      - ref('tn_fresh_dim_lot')
+      - ref('tn_fresh_dim_processing_company')
+      - ref('tn_fresh_dim_production_line')
+      - ref('tn_fresh_dim_sales_order')
+      - ref('tn_fresh_fact_processing_inputs')
+      - ref('tn_fresh_fact_processing_outputs')
+
+    owner:
+      name: Adam Duval
+      email: adam.duval@cookeaqua.com

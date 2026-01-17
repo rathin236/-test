@@ -1,0 +1,1 @@
+select * from {{ ref('int_global_ap__d365_document_type') }}

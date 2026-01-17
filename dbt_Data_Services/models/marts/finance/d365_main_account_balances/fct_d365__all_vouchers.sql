@@ -1,0 +1,1 @@
+select * from {{ ref('int_d365__customer_voucher_transactions') }}

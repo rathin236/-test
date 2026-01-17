@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: metaviewer_dbo
+    description: "source data from metaviewer"
+    database: metaviewer
+    schema: metaviewer_dbo
+    tables:
+      - name: payables_base
+        description: "the header information for all documents (credits/invoices)"
+        columns: []
+      - name: mvpm_apmodel_glcodingdata
+        description: "gl distributions for non po documents"
+        columns: []
+      - name: mvpm_apmodel_podistributiondata
+        description: "gl distributions for po related documents"
+        columns: []
+      - name: mvpm_apmodel_porecdata
+        description: "po line items for po related documents"
+        columns: []
+      - name: mvpm_apmodel_potaxdata
+        description: "tax details for po related documents"
+        columns: []
+      - name: journal
+        description: "history of activities done on an invoice"
+        columns: []
+      - name: userprofile
+        description: "gives the descriptions of users"
+        columns: []
+      - name: journalactivity
+        description: "gives activityid descriptions for each activity"
+        columns: []

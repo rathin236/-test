@@ -1,0 +1,61 @@
+parameters:
+- name: deploymentOs
+  displayName: 'Deployment OS'
+  type: string
+  values:
+   - 'windows'
+   - 'linux'
+
+- name: deploymentPlatform
+  displayName: 'Deployment Platform'
+  type: string
+
+- name: variables
+  displayName: 'Variables'
+  type: object
+  default: []
+
+stages:
+- stage: 'Build'
+  jobs:
+    - template: /standard-cicd-helpers/standard-job.yml@templates
+      parameters:
+        name: param_check
+        displayName: 'Parameter validation'
+        deploymentPlatform: ${{ parameters.deploymentPlatform }}
+        deploymentOs: ${{ parameters.deploymentOs }}
+        environment: 'n'
+
+        # Run-time variables
+        variables:
+        - name: configFilesPath
+          value: ${{ parameters.variables['configFilesPath'] }}
+        - name: storageAccountContainer
+          value: ${{ parameters.variables['storageAccountContainer'] }}
+        - name: storageAccountNameDev
+          value: ${{ parameters.variables['storageAccountName']['d'] }}
+        - name: storageAccountNameQa
+          value: ${{ parameters.variables['storageAccountName']['q'] }}
+        - name: storageAccountNameUat
+          value: ${{ parameters.variables['storageAccountName']['t'] }}
+        - name: storageAccountNameProd
+          value: ${{ parameters.variables['storageAccountName']['p'] }}
+
+        # Build steps
+        steps: 
+        - task: PowerShell@2
+          inputs:
+            targetType: 'inline'
+            script: |
+              echo "Tools dir:"
+              (Get-ChildItem -Path $(Agent.ToolsDirectory) -Recurse -Force).FullName
+              echo "Path to config files: $(configFilesPath)"
+              echo "Storage account container: $(storageAccountContainer)"
+              echo "Storage account name: $(storageAccountNameDev)"
+              echo "Storage account name: $(storageAccountNameQa)"
+              echo "Storage account name: $(storageAccountNameUat)"
+              echo "Storage account name: $(storageAccountNameProd)"
+              echo "Repository:"
+              dir "$(System.DefaultWorkingDirectory)/"
+              echo "Az PowerShell module:"
+              Get-InstalledModule -Name 'Az' -AllVersions

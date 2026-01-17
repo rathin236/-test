@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+  - name: easyvista
+    description: "Source data from EasyVista"
+    database: staging_prod
+    tables:
+      - name: tickets
+        description: "Table containing ticket information."
+        columns: []
+
+      - name: root_cause
+        description: "Root cause analysis for tickets."
+        columns: []
+
+      - name: work_group
+        description: "Information about work groups handling tickets."
+        columns: []
+
+      - name: urgency
+        description: "Urgency levels assigned to tickets."
+        columns: []
+
+      - name: impacts
+        description: "Impact assessment for tickets."
+        columns: []
+
+      - name: tickets_action
+        description: "Actions taken on tickets."
+        columns: []
+
+      - name: suppliers
+        description: "Details about suppliers associated with tickets."
+        columns: []
+
+      - name: contracts
+        description: "Contractual details for ticketing operations."
+        columns: []

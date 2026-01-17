@@ -1,0 +1,21 @@
+version: 2
+
+exposures:
+  # EDI 856
+  - name: edi_856_gfs
+    label: Gordon Food Service - EDI 856
+    type: application
+    maturity: low
+    url: N/A
+    tags: ["EDI", "EDI 856", "Gordon Food Service"]
+    description: >
+      Datasets for the EDI 856 Project, which sends an
+      EDI 856 document to Gordon Food Service for
+      Advanced shipping notice.
+
+    depends_on:
+      - ref('edi_856_all_details')
+
+    owner:
+      name: Martin Palkovic
+      email: martin.palkovic@cookeaqua.com

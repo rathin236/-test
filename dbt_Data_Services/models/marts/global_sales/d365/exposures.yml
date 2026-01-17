@@ -1,0 +1,38 @@
+version: 2
+
+exposures:
+  # Global Sales
+  - name: d365_costing_dataset
+    label: Global Sales Model
+    type: dashboard
+    maturity: low
+    url: https://app.powerbi.com/groups/ec435745-b112-4321-945b-bf7311f4fc1b/list?experience=power-bi
+    tags: ["Global Sales", "Business Enablement & Analytics", "FinOps", "Finance", "D365"]
+    description: >
+      Global Sales Model used by the Business Analytics & Enablement team.
+
+    depends_on:
+      - ref('available_inventory_d365')
+      - ref('dim_aging_buckets')
+      - ref('dim_currency')
+      - ref('dim_customer_accounts_d365')
+      - ref('dim_delivery_address_d365')
+      - ref('dim_financial_division_d365')
+      - ref('dim_invoice_d365')
+      - ref('dim_invoice_accounts_d365')
+      - ref('dim_date')
+      - ref('dim_item_d365')
+      - ref('dim_location_d365')
+      - ref('dim_site_d365')
+      - ref('dim_warehouse_d365')
+      - ref('dim_order_status_d365')
+      - ref('dim_orders_d365')
+      - ref('dim_sales_status_d365')
+      - ref('dim_sales_type_d365')
+      - ref('dim_salesperson_d365')
+      - ref('fact_cost_d365')
+      - ref('fact_cost_adjusted_d365')
+
+    owner:
+      name: Martin Palkovic
+      email: martin.palkovic@cookeaqua.com

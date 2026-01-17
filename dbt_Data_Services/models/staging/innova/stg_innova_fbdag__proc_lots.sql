@@ -1,0 +1,87 @@
+with source as (
+
+    select * from {{ source('innova_fbdag', 'proc_lots') }}
+
+),
+
+renamed as (
+
+    select
+        lot,
+        "GROUP",
+        ricountry5,
+        validto,
+        dimension1,
+        dimension4,
+        itgrstatus,
+        customer,
+        currentcount,
+        description8,
+        description5,
+        sourcepack,
+        extcode,
+        pattern,
+        description2,
+        flocknumber,
+        bom,
+        reftime,
+        endrmarea,
+        itgrsite,
+        qamark2code,
+        endpos,
+        subgroup,
+        dimension3,
+        lotstatus,
+        xmldata,
+        createdby,
+        qamark4code,
+        endtime,
+        slday,
+        qamark1,
+        processor,
+        qamark2,
+        shname,
+        name,
+        modified,
+        expectedcount,
+        created,
+        lottype,
+        validfrom,
+        description3,
+        ricountry,
+        begtime,
+        sourcepallet,
+        brcountry,
+        qamark3,
+        killmethod,
+        processor2,
+        description7,
+        topflockid,
+        description4,
+        description1,
+        dimension2,
+        ricountry4,
+        startpos,
+        slsequence,
+        slhouse,
+        active,
+        objecttemplate,
+        description6,
+        qamark1code,
+        modifiedby,
+        ricountry3,
+        qamark3code,
+        qamark4,
+        ricountry2,
+        startrmarea,
+        supplier,
+        _fivetran_deleted,
+        _fivetran_synced,
+        trim(code) as code
+
+    from source
+
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

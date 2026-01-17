@@ -1,0 +1,98 @@
+parameters:
+
+- name: environment
+  displayName: 'Environment'
+  type: string
+  values:
+  - d
+  - q
+  - t
+  - p
+
+- name: deploymentPlatform
+  displayName: 'Deployment Platform'
+  type: string
+
+- name: deploymentOs
+  displayName: 'Deployment OS'
+  type: string
+  values:
+   - 'windows'
+   - 'linux'
+
+- name: groupShortName
+  displayName: 'Group Short Name'
+  type: string
+
+- name: resourceShortName
+  displayName: 'Resource Group Short Name'
+  type: string
+
+- name: platformSequence
+  displayName: 'Platform Sequence'
+  type: string
+
+- name: dependsOn
+  displayName: 'Depends On'
+  type: object
+  default: []
+
+- name: condition
+  displayName: 'Deploy to specified environment'
+  type: string
+  default: ''
+
+- name: stagesBeforeDeploy
+  displayName: 'Stages Before Deploy'
+  type: stageList
+  default: []
+
+- name: stagesAfterDeploy
+  displayName: 'Stages After Deploy'
+  type: stageList
+  default: []
+
+- name: variables
+  displayName: 'Variables'
+  type: object
+  default: []
+
+stages:
+- ${{ if ne(length(parameters.stagesBeforeDeploy), 0) }}:
+  - ${{ parameters.stagesBeforeDeploy }}
+
+- stage: Deploy_${{ replace(replace(replace(replace(parameters.environment, 'd', 'Dev'), 'q', 'QA'), 't', 'Uat'), 'p', 'Prod') }}
+  ${{ if eq(parameters.environment, 'd') }}:
+    displayName: 'Deploy to Develop'
+  ${{ if eq(parameters.environment, 'q') }}:
+    displayName: 'Deploy to QA'
+  ${{ if eq(parameters.environment, 't') }}:
+    displayName: 'Deploy to UAT'
+  ${{ if eq(parameters.environment, 'p') }}:
+    displayName: 'Deploy to Prod'  
+  #  Set depdendsOn if passed.
+  ${{ if ne(length(parameters.dependsOn), 0) }}:
+    dependsOn: ${{ parameters.dependsOn }}
+  #  Set condition if passed.
+  ${{ if ne(parameters.condition, '') }}:
+    condition: ${{ parameters.condition }}
+
+  variables:     
+    - name: storageAccountName
+      value: ${{ parameters.variables['storageAccountName'][parameters.environment] }}
+
+  jobs:
+
+    - template: standard-job-deploy-configs.yml
+      parameters:
+        environment:  ${{ parameters.environment }}
+        environmentName: ${{ replace(replace(replace(replace(parameters.environment, 'd', 'dev'), 'q', 'qa'), 't', 'uat'), 'p', 'prod') }}
+        groupShortName:  ${{ parameters.groupShortName }}
+        deploymentPlatform:  ${{ parameters.deploymentPlatform }}
+        deploymentOs:  ${{ parameters.deploymentOs }}
+        storageAccountName: ${{ variables.storageAccountName }}
+        storageAccountContainer: ${{ parameters.variables['storageAccountContainer'] }}
+        configFilesPath: ${{ parameters.variables['configFilesPath'] }}
+
+- ${{ if ne(length(parameters.stagesAfterDeploy), 0) }}:
+  - ${{ parameters.stagesAfterDeploy }}

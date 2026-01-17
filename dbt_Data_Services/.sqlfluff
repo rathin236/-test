@@ -1,0 +1,43 @@
+[sqlfluff]
+dialect = snowflake
+templater = dbt
+max_line_length = 150
+exclude_rules = LT02
+
+# dbt templater settings (used by the nightly job)
+[sqlfluff:templater:dbt]
+project_dir = .
+
+[sqlfluff:indentation]
+allow_implicit_indents = True
+
+[sqlfluff:rules:aliasing.table]
+aliasing = explicit
+
+[sqlfluff:rules:aliasing.column]
+aliasing = explicit
+
+[sqlfluff:rules:aliasing.length]
+min_alias_length = 3
+
+[sqlfluff:rules:layout.long_lines]
+ignore_comment_clauses = True
+ignore_comment_lines = True
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.identifiers]
+extended_capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+extended_capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.types]
+extended_capitalisation_policy = lower
+
+[sqlfluff:rules:references.special_chars]
+quoted_identifiers_policy = none

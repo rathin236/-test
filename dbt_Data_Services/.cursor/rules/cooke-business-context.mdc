@@ -1,0 +1,25 @@
+---
+alwaysApply: false
+---
+# Cooke Inc. Business Context
+
+## Company Overview
+Cooke Inc. is the **largest privately held seafood company in the world** - a global, vertically integrated seafood company:
+- **Founded**: 1985
+- **Headquarters**: Saint John, New Brunswick, Canada
+- **Operations**: 14 countries
+- **Employees**: ~13,000
+- **Business Model**: Vertically integrated aquaculture and wild fishery operations
+- **M&A Strategy**: ~100 acquisitions, including major ones:
+  - Icicle Seafoods (2016)
+  - Omega Protein (2017)
+  - Tassal (2022)
+
+## Project Purpose
+This `dbt_Data_Services` repository builds the **analytics platform for Cooke**, transforming raw Snowflake data into curated datasets for:
+- Reporting and dashboards
+- Business analytics
+- Reverse ETL operations
+- Data science applications
+
+Serves all business units across the organization.

@@ -1,0 +1,61 @@
+models:
+- name: fact_inventory_coolearth_current
+  description: This model provides a comprehensive view of the current inventory status
+    for CoolEarth, integrating data from the NorthScope system. It includes details
+    such as item identification, batch and pallet numbers, location, and various quantities,
+    facilitating inventory management and decision-making processes.
+  columns:
+  - name: company
+    description: The name of the company, set as 'TNS'.
+  - name: sourcesystem
+    description: The source system of the data, set as 'NORTHSCOPE'.
+  - name: sourcesystemcode
+    description: A code representing the source system, set as 1.
+  - name: warehouse_sk
+    description: The surrogate key for the warehouse.
+  - name: item_id
+    description: The unique identifier for the item.
+  - name: batch_number
+    description: The identifier for the batch of items.
+  - name: pallet_number
+    description: The identifier for the pallet containing the items.
+  - name: location_id_bin
+    description: The identifier for the bin location of the items.
+  - name: label_date
+    description: The date the item was labeled.
+  - name: expiry_date
+    description: The date the item is set to expire.
+  - name: cases
+    description: The number of cases of the item.
+  - name: quantity
+    description: The total quantity of the item.
+  - name: available_quantity
+    description: The quantity of the item available for use.
+  - name: available_cases
+    description: The number of cases available for use.
+  - name: available_lbs
+    description: The available weight of the item in pounds.
+  - name: picked_quantity
+    description: The quantity of the item that has been picked.
+  - name: picked_cases
+    description: The number of cases that have been picked.
+  - name: picked_lbs
+    description: The weight of the picked items in pounds.
+  - name: unit_of_measure
+    description: The unit of measure for the item quantity.
+  - name: qty_lbs
+    description: The weight of the item in pounds.
+  - name: qty_kgs
+    description: The weight of the item in kilograms.
+  - name: age
+    description: The age of the item in the inventory.
+  - name: invent_status
+    description: The status of the inventory item.
+  - name: form
+    description: The form or type of the item.
+  - name: fact_inventory_pk
+    description: The primary key for the inventory fact, generated using a hash of
+      key attributes.
+    tests:
+      - unique
+      - not_null

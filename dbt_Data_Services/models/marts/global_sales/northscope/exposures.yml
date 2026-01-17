@@ -1,0 +1,33 @@
+version: 2
+
+exposures:
+  # Global Sales
+  - name: northscope_costing_dataset
+    label: Global Sales Model
+    type: dashboard
+    maturity: low
+    url: https://app.powerbi.com/groups/ec435745-b112-4321-945b-bf7311f4fc1b/list?experience=power-bi
+    tags: ["Global Sales", "Business Enablement & Analytics", "FinOps", "Finance", "Northscope"]
+    description: >
+      Global Sales Model used by the Business Analytics & Enablement team, for Northscope data.
+
+    depends_on:
+      - ref('dim_aging_buckets')
+      - ref('dim_currency')
+      - ref('dim_date')
+      - ref('dim_company_ns')
+      - ref('dim_customer_accounts_ns')
+      - ref('dim_invoice_accounts_ns')
+      - ref('dim_invoice_ns')
+      - ref('dim_item_ns')
+      - ref('dim_order_status_ns')
+      - ref('dim_orders_ns')
+      - ref('dim_salesperson_ns')
+      - ref('dim_site_ns')
+      - ref('dim_warehouse_ns')
+      - ref('dim_order_type_ns')
+      - ref('fact_cost_ns')
+
+    owner:
+      name: Martin Palkovic
+      email: martin.palkovic@cookeaqua.com

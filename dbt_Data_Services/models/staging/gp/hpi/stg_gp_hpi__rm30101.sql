@@ -1,0 +1,87 @@
+with source as (
+
+    select * from {{ source('hpi_dbo', 'rm30101') }}
+
+),
+
+renamed as (
+
+    select
+        costamnt,
+        comdlram,
+        slsamnt,
+        trxsorce,
+        directdebit,
+        frtschid,
+        discdate,
+        eftflag,
+        cashamnt,
+        noteindx,
+        voiddate,
+        corrctn,
+        cheknmbr,
+        distknam,
+        glpostdt,
+        dex_row_ts,
+        slprsnid,
+        ortrxamt,
+        slschdid,
+        aplywith,
+        mscschid,
+        lstedtdt,
+        frtamnt,
+        delete1,
+        miscamnt,
+        bktfrtam,
+        pymtrmid,
+        balfwdnm,
+        taxamnt,
+        dinvpdof,
+        docnumbr,
+        saledate,
+        voidstts,
+        adrscode,
+        taxschid,
+        lstusred,
+        duedate,
+        rmdtypal,
+        cshrctyp,
+        slstercd,
+        factoring,
+        simplifd,
+        electronic,
+        ectrx,
+        wrofamnt,
+        bchsourc,
+        postdate,
+        cprcstnm,
+        disavamt,
+        discrtnd,
+        shipmthd,
+        tax_date,
+        curncyid,
+        curtrxam,
+        dex_row_id,
+        pstusrid,
+        backouttradedisc,
+        docdate,
+        gstdsamt,
+        trdisamt,
+        bktmscam,
+        bktslsam,
+        ppsamded,
+        trxdscrn,
+        cspornbr,
+        custnmbr,
+        dscpctam,
+        dscdlram,
+        bachnumb,
+        _fivetran_deleted,
+        _fivetran_synced
+
+    from source
+
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

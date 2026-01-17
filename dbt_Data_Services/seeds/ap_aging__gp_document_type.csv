@@ -1,0 +1,7 @@
+doctype, document_type
+1, Invoice
+2, Finance Charge
+3, Misc Charge
+4, Return
+5, Credit Memo
+6, Payment

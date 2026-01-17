@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_boomi__process_reporting
+    description: ""
+    columns:
+      - name: json_data
+        description: "JSON data from Boomi API, variant data type in Snowflake"
+
+      - name: insert_date
+        description: "data the process was inserted to snowflake"
+
+      - name: start_date
+        description: "date the process ran on Boomi"
+
+      - name: end_date
+        description: "date the process ran on Boomi"

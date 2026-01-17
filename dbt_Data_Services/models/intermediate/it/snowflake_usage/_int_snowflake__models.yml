@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: int_snowflake__accounts
+    description: "Information related to all Snowflake organizational accounts"
+    columns:
+      - name: account_locator
+        meta:
+          primary-key: true
+        description: "Unique account locator assigned by Snowflake. Primary key of the model"
+        tests:
+          - not_null
+          - unique
+      - name: account_name
+        description: "Account names assigned by data services"
+        tests:
+          - not_null
+          - unique
+      - name: account_type
+        description: "Main or Reader"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["main account", "reader account"]
+      - name: deleted_on
+        description: "If the account was deleted, the date of deletion"
+      - name: last_login
+        description: "The last login date for the account"
+
+  - name: int_snowflake__warehouses

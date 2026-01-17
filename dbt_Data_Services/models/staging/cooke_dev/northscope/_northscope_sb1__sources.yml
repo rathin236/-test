@@ -1,0 +1,1293 @@
+version: 2
+
+sources:
+  - name: northscope_sb1
+    description: "Northscope data sources for SB1"
+    database: cooke_dev
+    schema: sb1_wh_bw_dbo
+    tables:
+      - name: erpx_soorderheader
+        description: "Table containing header level information for sales orders in Northscope"
+        columns:
+          - name: shipaddressline3
+            description: ""
+          - name: allocatedamount
+            description: "The actual amount of product provided on the sales order"
+          - name: salespersonsk
+            description: "The surrogate key of the sales person"
+          - name: sotrucktare
+            description: "The tare weight of the truck carrying the sales order"
+          - name: orderedunits
+            description: "Total units ordered on the sales order"
+          - name: extendedamount
+            description: ""
+          - name: orderheadersk
+            description: "The surrogate key of the sales order header"
+            tests:
+              - unique
+              - not_null
+          - name: paymenttermssk
+            description: >
+              "The surrogate key for the payment terms.
+              See `ERPx_MFPaymentTerms` for description of Payment Terms"
+          - name: sitesk
+            description: "The surrogate key for the site. See `ERPx_MFSite` for site names"
+          - name: scheduleddeliverydate
+            description: "The scheduled delivery date of the product"
+          - name: sofreighttermsen
+            description: "Sales order freight terms, in english"
+          - name: waybill
+            description: ""
+          - name: documentid
+            description: ""
+          - name: shipzip
+            description: "Zip code of the location the sales order is being shipped to"
+          - name: masternumber
+            description: "Order Header SK"
+          - name: inventoryunits
+            description: ""
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: inventoryweight
+            description: ""
+          - name: billaddresssk
+            description: "The surrogate key of the billing address"
+            tests:
+              - not_null
+          - name: orderedweight
+            description: "The weight of the product on the sales order"
+          - name: shipcountry
+            description: "The country the sales order is being shipped to"
+          - name: shipphone1
+            description: "Contact phone number for the sales order"
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: adjustmentversion
+            description: ""
+          - name: actualshipdate
+            description: "The actual date the sale order was shipped"
+          - name: insidesalespersonsk
+            description: "The surrogate key of the inside sales person for the sales order"
+          - name: allocatedunits
+            description: "Actual number of units being sent to the customer on the sales order"
+          - name: purchaseorder
+            description: "Purchase order identifier"
+          - name: trailer
+            description: ""
+          - name: orderid
+            description: "The ID of the order"
+          - name: orderedamount
+            description: "Total amount ordered by the customer"
+          - name: shipattentionto
+            description: "Contact info for the customer"
+          - name: currencysk
+            description: "surrogate key for the currency of the sales order. See `ERPx_MFCurrency`"
+          - name: origintranstypesk
+            description: "Can be used to look up pending orders in `ERPx_SOOrderPending`"
+          - name: shipstate
+            description: "The province/state the sales order is being shipped to"
+          - name: ordertypesk
+            description: "The type of the order. See `ERPx_SOOrderType` for the corresponding list of order types"
+            tests:
+              - not_null
+          - name: truck
+            description: ""
+          - name: pricebasissk
+            description: ""
+          - name: createdby
+            description: "The name of the user that created the sales order in NorthScope"
+          - name: contractheadersk
+            description: ""
+          - name: discountmethodsk
+            description: ""
+          - name: invoicedamount
+            description: "The amount the buyer is being charged by Cooke for the sales order"
+          - name: trackingnumber
+            description: ""
+          - name: shipaddressiscustomized
+            description: ""
+          - name: shipaddresssk
+            description: >
+              "Surrogate key that accompanies the buyers ship address.
+              As of June 2023, this field is not found in a lookup table"
+          - name: allowmultipleshipments
+            description: "Either True, or False"
+          - name: discountamount
+            description: "The discount applied to the sales order"
+          - name: shipaddressline2
+            description: "Part one of the address the product on the sales order is being shipped to"
+          - name: discountrate
+            description: "The discounted rate"
+          - name: ediorderstatusen
+            description: "EDI order status"
+          - name: bol
+            description: "Bill of Lading"
+          - name: shipaddressline1
+            description: "Part one of the address the product on the sales order is being shipped to"
+          - name: itemdiscountamount
+            description: "The discounted amount of the item"
+          - name: shipcity
+            description: "The city the products on the sales order are being shipped to"
+          - name: createddate
+            description: "The date the sales order was created"
+          - name: masternumberoverride
+            description: ""
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: scheduledshipdate
+            description: "The date that the order is scheduled to be shipped"
+          - name: orderdate
+            description: "The date the order was placed"
+          - name: carriersk
+            description: >
+              "The surrogate key of the carrier shipping the product.
+              See `ERPx_SOCarrier`"
+          - name: sealnumber
+            description: ""
+          - name: origintransid
+            description: ""
+          - name: customersk
+            description: >
+              "The surrogate key of the customer. See `ERPx_ARCustomer`"
+            tests:
+              - not_null
+          - name: orderstatussk
+            description: "{{ doc('order_status') }}"
+          - name: workflowsk
+            description: >
+              "The surrogate key of the workflow. See `ERPx_WKWorkflow` for more details"
+          - name: allocatedweight
+            description: "The actual weight of the product sold to the customer"
+          - name: iscontractorder
+            description: "One of: True or False"
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_soorderitem
+        description: >
+          "Table containing item level information for sales orders in Northscope"
+        columns:
+          - name: orderheadersk
+            description: "The surrogate key of the sales order header"
+            tests:
+              - not_null
+          - name: inventoryweight
+            description: ""
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: sitesk
+            description: "The surrogate key for the site. See `ERPx_MFSite` for site names"
+          - name: orderedunits
+            description: "Total units ordered on the sales order"
+          - name: inventoryunits
+            description: ""
+          - name: discountmethodsk
+            description: ""
+          - name: scheduledshipdate
+            description: "The date that the order is scheduled to be shipped"
+          - name: weightuomsk
+            description: "The surrogate key of the weight unit of measure"
+          - name: createdby
+            description: "The name of the user that created the sales order in NorthScope"
+          - name: pricelistprice
+            description: ""
+          - name: contractitemsk
+            description: ""
+          - name: createddate
+            description: "The date the sales order was created"
+          - name: contractheadersk
+            description: ""
+          - name: discountrate
+            description: "The discounted rate"
+          - name: unitsuomsk
+            description: ""
+          - name: originorderitemsk
+            description: ""
+          - name: itemsk
+            description: >
+              "The surrogate key of the item. See `ERPx_IMItem`"
+          - name: imitemactualcost
+            description: "The actual cost of the item"
+          - name: originitemtypeen
+            description: ""
+          - name: orderstatussk
+            description: "{{ doc('order_status') }}"
+          - name: priceoverridedate
+            description: "Price override date"
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: origintransactionitemsk
+            description: ""
+          - name: isautoaddeditem
+            description: "Is the item auto added? Either TRUE or FALSE, boolean"
+          - name: carriersk
+            description: >
+              "The surrogate key of the carrier shipping the product.
+              See `ERPx_SOCarrier`"
+          - name: orderedamount
+            description: "Total amount ordered by the customer"
+          - name: itemsalesinvoicedescription
+            description: "The description of the item sold to the customer"
+          - name: returnisdamaged
+            description: ""
+          - name: orderitemactualcost
+            description: "Actual cost of the order item"
+          - name: iscontractline
+            description: ""
+          - name: pricelistheadersk
+            description: ""
+          - name: itemtypesk
+            description: "{{ doc('item_type') }}"
+          - name: itemsort
+            description: ""
+          - name: allocatedamount
+            description: "The actual amount of product provided on the sales order"
+          - name: priceoverrideby
+            description: "The user who overrode the price in NorthScope"
+          - name: imitemactualcostuomsk
+            description: ""
+          - name: itemprice
+            description: "The price of the item"
+          - name: discountamount
+            description: "The discount applied"
+          - name: invoicedamount
+            description: "The amount the buyer is being charged by Cooke for the sales order"
+          - name: hostlinenumber
+            description: ""
+          - name: orderedweight
+            description: "The weight of the product on the sales order"
+          - name: orderitemsk
+            description: "The surrogate key of the ordered item for a sales order"
+            tests:
+              - unique
+              - not_null
+          - name: allocatedweight
+            description: "The actual weight of the product sold to the customer"
+          - name: allocatedunits
+            description: "Actual number of units being sent to the customer on the sales order"
+          - name: priceoptionsk
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_arcustomer
+        description: "Northscope table of Cooke customers in NorthScope"
+        columns:
+          - name: customername
+            description: "The name of the customer"
+          - name: createddatetime
+            description: "The datetime the customer was created"
+          - name: pricelevel
+            description: ""
+          - name: tradediscount
+            description: ""
+          - name: customerfavoriteruleen
+            description: ""
+          - name: glaraccountsk
+            description: ""
+          - name: linktoemployeesk
+            description: ""
+          - name: statementname
+            description: ""
+          - name: financechargeoptionen
+            description: ""
+          - name: hostsystemlink
+            description: ""
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: createdby
+            description: "The name of the user that created the sales order in NorthScope"
+          - name: customerid
+            description: "The ID of the customer"
+          - name: creditlimitamount
+            description: ""
+          - name: pricelistheadersk
+            description: ""
+          - name: taxclasssk
+            description: ""
+          - name: isinactive
+            description: "If the customer is inactive. 0 = False, 1 = True (inactive)"
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: termsdiscavailactsk
+            description: ""
+          - name: invoicedeliverymethoden
+            description: ""
+          - name: duedategraceperiod
+            description: ""
+          - name: currencyid
+            description: "The ID of the currency the customer uses"
+          - name: checkbooksk
+            description: ""
+          - name: tradediscountmethoden
+            description: ""
+          - name: financechgactsk
+            description: ""
+          - name: cogsactsk
+            description: ""
+          - name: termsdisctakenactsk
+            description: ""
+          - name: paymenttermssk
+            description: >
+              "The surrogate key for the payment terms.
+              See `ERPx_MFPaymentTerms` for description of Payment Terms"
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: inventoryactsk
+            description: ""
+          - name: writeoffactsk
+            description: ""
+          - name: attributeclasssk
+            description: ""
+          - name: customerclasssk
+            description: >
+              "The surrogate key of the customer class.
+              See `ERPx_ARCustomerClass` for more details"
+          - name: discountgraceperiod
+            description: ""
+          - name: isonhold
+            description: ""
+          - name: salesactsk
+            description: ""
+          - name: overpmtwriteoffactsk
+            description: ""
+          - name: customersk
+            description: "The surrogate key of the customer"
+            tests:
+              - unique
+              - not_null
+          - name: salesreturnactsk
+            description: ""
+          - name: financechargeamount
+            description: ""
+          - name: parentcustomersk
+            description: ""
+          - name: creditlimitoptionen
+            description: ""
+          - name: hasfullitemaccess
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_arcustomeraddress
+        description: ""
+        columns:
+          - name: customeraddresssk
+            description: "The surrogate key of the customers address"
+            tests:
+              - unique
+              - not_null
+          - name: fax
+            description: ""
+          - name: carriersk
+            description: >
+              "The surrogate key of the carrier shipping the product.
+              See `ERPx_SOCarrier`"
+          - name: insidesalespersonsk
+            description: ""
+          - name: attentionto
+            description: ""
+          - name: salespersonsk
+            description: "The surrogate key of the sales person"
+          - name: customersk
+            description: >
+              "The surrogate key of the customer.
+              See `ERPx_ARCustomer` for more details"
+            tests:
+              - not_null
+          - name: isdefaultshiptoaddress
+            description: ""
+          - name: addressid
+            description: "The ID of the customers address"
+            tests:
+              - not_null
+          - name: addressname
+            description: "The address of the customer on file"
+          - name: taxclasssk
+            description: ""
+          - name: createdby
+            description: "The name of the user that created the sales order in NorthScope"
+          - name: addressline3
+            description: ""
+          - name: country
+            description: "The customers country"
+          - name: createddatetime
+            description: "The datetime that the customers address was created"
+          - name: email
+            description: "The customers contact email"
+          - name: addresstypeen
+            description: ""
+          - name: pricelistheadersk
+            description: ""
+          - name: hostsystemlink
+            description: ""
+          - name: city
+            description: "The customers city"
+          - name: zip
+            description: "The customers zip code"
+          - name: sitesk
+            description: "The surrogate key for the site. See `ERPx_MFSite` for site names"
+          - name: state
+            description: "The customers province or state"
+          - name: aritemaccessoptionen
+            description: ""
+          - name: sofreighttermsen
+            description: "Sales order freight terms, in english"
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: addressline2
+            description: ""
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: attributeclasssk
+            description: >
+              "The surrogate key of the customers attribute class.
+              See `ERPx_MFAttributeClass` for more details"
+          - name: sofreightprogramsen
+            description: ""
+          - name: phone1
+            description: ""
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: addressline1
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_arcustomeraddressattribute
+        description: ""
+        columns:
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: attributesk
+            description: "The surrogate key of the attribute"
+          - name: attributevalue
+            description: "The attribute value"
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: customeraddressattributesk
+            description: "The surrogate key of the customers address attribute"
+          - name: customeraddresssk
+            description: >
+              "The surrogate key of the customers address.
+              See `ERPx_ARCustomerAddress` for more details"
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_mfdataentitycompany
+        description: "Dimension table of Cooke companies that use NorthScope"
+        columns:
+          - name: companyname
+            description: "{{ doc('data_entity_company') }}"
+          - name: datalayerid
+            description: ""
+          - name: companyid
+            description: "{{ doc('data_entity_company') }}"
+            tests:
+              - unique
+              - not_null
+          - name: companylogofilelocation
+            description: ""
+          - name: companyshortname
+            description: "Same as companyname"
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+            tests:
+              - unique
+              - not_null
+          - name: dataentitycompanysystemsk
+            description: ""
+          - name: physicaladdresssk
+            description: ""
+          - name: mailingaddresssk
+            description: ""
+          - name: databasename
+            description: ""
+          - name: servername
+            description: "The name of the SQL Server instance. DATAAG"
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_mfattributevalue
+        description: ""
+        columns:
+          - name: attributevaluesk
+            description: ""
+          - name: attributesk
+            description: ""
+          - name: attributevalue
+            description: ""
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: sort
+            description: ""
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_mfattribute
+        description: ""
+        columns:
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: attribute
+            description: ""
+          - name: attributetypesk
+            description: ""
+          - name: createddatetime
+            description: ""
+          - name: sort
+            description: ""
+          - name: createdby
+            description: ""
+          - name: escapedname
+            description: ""
+          - name: attributesk
+            description: ""
+          - name: lastuser
+            description: ""
+          - name: lastupdated
+            description: ""
+          - name: attributedatatypeen
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_deleted
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_imitem
+        description: ""
+        columns:
+          - name: itemclasssk
+            description: ""
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: expirationdays
+            description: ""
+          - name: allowvariableorderedqty
+            description: ""
+          - name: itemid
+            description: "The ID of the item"
+          - name: lotholdreturn
+            description: ""
+          - name: createddatetime
+            description: ""
+          - name: defaultsopriceuomsk
+            description: ""
+          - name: freightaccrualcreditactsk
+            description: ""
+          - name: freightrevenueactsk
+            description: ""
+          - name: salesinvoicedescription
+            description: ""
+          - name: unrealpurchpricevaractsk
+            description: ""
+          - name: assemblyvaractsk
+            description: ""
+          - name: attributeclasssk
+            description: ""
+          - name: productionbatchclasssk
+            description: ""
+          - name: costgroupsk
+            description: ""
+          - name: palletconfigurationsk
+            description: ""
+          - name: isitemvariableweight
+            description: ""
+          - name: defaultreportinguomsk
+            description: ""
+          - name: itemsk
+            description: "The surrogate key of the item"
+            tests:
+              - unique
+              - not_null
+          - name: qualitytestclasssk
+            description: ""
+          - name: brokerageexpactsk
+            description: ""
+          - name: trackmethoden
+            description: ""
+          - name: barcodelabeldescription
+            description: ""
+          - name: itemdescription
+            description: "A description of the item"
+          - name: freightaccrualdebitactsk
+            description: ""
+          - name: cogsactsk
+            description: ""
+          - name: manageitemsbyen
+            description: ""
+          - name: invoffsetactsk
+            description: ""
+          - name: defaultsounituomsk
+            description: ""
+          - name: gtin
+            description: ""
+          - name: inuseactsk
+            description: ""
+          - name: varianceactsk
+            description: ""
+          - name: unitdecimals
+            description: ""
+          - name: shippingweight
+            description: ""
+          - name: defaultimunituomsk
+            description: ""
+          - name: currencydecimals
+            description: ""
+          - name: currentcost
+            description: ""
+          - name: taxableforsales
+            description: ""
+          - name: valuationmethoden
+            description: ""
+          - name: itemattributestring
+            description: ""
+          - name: deductioncodesk
+            description: ""
+          - name: shippingdescription
+            description: ""
+          - name: uomschedulesk
+            description: ""
+          - name: isinactive
+            description: >
+              "If the item is inactive. 0 = False, 1 = True (inactive)"
+          - name: marketcost
+            description: ""
+          - name: defaultsoweightuomsk
+            description: >
+              "Surrogate key of the default sales order weight uom"
+          - name: brokeragewriteoffactsk
+            description: ""
+          - name: damagedactsk
+            description: ""
+          - name: itemtypesk
+            description: "{{ doc('item_type') }}"
+          - name: hostsystemlink
+            description: ""
+          - name: upc
+            description: ""
+          - name: grosspalletweight
+            description: ""
+          - name: inserviceactsk
+            description: ""
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: transferfrtexpenseglaccountsk
+            description: ""
+          - name: isvisibletowms
+            description: ""
+          - name: brokerageaccrualactsk
+            description: ""
+          - name: requirewholeunits
+            description: ""
+          - name: markdownactsk
+            description: ""
+          - name: purchpricevaractsk
+            description: ""
+          - name: createdby
+            description: "The name of the user that created the sales order in NorthScope"
+          - name: searchtext
+            description: ""
+          - name: minmarginpercent
+            description: ""
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: cubeweight
+            description: ""
+          - name: costuomsk
+            description: ""
+          - name: weightdecimals
+            description: ""
+          - name: unittareweight
+            description: ""
+          - name: depreciationactsk
+            description: ""
+          - name: inventoryrtnactsk
+            description: ""
+          - name: defaultimweightuomsk
+            description: ""
+          - name: baseuomsk
+            description: ""
+          - name: lotholdnew
+            description: ""
+          - name: inventoryactsk
+            description: ""
+          - name: dropshipitemsactsk
+            description: ""
+          - name: standardcost
+            description: ""
+          - name: transferfrtaccrualglaccountsk
+            description: ""
+          - name: salesactsk
+            description: ""
+          - name: salesreturnsactsk
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_imuom
+        description: ""
+        columns:
+          - name: uomtypesk
+            description: ""
+          - name: issystemuom
+            description: ""
+          - name: uomsk
+            description: "The surrogate key of the unit of measurement"
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: isinactive
+            description: >
+              "If the item is inactive. 0 = False, 1 = True (inactive)"
+          - name: uomid
+            description: "The ID of the unit of measurement"
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: hostsystemlink
+            description: ""
+          - name: uomname
+            description: "Unit of measurement name"
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_arcustomerfavorite
+        description: ""
+        columns:
+          - name: weightuomsk
+            description: "The surrogate key of the weight unit of measure"
+          - name: itemsk
+            description: >
+              "The surrogate key of the item.
+              See `ERPx_IMItem` for more details"
+          - name: lineitemsort
+            description: ""
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: priceuomsk
+            description: ""
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: itemtypesk
+            description: "{{ doc('item_type') }}"
+          - name: units
+            description: ""
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: customerfavoritesk
+            description: ""
+          - name: unitsuomsk
+            description: ""
+          - name: customeritemdescription
+            description: ""
+          - name: customerentitysk
+            description: ""
+          - name: customeritemid
+            description: ""
+          - name: customerfavoritetypesk
+            description: ""
+          - name: weight
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_arcustomersubstituteitem
+        description: ""
+        columns:
+          - name: customersubstituteitemsk
+            description: ""
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: lastuser
+            description: "The last user that updated the sales order in the NorthScope system"
+          - name: sequence
+            description: ""
+          - name: customeritemid
+            description: ""
+          - name: customeritemdescription
+            description: ""
+          - name: customerfavoritesk
+            description: ""
+          - name: lastupdated
+            description: "Date the sales order was last updated in the NorthScope system"
+          - name: substituteitemsk
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_imuomscheduleconversionvalue
+        description: ""
+        columns:
+          - name: uomschedulesk
+            description: "The surrogate key of the UOM schedule"
+          - name: fromuomsk
+            description: "the surrogate key of the source UOM"
+          - name: touomid
+            description: "the ID of the destination UOM"
+          - name: conversionvalue
+            description: "Conversion value"
+          - name: fromuomtypesk
+            description: ""
+          - name: scheduleid
+            description: ""
+          - name: touomsk
+            description: "The surrogate key of the destination UOM"
+          - name: touomtypesk
+            description: ""
+          - name: fromuomid
+            description: "The ID of the source UOM"
+          - name: isinactive
+            description: >
+              "If the item is inactive. 0 = False, 1 = True (inactive)"
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_socarrier
+        description: ""
+        columns:
+          - name: description
+            description: ""
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: hostsystemlink
+            description: ""
+          - name: createdby
+            description: "The name of the user that created the sales order in NorthScope"
+          - name: carriersk
+            description: >
+              "The surrogate key of the carrier shipping the product.
+              See `ERPx_SOCarrier`"
+          - name: email
+            description: "The carriers contact email"
+          - name: createddatetime
+            description: >
+              "The datetime that the carrier entry was created in NorthScope"
+          - name: isinactive
+            description: >
+              "If the item is inactive. 0 = False, 1 = True (inactive)"
+          - name: carriercode
+            description: ""
+          - name: carriername
+            description: ""
+          - name: phone
+            description: ""
+          - name: fax
+            description: ""
+          - name: linkedtovendorsk
+            description: ""
+          - name: isvisibletologistics
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_imitemclass
+        description: ""
+        columns:
+          - name: lotholdreturn
+            description: ""
+          - name: costgroupsk
+            description: ""
+          - name: invoffsetactsk
+            description: ""
+          - name: salesreturnsactsk
+            description: ""
+          - name: expirationdays
+            description: ""
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: unrealpurchpricevaractsk
+            description: ""
+          - name: varianceactsk
+            description: ""
+          - name: attributeclasssk
+            description: ""
+          - name: transferfrtaccrualglaccountsk
+            description: ""
+          - name: weightdecimals
+            description: ""
+          - name: damagedactsk
+            description: ""
+          - name: freightrevenueactsk
+            description: ""
+          - name: lastupdated
+            description: ""
+          - name: brokerageaccrualactsk
+            description: ""
+          - name: itemclasssk
+            description: ""
+          - name: markdownactsk
+            description: ""
+          - name: assemblyvaractsk
+            description: ""
+          - name: inactive
+            description: ""
+          - name: purchpricevaractsk
+            description: ""
+          - name: inuseactsk
+            description: ""
+          - name: freightaccrualcreditactsk
+            description: ""
+          - name: inserviceactsk
+            description: ""
+          - name: lotholdnew
+            description: ""
+          - name: brokeragewriteoffactsk
+            description: ""
+          - name: salesactsk
+            description: ""
+          - name: unitdecimals
+            description: ""
+          - name: lastuser
+            description: ""
+          - name: classid
+            description: ""
+          - name: isvisibletowms
+            description: ""
+          - name: transferfrtexpenseglaccountsk
+            description: ""
+          - name: brokerageexpactsk
+            description: ""
+          - name: inventoryactsk
+            description: ""
+          - name: hostsystemlink
+            description: ""
+          - name: manageitemsbyen
+            description: ""
+          - name: freightaccrualdebitactsk
+            description: ""
+          - name: cogsactsk
+            description: ""
+          - name: depreciationactsk
+            description: ""
+          - name: inventoryrtnactsk
+            description: ""
+          - name: trackmethoden
+            description: ""
+          - name: description
+            description: ""
+          - name: dropshipitemsactsk
+            description: ""
+          - name: taxableforsales
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_deleted
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_imitemtype
+        description: ""
+        columns:
+          - name: typeid
+            description: ""
+          - name: isinvtracked
+            description: ""
+          - name: itemtypesk
+            description: "{{ doc('item_type') }}"
+          - name: hostsystemlink
+            description: ""
+          - name: description
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_deleted
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_imuomschedule
+        description: ""
+        columns:
+          - name: lastupdated
+            description: ""
+          - name: description
+            description: ""
+          - name: uomschedulesk
+            description: "The surrogate key of the UOM schedule"
+          - name: baseuomid
+            description: ""
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: decimalplaces
+            description: ""
+          - name: hostsystemlink
+            description: ""
+          - name: lastuser
+            description: "The user who last updated the UOM data"
+          - name: scheduleid
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_deleted
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_imitemattributes
+        description: ""
+        columns:
+          - name: attributesk
+            description: ""
+          - name: itemattributesk
+            description: ""
+          - name: attributevalue
+            description: ""
+          - name: itemsk
+            description: >
+              "The surrogate key of the item. See `ERPx_IMItem`"
+          - name: itemclasssk
+            description: "The surrogate key of the item class"
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_deleted
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_mfattributeclass
+        description: ""
+        columns:
+          - name: attributetypedefinitionsk
+            description: ""
+          - name: attributeclasssk
+            description: "The surrogate key of the attribute class"
+          - name: classdescription
+            description: "The attribute class description"
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_deleted
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_imattributevalues
+        description: ""
+        columns:
+          - name: bw_item_id
+            description: ""
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: raw_material_source
+            description: ""
+          - name: other
+            description: ""
+          - name: shell
+            description: ""
+          - name: specie
+            description: ""
+          - name: sub_species
+            description: ""
+          - name: category
+            description: ""
+          - name: trim
+            description: ""
+          - name: package_weight
+            description: ""
+          - name: navision_item__
+            description: ""
+          - name: selling_destination
+            description: ""
+          - name: finished_form
+            description: ""
+          - name: certification
+            description: ""
+          - name: cook
+            description: ""
+          - name: head
+            description: ""
+          - name: subdivision
+            description: ""
+          - name: case_weight
+            description: ""
+          - name: skin_cut
+            description: ""
+          - name: default_unit_uom
+            description: ""
+          - name: species
+            description: ""
+          - name: size
+            description: ""
+          - name: form
+            description: ""
+          - name: private_label
+            description: ""
+          - name: default_weight_uom
+            description: ""
+          - name: default_price_uom
+            description: ""
+          - name: grade
+            description: ""
+          - name: shrimp_category
+            description: ""
+          - name: tail
+            description: ""
+          - name: peeled
+            description: ""
+          - name: flavour
+            description: ""
+          - name: package_unit_count
+            description: ""
+          - name: product_size
+            description: ""
+          - name: industry_type
+            description: ""
+          - name: total_unit_count
+            description: ""
+          - name: frozen_format
+            description: ""
+          - name: high_level_category
+            description: ""
+          - name: process_type
+            description: ""
+          - name: country_of_origin
+            description: ""
+          - name: division
+            description: ""
+          - name: sliced
+            description: ""
+          - name: deveined
+            description: ""
+          - name: skinned
+            description: ""
+          - name: brand
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: ""
+
+      - name: erpx_mfsite
+        description: ""
+        columns:
+          - name: productionbatchprefix
+            description: ""
+          - name: createdby
+            description: "The user that created the site in NorthScope"
+          - name: fax
+            description: ""
+          - name: isvisibletosales
+            description: ""
+          - name: siteid
+            description: "The ID of the site"
+          - name: sitesk
+            description: "The surrogate key of the site"
+          - name: addressline2
+            description: ""
+          - name: allowdefaultwarehouselotfromtransferreceipt
+            description: ""
+          - name: lastupdated
+            description: "The date the site data was last updated in NorthScope"
+          - name: isintransit
+            description: ""
+          - name: hostsystemlink
+            description: ""
+          - name: phone1
+            description: ""
+          - name: sitename
+            description: "The name of the site"
+          - name: warehouselottemplate
+            description: ""
+          - name: isvisibletowms
+            description: ""
+          - name: email
+            description: ""
+          - name: lastuser
+            description: "The user who last modified the site data"
+          - name: issitewarehouselottracked
+            description: ""
+          - name: assignwarehouselotsontransferreceipts
+            description: ""
+          - name: integratedtransferdefaultviasitesk
+            description: ""
+          - name: nextproductionbatchnumber
+            description: ""
+          - name: city
+            description: "The city the site is located in"
+          - name: zip
+            description: "The zip code of the site"
+          - name: isvisibletologistics
+            description: ""
+          - name: searchtext
+            description: ""
+          - name: isinactive
+            description: "If the site is inactive. 0 = False, 1 = True (Inactive)"
+          - name: state
+            description: "The state or province that the site is located in"
+          - name: registration
+            description: ""
+          - name: country
+            description: "The country the site is located in"
+          - name: createddatetime
+            description: "The datetime that the site was created in NorthScope"
+          - name: dataentitycompanysk
+            description: "{{ doc('data_entity_company') }}"
+          - name: addressline1
+            description: ""
+          - name: vendorsk
+            description: "The surrogate key of the vendor"
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_soorderstatus
+        description: ""
+        columns:
+          - name: orderstatussk
+            description: "{{ doc('order_status') }}"
+          - name: orderstatusname
+            description: "{{ doc('order_status') }}"
+          - name: sequence
+            description: ""
+          - name: _fivetran_deleted
+            description: "{{ doc('fivetran_deleted') }}"
+          - name: _fivetran_synced
+            description: "The datetime of the last Fivetran sync, in UTC time"
+
+      - name: erpx_soordertype
+        description: ""
+        columns:
+          - name: isenabled
+            description: ""
+          - name: ordertypesk
+            description: ""
+          - name: sort
+            description: ""
+          - name: ordertypename
+            description: ""
+          - name: hostordertypesk
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""

@@ -1,0 +1,83 @@
+parameters: 
+
+  - name: environment
+    displayName: 'Environment'
+    type: string
+    values:
+    - n
+    - d
+    - q
+    - t
+    - p
+ 
+  - name: environmentName
+    type: string 
+
+  - name: groupShortName
+    type: string 
+
+  - name: deploymentPlatform
+    type: string
+
+  - name: deploymentOs
+    type: string
+
+  - name: storageAccountName
+    type: string
+
+  - name: storageAccountContainer
+    type: string
+
+  - name: configFilesPath
+    type: string
+
+
+
+jobs:
+  - template: /standard-cicd-helpers/standard-job.yml@templates
+    parameters:
+      name: deploy_config_files_to_storage_account
+      displayName: Deploy config files to storage account
+      deploymentPlatform: ${{ parameters.deploymentPlatform }}
+      deploymentOs: ${{ parameters.deploymentOs }}
+      environment: ${{ parameters.environment }}
+
+      variables:
+      - name: 'configPath'
+        value: '$(System.DefaultWorkingDirectory)/${{ parameters.configFilesPath }}'
+      - name: 'SourcePath'
+        value: '$(System.DefaultWorkingDirectory)/${{ parameters.configFilesPath }}'
+      - name: 'DestinationPath'
+        value: 'https://${{ parameters.storageAccountName }}.blob.core.windows.net/${{ parameters.storageAccountContainer }}/'
+
+      steps:
+      - task: PowerShell@2
+        name: log_file_changes
+        displayName: Log file changes
+        inputs:
+          targetType: inline
+          script: |
+            echo "Working dir path: ${{ parameters.configFilesPath }}"
+            Get-ChildItem -Path ${{ parameters.configFilesPath }} -Name
+            echo "Storage account container: ${{ parameters.storageAccountContainer }}"
+            echo "Storage account name: ${{ parameters.storageAccountName }}"
+            echo "Files in config: $(SourcePath)"
+            Get-ChildItem -Path $(SourcePath) -Name
+      - task: AzureCLI@2
+        name: copy_config_files_to_${{ parameters.storageAccountName }}
+        displayName: Copy config files to ${{ parameters.storageAccountName }}
+        inputs:
+          ${{ if eq(parameters.environment, 'd') }}:
+            azureSubscription: '${{ parameters.groupShortName }}-svc-conn-dev'
+          ${{ if eq(parameters.environment, 'q') }}:
+            azureSubscription: '${{ parameters.groupShortName }}-svc-conn-qa'
+          ${{ if eq(parameters.environment, 't') }}:
+            azureSubscription: '${{ parameters.groupShortName }}-svc-conn-uat'
+          ${{ if eq(parameters.environment, 'p') }}:
+            azureSubscription: '${{ parameters.groupShortName }}-svc-conn-prod'
+          scriptType: pscore
+          scriptLocation: inlineScript
+          inlineScript: |
+            az storage blob upload-batch --destination ${{ parameters.storageAccountContainer }} --account-name ${{ parameters.storageAccountName }} --source ${{ parameters.configFilesPath }} --auth-mode login --destination-path ${{ parameters.configFilesPath }} --overwrite
+          addSpnToEnvironment: true
+          workingDirectory: '$(System.DefaultWorkingDirectory)'

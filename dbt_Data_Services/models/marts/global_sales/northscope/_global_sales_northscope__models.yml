@@ -1,0 +1,1145 @@
+version: 2
+
+models:
+  - name: dim_company_ns
+    description: "Dimension table of Northscope companies"
+    columns:
+      - name: Data_Entity_Company_SK
+        quote: true
+        description: ""
+
+      - name: Company ID
+        quote: true
+        description: ""
+
+      - name: Company Name
+        quote: true
+        description: ""
+
+  - name: dim_customer_accounts_ns
+    description: "Dimension table for customer accounts"
+    columns:
+      - name: Customer_Address_SK
+        quote: true
+        description: "The surrogate key of the ship address"
+
+      - name: Customer ID
+        quote: true
+        description: "The ID of the customer"
+
+      - name: Customer Name
+        quote: true
+        description: "The name of the customer"
+
+      - name: Location Alias
+        quote: true
+        description: ""
+
+      - name: Location Name
+        quote: true
+        description: ""
+
+      - name: Address
+        quote: true
+        description: "The full address of the customer"
+
+      - name: Street
+        quote: true
+        description: "The street address of the customer"
+
+      - name: City
+        quote: true
+        description: "The city of the customer"
+
+      - name: Zip Code
+        quote: true
+        description: "Zip or postal code of the customer"
+
+      - name: State
+        quote: true
+        description: "The state or province of the customer"
+
+      - name: Country
+        quote: true
+        description: "The country of the customer"
+
+      - name: Longitude
+        quote: true
+        description: "Longitude of the address"
+
+      - name: Latitude
+        quote: true
+        description: "Latitude of the address"
+
+      - name: Valid From
+        quote: true
+        description: ""
+
+      - name: Valid To
+        quote: true
+        description: ""
+
+      - name: Is Active
+        quote: true
+        description: "Boolean. 1 = Active, 0 = Inactive"
+
+  - name: dim_invoice_accounts_ns
+    description: "Dimension table for invoice accounts"
+    columns:
+      - name: Customer_Address_SK
+        quote: true
+        description: "The surrogate key of the ship address"
+
+      - name: Customer ID
+        quote: true
+        description: "The ID of the customer"
+
+      - name: Customer Name
+        quote: true
+        description: "The name of the customer"
+
+      - name: Location
+        quote: true
+        description: ""
+
+      - name: Location Name
+        quote: true
+        description: ""
+
+      - name: Address
+        quote: true
+        description: "The full address of the customer"
+
+      - name: Street
+        quote: true
+        description: "The invoice street address of the customer"
+
+      - name: City
+        quote: true
+        description: "The invoice city of the customer"
+
+      - name: Zip Code
+        quote: true
+        description: "The invoice zip or postal code of the customer"
+
+      - name: State
+        quote: true
+        description: "The invoice state of the customer"
+
+      - name: Country
+        quote: true
+        description: "The invoice country of the customer"
+
+      - name: Longitude
+        quote: true
+        description: "Longitude of the invoice address"
+
+      - name: Latitude
+        quote: true
+        description: "Latitude of the invoice address"
+
+      - name: Valid From
+        quote: true
+        description: ""
+
+      - name: Valid To
+        quote: true
+        description: ""
+
+  - name: dim_invoice_ns
+    description: "Dimension table of invoice numbers for Northscope"
+    columns:
+      - name: Invoice ID
+        quote: true
+        description: "The ID of the invoice"
+
+  - name: dim_item_ns
+    description: "Dimension table of items in Northscope"
+    columns:
+      - name: Item_SK
+        quote: true
+        description: "The surrogate key of the item"
+        tests:
+          - not_null
+          - unique
+
+      - name: Item ID
+        quote: true
+        description: "The ID of the item"
+
+      - name: Product Name
+        quote: true
+        description: "The name of the item"
+
+      - name: Item Group
+        quote: true
+        description: "Item Group"
+
+      - name: Item Group ID
+        quote: true
+        description: "Item Group ID"
+
+      - name: Country of Origin
+        quote: true
+        description: "Country Of Origin"
+
+      - name: Skin On Off
+        quote: true
+        description: "Skin On Off"
+
+      - name: Sub Category
+        quote: true
+        description: "The Sub Category of the item"
+
+      - name: Bone In Out
+        quote: true
+        description: "Bone In Out"
+
+      - name: Coolant
+        quote: true
+        description: "Coolant"
+
+      - name: Harvest
+        quote: true
+        description: "Harvest"
+
+      - name: Package Weight
+        quote: true
+        description: "Package Weight"
+
+      - name: Scaled
+        quote: true
+        description: "Scaled"
+
+      - name: Trim
+        quote: true
+        description: "Trim"
+
+      - name: UB Code
+        quote: true
+        description: "UB Code"
+
+      - name: Whole or VA
+        quote: true
+        description: "Whole Fish or Value Added"
+
+      - name: family
+        description: "Family"
+
+      - name: form
+        quote: true
+        description: "The form of the fish. Usually `Fresh` or `Frozen`"
+
+      - name: Package Unit Count
+        quote: true
+        description: "Package Unit Count"
+
+      - name: Pieces per lb Count
+        quote: true
+        description: "Pieces per lb count"
+
+      - name: Product Size UOM
+        quote: true
+        description: "Product Size UOM"
+
+      - name: Production Phase
+        quote: true
+        description: "Production Phase"
+
+      - name: Skinning Type
+        quote: true
+        description: "Skinning Type"
+
+      - name: ASC Certification
+        description: "ASC Cert"
+
+      - name: Frozen Format
+        quote: true
+        description: "Frozen Format"
+
+      - name: Category
+        quote: true
+        description: "Category"
+
+      - name: High Level Grade
+        quote: true
+        description: "High Level Grade"
+
+      - name: Grade
+        quote: true
+        description: "Grade"
+
+      - name: Brand
+        quote: true
+        description: "Brand"
+
+      - name: Product Size
+        quote: true
+        description: "Product Size"
+
+      - name: Case Weight
+        quote: true
+        description: "Case Weight"
+
+      - name: Case Weight UOM
+        quote: true
+        description: "Case Weight UOM"
+
+      - name: Cooked/Raw
+        quote: true
+        description: "Cooke or Raw"
+
+      - name: NFT Label
+        quote: true
+        description: "NFT Label"
+
+      - name: Package Weight UOM
+        quote: true
+        description: "Package Weight UOM"
+
+      - name: MSC Certification
+        quote: true
+        description: "MSC Cert"
+
+      - name: Certification
+        quote: true
+        description: "Cert"
+
+      - name: RWOA
+        quote: true
+        description: "RWOA"
+
+      - name: Catch Area
+        quote: true
+        description: "The location the fish was harvested"
+
+      - name: Master Packaging Type
+        quote: true
+        description: "Master Packaging Type"
+
+      - name: Product Label
+        quote: true
+        description: "Product Label"
+
+      - name: Product Form - Shrimp
+        quote: true
+        description: "Shrimp product form"
+
+      - name: Flavour
+        quote: true
+        description: "Flavour"
+
+      - name: Harvest Method
+        quote: true
+        description: "Harvest Method"
+
+      - name: Language ID
+        quote: true
+        description: "Language ID"
+
+      - name: Item Description
+        quote: true
+        description: "Item Description"
+
+      - name: Species
+        quote: true
+        description: "Species"
+
+      - name: Sub-Species
+        quote: true
+        description: "Sub-Species"
+
+      - name: Inside Pack
+        quote: true
+        description: "Inside Pack"
+
+      - name: Value Add
+        quote: true
+        description: "Value Add"
+
+  - name: dim_order_status_ns
+    description: ""
+    columns:
+      - name: Order Status ID
+        quote: true
+        description: ""
+
+      - name: Order Status
+        quote: true
+        description: ""
+
+  - name: dim_orders_ns
+    description: ""
+    columns:
+      - name: Order ID
+        quote: true
+        description: ""
+
+  - name: dim_salesperson_ns
+    description: ""
+    columns:
+      - name: Salesperson_SK
+        quote: true
+        description: "The surrogate key of the salesperson in Northscope"
+
+      - name: Salesperson ID
+        quote: true
+        description: "The ID of the salesperson"
+
+      - name: salesperson Name
+        quote: true
+        description: "The name of the salesperson"
+
+      - name: Email
+        quote: true
+        description: "The email address of the salesperson"
+
+      - name: Is Inactive
+        quote: true
+        description: >
+          "Boolean, if the salesperson is inactive. `FALSE` = active, `TRUE` = inactive"
+
+      - name: Data_Entity_Company_SK
+        quote: true
+        description: "{{ doc('data_entity_company') }}"
+
+      - name: salespersontypeen
+        description: ""
+
+  - name: fact_cost_ns
+    description: >
+      "Fact table of sales order items in Northscope, with costing information added.
+      This table has the same structure as `fact_cost_d365` and can be unioned together"
+    columns:
+      - name: Order ID
+        quote: true
+        description: "The ID of the order"
+
+      - name: inventtransid
+        description: "D365 field only. Added for unioning purposes"
+
+      - name: Company
+        quote: true
+        description: "The name of the company"
+
+      - name: Release Status
+        quote: true
+        description: "D365 field only. Added for unioning purposes"
+
+      - name: Order Status ID
+        quote: true
+        description: "The ID of the order status. See `dim_order_status` for details"
+
+      - name: Sales Status ID
+        quote: true
+        description: "Identifier representing the current sales status of the order (e.g., Open, Invoiced, Closed)."
+
+      - name: Sales Type ID
+        quote: true
+        description: "Code indicating the sales order type (e.g., Regular, Return, Transfer). Used to categorize sales transactions."
+
+      - name: Location ID
+        quote: true
+        description: "The surrogate key of the site. See `ERPx_MFSite` for details"
+
+      - name: Inventory Location ID
+        quote: true
+        description: >
+          "The surrogate key of the site. See `ERPx_MFSite` for details.
+          D365 defines multiple fields for this, Northscope does not. Therefore,
+          I used the `sitesk` from `ERPx_MFSite` for this field."
+
+      - name: Inventory Site ID
+        quote: true
+        description: >
+          "The surrogate key of the site. See `ERPx_MFSite` for details.
+          D365 defines multiple fields for this, Northscope does not. Therefore,
+          I used the `sitesk` from `ERPx_MFSite` for this field."
+
+      - name: Payment
+        quote: true
+        description: "Terms of payment"
+
+      - name: Create Date
+        quote: true
+        description: "The date the sales order line item was created"
+
+      - name: Delivery Date
+        quote: true
+        description: "Delivery date of items on the sales order"
+
+      - name: Invoice Account
+        quote: true
+        description: "The account number tied to the customer’s billing or invoicing details."
+
+      - name: Customer Invoice Date
+        quote: true
+        description: "The date when the invoice was created and sent to the customer."
+
+      - name: Customer Account
+        quote: true
+        description: "Account ID for the customer"
+
+      - name: Delivery Name
+        quote: true
+        description: "Name of the delivery address"
+
+      - name: Shipping Date Confirmed
+        quote: true
+        description: "The date when the shipment was confirmed in the system as ready or completed."
+
+      - name: Shipping Date Requested
+        quote: true
+        description: "Shipping date requested by the customer"
+
+      - name: Modified By
+        quote: true
+        description: "The last user to modify the sales order line items in Northscope"
+
+      - name: Modified Date
+        quote: true
+        description: "The date the sales order line items were last modified in Northscope"
+
+      - name: Item ID
+        description: "The unique ID of the item. See `ERPx_IMItem`, `item_attribute_values` or `dim_item_ns`"
+        quote: true
+
+      - name: Remaining Sales Physical
+        quote: true
+        description: "The remaining physical quantity of items yet to be invoiced or shipped for the sales order."
+
+      - name: Sales Amount
+        quote: true
+        description: "The sales dollar value"
+
+      - name: Sales Price
+        quote: true
+        description: "The unit selling price of the item on the sales order line."
+
+      - name: Invoice Amount
+        quote: true
+        description: "The invoiced dollar value"
+
+      - name: Sales Qty
+        quote: true
+        description: "The total number of product units sold or fulfilled for the sales order line."
+
+      - name: Sales Volume (lbs)
+        quote: true
+        description: "The total volume of sold items expressed in pounds (Lbs)."
+
+      - name: Invoice Volume (lbs)
+        quote: true
+        description: "The total invoiced weight of items expressed in pounds (Lbs)."
+
+      - name: Inv Qty
+        quote: true
+        description: "The total quantity of units included in the final customer invoice."
+
+      - name: Inv UOM
+        quote: true
+        description: "The unit of measure used for the invoiced quantity (e.g., LB, KG, CASE)."
+
+      - name: Sales UOM
+        quote: true
+        description: "The unit of measure used for sales transactions (e.g., LB, KG, CASE)."
+
+      - name: Sourcing Vendor Account
+        quote: true
+        description: "The vendor account used for sourcing or purchasing items sold in the sales order."
+
+      - name: Flag_Price_Adjustment
+        quote: true
+        description: "Indicates whether a manual or system-based price adjustment was applied to the sales order line."
+
+      - name: Invoice ID
+        description: "The ID of the invoice"
+        quote: true
+
+      - name: Estimated Cost
+        quote: true
+        description: >
+          "The estimated cost of the item to Cooke"
+
+      - name: Posted Cost
+        quote: true
+        description: "The posted cost of the item to Cooke"
+
+      - name: Adjusted Cost
+        quote: true
+        description: "Represents any cost adjustments applied after posting, including corrections or revaluations."
+
+      - name: Settled Cost
+        quote: true
+        description: "The settled cost of the item to Cooke"
+
+      - name: Rebates
+        quote: true
+        description: "The total rebate amount or discount applied to the sales order or line item."
+
+      - name: Currency
+        quote: true
+        description: "The currency"
+
+      - name: Returned Invoice
+        quote: true
+        description: "Indicates whether the invoice was reversed or returned (e.g., due to customer return or correction)."
+
+      - name: Date Financial
+        quote: true
+        description: "The invoice date"
+
+      - name: Financial Division ID
+        quote: true
+        description: >
+          "Corresponds to the `dataentitycompanysk` in `ERPx_MFDataEntityCompany`. Also see `dim_company_ns`"
+
+      - name: Delivery Address ID
+        quote: true
+        description: "Identifier for the delivery address associated with the sales order shipment."
+
+      - name: Mode
+        quote: true
+        description: "Specifies the transportation or delivery mode (e.g., Truck, Air, Sea)."
+
+      - name: Last Data Refresh
+        quote: true
+        description: "The timestamp of the most recent data load or refresh into the data warehouse."
+
+      - name: Exchange Rate (USD-CAD)
+        quote: true
+        description: >
+          "The exchange rate corresponding to the invoice date for US dollars to Canadian dollars"
+
+      - name: Valid From (USD-CAD)
+        quote: true
+        description: "Date the exchange rate is valid from"
+
+      - name: Valid To (USD-CAD)
+        quote: true
+        description: "Date the exchange rate is valid to"
+
+      - name: pk_global_sales
+        description: "Primary/Unique Identifier of the table"
+        tests:
+          - not_null
+          - unique
+
+  - name: item_attribute_values
+    description: ""
+    columns:
+      - name: item_sk
+        description: ""
+
+      - name: item_id
+        description: ""
+
+      - name: item_description
+        description: ""
+
+      - name: item_display_description
+        description: ""
+
+      - name: item_type
+        description: ""
+
+      - name: item_class
+        description: ""
+
+      - name: uom_schedule_id
+        description: ""
+
+      - name: uom_schedule_description
+        description: ""
+
+      - name: default_unit_uom
+        description: ""
+
+      - name: default_weight_uom
+        description: ""
+
+      - name: default_price_uom
+        description: ""
+
+      - name: dataentitycompany_sk
+        description: ""
+
+      - name: source_system
+        description: ""
+
+      - name: division
+        description: ""
+
+      - name: high level category
+        description: ""
+
+      - name: form
+        description: ""
+
+      - name: category
+        description: ""
+
+      - name: finished form
+        description: ""
+
+      - name: grade
+        description: ""
+
+      - name: size
+        description: ""
+
+      - name: high level grade
+        description: ""
+
+      - name: sub category
+        description: ""
+
+      - name: wild or farm
+        description: ""
+
+      - name: specie
+        description: ""
+
+      - name: sub specie
+        description: ""
+
+      - name: country of origin
+        description: ""
+
+      - name: cw category
+        description: ""
+
+      - name: case weight
+        description: ""
+
+      - name: case weight uom
+        description: ""
+
+      - name: catch area
+        description: ""
+
+      - name: product size uom
+        description: ""
+
+      - name: skin on/off
+        description: ""
+
+      - name: coolant
+        description: ""
+
+      - name: species
+        description: ""
+
+      - name: trim
+        description: ""
+
+      - name: bone in out
+        description: ""
+
+      - name: origin
+        description: ""
+
+      - name: sub-species
+        description: ""
+
+      - name: certification
+        description: ""
+
+      - name: family
+        description: ""
+
+      - name: brand i
+        description: ""
+
+      - name: brand
+        description: ""
+
+      - name: preserved
+        description: ""
+
+      - name: wild/farmed
+        description: ""
+
+      - name: coar process
+        description: ""
+
+      - name: coar product
+        description: ""
+
+      - name: adf&g specie code
+        description: ""
+
+      - name: vax code
+        description: ""
+
+      - name: quality grade
+        description: ""
+
+      - name: collateral rpt group
+        description: ""
+
+      - name: edr code
+        description: ""
+
+      - name: shell on/off
+        description: ""
+
+      - name: pieces per unit count
+        description: ""
+
+      - name: master packaging type
+        description: ""
+
+      - name: scaled
+        description: ""
+
+      - name: inside pack type
+        description: ""
+
+      - name: frozen format
+        description: ""
+
+      - name: skinning type
+        description: ""
+
+      - name: frozen form
+        description: ""
+
+      - name: salmon product form code
+        description: ""
+
+      - name: whole/va
+        description: ""
+
+      - name: package weight
+        description: ""
+
+      - name: flavour
+        description: ""
+
+      - name: tnsf item id(d365)
+        description: ""
+
+      - name: industry type
+        description: ""
+
+      - name: thermally process contain
+        description: ""
+
+      - name: selling destination
+        description: ""
+
+      - name: tail on/off
+        description: ""
+
+      - name: id cross ref
+        description: ""
+
+      - name: sub species
+        description: ""
+
+      - name: skin cut
+        description: ""
+
+      - name: sliced
+        description: ""
+
+      - name: package weight uom
+        description: ""
+
+      - name: process type
+        description: ""
+
+      - name: head on/off
+        description: ""
+
+      - name: deveined/vein in
+        description: ""
+
+      - name: yield class
+        description: ""
+
+      - name: subdivision
+        description: ""
+
+      - name: whole or va
+        description: ""
+
+      - name: salmon meat color
+        description: ""
+
+      - name: rte method
+        description: ""
+
+      - name: catch method
+        description: ""
+
+      - name: inner pack cooler
+        description: ""
+
+      - name: private
+        description: ""
+
+      - name: salmon skin color
+        description: ""
+
+      - name: package unit count
+        description: ""
+
+      - name: can type
+        description: ""
+
+      - name: skinning
+        description: ""
+
+      - name: total inside pkg count
+        description: ""
+
+      - name: further processing
+        description: ""
+
+      - name: cooked/raw/line
+        description: ""
+
+      - name: flow through
+        description: ""
+
+      - name: none
+        description: ""
+
+      - name: feed certification
+        description: ""
+
+      - name: fda number
+        description: ""
+
+      - name: hts number
+        description: ""
+
+      - name: inside pack
+        description: ""
+
+      - name: cooked/raw
+        description: ""
+
+      - name: divi
+        description: ""
+
+      - name: ice
+        description: ""
+
+      - name: pack
+        description: ""
+
+      - name: raw material source
+        description: ""
+
+      - name: commodity code
+        description: ""
+
+      - name: skinned
+        description: ""
+
+      - name: product size
+        description: ""
+
+      - name: cook
+        description: ""
+
+      - name: private label
+        description: ""
+
+      - name: ub code
+        description: ""
+
+      - name: navision item
+        description: ""
+
+      - name: total unit count
+        description: ""
+
+      - name: yield calculation percent
+        description: ""
+
+      - name: peeled/unpeeled
+        description: ""
+
+      - name: deveined/undeveined
+        description: ""
+
+      - name: cooked/raw
+        description: ""
+
+      - name: shrimp category
+        description: ""
+
+      - name: x-ref item
+        description: ""
+
+      - name: x-ref item 2
+        description: ""
+
+      - name: peeled
+        description: ""
+
+      - name: head
+        description: ""
+
+      - name: deveined
+        description: ""
+
+      - name: tail
+        description: ""
+
+      - name: shell
+        description: ""
+
+      - name: vax carton code
+        description: ""
+
+      - name: scientific name
+        description: ""
+
+  - name: dim_site_ns
+    description: >
+      "Dimension table for Northscope sites. Note that this table is identical
+      to `dim_warehouse_ns`, and is created to facilitate a `union` to the D365 data."
+    columns:
+      - name: Site_SK
+        quote: true
+        description: "The surrogate key of the site"
+
+      - name: Site Name
+        quote: true
+        description: "The name of the site"
+
+      - name: Site ID
+        quote: true
+        description: "The ID of the site"
+
+      - name: Site Registration Code
+        quote: true
+        description: ""
+
+      - name: Site Address 1
+        quote: true
+        description: "Line 1 of the site address"
+
+      - name: Site Address 2
+        quote: true
+        description: "Line 2 of the site address"
+
+      - name: City
+        quote: true
+        description: "The city the site is located in"
+
+      - name: State
+        quote: true
+        description: "The state the site is located in"
+
+      - name: Postal Code
+        quote: true
+        description: "The postal code of the site"
+
+      - name: Country
+        quote: true
+        description: "The country of the site"
+
+  - name: dim_warehouse_ns
+    description: >
+      "Dimension table of Northscope warehouses. Note that this table is identical
+      to `dim_site_ns`, and is created to facilitate a `union` to the D365 data."
+    columns:
+      - name: Warehouse_SK
+        quote: true
+        description: "The surrogate key of the warehouse"
+
+      - name: Location Name
+        quote: true
+        description: "The name of the warehouse"
+
+      - name: Location ID
+        quote: true
+        description: "The ID of the warehouse"
+
+      - name: Warehouse Name
+        quote: true
+        description: "The name of the warehouse"
+
+      - name: Warehouse ID
+        quote: true
+        description: "The ID of the warehouse"
+
+      - name: Warehouse Registration Code
+        quote: true
+        description: ""
+
+      - name: Warehouse Address 1
+        quote: true
+        description: "Line 1 of the warehouse address"
+
+      - name: Warehouse Address 2
+        quote: true
+        description: "Line 2 of the warehouse address"
+
+      - name: City
+        quote: true
+        description: "The city the warehouse is located in"
+
+      - name: State
+        quote: true
+        description: "The state the warehouse is located in"
+
+      - name: Postal Code
+        quote: true
+        description: "The postal code of the warehouse"
+
+      - name: Country
+        quote: true
+        description: "The country of the warehouse"
+
+  - name: dim_account_salesperson_ns
+    description: >
+      "Dimension table of Northscope account salesperson. This dimension provides
+      the salesperson for the Northscope customer account."
+    columns:
+      - name: InvoiceCustomer_Number
+        quote: true
+        description: "Primary key for the customer or invoice account"
+
+      - name: Salespersons Name
+        quote: true
+        description: "The name of the salesperson"
+
+      - name: Create Date
+        quote: true
+        description: "Create date for the salesperson"
+
+      - name: SOURCESYSTEM
+        quote: true
+        description: "Name of the source system"
+
+      - name: flag_most_recent
+        quote: true
+        description: "Flag identifying if the salesperson has expired"
+
+  - name: dim_cust_external_item
+    description: This model consolidates customer external item data from multiple source systems, providing a unified view of customer-specific item identifiers and descriptions. It is useful for understanding how items are referenced and described by different customers across various systems.
+    columns:
+      - name: sourcesystem
+        description: The source system from which the data was extracted.
+      - name: company
+        description: The name of the company associated with the item.
+      - name: item_id
+        description: The unique identifier for the item.
+      - name: customer_external_item_id
+        description: The identifier used by the customer for the item.
+      - name: customer_external_item_description
+        description: The description of the item as provided by the customer.
+      - name: sk_item_global
+        description: The surrogate key for the global item.
+      - name: cust_external_item_pk
+        description: The primary key for the customer external item.
+        tests:
+          - unique
+          - not_null

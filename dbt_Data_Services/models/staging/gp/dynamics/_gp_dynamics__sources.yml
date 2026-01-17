@@ -1,0 +1,7 @@
+sources:
+  - name: gp
+    description: 'To Identify Company Names'
+    database: gp
+    schema: dynamics_dbo
+    tables:
+      - name: sy01500

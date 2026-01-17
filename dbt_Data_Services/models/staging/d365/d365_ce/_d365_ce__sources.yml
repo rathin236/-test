@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: d365_ce
+    description: ""
+    database: staging_dev
+    tables:
+      - name: xref_customers
+        description: ""
+        columns:
+          - name: d365customerid
+            description: ""
+          - name: d365customername
+            description: ""
+          - name: crmcustomerid
+            description: ""
+          - name: crmcustomername
+            description: ""
+          - name: crmcustomeruid
+            description: ""
+          - name: status
+            description: ""
+
+      - name: user_alias
+        description: ""
+        columns:
+          - name: company
+            description: ""
+          - name: d365
+            description: ""
+          - name: crm
+            description: ""
+          - name: status
+            description: ""

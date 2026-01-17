@@ -1,0 +1,65 @@
+with source as (
+    select *
+    from {{ source('finops_synapse', 'custtransopen') }}
+),
+
+renamed as (
+    select
+        id,
+        sink_created_on,
+        sink_modified_on,
+        usecashdisc,
+        collectionletter,
+        collectionlettercode,
+        taxdistribution,
+        sysdatastatecode,
+        accountnum,
+        amountcur,
+        amountmst,
+        bankdiscnoticedeadline,
+        banklcexportline,
+        cashdiscdate,
+        cashdiscountledgerdimension,
+        duedate,
+        exchadjunrealized,
+        exchadjunrealizedreporting,
+        fineamount_br,
+        fineamountpaymcur_br,
+        finecode_br,
+        interestamount_br,
+        interestamountpaymcur_br,
+        interestcode_br,
+        lastinterestdate,
+        possiblecashdisc,
+        refrecid,
+        reportingcurrencyamount,
+        settledlinepercent_in,
+        settledtotalamount_in,
+        settlementprioritycashdiscdate,
+        taxwithholdamountorigin_in,
+        tcsamount_in,
+        tdsamount_in,
+        transdate,
+        covstatus,
+        modifieddatetime,
+        modifiedby,
+        modifiedtransactionid,
+        createddatetime,
+        createdby,
+        createdtransactionid,
+        dataareaid,
+        recversion,
+        partition,
+        sysrowversion,
+        recid,
+        tableid,
+        versionnumber,
+        createdon,
+        modifiedon,
+        _fivetran_deleted,
+        _fivetran_synced
+    from source
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

@@ -1,0 +1,101 @@
+with
+
+source as (
+
+    select {{ convert_columns('wvcl_dbo', 'pm30200') }}
+    from {{ source('wvcl_dbo', 'pm30200') }}
+
+),
+
+renamed as (
+
+    select
+        doctype,
+        vchrnmbr,
+        pchschid,
+        wrofamnt,
+        aplywith,
+        invoicereceiptdate,
+        pordnmbr,
+        taxschid,
+        ppstaxrt,
+        pgramsbj,
+        mdfusrid,
+        voidpdate,
+        vndchknm,
+        bktpuram,
+        ten99type,
+        voided,
+        pymtrmid,
+        dex_row_id,
+        ttlpymts,
+        cbvat,
+        frtamnt,
+        dinvpdof,
+        cntrltyp,
+        pyenttyp,
+        retnagam,
+        dscdlram,
+        noteindx,
+        ectrx,
+        chekbkid,
+        vadcdtro,
+        taxinvreqd,
+        distknam,
+        prctdisc,
+        docdate,
+        bachnumb,
+        curtrxam,
+        frtschid,
+        electronic,
+        mscchamt,
+        gstdsamt,
+        duedate,
+        taxamnt,
+        bktmscam,
+        posteddt,
+        bktfrtam,
+        modifdt,
+        disavtkn,
+        curncyid,
+        discamnt,
+        ten99amnt,
+        prchdate,
+        ten99boxnumber,
+        lngdesc,
+        corrctn,
+        trxsorce,
+        docamnt,
+        bchsourc,
+        un1099am,
+        shipmthd,
+        simplifd,
+        ponumber,
+        docnumbr,
+        ptdusrid,
+        prchamnt,
+        ictrx,
+        docprinted,
+        mscschid,
+        backouttradedisc,
+        hold,
+        pstgdate,
+        discdate,
+        disamtav,
+        workflow_status,
+        dex_row_ts,
+        trdisamt,
+        tax_date,
+        trxdscrn,
+        ppsamded,
+        cardname,
+        vendorid,
+        _fivetran_deleted,
+        _fivetran_synced
+
+    from source
+
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, 'FALSE') = 'FALSE'

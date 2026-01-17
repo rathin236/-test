@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: boomi
+    database: staging_prod
+    tables:
+      - name: process_reporting
+        description: "A staging table containing JSON data from the Boomi API"
+        columns:
+          - name: json_data
+            description: "JSON data from Boomi API, variant data type in Snowflake"
+          - name: insert_date
+            description: "Timestamp for JSON insert"
+          - name: start_date
+            description: ""
+          - name: end_date
+            description: ""

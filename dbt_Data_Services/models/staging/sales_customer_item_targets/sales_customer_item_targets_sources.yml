@@ -1,0 +1,46 @@
+version: 2
+
+sources:
+  - name: sales_targets_customer_items
+    description: ""
+    database: staging_prod
+    tables:
+      - name: customer_item_category_targets_item_category
+        description: ""
+        columns:
+          - name: _line
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: customer_id
+            description: ""
+          - name: source_system
+            description: ""
+          - name: customer_target_by_item_category
+            description: ""
+          - name: combined_item_category
+            description: ""
+          - name: customer_name
+            description: ""
+          - name: item_category
+            description: ""
+
+      - name: customer_item_id_targets_item_id
+        description: ""
+        columns:
+          - name: _line
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: item_id
+            description: ""
+          - name: customer_id
+            description: ""
+          - name: source_system
+            description: ""
+          - name: customer_name
+            description: ""
+          - name: item_description
+            description: ""
+          - name: customer_target_by_item_id
+            description: ""

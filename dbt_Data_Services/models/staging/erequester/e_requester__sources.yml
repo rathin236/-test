@@ -1,0 +1,51 @@
+version: 1
+
+sources:
+  - name: erequester_dbo
+    description: "A database for e requester"
+    database: ancillary
+    schema: erequester_dbo
+    tables:
+      - name: Requisitionline
+        description: "A purchase order approval request table with item level details"
+        database: ancillary
+        schema: erequester_dbo
+      - name: company
+        database: ancillary
+        schema: erequester_dbo
+      - name: requisition
+        database: ancillary
+        schema: erequester
+      - name: requisitionstatus
+        database: ancillary
+        schema: erequester_dbo
+      - name: dept
+        database: ancillary
+        schema: erequester_dbo
+      - name: requisitiontype
+        database: ancillary
+        schema: erequester_dbo
+      - name: requesttype
+        database: ancillary
+        schema: erequester_dbo
+      - name: user
+        database: ancillary
+        schema: erequester_dbo
+      - name: usercompany
+        database: ancillary
+        schema: erequester_dbo
+      - name: reqtopo
+        database: ancillary
+        schema: erequester_dbo
+      - name: requisitionauth
+        database: ancillary
+        schema: erequester_dbo
+      - name: history
+        database: ancillary
+        schema: erequester_dbo
+      - name: routingnode
+        database: ancillary
+        schema: erequester_dbo
+      - name: routingnodedetail
+        database: ancillary
+        schema: erequester_dbo

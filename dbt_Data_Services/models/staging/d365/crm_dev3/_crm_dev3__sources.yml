@@ -1,0 +1,1650 @@
+version: 2
+
+sources:
+  - name: crm_dev3
+    description: ""
+    database: d365
+    tables:
+      - name: stringmap
+        description: ""
+        columns:
+          - name: stringmapid
+            description: ""
+          - name: value
+            description: ""
+          - name: attributename
+            description: ""
+          - name: objecttypecode
+            description: ""
+          - name: organizationid
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: langid
+            description: ""
+          - name: attributevalue
+            description: ""
+          - name: displayorder
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: product
+        description: ""
+        columns:
+          - name: productid
+            description: ""
+          - name: utcconversiontimezonecode
+            description: ""
+          - name: _cai_trim_value
+            description: ""
+          - name: entityimage_url
+            description: ""
+          - name: size
+            description: ""
+          - name: producturl
+            description: ""
+          - name: _pricelevelid_value
+            description: ""
+          - name: vendorname
+            description: ""
+          - name: vendorid
+            description: ""
+          - name: standardcost_base
+            description: ""
+          - name: validfromdate
+            description: ""
+          - name: isreparented
+            description: ""
+          - name: description
+            description: ""
+          - name: _cai_forms_value
+            description: ""
+          - name: stockweight
+            description: ""
+          - name: entityimage_timestamp
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: _cai_specie_value
+            description: ""
+          - name: _createdbyexternalparty_value
+            description: ""
+          - name: cai_gpproductid
+            description: ""
+          - name: price_base
+            description: ""
+          - name: validtodate
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: price
+            description: ""
+          - name: _modifiedbyexternalparty_value
+            description: ""
+          - name: cai_form
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: hierarchypath
+            description: ""
+          - name: _cai_family_value
+            description: ""
+          - name: createdon
+            description: ""
+          - name: quantitydecimal
+            description: ""
+          - name: exchangerate
+            description: ""
+          - name: statecode
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: dmtimportstate
+            description: ""
+          - name: suppliername
+            description: ""
+          - name: _defaultuomid_value
+            description: ""
+          - name: _cai_grade_value
+            description: ""
+          - name: _organizationid_value
+            description: ""
+          - name: _defaultuomscheduleid_value
+            description: ""
+          - name: cai_sourcesystemitemid
+            description: ""
+          - name: _transactioncurrencyid_value
+            description: ""
+          - name: vendorpartnumber
+            description: ""
+          - name: cai_crmproductid
+            description: ""
+          - name: _cai_subcategory_value
+            description: ""
+          - name: currentcost
+            description: ""
+          - name: iskit
+            description: ""
+          - name: stockvolume
+            description: ""
+          - name: _parentproductid_value
+            description: ""
+          - name: cai_company
+            description: ""
+          - name: cai_cookeparent
+            description: ""
+          - name: currentcost_base
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: processid
+            description: ""
+          - name: cai_d_365_productid
+            description: ""
+          - name: isstockitem
+            description: ""
+          - name: name
+            description: ""
+          - name: cai_category
+            description: ""
+          - name: msdyn_gdproptout
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: _cai_subspecie_value
+            description: ""
+          - name: traversedpath
+            description: ""
+          - name: timezoneruleversionnumber
+            description: ""
+          - name: cai_species
+            description: ""
+          - name: _subjectid_value
+            description: ""
+          - name: cai_tier
+            description: ""
+          - name: entityimageid
+            description: ""
+          - name: standardcost
+            description: ""
+          - name: _cai_categories_value
+            description: ""
+          - name: producttypecode
+            description: ""
+          - name: statuscode
+            description: ""
+          - name: productnumber
+            description: ""
+          - name: stageid
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: productstructure
+            description: ""
+          - name: quantityonhand
+            description: ""
+          - name: entityimage
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: uomschedule
+        description: ""
+        columns:
+          - name: uomscheduleid
+            description: ""
+          - name: statecode
+            description: ""
+          - name: baseuomname
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: statuscode
+            description: ""
+          - name: _organizationid_value
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: timezoneruleversionnumber
+            description: ""
+          - name: _modifiedbyexternalparty_value
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: name
+            description: ""
+          - name: description
+            description: ""
+          - name: createdon
+            description: ""
+          - name: utcconversiontimezonecode
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: _createdbyexternalparty_value
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: uom
+        description: ""
+        columns:
+          - name: uomid
+            description: ""
+          - name: isschedulebaseuom
+            description: ""
+          - name: organizationid
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: quantity
+            description: ""
+          - name: utcconversiontimezonecode
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: _uomscheduleid_value
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: timezoneruleversionnumber
+            description: ""
+          - name: _createdbyexternalparty_value
+            description: ""
+          - name: _baseuom_value
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: name
+            description: ""
+          - name: _modifiedbyexternalparty_value
+            description: ""
+          - name: createdon
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: pricelevel
+        description: ""
+        columns:
+          - name: pricelevelid
+            description: ""
+          - name: freighttermscode
+            description: ""
+          - name: description
+            description: ""
+          - name: shippingmethodcode
+            description: ""
+          - name: utcconversiontimezonecode
+            description: ""
+          - name: _cai_productid_value
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: statecode
+            description: ""
+          - name: _organizationid_value
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: name
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: statuscode
+            description: ""
+          - name: createdon
+            description: ""
+          - name: paymentmethodcode
+            description: ""
+          - name: exchangerate
+            description: ""
+          - name: enddate
+            description: ""
+          - name: begindate
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: _transactioncurrencyid_value
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: timezoneruleversionnumber
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: transactioncurrency
+        description: ""
+        columns:
+          - name: transactioncurrencyid
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: isocurrencycode
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: statuscode
+            description: ""
+          - name: _organizationid_value
+            description: ""
+          - name: currencyname
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: entityimage
+            description: ""
+          - name: entityimageid
+            description: ""
+          - name: exchangerate
+            description: ""
+          - name: currencysymbol
+            description: ""
+          - name: entityimage_url
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: createdon
+            description: ""
+          - name: currencyprecision
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: entityimage_timestamp
+            description: ""
+          - name: statecode
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: productpricelevel
+        description: ""
+        columns:
+          - name: productpricelevelid
+            description: ""
+          - name: productnumber
+            description: ""
+          - name: _productid_value
+            description: ""
+          - name: _transactioncurrencyid_value
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: timezoneruleversionnumber
+            description: ""
+          - name: exchangerate
+            description: ""
+          - name: processid
+            description: ""
+          - name: _discounttypeid_value
+            description: ""
+          - name: createdon
+            description: ""
+          - name: percentage
+            description: ""
+          - name: roundingoptionamount_base
+            description: ""
+          - name: amount_base
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: _pricelevelid_value
+            description: ""
+          - name: _uomscheduleid_value
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: roundingoptioncode
+            description: ""
+          - name: roundingoptionamount
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: organizationid
+            description: ""
+          - name: quantitysellingcode
+            description: ""
+          - name: stageid
+            description: ""
+          - name: amount
+            description: ""
+          - name: traversedpath
+            description: ""
+          - name: pricingmethodcode
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: _uomid_value
+            description: ""
+          - name: utcconversiontimezonecode
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: roundingpolicycode
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: opportunity
+        description: ""
+        columns:
+          - name: opportunityid
+            description: ""
+          - name: cai_onholduntil
+            description: ""
+          - name: cai_qualifyduration_date
+            description: ""
+          - name: _ownerid_value
+            description: ""
+          - name: cai_samplefeedback
+            description: ""
+          - name: totalamountlessfreight
+            description: ""
+          - name: cai_negotiateduration
+            description: ""
+          - name: scheduleproposalmeeting
+            description: ""
+          - name: cai_complexpricing
+            description: ""
+          - name: discountamount
+            description: ""
+          - name: totallineitemdiscountamount_base
+            description: ""
+          - name: cai_dnestimatedvolume
+            description: ""
+          - name: cai_identifyduration
+            description: ""
+          - name: _msa_partnerid_value
+            description: ""
+          - name: msdyn_opportunityscoretrend
+            description: ""
+          - name: cai_urlrecord
+            description: ""
+          - name: description
+            description: ""
+          - name: discountpercentage
+            description: ""
+          - name: cai_pricedetails
+            description: ""
+          - name: actualvalue
+            description: ""
+          - name: completefinalproposal
+            description: ""
+          - name: cai_attachedpricebreakdown
+            description: ""
+          - name: _parentaccountid_value
+            description: ""
+          - name: presentproposal
+            description: ""
+          - name: msdyn_opportunitygrade
+            description: ""
+          - name: resolvefeedback
+            description: ""
+          - name: cai_reason
+            description: ""
+          - name: freightamount
+            description: ""
+          - name: cai_producttabvalidated
+            description: ""
+          - name: cai_marketingsupportneeded
+            description: ""
+          - name: totallineitemamount_base
+            description: ""
+          - name: totalamount_base
+            description: ""
+          - name: createdon
+            description: ""
+          - name: processid
+            description: ""
+          - name: decisionmaker
+            description: ""
+          - name: msdyn_opportunityscore
+            description: ""
+          - name: cai_annualestimatedamount_base
+            description: ""
+          - name: cai_pricevariance
+            description: ""
+          - name: captureproposalfeedback
+            description: ""
+          - name: new_customertype
+            description: ""
+          - name: msdyn_forecastcategory
+            description: ""
+          - name: schedulefollowup_qualify
+            description: ""
+          - name: cai_totalamount_date
+            description: ""
+          - name: name
+            description: ""
+          - name: cai_poattached
+            description: ""
+          - name: salesstage
+            description: ""
+          - name: opportunityratingcode
+            description: ""
+          - name: exchangerate
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: actualclosedate
+            description: ""
+          - name: msdyn_scorehistory
+            description: ""
+          - name: presentfinalproposal
+            description: ""
+          - name: _pricelevelid_value
+            description: ""
+          - name: _cai_unit_value
+            description: ""
+          - name: totallineitemamount
+            description: ""
+          - name: _owningbusinessunit_value
+            description: ""
+          - name: cai_samplesent
+            description: ""
+          - name: stepid
+            description: ""
+          - name: cai_identifyduration_state
+            description: ""
+          - name: _cai_tier_3_company_value
+            description: ""
+          - name: developproposal
+            description: ""
+          - name: stepname
+            description: ""
+          - name: cai_closeduration
+            description: ""
+          - name: budgetamount_base
+            description: ""
+          - name: pricingerrorcode
+            description: ""
+          - name: statuscode
+            description: ""
+          - name: _slainvokedid_value
+            description: ""
+          - name: cai_uom
+            description: ""
+          - name: cai_effectivedate
+            description: ""
+          - name: cai_toptotopmeetingrequired
+            description: ""
+          - name: quotecomments
+            description: ""
+          - name: cai_territorymanager
+            description: ""
+          - name: freightamount_base
+            description: ""
+          - name: cai_samplerequired
+            description: ""
+          - name: cai_rfirfpsubmitted
+            description: ""
+          - name: salesstagecode
+            description: ""
+          - name: cai_annualestimatedamount
+            description: ""
+          - name: cai_estimatedvolumefrequency
+            description: ""
+          - name: cai_productsentered
+            description: ""
+          - name: _owninguser_value
+            description: ""
+          - name: timezoneruleversionnumber
+            description: ""
+          - name: identifypursuitteam
+            description: ""
+          - name: totalamountlessfreight_base
+            description: ""
+          - name: cai_pricewasacceptable
+            description: ""
+          - name: totallineitemdiscountamount
+            description: ""
+          - name: closeprobability
+            description: ""
+          - name: stageid
+            description: ""
+          - name: cai_totalvolume_date
+            description: ""
+          - name: cai_totalvolume_state
+            description: ""
+          - name: budgetstatus
+            description: ""
+          - name: totaldiscountamount
+            description: ""
+          - name: cai_evaluateduration_state
+            description: ""
+          - name: _owningteam_value
+            description: ""
+          - name: statecode
+            description: ""
+          - name: cai_annualestimatedvolumelbs_date
+            description: ""
+          - name: pursuitdecision
+            description: ""
+          - name: cai_email
+            description: ""
+          - name: utcconversiontimezonecode
+            description: ""
+          - name: totaltax_base
+            description: ""
+          - name: cai_totalamount
+            description: ""
+          - name: _msdyn_predictivescoreid_value
+            description: ""
+          - name: _msdyn_segmentid_value
+            description: ""
+          - name: cai_expirydate
+            description: ""
+          - name: cai_evfnum
+            description: ""
+          - name: participatesinworkflow
+            description: ""
+          - name: cai_negotiateduration_date
+            description: ""
+          - name: cai_samplerequest
+            description: ""
+          - name: cai_annualestimatedvolumelbs_state
+            description: ""
+          - name: cai_estagreedtopricelb
+            description: ""
+          - name: identifycustomercontacts
+            description: ""
+          - name: lastonholdtime
+            description: ""
+          - name: msdyn_scorereasons
+            description: ""
+          - name: customerneed
+            description: ""
+          - name: cai_totalamount_base
+            description: ""
+          - name: cai_closeduration_state
+            description: ""
+          - name: emailaddress
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: cai_negotiateduration_state
+            description: ""
+          - name: cai_totalamount_state
+            description: ""
+          - name: cai_annualestimatedamount_state
+            description: ""
+          - name: traversedpath
+            description: ""
+          - name: _customerid_value
+            description: ""
+          - name: cai_pricevariance_base
+            description: ""
+          - name: cai_samplefeedbackreason
+            description: ""
+          - name: cai_actualstartdate
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: totaltax
+            description: ""
+          - name: cai_isthisarfiorrfp
+            description: ""
+          - name: cai_opportunity_id
+            description: ""
+          - name: cai_datebidwassubmitted
+            description: ""
+          - name: _originatingleadid_value
+            description: ""
+          - name: need
+            description: ""
+          - name: schedulefollowup_prospect
+            description: ""
+          - name: budgetamount
+            description: ""
+          - name: _msa_partneroppid_value
+            description: ""
+          - name: _transactioncurrencyid_value
+            description: ""
+          - name: purchaseprocess
+            description: ""
+          - name: cai_plannedstartdate
+            description: ""
+          - name: timespentbymeonemailandmeetings
+            description: ""
+          - name: skippricecalculation
+            description: ""
+          - name: onholdtime
+            description: ""
+          - name: cai_holdstartdate
+            description: ""
+          - name: proposedsolution
+            description: ""
+          - name: cai_closeduration_date
+            description: ""
+          - name: cai_identifyduration_date
+            description: ""
+          - name: cai_holdreason
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: cai_annualestimatedvolumelbs
+            description: ""
+          - name: completeinternalreview
+            description: ""
+          - name: estimatedvalue_base
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: finaldecisiondate
+            description: ""
+          - name: cai_presentedinperson
+            description: ""
+          - name: estimatedvalue
+            description: ""
+          - name: prioritycode
+            description: ""
+          - name: discountamount_base
+            description: ""
+          - name: cai_pendingtoclose
+            description: ""
+          - name: msdyn_gdproptout
+            description: ""
+          - name: confirminterest
+            description: ""
+          - name: cai_qualifyduration
+            description: ""
+          - name: cai_evaluateduration
+            description: ""
+          - name: totaldiscountamount_base
+            description: ""
+          - name: totalamount
+            description: ""
+          - name: actualvalue_base
+            description: ""
+          - name: _campaignid_value
+            description: ""
+          - name: cai_marketingsupportdetails
+            description: ""
+          - name: purchasetimeframe
+            description: ""
+          - name: cai_productmetneeds
+            description: ""
+          - name: isrevenuesystemcalculated
+            description: ""
+          - name: cai_totalvolume
+            description: ""
+          - name: cai_workfielddn
+            description: ""
+          - name: qualificationcomments
+            description: ""
+          - name: _cai_region_value
+            description: ""
+          - name: cai_annualestimatedamount_date
+            description: ""
+          - name: cai_qualifyduration_state
+            description: ""
+          - name: evaluatefit
+            description: ""
+          - name: currentsituation
+            description: ""
+          - name: identifycompetitors
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: teamsfollowed
+            description: ""
+          - name: sendthankyounote
+            description: ""
+          - name: customerpainpoints
+            description: ""
+          - name: filedebrief
+            description: ""
+          - name: _cai_country_value
+            description: ""
+          - name: cai_productdidntmeetneedsdetails
+            description: ""
+          - name: estimatedclosedate
+            description: ""
+          - name: cai_evaluateduration_date
+            description: ""
+          - name: _slaid_value
+            description: ""
+          - name: initialcommunication
+            description: ""
+          - name: cai_poorderreceived
+            description: ""
+          - name: _parentcontactid_value
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: timeline
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _cai_species_value
+            description: ""
+          - name: cai_opportunitysource
+            description: ""
+          - name: cai_numberofproducts
+            description: ""
+          - name: _msdyn_opportunitykpiid_value
+            description: ""
+          - name: msdyn_similaropportunities
+            description: ""
+
+      - name: systemuser
+        description: ""
+        columns:
+          - name: ownerid
+            description: ""
+          - name: msdyn_usertype
+            description: ""
+          - name: address_1_fax
+            description: ""
+          - name: organizationid
+            description: ""
+          - name: nickname
+            description: ""
+          - name: address_1_postofficebox
+            description: ""
+          - name: applicationid
+            description: ""
+          - name: address_1_upszone
+            description: ""
+          - name: photourl
+            description: ""
+          - name: address_1_latitude
+            description: ""
+          - name: address_1_shippingmethodcode
+            description: ""
+          - name: title
+            description: ""
+          - name: address_1_utcoffset
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: homephone
+            description: ""
+          - name: skills
+            description: ""
+          - name: emailrouteraccessapproval
+            description: ""
+          - name: address_2_latitude
+            description: ""
+          - name: governmentid
+            description: ""
+          - name: traversedpath
+            description: ""
+          - name: address_2_longitude
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: defaultfilterspopulated
+            description: ""
+          - name: address_1_telephone_3
+            description: ""
+          - name: mobilephone
+            description: ""
+          - name: displayinserviceviews
+            description: ""
+          - name: address_2_fax
+            description: ""
+          - name: preferredaddresscode
+            description: ""
+          - name: address_2_city
+            description: ""
+          - name: defaultodbfoldername
+            description: ""
+          - name: cai_salespersonid
+            description: ""
+          - name: address_2_stateorprovince
+            description: ""
+          - name: address_2_line_2
+            description: ""
+          - name: userpuid
+            description: ""
+          - name: firstname
+            description: ""
+          - name: passporthi
+            description: ""
+          - name: cai_department
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: azuredeletedon
+            description: ""
+          - name: address_1_composite
+            description: ""
+          - name: address_1_city
+            description: ""
+          - name: address_2_county
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: entityimage_timestamp
+            description: ""
+          - name: internalemailaddress
+            description: ""
+          - name: salutation
+            description: ""
+          - name: isemailaddressapprovedbyo_365_admin
+            description: ""
+          - name: address_1_county
+            description: ""
+          - name: _businessunitid_value
+            description: ""
+          - name: invitestatuscode
+            description: ""
+          - name: msdyn_isexpertenabledforswarm
+            description: ""
+          - name: entityimageid
+            description: ""
+          - name: _parentsystemuserid_value
+            description: ""
+          - name: stageid
+            description: ""
+          - name: address_1_addresstypecode
+            description: ""
+          - name: outgoingemaildeliverymethod
+            description: ""
+          - name: address_2_postalcode
+            description: ""
+          - name: passportlo
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: timezoneruleversionnumber
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: sharepointemailaddress
+            description: ""
+          - name: msdyn_botdescription
+            description: ""
+          - name: yammeruserid
+            description: ""
+          - name: address_1_longitude
+            description: ""
+          - name: address_1_name
+            description: ""
+          - name: _queueid_value
+            description: ""
+          - name: setupuser
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: isintegrationuser
+            description: ""
+          - name: personalemailaddress
+            description: ""
+          - name: utcconversiontimezonecode
+            description: ""
+          - name: preferredemailcode
+            description: ""
+          - name: address_2_composite
+            description: ""
+          - name: address_1_telephone_1
+            description: ""
+          - name: msdyn_gdproptout
+            description: ""
+          - name: _mobileofflineprofileid_value
+            description: ""
+          - name: address_2_country
+            description: ""
+          - name: windowsliveid
+            description: ""
+          - name: address_1_line_1
+            description: ""
+          - name: yomimiddlename
+            description: ""
+          - name: entityimage
+            description: ""
+          - name: islicensed
+            description: ""
+          - name: _transactioncurrencyid_value
+            description: ""
+          - name: _calendarid_value
+            description: ""
+          - name: address_1_line_3
+            description: ""
+          - name: fullname
+            description: ""
+          - name: entityimage_url
+            description: ""
+          - name: systemuserid
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: address_1_line_2
+            description: ""
+          - name: azurestate
+            description: ""
+          - name: address_2_upszone
+            description: ""
+          - name: address_1_stateorprovince
+            description: ""
+          - name: address_2_line_3
+            description: ""
+          - name: address_2_name
+            description: ""
+          - name: msdyn_botsecretkeys
+            description: ""
+          - name: userlicensetype
+            description: ""
+          - name: _positionid_value
+            description: ""
+          - name: accessmode
+            description: ""
+          - name: msdyn_gridwrappercontrolfield
+            description: ""
+          - name: _siteid_value
+            description: ""
+          - name: address_2_line_1
+            description: ""
+          - name: _defaultmailbox_value
+            description: ""
+          - name: middlename
+            description: ""
+          - name: isdisabled
+            description: ""
+          - name: issyncwithdirectory
+            description: ""
+          - name: employeeid
+            description: ""
+          - name: lastname
+            description: ""
+          - name: mobilealertemail
+            description: ""
+          - name: address_2_telephone_2
+            description: ""
+          - name: identityid
+            description: ""
+          - name: _msdyn_defaultpresenceiduser_value
+            description: ""
+          - name: _territoryid_value
+            description: ""
+          - name: msdyn_botendpoint
+            description: ""
+          - name: createdon
+            description: ""
+          - name: azureactivedirectoryobjectid
+            description: ""
+          - name: yomifirstname
+            description: ""
+          - name: address_2_shippingmethodcode
+            description: ""
+          - name: address_2_telephone_3
+            description: ""
+          - name: yomilastname
+            description: ""
+          - name: deletedstate
+            description: ""
+          - name: yomifullname
+            description: ""
+          - name: address_2_addresstypecode
+            description: ""
+          - name: address_1_addressid
+            description: ""
+          - name: incomingemaildeliverymethod
+            description: ""
+          - name: yammeremailaddress
+            description: ""
+          - name: address_1_postalcode
+            description: ""
+          - name: exchangerate
+            description: ""
+          - name: jobtitle
+            description: ""
+          - name: address_2_postofficebox
+            description: ""
+          - name: caltype
+            description: ""
+          - name: address_2_addressid
+            description: ""
+          - name: processid
+            description: ""
+          - name: applicationiduri
+            description: ""
+          - name: address_2_telephone_1
+            description: ""
+          - name: preferredphonecode
+            description: ""
+          - name: address_2_utcoffset
+            description: ""
+          - name: address_1_telephone_2
+            description: ""
+          - name: msdyn_capacity
+            description: ""
+          - name: disabledreason
+            description: ""
+          - name: address_1_country
+            description: ""
+          - name: domainname
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: msdyn_bothandle
+            description: ""
+          - name: msdyn_botapplicationid
+            description: ""
+          - name: msdyn_agent_type
+            description: ""
+          - name: msdyn_owningenvironmentid
+            description: ""
+          - name: msdyn_botprovider
+            description: ""
+
+      - name: team
+        description: ""
+        columns:
+          - name: ownerid
+            description: ""
+          - name: _transactioncurrencyid_value
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: yominame
+            description: ""
+          - name: _teamtemplateid_value
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: isdefault
+            description: ""
+          - name: traversedpath
+            description: ""
+          - name: organizationid
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: name
+            description: ""
+          - name: _regardingobjectid_value
+            description: ""
+          - name: exchangerate
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: systemmanaged
+            description: ""
+          - name: description
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: emailaddress
+            description: ""
+          - name: processid
+            description: ""
+          - name: _businessunitid_value
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: _queueid_value
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: teamtype
+            description: ""
+          - name: sharelinkqualifier
+            description: ""
+          - name: stageid
+            description: ""
+          - name: membershiptype
+            description: ""
+          - name: createdon
+            description: ""
+          - name: issastokenset
+            description: ""
+          - name: azureactivedirectoryobjectid
+            description: ""
+          - name: _administratorid_value
+            description: ""
+          - name: teamid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: msft_datastate
+            description: ""
+          - name: _delegatedauthorizationid_value
+            description: ""
+
+      - name: account
+        description: ""
+        columns:
+          - name: accountid
+            description: ""
+          - name: lastusedincampaign
+            description: ""
+          - name: address_1_name
+            description: ""
+          - name: timezoneruleversionnumber
+            description: ""
+          - name: _owningbusinessunit_value
+            description: ""
+          - name: overriddencreatedon
+            description: ""
+          - name: entityimageid
+            description: ""
+          - name: ownershipcode
+            description: ""
+          - name: customersizecode
+            description: ""
+          - name: donotpostalmail
+            description: ""
+          - name: cai_url
+            description: ""
+          - name: address_2_city
+            description: ""
+          - name: creditlimit
+            description: ""
+          - name: entityimage_url
+            description: ""
+          - name: _primarycontactid_value
+            description: ""
+          - name: versionnumber
+            description: ""
+          - name: _territoryid_value
+            description: ""
+          - name: entityimage_timestamp
+            description: ""
+          - name: telephone_3
+            description: ""
+          - name: address_2_stateorprovince
+            description: ""
+          - name: openrevenue_date
+            description: ""
+          - name: cai_edicustomer
+            description: ""
+          - name: address_1_freighttermscode
+            description: ""
+          - name: _cai_marinerinsidesale_value
+            description: ""
+          - name: lastonholdtime
+            description: ""
+          - name: address_2_line_1
+            description: ""
+          - name: onholdtime
+            description: ""
+          - name: adx_createdbyusername
+            description: ""
+          - name: _createdbyexternalparty_value
+            description: ""
+          - name: telephone_2
+            description: ""
+          - name: preferredappointmenttimecode
+            description: ""
+          - name: marketcap_base
+            description: ""
+          - name: primarysatoriid
+            description: ""
+          - name: shippingmethodcode
+            description: ""
+          - name: address_1_addressid
+            description: ""
+          - name: address_2_telephone_1
+            description: ""
+          - name: address_1_fax
+            description: ""
+          - name: address_1_composite
+            description: ""
+          - name: _createdonbehalfby_value
+            description: ""
+          - name: stageid
+            description: ""
+          - name: _msa_managingpartnerid_value
+            description: ""
+          - name: address_2_latitude
+            description: ""
+          - name: entityimage
+            description: ""
+          - name: address_1_postofficebox
+            description: ""
+          - name: donotsendmm
+            description: ""
+          - name: address_1_telephone_2
+            description: ""
+          - name: aging_90_base
+            description: ""
+          - name: address_2_postalcode
+            description: ""
+          - name: address_2_name
+            description: ""
+          - name: _modifiedonbehalfby_value
+            description: ""
+          - name: preferredappointmentdaycode
+            description: ""
+          - name: _owningteam_value
+            description: ""
+          - name: _masterid_value
+            description: ""
+          - name: aging_30
+            description: ""
+          - name: paymenttermscode
+            description: ""
+          - name: address_2_county
+            description: ""
+          - name: donotbulkemail
+            description: ""
+          - name: _originatingleadid_value
+            description: ""
+          - name: emailaddress_3
+            description: ""
+          - name: _modifiedbyexternalparty_value
+            description: ""
+          - name: processid
+            description: ""
+          - name: websiteurl
+            description: ""
+          - name: revenue
+            description: ""
+          - name: merged
+            description: ""
+          - name: address_1_shippingmethodcode
+            description: ""
+          - name: description
+            description: ""
+          - name: fax
+            description: ""
+          - name: cai_w_9
+            description: ""
+          - name: address_1_stateorprovince
+            description: ""
+          - name: followemail
+            description: ""
+          - name: utcconversiontimezonecode
+            description: ""
+          - name: cai_rebatecustomer
+            description: ""
+          - name: cai_seafaxnumber
+            description: ""
+          - name: sic
+            description: ""
+          - name: address_1_line_2
+            description: ""
+          - name: _owninguser_value
+            description: ""
+          - name: _cai_insidesales_value
+            description: ""
+          - name: _msdyn_segmentid_value
+            description: ""
+          - name: territorycode
+            description: ""
+          - name: creditlimit_base
+            description: ""
+          - name: teamsfollowed
+            description: ""
+          - name: _preferredsystemuserid_value
+            description: ""
+          - name: _defaultpricelevelid_value
+            description: ""
+          - name: address_1_primarycontactname
+            description: ""
+          - name: openrevenue
+            description: ""
+          - name: statecode
+            description: ""
+          - name: donotfax
+            description: ""
+          - name: address_1_county
+            description: ""
+          - name: address_2_telephone_3
+            description: ""
+          - name: address_2_postofficebox
+            description: ""
+          - name: marketingonly
+            description: ""
+          - name: _preferredserviceid_value
+            description: ""
+          - name: cai_accounttype
+            description: ""
+          - name: accountratingcode
+            description: ""
+          - name: address_1_upszone
+            description: ""
+          - name: address_2_composite
+            description: ""
+          - name: marketcap
+            description: ""
+          - name: donotemail
+            description: ""
+          - name: aging_60
+            description: ""
+          - name: cai_sellto
+            description: ""
+          - name: openrevenue_state
+            description: ""
+          - name: customertypecode
+            description: ""
+          - name: telephone_1
+            description: ""
+          - name: _createdby_value
+            description: ""
+          - name: cai_crmaccountid
+            description: ""
+          - name: _modifiedby_value
+            description: ""
+          - name: yominame
+            description: ""
+          - name: address_2_primarycontactname
+            description: ""
+          - name: opendeals_state
+            description: ""
+          - name: address_2_country
+            description: ""
+          - name: businesstypecode
+            description: ""
+          - name: address_2_longitude
+            description: ""
+          - name: adx_modifiedbyipaddress
+            description: ""
+          - name: timespentbymeonemailandmeetings
+            description: ""
+          - name: address_1_postalcode
+            description: ""
+          - name: traversedpath
+            description: ""
+          - name: _transactioncurrencyid_value
+            description: ""
+          - name: numberofemployees
+            description: ""
+          - name: tickersymbol
+            description: ""
+          - name: cai_customerspecificlabeling
+            description: ""
+          - name: address_1_city
+            description: ""
+          - name: aging_90
+            description: ""
+          - name: address_1_longitude
+            description: ""
+          - name: participatesinworkflow
+            description: ""
+          - name: openrevenue_base
+            description: ""
+          - name: revenue_base
+            description: ""
+          - name: donotbulkpostalmail
+            description: ""
+          - name: cai_customerlabelrequirments
+            description: ""
+          - name: creditonhold
+            description: ""
+          - name: address_1_telephone_1
+            description: ""
+          - name: createdon
+            description: ""
+          - name: name
+            description: ""
+          - name: cai_accountspayable
+            description: ""
+          - name: exchangerate
+            description: ""
+          - name: cai_customerportal
+            description: ""
+          - name: address_2_addresstypecode
+            description: ""
+          - name: address_2_shippingmethodcode
+            description: ""
+          - name: _cai_wancheseinsidesale_value
+            description: ""
+          - name: address_2_line_2
+            description: ""
+          - name: cai_marketsegment
+            description: ""
+          - name: address_2_addressid
+            description: ""
+          - name: _msdyn_salesaccelerationinsightid_value
+            description: ""
+          - name: primarytwitterid
+            description: ""
+          - name: accountnumber
+            description: ""
+          - name: adx_modifiedbyusername
+            description: ""
+          - name: address_1_line_1
+            description: ""
+          - name: sharesoutstanding
+            description: ""
+          - name: _slaid_value
+            description: ""
+          - name: ftpsiteurl
+            description: ""
+          - name: importsequencenumber
+            description: ""
+          - name: address_2_freighttermscode
+            description: ""
+          - name: donotphone
+            description: ""
+          - name: accountclassificationcode
+            description: ""
+          - name: _preferredequipmentid_value
+            description: ""
+          - name: cai_freightterms
+            description: ""
+          - name: address_2_telephone_2
+            description: ""
+          - name: address_1_addresstypecode
+            description: ""
+          - name: address_1_utcoffset
+            description: ""
+          - name: _parentaccountid_value
+            description: ""
+          - name: _cai_omegainsidesales_value
+            description: ""
+          - name: address_2_fax
+            description: ""
+          - name: aging_60_base
+            description: ""
+          - name: msdyn_gdproptout
+            description: ""
+          - name: stockexchange
+            description: ""
+          - name: address_1_line_3
+            description: ""
+          - name: _cai_covertsinsidesales_value
+            description: ""
+          - name: preferredcontactmethodcode
+            description: ""
+          - name: aging_30_base
+            description: ""
+          - name: statuscode
+            description: ""
+          - name: address_2_upszone
+            description: ""
+          - name: _slainvokedid_value
+            description: ""
+          - name: address_1_latitude
+            description: ""
+          - name: address_1_country
+            description: ""
+          - name: modifiedon
+            description: ""
+          - name: address_2_line_3
+            description: ""
+          - name: address_2_utcoffset
+            description: ""
+          - name: cai_customeraccounttype
+            description: ""
+          - name: emailaddress_1
+            description: ""
+          - name: opendeals
+            description: ""
+          - name: opendeals_date
+            description: ""
+          - name: _ownerid_value
+            description: ""
+          - name: emailaddress_2
+            description: ""
+          - name: adx_createdbyipaddress
+            description: ""
+          - name: industrycode
+            description: ""
+          - name: address_1_telephone_3
+            description: ""
+          - name: accountcategorycode
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _msdyn_accountkpiid_value
+            description: ""
+          - name: cai_d_365_customeraccountnumber
+            description: ""
+          - name: cai_academytype
+            description: ""

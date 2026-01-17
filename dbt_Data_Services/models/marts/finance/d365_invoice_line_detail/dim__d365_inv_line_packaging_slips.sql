@@ -1,0 +1,1 @@
+select * from {{ ref('int_d365__packing_slips') }}

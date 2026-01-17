@@ -1,0 +1,320 @@
+---
+alwaysApply: false
+---
+# dbt Project-Specific Patterns
+
+## Cooke-Specific Patterns
+
+### Multi-System Integration
+
+**Unioning GP Schemas:**
+Use the `schemas_with_table_from_folder()` macro pattern:
+```sql
+with unioned_data as (
+    {% for schema in schemas_with_table_from_folder('PM00200', folder='staging/gp') %}
+    select * from {{ ref('stg_gp_' ~ schema ~ '__PM00200') }}
+    {% if not loop.last %} union all {% endif %}
+    {% endfor %}
+)
+```
+
+**System-Specific Transformations:**
+- D365: Use D365-specific macros in `macros/d365/`
+- GP: Use GP utilities in `macros/staging_gp_utils.sql`
+- SAP: European operations use different date formats
+- Northscope: Different currency handling
+
+### Currency Conversion
+
+**Standard Patterns:**
+- **Global Sales**: Use `convert_to_usd()` or `convert_to_usd_adjusted()`
+- **Finance AP/AR**: Use `ap_aging_currency_conversions` macros
+- **Exchange Rates**: Reference `int_ancillary__daily_exchange_rates`
+
+**Example:**
+```sql
+{{ convert_to_usd('amount', 'currency_code', 'transaction_date') }} as amount_usd
+```
+
+### Domain-Specific Macros
+
+**Finance:**
+- `ap_aging_buckets.sql` - AP aging calculations
+- `forex_convert.sql` - Currency conversion
+- Location: `macros/finance/`
+
+**Global Sales:**
+- `convert_to_usd.sql` - USD conversion
+- `sales_volumes_lb.sql` - Volume conversions
+- Location: `macros/global_sales/`
+
+**Global Inventory:**
+- `standard_unit.sql` - Unit standardization
+- `inventory_kgs_coolearth.sql` - Weight conversions
+- Location: `macros/global_inventory/`
+
+**EDI:**
+- `sscc_calc_check_sum.sql` - SSCC calculations
+- Location: `macros/edi/`
+
+## Common Model Patterns
+
+### Staging Model Template
+```sql
+with source as (
+    select * from {{ source('<system>', '<table_name>') }}
+),
+
+renamed as (
+    select
+        -- Primary keys
+        {{ dbt_utils.surrogate_key(['id']) }} as <entity>_key,
+        id as <entity>_id,
+        
+        -- Columns (rename to snake_case)
+        column1 as column_1,
+        column2 as column_2,
+        
+        -- Dates (cast properly)
+        try_to_date(date_column) as date_column,
+        
+        -- Booleans (standardize)
+        case when flag = 'Y' then true else false end as is_active,
+        
+        -- Handle nulls
+        coalesce(amount, 0) as amount
+        
+    from source
+    where
+        -- Filter test data
+        company_code != 'TEST'
+        -- Add other filters as needed
+)
+
+select * from renamed
+```
+
+### Intermediate Union Pattern
+```sql
+with 
+
+d365_data as (
+    select
+        order_id,
+        'D365' as source_system,
+        order_date,
+        order_amount_usd
+    from {{ ref('stg_d365__sales_orders') }}
+),
+
+northscope_data as (
+    select
+        order_id,
+        'Northscope' as source_system,
+        order_date,
+        order_amount_usd
+    from {{ ref('stg_northscope__sales_orders') }}
+),
+
+unioned as (
+    select * from d365_data
+    union all
+    select * from northscope_data
+),
+
+final as (
+    select * from unioned
+)
+
+select * from final
+```
+
+### Mart Fact Table Pattern
+```sql
+with 
+
+orders as (
+    select * from {{ ref('int_global_sales__orders') }}
+),
+
+order_lines as (
+    select * from {{ ref('int_global_sales__order_lines') }}
+),
+
+customers as (
+    select * from {{ ref('dim_customer') }}
+),
+
+final as (
+    select
+        {{ dbt_utils.surrogate_key(['ol.order_line_id']) }} as order_line_key,
+        ol.order_line_id,
+        o.order_id,
+        c.customer_key,
+        ol.product_id,
+        ol.order_date,
+        ol.quantity,
+        ol.unit_price_usd,
+        ol.line_amount_usd,
+        c.customer_segment
+    from order_lines ol
+    inner join orders o
+        on ol.order_id = o.order_id
+    left join customers c
+        on o.customer_id = c.customer_id
+)
+
+select * from final
+```
+
+## Variable Usage
+
+### Project Variables
+Common variables in `dbt_project.yml`:
+- `edi_856_*` - EDI 856 configuration
+- `crm_d365_*` - D365 CRM settings
+- `gp_*` - Great Plains settings
+- `image_base_url` - QC scanner image URLs
+
+**Accessing Variables:**
+```sql
+where transaction_date >= '{{ var("gp_cff_pstgdate") }}'
+```
+
+## Tag Usage
+
+### Refresh Schedule Tags
+- `refresh_10m` - Every 10 minutes
+- `refresh_1h` - Every hour
+- `refresh_4h` - Every 4 hours
+- No tag - Manual/scheduled refresh
+
+**Usage:**
+```yaml
+models:
+  - name: fct_sales
+    config:
+      tags: [refresh_1h, layer_mart]
+```
+
+### Domain Tags
+Use for grouping and filtering:
+- `Global_Sales`
+- `Finance`
+- `D365`
+- `Saltwater`
+- `layer_mart`, `layer_staging`
+
+## Schema Configuration
+
+### Custom Schemas
+Some domains use custom schemas:
+- `sharepoint` - SharePoint models
+- `ancillary` - Ancillary services
+- `d365` - D365 marts
+- `gp` - GP models
+
+**Configure in `dbt_project.yml`:**
+```yaml
+models:
+  cookedbt:
+    staging:
+      sharepoint:
+        +schema: sharepoint
+```
+
+## Testing Patterns
+
+### Standard Tests by Layer
+
+**Staging:**
+- Data type validation
+- Not null for key fields
+- Basic data quality checks
+
+**Intermediate:**
+- Referential integrity
+- Business logic validation
+- Data completeness
+
+**Marts:**
+- Uniqueness constraints
+- Foreign key relationships
+- Business rule validation
+- Range checks for metrics
+
+## Troubleshooting Common Issues
+
+### "SQL Errors in Cursor but CI Passes"
+**Root Cause**: Cursor's built-in SQL linter doesn't use the dbt templater, so it can't parse Jinja macros.
+
+**Solution**: 
+- VS Code/Cursor settings are configured in `.vscode/settings.json` to disable built-in SQL validation
+- CI uses `--templater dbt` which correctly parses Jinja
+- If you see errors in editor but CI passes, they're false positives
+- Trust CI results - they're the source of truth
+
+**To Fix Locally**:
+- Install SQLFluff extension in VS Code/Cursor
+- Ensure `.sqlfluff` config is at project root (already configured)
+- Run manually: `sqlfluff lint <file> --templater dbt --dialect snowflake`
+
+### "Model not found"
+- Run `dbt clean` and `dbt deps`
+- Check file is in correct directory
+- Verify `dbt_project.yml` includes path
+- Check for typos in model name
+
+### "Source not found"
+- Verify source defined in `_sources.yml`
+- Check source name matches exactly (case-sensitive)
+- Run `dbt list --resource-type source`
+
+### "Macro not found"
+- Run `dbt deps` to install packages
+- Check macro file exists in `macros/`
+- Verify macro name spelling
+
+### "Compilation error"
+- Check Jinja syntax
+- Verify all `ref()` and `source()` calls are correct
+- Look for unclosed parentheses/brackets
+
+### "Permission denied"
+- Verify Snowflake role permissions
+- Check schema access
+- Confirm warehouse access
+
+### "Query timeout"
+- Check if model should be materialized as table
+- Review query for performance issues
+- Consider incremental materialization
+
+## Performance Tips
+
+### When to Use Tables vs Views
+- **Use Views**: Staging, simple transforms, always-current data
+- **Use Tables**: Marts, complex aggregations, frequently queried
+- **Use Incremental**: Large datasets, only new/changed rows
+
+### Query Optimization
+- Filter in earliest CTE possible
+- Use `INNER JOIN` when appropriate
+- Avoid `SELECT *` in production
+- Limit window function scopes
+
+## Migration Patterns
+
+### Adding New Source System
+1. Create source definition in `models/staging/<system>/_<system>__sources.yml`
+2. Create staging models in `models/staging/<system>/`
+3. Add intermediate models if needed
+4. Create marts in appropriate domain folder
+5. Document in README
+
+### Refactoring Existing Models
+1. Create new model with changes
+2. Test thoroughly in dev
+3. Update downstream models to use new model
+4. Deprecate old model (document in YAML)
+5. Remove after downstream migration complete

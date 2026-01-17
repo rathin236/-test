@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: int_d365_cpm__customer
+    description: "Table containing customer data from D365 CPM."
+    columns:
+      - name: customer_id
+        description: "Unique identifier for the customer."
+      - name: customer_name
+        description: "Name of the customer."
+      - name: customer_group
+        description: "Group or category to which the customer belongs."
+      - name: address
+        description: "Customer's primary address."
+      - name: city
+        description: "City where the customer is located."
+      - name: country
+        description: "Country where the customer resides."
+      - name: postal_code
+        description: "Postal code of the customer's address."
+      - name: phone
+        description: "Primary contact number of the customer."
+      - name: email
+        description: "Primary email address of the customer."
+      - name: account_status
+        description: "Status of the customer's account (active/inactive)."
+      - name: created_at
+        description: "Timestamp when the customer record was created."
+      - name: updated_at
+        description: "Timestamp when the customer record was last updated."
+
+  - name: int_d365_cpm__vendor
+    description: "Table containing vendor data from D365 CPM."
+    columns:
+      - name: vendor_id
+        description: "Unique identifier for the vendor."
+      - name: vendor_name
+        description: "Name of the vendor."
+      - name: vendor_group
+        description: "Group or category to which the vendor belongs."
+      - name: address
+        description: "Vendor's primary address."
+      - name: city
+        description: "City where the vendor is located."
+      - name: country
+        description: "Country where the vendor resides."
+      - name: postal_code
+        description: "Postal code of the vendor's address."
+      - name: phone
+        description: "Primary contact number of the vendor."
+      - name: email
+        description: "Primary email address of the vendor."
+      - name: account_status
+        description: "Status of the vendor's account (active/inactive)."
+      - name: created_at
+        description: "Timestamp when the vendor record was created."
+      - name: updated_at
+        description: "Timestamp when the vendor record was last updated."

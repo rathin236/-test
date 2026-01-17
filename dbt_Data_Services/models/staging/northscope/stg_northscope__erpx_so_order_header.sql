@@ -1,0 +1,85 @@
+with source as (
+
+    select * from {{ source('northscope', 'erpx_soorderheader') }}
+
+),
+
+renamed as (
+
+    select
+        shipaddressline3,
+        allocatedamount,
+        salespersonsk,
+        sotrucktare,
+        orderedunits,
+        extendedamount,
+        paymenttermssk,
+        scheduleddeliverydate,
+        sofreighttermsen,
+        waybill,
+        documentid,
+        shipzip,
+        masternumber,
+        inventoryunits,
+        lastupdated,
+        inventoryweight,
+        billaddresssk,
+        orderedweight,
+        shipcountry,
+        shipphone1,
+        lastuser,
+        adjustmentversion,
+        actualshipdate,
+        insidesalespersonsk,
+        allocatedunits,
+        purchaseorder,
+        trailer,
+        orderid,
+        orderedamount,
+        shipattentionto,
+        currencysk,
+        origintranstypesk,
+        shipstate,
+        ordertypesk,
+        truck,
+        pricebasissk,
+        createdby,
+        contractheadersk,
+        discountmethodsk,
+        invoicedamount,
+        trackingnumber,
+        shipaddressiscustomized,
+        allowmultipleshipments,
+        discountamount,
+        shipaddressline2,
+        discountrate,
+        ediorderstatusen,
+        bol,
+        shipaddressline1,
+        itemdiscountamount,
+        shipcity,
+        createddate,
+        masternumberoverride,
+        scheduledshipdate,
+        orderdate,
+        carriersk,
+        sealnumber,
+        origintransid,
+        workflowsk,
+        allocatedweight,
+        iscontractorder,
+        _fivetran_deleted,
+        _fivetran_synced,
+        trim(orderheadersk) as orderheadersk,
+        trim(sitesk) as sitesk,
+        trim(shipaddresssk) as shipaddresssk,
+        trim(dataentitycompanysk) as dataentitycompanysk,
+        trim(customersk) as customersk,
+        trim(orderstatussk) as orderstatussk
+
+    from source
+
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

@@ -1,0 +1,745 @@
+version: 2
+
+models:
+  - name: tn_fresh_dim_item
+    description: ""
+    columns:
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: ItemDescription
+        quote: true
+        description: ""
+
+      - name: ItemDisplayDescription
+        quote: true
+        description: ""
+
+      - name: ItemType
+        quote: true
+        description: ""
+
+      - name: ItemClass
+        quote: true
+        description: ""
+
+      - name: CatchArea
+        quote: true
+        description: ""
+
+      - name: Category
+        quote: true
+        description: ""
+
+      - name: CWCategory
+        quote: true
+        description: ""
+
+      - name: Division
+        quote: true
+        description: ""
+
+      - name: Family
+        quote: true
+        description: ""
+
+      - name: FinishedForm
+        quote: true
+        description: ""
+
+      - name: Form
+        quote: true
+        description: ""
+
+      - name: Grade
+        quote: true
+        description: ""
+
+      - name: HighLevelCategory
+        quote: true
+        description: ""
+
+      - name: HighLevelGrade
+        quote: true
+        description: ""
+
+      - name: InsidePackType
+        quote: true
+        description: ""
+
+      - name: MasterPackagingType
+        quote: true
+        description: ""
+
+      - name: Scaled
+        quote: true
+        description: ""
+
+      - name: Size
+        quote: true
+        description: ""
+
+      - name: SkinOnOff
+        quote: true
+        description: ""
+
+      - name: SkinningType
+        quote: true
+        description: ""
+
+      - name: Species
+        quote: true
+        description: ""
+
+      - name: Subcategory
+        quote: true
+        description: ""
+
+      - name: Subspecies
+        quote: true
+        description: ""
+
+      - name: Trim
+        quote: true
+        description: ""
+
+      - name: WholeVa
+        quote: true
+        description: ""
+
+      - name: WildOrFarmed
+        quote: true
+        description: ""
+
+      - name: YieldClass
+        quote: true
+        description: ""
+
+      - name: Key_Item
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  - name: tn_fresh_dim_lot
+    description: ""
+    columns:
+      - name: LotNumber
+        quote: true
+        description: ""
+
+      - name: Owner
+        quote: true
+        description: ""
+
+      - name: HarvestDateTime
+        quote: true
+        description: ""
+
+      - name: HarvestDate
+        quote: true
+        description: ""
+
+      - name: Farm
+        quote: true
+        description: ""
+
+      - name: Cages
+        quote: true
+        description: ""
+
+      - name: Vessel
+        quote: true
+        description: ""
+
+      - name: CountryOfOrigin
+        quote: true
+        description: ""
+
+      - name: Certifications
+        quote: true
+        description: ""
+
+      - name: Key_Lot
+        quote: true
+        description: ""
+
+  - name: tn_fresh_dim_processing_company
+    description: ""
+    columns:
+      - name: CompanyCode
+        quote: true
+        description: ""
+
+      - name: CompanyName
+        quote: true
+        description: ""
+
+      - name: HostServer
+        quote: true
+        description: ""
+
+      - name: DBName
+        quote: true
+        description: ""
+
+      - name: Key_Company
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  - name: tn_fresh_dim_production_line
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+
+      - name: Warehouse
+        quote: true
+        description: ""
+
+      - name: LineNumber
+        quote: true
+        description: ""
+
+      - name: FullLineDescription
+        quote: true
+        description: ""
+
+      - name: LineDescription
+        quote: true
+        description: ""
+
+      - name: Key_Line
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  - name: tn_fresh_dim_sales_order
+    description: ""
+    columns:
+      - name: OrderID
+        quote: true
+        description: ""
+
+      - name: OrderTypeSK
+        quote: true
+        description: ""
+
+      - name: OrderStatusSK
+        quote: true
+        description: ""
+
+      - name: WorkflowSK
+        quote: true
+        description: ""
+
+      - name: CustomerSK
+        quote: true
+        description: ""
+
+      - name: CustomerName
+        quote: true
+        description: ""
+
+      - name: PaymentTermsSK
+        quote: true
+        description: ""
+
+      - name: BillAddressSK
+        quote: true
+        description: ""
+
+      - name: ShipAddressSK
+        quote: true
+        description: ""
+
+      - name: ShipAddressLine1
+        quote: true
+        description: ""
+
+      - name: ShipAddressLine2
+        quote: true
+        description: ""
+
+      - name: ShipAddressLine3
+        quote: true
+        description: ""
+
+      - name: ShipCity
+        quote: true
+        description: ""
+
+      - name: ShipState
+        quote: true
+        description: ""
+
+      - name: ShipZip
+        quote: true
+        description: ""
+
+      - name: ShipCountry
+        quote: true
+        description: ""
+
+      - name: PurchaseOrder
+        quote: true
+        description: ""
+
+      - name: OrderDate
+        quote: true
+        description: ""
+
+      - name: ScheduledShipDate
+        quote: true
+        description: ""
+
+      - name: ScheduledDeliveryDate
+        quote: true
+        description: ""
+
+      - name: ActualShipDate
+        quote: true
+        description: ""
+
+      - name: CarrierSK
+        quote: true
+        description: ""
+
+      - name: SiteSK
+        quote: true
+        description: ""
+
+      - name: SalesPersonSK
+        quote: true
+        description: ""
+
+      - name: OrderedUnits
+        quote: true
+        description: ""
+
+      - name: OrderedWeight
+        quote: true
+        description: ""
+
+      - name: OrderedAmount
+        quote: true
+        description: ""
+
+      - name: AllocatedUnits
+        quote: true
+        description: ""
+
+      - name: AllocatedWeight
+        quote: true
+        description: ""
+
+      - name: AllocatedAmount
+        quote: true
+        description: ""
+
+      - name: PriceBasisSK
+        quote: true
+        description: ""
+
+      - name: ExtendedAmount
+        quote: true
+        description: ""
+
+      - name: CurrencySK
+        quote: true
+        description: ""
+
+  - name: tn_fresh_fact_processing_inputs
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: Facility
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: PalletNumber
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: CaseNumber
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: PalletUOM
+        quote: true
+        description: ""
+
+      - name: PalletVolume
+        quote: true
+        description: ""
+
+      - name: CaseUOM
+        quote: true
+        description: ""
+
+      - name: CaseVolume
+        quote: true
+        description: ""
+
+      - name: Pieces
+        quote: true
+        description: ""
+
+      - name: FWtoLBConversion
+        quote: true
+        description: ""
+
+      - name: Lbs
+        quote: true
+        description: ""
+
+      - name: Units
+        quote: true
+        description: ""
+
+      - name: TransactionType
+        quote: true
+        description: ""
+
+      - name: ItemProfile
+        quote: true
+        description: ""
+
+      - name: ItemSetCheck
+        quote: true
+        description: ""
+
+      - name: DBDT
+        quote: true
+        description: ""
+
+      - name: DateTime_Transaction
+        quote: true
+        description: ""
+
+      - name: Date_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Contdtl
+        quote: true
+        description: ""
+
+      - name: Key_Company
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+          - relationships:
+              to: ref('tn_fresh_dim_processing_company')
+              field: '"Key_Company"'
+
+      - name: Key_Site
+        quote: true
+        description: ""
+
+      - name: Key_Date
+        quote: true
+        description: ""
+
+      - name: Key_Item
+        quote: true
+        description: ""
+
+      - name: Key_Lot
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: Key_Line
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: Lot_Number
+        quote: true
+        description: ""
+
+      - name: Item_Description
+        quote: true
+        description: ""
+
+      - name: Farm
+        quote: true
+        description: ""
+
+      - name: Line_Description
+        quote: true
+        description: ""
+
+      - name: Category
+        quote: true
+        description: ""
+
+      - name: CW_Category
+        quote: true
+        description: ""
+
+      - name: Size
+        quote: true
+        description: ""
+
+      - name: Grade
+        quote: true
+        description: ""
+
+      - name: Form
+        quote: true
+        description: ""
+
+      - name: Trim
+        quote: true
+        description: ""
+
+      - name: Scaled
+        quote: true
+        description: ""
+
+      - name: Owner
+        quote: true
+        description: ""
+
+  - name: tn_fresh_fact_processing_outputs
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: Facility
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: PalletNumber
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: CaseNumber
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: PalletUOM
+        quote: true
+        description: ""
+
+      - name: PalletVolume
+        quote: true
+        description: ""
+
+      - name: CaseUOM
+        quote: true
+        description: ""
+
+      - name: CaseVolume
+        quote: true
+        description: ""
+
+      - name: Pieces
+        quote: true
+        description: ""
+
+      - name: FWtoLBConversion
+        quote: true
+        description: ""
+
+      - name: Lbs
+        quote: true
+        description: ""
+
+      - name: Units
+        quote: true
+        description: ""
+
+      - name: TransactionType
+        quote: true
+        description: ""
+
+      - name: ItemProfile
+        quote: true
+        description: ""
+
+      - name: ItemSetCheck
+        quote: true
+        description: ""
+
+      - name: DBDT
+        quote: true
+        description: ""
+
+      - name: DateTime_Transaction
+        quote: true
+        description: ""
+
+      - name: Date_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Contdtl
+        quote: true
+        description: ""
+
+      - name: Key_Company
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+          - relationships:
+              to: ref('tn_fresh_dim_processing_company')
+              field: '"Key_Company"'
+
+      - name: Key_Site
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: Key_Date
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: Key_Item
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: Key_Lot
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: Key_Line
+        quote: true
+        description: ""
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+      - name: Lot_Number
+        quote: true
+        description: ""
+
+      - name: Item_Description
+        quote: true
+        description: ""
+
+      - name: Farm
+        quote: true
+        description: ""
+
+      - name: Line_Description
+        quote: true
+        description: ""
+
+      - name: Category
+        quote: true
+        description: ""
+
+      - name: CW_Category
+        quote: true
+        description: ""
+
+      - name: Size
+        quote: true
+        description: ""
+
+      - name: Grade
+        quote: true
+        description: ""
+
+      - name: Form
+        quote: true
+        description: ""
+
+      - name: Trim
+        quote: true
+        description: ""
+
+      - name: Scaled
+        quote: true
+        description: ""
+
+      - name: Owner
+        quote: true
+        description: ""

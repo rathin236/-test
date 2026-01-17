@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: concur
+    database: concur
+    schema: concur
+    tables:
+      - name: report
+        description: "report header table"
+      - name: expense_entry
+        description: "report details table"
+      - name: expense_type
+        description: "report details table"
+      - name: payment_type
+        description: "types of payment for all companies"
+      - name: allocation
+        description: "GL allocations of items"
+      - name: itemization
+        description: "items for expense entry, if available"
+      - name: user
+        description: "users using concur coming from ADP"
+      - name: location
+        description: "Location data from concur"
+      - name: policy
+        description: "policies in concur"

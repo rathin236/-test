@@ -1,0 +1,587 @@
+version: 2
+
+sources:
+  - name: monday
+    description: ""
+    database: monday
+    tables:
+      - name: activity_log
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: id
+            description: ""
+          - name: account_id
+            description: ""
+          - name: created_at
+            description: ""
+          - name: data
+            description: ""
+          - name: entity
+            description: ""
+          - name: event
+            description: ""
+          - name: user_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: asset
+        description: ""
+        columns:
+          - name: updates_id
+            description: ""
+          - name: id
+            description: ""
+          - name: url
+            description: ""
+          - name: file_size
+            description: ""
+          - name: url_thumbnail
+            description: ""
+          - name: uploaded_by_id
+            description: ""
+          - name: public_url
+            description: ""
+          - name: name
+            description: ""
+          - name: created_at
+            description: ""
+          - name: file_extension
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: board
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: items_count
+            description: ""
+          - name: owner_id
+            description: ""
+          - name: board_folder_id
+            description: ""
+          - name: name
+            description: ""
+          - name: workspace_id
+            description: ""
+          - name: updated_at
+            description: ""
+          - name: permission
+            description: ""
+          - name: top_group_id
+            description: ""
+          - name: type
+            description: ""
+          - name: state
+            description: ""
+          - name: board_kind
+            description: ""
+          - name: description
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: board_owner
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: user_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: board_subscriber
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: user_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: board_update
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: board_view
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: name
+            description: ""
+          - name: settings_str
+            description: ""
+          - name: type
+            description: ""
+          - name: board_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: columns
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: id
+            description: ""
+          - name: archived
+            description: ""
+          - name: settings_str
+            description: ""
+          - name: title
+            description: ""
+          - name: description
+            description: ""
+          - name: type
+            description: ""
+          - name: width
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: column_value
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: item_id
+            description: ""
+          - name: id
+            description: ""
+          - name: value
+            description: ""
+          - name: text
+            description: ""
+          - name: title
+            description: ""
+          - name: type
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: display_value
+            description: ""
+          - name: date
+            description: ""
+          - name: symbol
+            description: ""
+          - name: rating
+            description: ""
+          - name: description
+            description: ""
+          - name: settings_str
+            description: ""
+          - name: running
+            description: ""
+          - name: duration
+            description: ""
+          - name: archived
+            description: ""
+          - name: number
+            description: ""
+          - name: to_date
+            description: ""
+          - name: updated_at
+            description: ""
+          - name: label_style_color
+            description: ""
+          - name: direction
+            description: ""
+          - name: is_done
+            description: ""
+          - name: from_date
+            description: ""
+          - name: index
+            description: ""
+          - name: label
+            description: ""
+          - name: label_style_border
+            description: ""
+          - name: width
+            description: ""
+          - name: started_at
+            description: ""
+          - name: time
+            description: ""
+          - name: update_id
+            description: ""
+          - name: visualization_type
+            description: ""
+          - name: checked
+            description: ""
+          - name: icon
+            description: ""
+
+      - name: column_value_item_id
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: column_value_id
+            description: ""
+          - name: id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: column_value_mirror_item
+        description: ""
+        columns:
+          - name: column_value_id
+            description: ""
+          - name: item_id
+            description: ""
+          - name: id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: groups
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: id
+            description: ""
+          - name: archived
+            description: ""
+          - name: color
+            description: ""
+          - name: deleted
+            description: ""
+          - name: position
+            description: ""
+          - name: title
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: item
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: id
+            description: ""
+          - name: parent_item_id
+            description: ""
+          - name: group_id
+            description: ""
+          - name: email
+            description: ""
+          - name: name
+            description: ""
+          - name: updated_at
+            description: ""
+          - name: state
+            description: ""
+          - name: created_at
+            description: ""
+          - name: creator_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: item_subscriber
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: item_id
+            description: ""
+          - name: id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: person_team
+        description: ""
+        columns:
+          - name: board_id
+            description: ""
+          - name: column_value_id
+            description: ""
+          - name: item_id
+            description: ""
+          - name: id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: kind
+            description: ""
+
+      - name: reply
+        description: ""
+        columns:
+          - name: update_id
+            description: ""
+          - name: id
+            description: ""
+          - name: text_body
+            description: ""
+          - name: updated_at
+            description: ""
+          - name: creator_id
+            description: ""
+          - name: body
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: created_at
+            description: ""
+
+      - name: tags
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: color
+            description: ""
+          - name: name
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: team
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: name
+            description: ""
+          - name: picture_url
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: team_user
+        description: ""
+        columns:
+          - name: team_id
+            description: ""
+          - name: user_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: updates
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: body
+            description: ""
+          - name: created_at
+            description: ""
+          - name: creator_id
+            description: ""
+          - name: item_id
+            description: ""
+          - name: text_body
+            description: ""
+          - name: updated_at
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: users
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: photo_tiny
+            description: ""
+          - name: is_guest
+            description: ""
+          - name: url
+            description: ""
+          - name: photo_small
+            description: ""
+          - name: photo_thumb
+            description: ""
+          - name: is_admin
+            description: ""
+          - name: birthday
+            description: ""
+          - name: is_verified
+            description: ""
+          - name: enabled
+            description: ""
+          - name: email
+            description: ""
+          - name: utc_hours_diff
+            description: ""
+          - name: country_code
+            description: ""
+          - name: name
+            description: ""
+          - name: is_view_only
+            description: ""
+          - name: photo_thumb_small
+            description: ""
+          - name: location
+            description: ""
+          - name: current_language
+            description: ""
+          - name: title
+            description: ""
+          - name: phone
+            description: ""
+          - name: mobile_phone
+            description: ""
+          - name: time_zone_identifier
+            description: ""
+          - name: photo_original
+            description: ""
+          - name: created_at
+            description: ""
+          - name: is_pending
+            description: ""
+          - name: account_id
+            description: ""
+          - name: encrypt_api_token
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: join_date
+            description: ""
+
+      - name: workspace
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: created_at
+            description: ""
+          - name: name
+            description: ""
+          - name: kind
+            description: ""
+          - name: description
+            description: ""
+          - name: state
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: workspace_owner_subscriber
+        description: ""
+        columns:
+          - name: workspace_id
+            description: ""
+          - name: user_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: workspace_team_subscriber
+        description: ""
+        columns:
+          - name: workspace_id
+            description: ""
+          - name: team_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: workspace_user_subscriber
+        description: ""
+        columns:
+          - name: workspace_id
+            description: ""
+          - name: user_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+      - name: timeentries
+        description: ""
+        columns:
+          - name: execution_id
+            description: ""
+          - name: user
+            description: ""
+          - name: updated_date
+            description: ""
+          - name: date
+            description: ""
+          - name: parent_item
+            description: ""
+          - name: billable_minutes
+            description: ""
+          - name: item
+            description: ""
+          - name: team
+            description: ""
+          - name: id
+            description: ""
+          - name: created_date
+            description: ""
+          - name: board
+            description: ""
+          - name: status
+            description: ""
+          - name: minutes
+            description: ""

@@ -1,0 +1,59 @@
+models:
+  - name: dim__vendors
+    description:
+      This model consolidates vendor information from multiple sources, including
+      GP and D365 systems, and enriches it with payment terms and risk level data. It
+      is used to provide a unified view of vendor details, including their payment terms
+      and risk assessment, which is crucial for financial analysis and vendor management.
+    columns:
+      - name: company_id
+        description: Identifier for the company associated with the vendor.
+      - name: vendor_id
+        description: Unique identifier for the vendor.
+      - name: vendor_name
+        description: Name of the vendor.
+      - name: vendor_class
+        description: Classification of the vendor.
+      - name: created_date
+        description: The date when the vendor record was created.
+      - name: userdef1
+        description: User-defined field for additional vendor information.
+      - name: payment_terms_id
+        description: Identifier for the payment terms associated with the vendor.
+      - name: address_1
+        description: Primary address line of the vendor.
+      - name: address_2
+        description: Secondary address line of the vendor.
+      - name: address_3
+        description: Tertiary address line of the vendor.
+      - name: city
+        description: City where the vendor is located.
+      - name: state
+        description: State where the vendor is located.
+      - name: zip_code
+        description: Postal code for the vendor's location.
+      - name: country
+        description: Country where the vendor is located.
+      - name: currency_id
+        description: Currency identifier used by the vendor.
+      - name: tax_id
+        description: Tax identification number of the vendor.
+      - name: vendor_status
+        description: Current status of the vendor.
+      - name: ten99_type
+        description: Type of 1099 form applicable to the vendor.
+      - name: vendor_type
+        description: Type or category of the vendor.
+      - name: sk_vendor_global
+        description: Global identifier for the vendor.
+        tests:
+          - not_null
+          - unique
+      - name: vendor_type_sort
+        description: Sorting order for vendor types.
+      - name: vend_terms
+        description: Calculated payment terms in days for the vendor.
+      - name: tns_flag
+        description: Flag indicating if the vendor is associated with TNS company.
+      - name: risk_level_flag
+        description: Flag indicating the risk level of the vendor.

@@ -1,0 +1,57 @@
+version: 2
+
+sources:
+  - name: ancillary
+    description: "A database for miscellaneous datasets"
+    database: ancillary
+    schema: calendar
+    tables:
+      - name: Calendar
+        description: "A date dimension table developed by Jeff Carleton, Senior Data Analytics Architect at Cooke Inc"
+        quoting:
+          identifier: true
+        columns:
+          - name: key_date
+            description: "Date key"
+          - name: number_fiscalweek
+            description: "Week number of the fiscal year"
+          - name: number_fiscalquarter
+            description: "Quarter. Q1, Q2, Q3 or Q4"
+          - name: number_fiscalyear
+            description: "The Fiscal year associated with the Key_Date"
+          - name: name_dayofweekenglish
+            description: "Day of the week, in English"
+          - name: name_dayofweekspanish
+            description: "Day of the week, in Spanish"
+          - name: name_monthspanish
+            description: "Name of the month, in Spanish"
+          - name: number_dayofweek
+            description: "The day of the week. For example, Thursday is 5"
+          - name: number_calendarweek
+            description: "Week number of the calendar year. For example, the first week of January is 1"
+
+  - name: staging_prod
+    description: "Production Staging Database"
+    database: staging_prod
+    schema: xref
+    tables:
+      - name: currency_exchange_rates
+        description: ""
+        columns:
+          - name: fxpair_id
+            description: "autoincrement ID for the table"
+            tests:
+              - unique
+              - not_null
+          - name: from_ccy
+            description: "Currency to convert from"
+          - name: to_ccy
+            description: "Currency to convert to"
+          - name: effective_start
+            description: "Start date the currency is valid for"
+          - name: effective_stop
+            description: "End date the currency is valid for"
+          - name: rate
+            description: "The exchange rate between the from and to currencies on the given date"
+          - name: stage_date
+            description: "Date the record was inserted to the Snowflake table"

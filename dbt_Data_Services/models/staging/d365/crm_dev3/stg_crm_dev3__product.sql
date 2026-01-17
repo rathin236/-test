@@ -1,0 +1,98 @@
+with
+
+source as (
+
+    select * from {{ source('crm_dev3', 'product') }}
+
+),
+
+renamed as (
+
+    select
+        productid,
+        utcconversiontimezonecode,
+        _cai_trim_value,
+        entityimage_url,
+        size,
+        producturl,
+        _pricelevelid_value,
+        vendorname,
+        vendorid,
+        standardcost_base,
+        validfromdate,
+        isreparented,
+        description,
+        _cai_forms_value,
+        stockweight,
+        entityimage_timestamp,
+        versionnumber,
+        _cai_specie_value,
+        _createdbyexternalparty_value,
+        cai_gpproductid,
+        price_base,
+        validtodate,
+        overriddencreatedon,
+        price,
+        _modifiedbyexternalparty_value,
+        cai_form,
+        _createdby_value,
+        hierarchypath,
+        _cai_family_value,
+        createdon,
+        quantitydecimal,
+        exchangerate,
+        statecode::string as prstatecode,
+        _modifiedby_value,
+        dmtimportstate,
+        suppliername,
+        _defaultuomid_value,
+        _cai_grade_value,
+        _organizationid_value,
+        _defaultuomscheduleid_value,
+        cai_sourcesystemitemid,
+        _transactioncurrencyid_value,
+        vendorpartnumber,
+        cai_crmproductid,
+        _cai_subcategory_value,
+        currentcost,
+        iskit,
+        stockvolume,
+        _parentproductid_value,
+        cai_company::string as cai_company,
+        cai_cookeparent,
+        currentcost_base,
+        _modifiedonbehalfby_value,
+        processid,
+        cai_d_365_productid,
+        isstockitem,
+        name,
+        cai_category,
+        msdyn_gdproptout,
+        _createdonbehalfby_value,
+        importsequencenumber,
+        _cai_subspecie_value,
+        traversedpath,
+        timezoneruleversionnumber,
+        cai_species,
+        _subjectid_value,
+        cai_tier,
+        entityimageid,
+        standardcost,
+        _cai_categories_value,
+        producttypecode,
+        statuscode,
+        productnumber::string as productnumber,
+        stageid,
+        modifiedon,
+        productstructure,
+        quantityonhand,
+        entityimage,
+        _fivetran_deleted,
+        _fivetran_synced
+
+    from source
+
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

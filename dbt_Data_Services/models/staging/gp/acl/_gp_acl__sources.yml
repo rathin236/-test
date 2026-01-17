@@ -1,0 +1,650 @@
+version: 2
+
+sources:
+  - name: acl_dbo
+    description: ""
+    database: gp
+    tables:
+      - name: gl00100
+        description: ""
+        columns:
+          - name: actindx
+            description: ""
+          - name: actnumbr_9
+            description: ""
+          - name: clear_balance
+            description: ""
+          - name: actnumbr_6
+            description: ""
+          - name: actdescr
+            description: ""
+          - name: actnumbr_3
+            description: ""
+          - name: actalias
+            description: ""
+          - name: hstrclrt
+            description: ""
+          - name: postpurchin
+            description: ""
+          - name: adjinfl
+            description: ""
+          - name: decplacs
+            description: ""
+          - name: dex_row_ts
+            description: ""
+          - name: mnacsgmt
+            description: ""
+          - name: accttype
+            description: ""
+          - name: actnumbr_7
+            description: ""
+          - name: postivin
+            description: ""
+          - name: modifdt
+            description: ""
+          - name: balfrclc
+            description: ""
+          - name: postprin
+            description: ""
+          - name: usrdefs1
+            description: ""
+          - name: cnvrmthd
+            description: ""
+          - name: creatddt
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: fxdorvar
+            description: ""
+          - name: active
+            description: ""
+          - name: inflaequ
+            description: ""
+          - name: accatnum
+            description: ""
+          - name: actnumbr_4
+            description: ""
+          - name: noteindx
+            description: ""
+          - name: userdef2
+            description: ""
+          - name: actnumbr_1
+            description: ""
+          - name: acctentr
+            description: ""
+          - name: actnumbr_2
+            description: ""
+          - name: actnumbr_10
+            description: ""
+          - name: pstngtyp
+            description: ""
+          - name: usrdefs2
+            description: ""
+          - name: workflow_status
+            description: ""
+          - name: tpclblnc
+            description: ""
+          - name: dsplkups
+            description: ""
+          - name: userdef1
+            description: ""
+          - name: actnumbr_8
+            description: ""
+          - name: actnumbr_5
+            description: ""
+          - name: postslsin
+            description: ""
+          - name: inflarev
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl00105
+        description: ""
+        columns:
+          - name: actindx
+            description: ""
+          - name: actnumbr_6
+            description: ""
+          - name: actnumbr_3
+            description: ""
+          - name: actnumst
+            description: ""
+          - name: actnumbr_2
+            description: ""
+          - name: actnumbr_8
+            description: ""
+          - name: actnumbr_5
+            description: ""
+          - name: actnumbr_7
+            description: ""
+          - name: actnumbr_4
+            description: ""
+          - name: actnumbr_10
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: actnumbr_9
+            description: ""
+          - name: actnumbr_1
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl10000
+        description: ""
+        columns:
+          - name: correcting_trx_type
+            description: ""
+          - name: icdists
+            description: ""
+          - name: trxdate
+            description: ""
+          - name: user_defined_text02
+            description: ""
+          - name: dex_row_ts
+            description: ""
+          - name: rvtrxsrc
+            description: ""
+          - name: bchsourc
+            description: ""
+          - name: closedyr
+            description: ""
+          - name: dtacontrolnum
+            description: ""
+          - name: ortrxsrc
+            description: ""
+          - name: revprdid
+            description: ""
+          - name: original_je
+            description: ""
+          - name: lastuser
+            description: ""
+          - name: tax_date
+            description: ""
+          - name: denxrate
+            description: ""
+          - name: orpstddt
+            description: ""
+          - name: voided
+            description: ""
+          - name: trxsorce
+            description: ""
+          - name: currnidx
+            description: ""
+          - name: time1
+            description: ""
+          - name: refrence
+            description: ""
+          - name: errstate
+            description: ""
+          - name: sourcdoc
+            description: ""
+          - name: origdtaseries
+            description: ""
+          - name: glhdrms2
+            description: ""
+          - name: exchdate
+            description: ""
+          - name: user_defined_text01
+            description: ""
+          - name: revclyr
+            description: ""
+          - name: adjustment_transaction
+            description: ""
+          - name: histrx
+            description: ""
+          - name: pstgstus
+            description: ""
+          - name: original_je_year
+            description: ""
+          - name: rcrngtrx
+            description: ""
+          - name: revyear
+            description: ""
+          - name: ratetpid
+            description: ""
+          - name: glhdrval
+            description: ""
+          - name: orcomid
+            description: ""
+          - name: prntstus
+            description: ""
+          - name: uswhpstd
+            description: ""
+          - name: periodid
+            description: ""
+          - name: mctrxstt
+            description: ""
+          - name: trxtype
+            description: ""
+          - name: dta_index
+            description: ""
+          - name: lstdtedt
+            description: ""
+          - name: sqncline
+            description: ""
+          - name: exgtblid
+            description: ""
+          - name: xchgrate
+            description: ""
+          - name: rctrxseq
+            description: ""
+          - name: balfrclc
+            description: ""
+          - name: docdate
+            description: ""
+          - name: rtclcmtd
+            description: ""
+          - name: glhdrmsg
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: openyear
+            description: ""
+          - name: rvrsngdt
+            description: ""
+          - name: ledger_id
+            description: ""
+          - name: ictrx
+            description: ""
+          - name: noteindx
+            description: ""
+          - name: originje
+            description: ""
+          - name: dtatrxtype
+            description: ""
+          - name: bachnumb
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: jrnentry
+            description: ""
+          - name: series
+            description: ""
+          - name: original_je_seq_num
+            description: ""
+          - name: revhist
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl10001
+        description: ""
+        columns:
+          - name: crdtamnt
+            description: ""
+          - name: bachnumb
+            description: ""
+          - name: gllinval
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: fxdorvar
+            description: ""
+          - name: exgtblid
+            description: ""
+          - name: debitamt
+            description: ""
+          - name: mctrxstt
+            description: ""
+          - name: dta_gl_status
+            description: ""
+          - name: origseqnum
+            description: ""
+          - name: time1
+            description: ""
+          - name: accttype
+            description: ""
+          - name: lnestat
+            description: ""
+          - name: exchdate
+            description: ""
+          - name: actindx
+            description: ""
+          - name: ormstrnm
+            description: ""
+          - name: pstngtyp
+            description: ""
+          - name: ordocnum
+            description: ""
+          - name: correspondingunit
+            description: ""
+          - name: currnidx
+            description: ""
+          - name: gllinms2
+            description: ""
+          - name: orctrnum
+            description: ""
+          - name: ordbtamt
+            description: ""
+          - name: orcrdamt
+            description: ""
+          - name: sqncline
+            description: ""
+          - name: interid
+            description: ""
+          - name: jrnentry
+            description: ""
+          - name: xchgrate
+            description: ""
+          - name: balfrclc
+            description: ""
+          - name: denxrate
+            description: ""
+          - name: dscriptn
+            description: ""
+          - name: decplacs
+            description: ""
+          - name: dex_row_ts
+            description: ""
+          - name: gllinmsg
+            description: ""
+          - name: rtclcmtd
+            description: ""
+          - name: ortrxdesc
+            description: ""
+          - name: ortrxtyp
+            description: ""
+          - name: ormstrid
+            description: ""
+          - name: ratetpid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl20000
+        description: ""
+        columns:
+          - name: dex_row_id
+            description: ""
+          - name: orgnatyp
+            description: ""
+          - name: ledger_id
+            description: ""
+          - name: lastuser
+            description: ""
+          - name: lstdtedt
+            description: ""
+          - name: ortrxtyp
+            description: ""
+          - name: rctrxseq
+            description: ""
+          - name: ordbtamt
+            description: ""
+          - name: orcomid
+            description: ""
+          - name: refrence
+            description: ""
+          - name: sourcdoc
+            description: ""
+          - name: ictrx
+            description: ""
+          - name: back_out_je_year
+            description: ""
+          - name: series
+            description: ""
+          - name: jrnentry
+            description: ""
+          - name: trxdate
+            description: ""
+          - name: polldtrx
+            description: ""
+          - name: actindx
+            description: ""
+          - name: correspondingunit
+            description: ""
+          - name: user_defined_text02
+            description: ""
+          - name: dex_row_ts
+            description: ""
+          - name: debitamt
+            description: ""
+          - name: dscriptn
+            description: ""
+          - name: ormstrid
+            description: ""
+          - name: origseqnum
+            description: ""
+          - name: openyear
+            description: ""
+          - name: correcting_je
+            description: ""
+          - name: original_je_year
+            description: ""
+          - name: docdate
+            description: ""
+          - name: correcting_je_year
+            description: ""
+          - name: noteindx
+            description: ""
+          - name: voided
+            description: ""
+          - name: ppsgnmbr
+            description: ""
+          - name: original_je_seq_num
+            description: ""
+          - name: originje
+            description: ""
+          - name: denxrate
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: exgtblid
+            description: ""
+          - name: uswhpstd
+            description: ""
+          - name: rtclcmtd
+            description: ""
+          - name: ortrxsrc
+            description: ""
+          - name: ratetpid
+            description: ""
+          - name: xchgrate
+            description: ""
+          - name: back_out_je
+            description: ""
+          - name: apprvldt
+            description: ""
+          - name: orcrdamt
+            description: ""
+          - name: trxsorce
+            description: ""
+          - name: pstgnmbr
+            description: ""
+          - name: user_defined_text01
+            description: ""
+          - name: qkofset
+            description: ""
+          - name: ormstrnm
+            description: ""
+          - name: adjustment_transaction
+            description: ""
+          - name: original_je
+            description: ""
+          - name: ordocnum
+            description: ""
+          - name: orgntsrc
+            description: ""
+          - name: dta_gl_status
+            description: ""
+          - name: dta_index
+            description: ""
+          - name: time1
+            description: ""
+          - name: periodid
+            description: ""
+          - name: exchdate
+            description: ""
+          - name: seqnumbr
+            description: ""
+          - name: aprvluserid
+            description: ""
+          - name: crdtamnt
+            description: ""
+          - name: mctrxstt
+            description: ""
+          - name: orpstddt
+            description: ""
+          - name: currnidx
+            description: ""
+          - name: orctrnum
+            description: ""
+          - name: origdtaseries
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl30000
+        description: ""
+        columns:
+          - name: dex_row_id
+            description: ""
+          - name: refrence
+            description: ""
+          - name: back_out_je_year
+            description: ""
+          - name: orcomid
+            description: ""
+          - name: sourcdoc
+            description: ""
+          - name: orctrnum
+            description: ""
+          - name: ictrx
+            description: ""
+          - name: origdtaseries
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: jrnentry
+            description: ""
+          - name: trxsorce
+            description: ""
+          - name: lastuser
+            description: ""
+          - name: ledger_id
+            description: ""
+          - name: rctrxseq
+            description: ""
+          - name: user_defined_text02
+            description: ""
+          - name: series
+            description: ""
+          - name: docdate
+            description: ""
+          - name: mctrxstt
+            description: ""
+          - name: ordbtamt
+            description: ""
+          - name: orpstddt
+            description: ""
+          - name: crdtamnt
+            description: ""
+          - name: time1
+            description: ""
+          - name: polldtrx
+            description: ""
+          - name: currnidx
+            description: ""
+          - name: seqnumbr
+            description: ""
+          - name: lstdtedt
+            description: ""
+          - name: aprvluserid
+            description: ""
+          - name: orgnatyp
+            description: ""
+          - name: pstgnmbr
+            description: ""
+          - name: ortrxtyp
+            description: ""
+          - name: exchdate
+            description: ""
+          - name: actindx
+            description: ""
+          - name: periodid
+            description: ""
+          - name: user_defined_text01
+            description: ""
+          - name: originje
+            description: ""
+          - name: orgntsrc
+            description: ""
+          - name: dta_gl_status
+            description: ""
+          - name: original_je
+            description: ""
+          - name: uswhpstd
+            description: ""
+          - name: ortrxsrc
+            description: ""
+          - name: origseqnum
+            description: ""
+          - name: xchgrate
+            description: ""
+          - name: exgtblid
+            description: ""
+          - name: ppsgnmbr
+            description: ""
+          - name: correcting_je
+            description: ""
+          - name: ratetpid
+            description: ""
+          - name: voided
+            description: ""
+          - name: dscriptn
+            description: ""
+          - name: adjustment_transaction
+            description: ""
+          - name: ormstrnm
+            description: ""
+          - name: orcrdamt
+            description: ""
+          - name: original_je_seq_num
+            description: ""
+          - name: ordocnum
+            description: ""
+          - name: hstyear
+            description: ""
+          - name: noteindx
+            description: ""
+          - name: denxrate
+            description: ""
+          - name: correcting_je_year
+            description: ""
+          - name: trxdate
+            description: ""
+          - name: debitamt
+            description: ""
+          - name: dta_index
+            description: ""
+          - name: dex_row_ts
+            description: ""
+          - name: rtclcmtd
+            description: ""
+          - name: original_je_year
+            description: ""
+          - name: ormstrid
+            description: ""
+          - name: correspondingunit
+            description: ""
+          - name: back_out_je
+            description: ""
+          - name: apprvldt
+            description: ""
+          - name: qkofset
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""

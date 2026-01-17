@@ -1,0 +1,263 @@
+version: 2
+
+models:
+  - name: fct_mw__all_invoices
+    description:
+      This model provides a comprehensive snapshot of accounts payable invoices,
+      including due date calculations, payment statuses, and various flags indicating
+      the state of each invoice. It is designed to assist the finance team in tracking
+      invoice statuses and identifying overdue or at-risk payments.
+    columns:
+      - name: transaction_id
+        description: A unique identifier for each transaction.
+        tests:
+          - not_null
+
+      - name: company_id
+        description: The identifier for the company associated with the transaction.
+
+      - name: vendor_id
+        description: The identifier for the vendor associated with the transaction.
+
+      - name: profile_id
+        description: The identifier for the profile associated with the transaction.
+
+      - name: approver_1
+        description: The first approver in the approval process.
+
+      - name: approver_2
+        description: The second approver in the approval process.
+
+      - name: approver_3
+        description: The third approver in the approval process.
+
+      - name: approver_4
+        description: The fourth approver in the approval process.
+
+      - name: approver_5
+        description: The fifth approver in the approval process.
+
+      - name: current_approver
+        description: The current approver responsible for the transaction.
+
+      - name: description
+        description: A description of the transaction.
+
+      - name: payable_type
+        description: The type of payable associated with the transaction.
+
+      - name: pre_approved
+        description: Indicates whether the transaction was pre-approved.
+
+      - name: document_number
+        description: The document number associated with the transaction.
+
+      - name: po_number
+        description: The purchase order number associated with the transaction.
+
+      - name: invoice_number
+        description: The invoice number associated with the transaction.
+
+      - name: invoice_date
+        description: The date the invoice was issued.
+
+      - name: due_date
+        description: The date the invoice is due for payment.
+
+      - name: transaction_currency
+        description: The currency in which the transaction is conducted.
+
+      - name: forex_rate
+        description: The foreign exchange rate applicable to the transaction.
+
+      - name: invoice_amount
+        description: The total amount of the invoice.
+
+      - name: cad_amount
+        description: The amount of the invoice in Canadian dollars.
+
+      - name: misc_cad_amt
+        description: Miscellaneous charges in Canadian dollars.
+
+      - name: freight_cad_amt
+        description: Freight charges in Canadian dollars.
+
+      - name: tax_cad_amt
+        description: Tax amount in Canadian dollars.
+
+      - name: docstate
+        description: The state of the document.
+
+      - name: createdby
+        description: The user who created the transaction.
+
+      - name: mimetype
+        description: The MIME type of the document.
+
+      - name: datarev
+        description: The data revision number.
+
+      - name: activityid
+        description: The identifier for the activity associated with the transaction.
+
+      - name: usermessage
+        description: Messages or notes from the user regarding the transaction.
+
+      - name: userprofileid
+        description: The identifier for the user profile associated with the transaction.
+
+      - name: duid
+        description: A unique identifier for the document.
+
+      - name: createdate
+        description: The timestamp when the transaction was created.
+
+      - name: step_number
+        description: The step number in the transaction process.
+
+      - name: sk_vendor_global
+        description: The global identifier for the vendor.
+
+      - name: sk_company_global
+        description: The global identifier for the company.
+
+      - name: prev_activityid
+        description: The identifier for the previous activity in the transaction process.
+
+      - name: prev_time
+        description: The timestamp of the previous activity.
+
+      - name: sk_transaction_pk
+        description: The primary key for the transaction.
+        tests:
+          - unique
+          - not_null
+
+      - name: days_since_prev
+        description: The number of days since the previous activity.
+
+      - name: approval_stage
+        description: The current stage of approval for the transaction.
+
+      - name: payment_date
+        description: The date the payment was made.
+
+      - name: days_to_overdue
+        description: The number of days until the invoice becomes overdue.
+
+      - name: days_to_pay
+        description: The number of days taken to pay the invoice.
+
+      - name: due_in_days
+        description: The number of days until the invoice is due.
+
+      - name: due_date_status
+        description:
+          The status of the due date, indicating if it is overdue, due today,
+          or due in a certain number of days.
+
+      - name: remaining_days_status
+        description:
+          The status indicating the remaining days until the invoice is due,
+          categorized as overdue, at risk, or okay.
+
+      - name: flag_approved
+        description: Indicates whether the transaction has been approved.
+
+      - name: flag_bypassed
+        description: Indicates whether the transaction bypassed export.
+
+      - name: flag_cancelled
+        description: Indicates whether the transaction was cancelled or voided.
+
+      - name: flag_paid
+        description: Indicates whether the transaction has been paid.
+
+      - name: flag_payment
+        description:
+          The payment status of the transaction, indicating if it is paid or
+          not paid.
+
+      - name: flag_overdue
+        description: Indicates whether the transaction is overdue.
+
+      - name: flag_overdue_2
+        description: An additional flag indicating if the transaction is overdue.
+
+      - name: payment_status
+        description:
+          The status of the payment, categorizing it as overdue, due, or paid
+          within certain time frames.
+
+  - name: fct_mw__approvers
+    description:
+      This model provides a detailed view of approvers in the MetaViewer
+      system, capturing transaction details, approval stages, and user interactions.
+      It is useful for tracking the approval process and understanding user engagement
+      over time.
+    columns:
+      - name: transaction_id
+        description: A unique identifier for each transaction.
+
+      - name: approval_stage
+        description: The current stage of the approval process for the transaction.
+
+      - name: activityid
+        description: An identifier for the specific activity related to the transaction.
+
+      - name: userprofileid
+        description: A unique identifier for the user profile associated with the transaction.
+
+      - name: usermessage
+        description: A message or note associated with the user during the transaction.
+
+      - name: prev_time
+        description: The timestamp of the previous activity or transaction.
+
+      - name: createdate
+        description: The timestamp when the transaction was created.
+
+      - name: days_since_prev
+        description: The number of days since the previous transaction or activity.
+
+      - name: sk_user_profile
+        description: A surrogate key for the user profile, used for internal tracking.
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_mw__users
+    description:
+      This model provides a comprehensive view of user profiles by selecting
+      all data from the 'int_metaviewer__ap_userprofile' table. It is used to analyze
+      user information and manage user credentials.
+    columns:
+      - name: userprofileid
+        description: A unique identifier for each user profile.
+      - name: providerid
+        description: The identifier for the service provider associated with the user.
+      - name: loginname
+        description: The login name used by the user to access the system.
+      - name: providerlogin1
+        description: The first login credential associated with the service provider.
+      - name: datarev
+        description: The data revision number for tracking changes.
+      - name: isenabled
+        description: Indicates whether the user profile is enabled.
+      - name: providerlogin2
+        description: The second login credential associated with the service provider.
+      - name: managecredentials
+        description: Indicates whether the user can manage their credentials.
+      - name: scopeid
+        description: The identifier for the scope of the user's access.
+      - name: _fivetran_deleted
+        description: Indicates whether the record has been deleted by Fivetran.
+      - name: _fivetran_synced
+        description: The timestamp when the record was last synced by Fivetran.
+      - name: name
+        description: The full name of the user.
+      - name: sk_user_profile
+        description: The surrogate key for the user profile.
+        tests:
+          - not_null
+          - unique

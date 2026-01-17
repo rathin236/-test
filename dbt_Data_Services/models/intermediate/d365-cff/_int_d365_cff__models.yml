@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: int_d365_cff__accounts_payable
+    columns:
+      - name: COMPANYNAME
+        description: "Company_Name"
+      - name: VOUCHER
+        description: "Voucher"
+      - name: VENDORID
+        description: "Vendor_ID"
+      - name: VENDORCLASS
+        description: "Vendor_Class"
+      - name: CURRENCYID
+        description: "Currency_ID"
+      - name: DOCUMENTNUMBER
+        description: "Document_Number"
+      - name: DOCUMENTTYPE
+        description: "Trans_Type"
+      - name: DOCUMENTDATE
+        description: "Document_Date"
+      - name: TRANSACTIONDATE
+        description: "Transaction_Date"
+      - name: INVOICEDUEDATE
+        description: "Invoice_Due_Date"
+      - name: PAIDOFFDATE
+        description: "Paid_Off_Date"
+      - name: CURRENTTRANSACTIONAMOUNT
+        description: "Current_Transaction_Amount"
+
+  - name: int_d365_cff__accounts_receivable
+    columns:
+      - name: COMPANYNAME
+        description: "Company_Name"
+      - name: VOUCHER
+        description: "Voucher"
+      - name: VENDORID
+        description: "Vendor_ID"
+      - name: VENDORCLASS
+        description: "Vendor_Class"
+      - name: CURRENCYID
+        description: "Currency_ID"
+      - name: DOCUMENTNUMBER
+        description: "Document_Number"
+      - name: DOCUMENTTYPE
+        description: "Trans_Type"
+      - name: DOCUMENTDATE
+        description: "Document_Date"
+      - name: TRANSACTIONDATE
+        description: "Transaction_Date"
+      - name: INVOICEDUEDATE
+        description: "Invoice_Due_Date"
+      - name: PAIDOFFDATE
+        description: "Paid_Off_Date"
+      - name: CURRENTTRANSACTIONAMOUNT
+        description: "Current_Transaction_Amount"

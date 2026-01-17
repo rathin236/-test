@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: api_report
+    description: "Staging files for Health and Safety Innex Report"
+    database: intelex
+    tables:
+      - name: locations
+      - name: incidents
+      - name: work_hours

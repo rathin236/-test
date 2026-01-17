@@ -1,0 +1,270 @@
+---
+alwaysApply: false
+---
+# Code Quality Standards
+
+## SQL Style Guide
+
+### Formatting
+- Use 2 or 4 spaces for indentation (be consistent)
+- Line length: Keep under 100 characters when possible
+- Use trailing commas in SELECT statements
+- Align `AS` aliases consistently
+
+**Example:**
+```sql
+select
+    order_id,
+    customer_id,
+    order_date,
+    order_amount_usd,
+    currency_code
+from {{ ref('stg_d365__sales_orders') }}
+where order_date >= '2023-01-01'
+```
+
+### SQL Best Practices
+
+**Clarity:**
+- ✅ Use CTEs for readability (WITH clauses)
+- ✅ Name CTEs descriptively: `sales_orders_filtered`, not `s1`
+- ✅ Add comments for complex logic
+- ✅ Use `SELECT` explicitly, not `SELECT *` in final CTE
+
+**Performance:**
+- ✅ Filter early in CTEs: `WHERE` clauses at top
+- ✅ Use `INNER JOIN` when possible (not `LEFT JOIN` unless needed)
+- ✅ Limit window function partitions
+- ✅ Use appropriate data types (avoid VARCHAR(MAX))
+
+**Maintainability:**
+- ✅ Avoid nested subqueries when CTEs are clearer
+- ✅ Extract repeated logic to macros
+- ✅ Use `dbt_utils` functions when available
+- ❌ Don't hardcode values (use variables or configs)
+
+## Code Organization
+
+### CTE Structure
+Organize CTEs logically:
+```sql
+with 
+
+-- Source data
+source_data as (
+    select * from {{ ref('stg_source') }}
+),
+
+-- Filtering
+filtered as (
+    select *
+    from source_data
+    where is_active = true
+),
+
+-- Transformations
+transformed as (
+    select
+        id,
+        {{ convert_to_usd('amount', 'currency', 'date') }} as amount_usd,
+        date_trunc('month', order_date) as order_month
+    from filtered
+),
+
+-- Final
+final as (
+    select * from transformed
+)
+
+select * from final
+```
+
+### Comments
+
+**When to Comment:**
+- Complex business logic
+- Non-obvious transformations
+- Workarounds or technical debt
+- Why something is done (not what)
+
+**Comment Style:**
+```sql
+-- Convert all amounts to USD for consistency across systems
+-- Uses daily exchange rates from ancillary schema
+{{ convert_to_usd('amount', 'currency_code', 'transaction_date') }} as amount_usd
+```
+
+**Don't Comment:**
+- Obvious code: `select order_id from orders`
+- Self-documenting names
+- TODO comments without context
+
+## Error Handling
+
+### Null Handling
+- ✅ Use `coalesce()` for default values
+- ✅ Use `nullif()` to convert sentinel values to NULL
+- ✅ Handle division by zero: `nullif(denominator, 0)`
+- ✅ Document expected null behavior
+
+### Data Validation
+- ✅ Test for expected data ranges
+- ✅ Validate foreign key relationships
+- ✅ Check for duplicates before asserting uniqueness
+- ✅ Handle edge cases explicitly
+
+### Graceful Degradation
+- When integrating multiple sources, handle missing data:
+```sql
+coalesce(
+    {{ ref('stg_source_a') }}.amount,
+    {{ ref('stg_source_b') }}.amount,
+    0
+) as amount
+```
+
+## Performance Considerations
+
+### Query Optimization
+- **Filter Early**: Move WHERE clauses to earliest CTE
+- **Limit Joins**: Only join necessary tables
+- **Use Indexes**: Snowflake auto-indexes, but filter on indexed columns
+- **Avoid Functions on Join Keys**: Prevents index usage
+
+### Materialization Strategy
+- **Views**: Fast, current, low storage (default for staging)
+- **Tables**: Better query performance, supports incremental
+- **Incremental**: Essential for large datasets
+  - Use unique keys
+  - Test incremental logic thoroughly
+  - Have rollback plan
+
+### Avoid Anti-Patterns
+- ❌ `SELECT *` in production models
+- ❌ Cross-database joins when avoidable
+- ❌ Unnecessary DISTINCT (fix data quality instead)
+- ❌ Overly complex nested queries
+
+## Testing Standards
+
+### Test Coverage
+- **Primary Keys**: Always test `unique` and `not_null`
+- **Foreign Keys**: Test relationships with `relationships`
+- **Business Rules**: Custom tests for calculations
+- **Data Quality**: Test ranges, formats, expected values
+
+### Test Organization
+- Define tests in same YAML file as model documentation
+- Group related tests together
+- Use descriptive test names
+- Document why tests exist
+
+**Example:**
+```yaml
+models:
+  - name: fct_sales
+    columns:
+      - name: order_id
+        description: Unique order identifier
+        tests:
+          - not_null
+          - unique
+      - name: order_amount_usd
+        description: Order amount in USD
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+```
+
+### Custom Tests
+- Create reusable tests in `tests/generic/`
+- Document test purpose
+- Make tests configurable when possible
+
+## Documentation Standards
+
+### Model Documentation
+Include in `_models.yml`:
+- **Description**: Purpose and business context
+- **Usage Notes**: How to use the model
+- **Data Sources**: Where data comes from
+- **Refresh Schedule**: How often it updates
+
+### Column Documentation
+For each column:
+- **Description**: What it represents
+- **Calculation**: If calculated, how
+- **Source**: Where original data comes from
+- **Examples**: For complex fields
+- **Business Rules**: Any filtering or transformations
+
+**Example:**
+```yaml
+columns:
+  - name: customer_lifetime_value
+    description: |
+      Total revenue from customer across all orders.
+      Calculated as sum of order_amount_usd for all historical orders.
+      Only includes orders with status = 'completed'.
+```
+
+## Security & Permissions
+
+### No Secrets
+- ❌ Never commit secrets, passwords, or API keys
+- ❌ No hardcoded credentials
+- ✅ Use environment variables or dbt profiles
+- ✅ Use secure views for sensitive data
+
+### Permissions
+- ✅ Use least privilege principle
+- ✅ Document required permissions in README
+- ✅ Test with appropriate roles
+- ✅ Use `secure: true` for sensitive views
+
+## Code Review Checklist
+
+Before submitting PR, self-review:
+
+### Functionality
+- [ ] Model compiles: `dbt compile --select <model>`
+- [ ] Model runs: `dbt run --select <model>`
+- [ ] Tests pass: `dbt test --select <model>`
+- [ ] Query results validated manually
+- [ ] No hardcoded values
+
+### Quality
+- [ ] SQLFluff passes
+- [ ] yamllint passes
+- [ ] Follows naming conventions
+- [ ] Documentation complete
+- [ ] Tests added/updated
+
+### Integration
+- [ ] Uses `ref()` for models
+- [ ] Uses `source()` for sources
+- [ ] No circular dependencies
+- [ ] Downstream impacts considered
+- [ ] Tags added appropriately
+
+### Performance
+- [ ] Appropriate materialization
+- [ ] Efficient query structure
+- [ ] No unnecessary joins
+- [ ] Filters applied early
+
+## Technical Debt
+
+### Managing Technical Debt
+- Document technical debt in code comments
+- Create tickets for refactoring
+- Don't let it accumulate
+- Address during planned refactoring sprints
+
+### When to Refactor
+- Code is duplicated 3+ times → Extract macro
+- Query performance degrades → Optimize or materialize
+- Model becomes too complex → Split into smaller models
+- Tests frequently fail → Fix data quality issues

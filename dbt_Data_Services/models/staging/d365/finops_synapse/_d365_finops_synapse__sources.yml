@@ -1,0 +1,154 @@
+version: 2
+
+sources:
+  - name: finops_synapse
+    description: ""
+    database: d365
+    tables:
+      - description: ""
+        name: logisticspostaladdress
+      - description: ""
+        name: logisticsaddresscountryregion
+      - description: ""
+        name: logisticslocation
+      - description: ""
+        name: custtrans
+      - description: ""
+        name: custtable
+      - description: ""
+        name: dirpartytable
+      - description: ""
+        name: dirpartylocation
+      - description: ""
+        name: ecoresattribute
+      - description: ""
+        name: ecoresvalue
+      - description: ""
+        name: prodtable
+      - description: ""
+        name: pmfcobyprodcalctrans
+      - description: ""
+        name: bomcostgroup
+      - description: ""
+        name: prodcalctrans
+      - description: ""
+        name: ecoresproducttranslation
+      - description: ""
+        name: inventitemgroupitem
+      - description: ""
+        name: inventitemgroup
+      - description: ""
+        name: ecoresattributevalue
+      - description: ""
+        name: ecoresinstancevalue
+      - description: ""
+        name: ecoresproduct
+      - description: ""
+        name: salestable
+      - description: ""
+        name: inventlocation
+      - description: ""
+        name: inventsite
+      - description: ""
+        name: fdsenumtable
+      - description: ""
+        name: inventtrans
+      - description: ""
+        name: inventsum
+      - description: ""
+        name: inventsettlement
+      - description: ""
+        name: pdsrebatetable
+      - description: ""
+        name: salesline
+      - description: ""
+        name: inventtransorigin
+      - description: ""
+        name: retailsalesline
+      - description: ""
+        name: custinvoicetrans
+      - description: ""
+        name: inventdim
+      - description: ""
+        name: exchangeratecurrencypair
+      - description: ""
+        name: exchangerate
+      - description: ""
+        name: unitofmeasureconversion
+      - description: ""
+        name: unitofmeasure
+      - description: ""
+        name: dimensionattributevaluesetitem
+      - description: ""
+        name: dimensionattributevalue
+      - description: ""
+        name: dimensionattribute
+      - description: ""
+        name: docuref
+      - description: ""
+        name: inventsitelogisticslocation
+      - description: ""
+        name: inventlocationlogisticslocation
+      - description: ""
+        name: dirpersonname
+      - description: ""
+        name: inventtablemodule
+      - description: ""
+        name: hcmworker
+      - description: ""
+        name: vendtable
+      - description: ""
+        name: vendtrans
+      - description: ""
+        name: generaljournalaccountentry
+      - description: ""
+        name: generaljournalentry
+      - description: ""
+        name: mainaccount
+      - description: ""
+        name: vendtransopen
+      - description: ""
+        name: custtransopen
+      - description: ""
+        name: inventbatch
+      - description: ""
+        name: inventtable
+      - description: ""
+        name: custinvoicejour
+      - description: ""
+        name: purchline
+      - description: ""
+        name: custvendexternalitem
+      - description: ""
+        name: purchtable
+      - description: ""
+        name: custpackingsliptrans
+      - description: ""
+        name: custinvoicepackingslipquantitymatch
+      - description: ""
+        name: vendinvoicejour
+      - description: ""
+        name: ledgerjournaltrans
+      - description: ""
+        name: mainaccountcategory
+      - description: ""
+        name: ledgerjournaltable
+      - description: ""
+        name: dimensionattributevaluecombination
+      - description: "Table containing fiscal calendar period information."
+        name: fiscalcalendarperiod
+      - description: "Table containing general journal entry information from subledger vouchers."
+        name: subledgervouchergeneraljournalentry
+      - description: ""
+        name: enumtable
+      - description: ""
+        name: ecoresproductattributevalue
+      - name: dataarea
+      - description: ""
+        name: dimensionfinancialtag
+      - description: "Company Names of D365"
+        name: ledger
+      - description: "Delivery Terms"
+        name: dlvterm
+      - description: "Dimension Attribute Set for Items"
+        name: dimensionattributevalueset

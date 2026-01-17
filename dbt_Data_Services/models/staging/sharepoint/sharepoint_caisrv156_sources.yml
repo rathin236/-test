@@ -1,0 +1,154 @@
+version: 2
+
+sources:
+  - name: cai_data_store_sharepoint_dbo
+    description: ""
+    database: cookeinc_reportserver
+    tables:
+      - name: tns_lotdowngrade_master_archive20240711
+        description: ""
+        columns:
+          - name: tns_dg_formname
+            description: ""
+          - name: downgradetype10
+            description: ""
+          - name: lotcertification
+            description: ""
+          - name: downgradetype4
+            description: ""
+          - name: lot
+            description: ""
+          - name: rowid
+            description: ""
+          - name: downgradetype2
+            description: ""
+          - name: selectedlinenumber
+            description: ""
+          - name: downgradetype9
+            description: ""
+          - name: downgradetype3count
+            description: ""
+          - name: linenumber
+            description: ""
+          - name: downgradetype6count
+            description: ""
+          - name: downgradetype10count
+            description: ""
+          - name: downgradetype7
+            description: ""
+          - name: downgradetype9count
+            description: ""
+          - name: downgradetype5
+            description: ""
+          - name: downgradetype2count
+            description: ""
+          - name: downgradetype3
+            description: ""
+          - name: downgradetype5count
+            description: ""
+          - name: farmcage
+            description: ""
+          - name: juliandate
+            description: ""
+          - name: warehouse
+            description: ""
+          - name: downgradetype1
+            description: ""
+          - name: downgradetype8count
+            description: ""
+          - name: downgradetype8
+            description: ""
+          - name: process
+            description: ""
+          - name: julianyear
+            description: ""
+          - name: downgradetype1count
+            description: ""
+          - name: downgradetype6
+            description: ""
+          - name: downgradetype4count
+            description: ""
+          - name: submittime
+            description: ""
+          - name: processcode
+            description: ""
+          - name: downgradetype7count
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: tns_lotdowngrade_master
+        description: ""
+        columns:
+          - name: tns_dg_formname
+            description: ""
+          - name: downgradetype9
+            description: ""
+          - name: downgradetype6count
+            description: ""
+          - name: downgradetype1
+            description: ""
+          - name: julianyear
+            description: ""
+          - name: downgradetype3count
+            description: ""
+          - name: submittime
+            description: ""
+          - name: downgradetype7
+            description: ""
+          - name: downgradetype10
+            description: ""
+          - name: downgradetype3
+            description: ""
+          - name: lotcertification
+            description: ""
+          - name: downgradetype8count
+            description: ""
+          - name: downgradetype1count
+            description: ""
+          - name: downgradetype10count
+            description: ""
+          - name: linenumber
+            description: ""
+          - name: selectedlinenumber
+            description: ""
+          - name: lot
+            description: ""
+          - name: downgradetype4count
+            description: ""
+          - name: downgradetype5
+            description: ""
+          - name: downgradetype2count
+            description: ""
+          - name: downgradetype7count
+            description: ""
+          - name: warehouse
+            description: ""
+          - name: rowid
+            description: ""
+          - name: farmcage
+            description: ""
+          - name: downgradetype5count
+            description: ""
+          - name: downgradetype2
+            description: ""
+          - name: downgradetype8
+            description: ""
+          - name: processcode
+            description: ""
+          - name: downgradetype9count
+            description: ""
+          - name: downgradetype6
+            description: ""
+          - name: process
+            description: ""
+          - name: downgradetype4
+            description: ""
+          - name: juliandate
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""

@@ -1,0 +1,298 @@
+models:
+  - name: int_ft__cai__biological_inventory
+    description:
+      This model provides a comprehensive overview of biological inventory
+      data, integrating various status values and population metrics. It is designed
+      to track and analyze the changes in biomass, count, and other key metrics over
+      time for different populations and scenarios. The model is useful for understanding
+      growth patterns, mortality rates, and other biological events in aquaculture operations.
+    columns:
+      - name: company_name
+        description: The name of the company associated with the inventory data.
+      - name: enterprise_name
+        description: The name of the enterprise within the company.
+      - name: site_name
+        description: The name of the site where the inventory is located.
+      - name: site_id
+        description: A unique identifier for the site.
+      - name: population_id
+        description: A unique identifier for the population being tracked.
+      - name: container_name
+        description: The name of the container holding the population.
+      - name: input_year
+        description: The year when the population was input into the system.
+      - name: input_number
+        description: The number of inputs recorded for the population.
+      - name: status_date
+        description: The date when the status was recorded.
+      - name: status_time
+        description: The timestamp when the status was recorded.
+      - name: start_type
+        description: The type of status at the start of the period.
+      - name: start_count
+        description: The count of the population at the start of the period.
+      - name: start_biomass_kg
+        description: The biomass in kilograms at the start of the period.
+      - name: end_date
+        description: The date when the status was recorded at the end of the period.
+      - name: end_type
+        description: The type of status at the end of the period.
+      - name: end_count
+        description: The count of the population at the end of the period.
+      - name: end_biomass_kg
+        description: The biomass in kilograms at the end of the period.
+      - name: end_biomass_g
+        description: The biomass in grams at the end of the period.
+      - name: is_fasting
+        description: Indicates whether the population is fasting.
+      - name: reason_for_not_feeding
+        description: The reason provided for not feeding the population.
+      - name: reason_for_not_checking_mortality
+        description: The reason provided for not checking mortality.
+      - name: feed_use_kg
+        description: The amount of feed used in kilograms during the period.
+      - name: mortality_count
+        description: The number of mortalities recorded during the period.
+      - name: mortality_kg
+        description: The biomass in kilograms lost due to mortality during the period.
+      - name: escape_count
+        description: The number of escapes recorded during the period.
+      - name: escape_kg
+        description: The biomass in kilograms lost due to escapes during the period.
+      - name: culling_count
+        description: The number of culling events recorded during the period.
+      - name: culling_kg
+        description: The biomass in kilograms lost due to culling during the period.
+      - name: lost_in_samples_count
+        description: The number of samples lost during the period.
+      - name: lost_in_samples_kg
+        description: The biomass in kilograms lost in samples during the period.
+      - name: lost_in_spawning_count
+        description: The number of spawning events lost during the period.
+      - name: lost_in_spawning_kg
+        description: The biomass in kilograms lost during spawning events.
+      - name: input_count
+        description: The number of inputs recorded during the period.
+      - name: input_kg
+        description: The biomass in kilograms input during the period.
+      - name: harvest_count
+        description: The number of harvests recorded during the period.
+      - name: harvest_kg
+        description: The biomass in kilograms harvested during the period.
+      - name: sales_count
+        description: The number of sales recorded during the period.
+      - name: sales_kg
+        description: The biomass in kilograms sold during the period.
+      - name: deviation_count
+        description: The number of deviations recorded during the period.
+      - name: deviation_kg
+        description: The biomass in kilograms deviated during the period.
+      - name: harvest_discards_count
+        description: The number of harvest discards recorded during the period.
+      - name: harvest_discards_kg
+        description: The biomass in kilograms discarded during harvests.
+      - name: growth_kg
+        description: The net growth in biomass in kilograms during the period.
+      - name: gross_growth_kg
+        description:
+          The gross growth in biomass in kilograms during the period, including
+          all losses.
+      - name: calc_feed_amount_kg
+        description: The calculated amount of feed in kilograms during the period.
+      - name: atu
+        description: The accumulated thermal units during the period.
+      - name: avg_temperature
+        description: The average temperature during the period.
+      - name: growth_kg_ex_discards
+        description:
+          The growth in biomass in kilograms excluding discards during the
+          period.
+      - name: status_volume
+        description: The volume of the status during the period.
+      - name: ft_container_sk
+        description: The surrogate key for the container.
+      - name: ft_enterprise_sk
+        description: The surrogate key for the enterprise.
+      - name: ft_site_sk
+        description: The surrogate key for the site.
+      - name: ft_company_sk
+        description: The surrogate key for the company.
+      - name: ft_inventory_pk
+        description: The primary key for the inventory record.
+        tests:
+          - not_null
+          - unique
+  - name: int_ft__cai__dim_companies
+    description:
+      This model consolidates company-related data from various sources,
+      providing a comprehensive view of company attributes and relationships. It includes
+      internal and external identifiers, names, locations, and status indicators, facilitating
+      analysis of company structures and hierarchies.
+    columns:
+      - name: ft_company_sk
+        description: A surrogate key uniquely identifying each company record.
+        tests:
+          - unique
+          - not_null
+      - name: company_id
+        description: The internal identifier for the company.
+      - name: group_id
+        description: The identifier for the group to which the company belongs.
+      - name: parent_org_unit_id
+        description: The identifier for the parent organizational unit of the company.
+      - name: parent_id
+        description:
+          The identifier for the parent entity, either group or organizational
+          unit.
+      - name: org_unit_type_id
+        description: The identifier representing the type of organizational unit.
+      - name: official_company_id
+        description: The official external identifier for the company.
+      - name: company_name
+        description: The name of the company.
+      - name: location_name
+        description: The name of the location associated with the company.
+      - name: province
+        description: The province where the company is located.
+      - name: is_active
+        description: Indicates whether the company is currently active.
+  - name: int_ft__cai__dim_containers
+    description:
+      This model consolidates container data from various sources, providing
+      a unified view of container attributes and their organizational context. It combines
+      physical and planned container data to facilitate comprehensive analysis of container
+      usage and management.
+    columns:
+      - name: ft_container_sk
+        description: A surrogate key uniquely identifying each container record.
+        tests:
+          - unique
+          - not_null
+      - name: container_id
+        description: The original identifier for the container from the source system.
+      - name: container_name
+        description: The name assigned to the container, used for identification and reference.
+      - name: group_id
+        description: Identifier for the group to which the container belongs.
+      - name: org_unit_id
+        description: Identifier for the organizational unit associated with the container.
+      - name: parent_id
+        description:
+          Identifier for the parent entity of the container, determined by
+          group or stand association.
+      - name: container_type_id
+        description: Identifier representing the type of container.
+      - name: feed_method_id
+        description: Identifier for the feeding method used for the container.
+      - name: stand_id
+        description: Identifier for the stand associated with the container.
+      - name: sort_index
+        description: A numerical value used to sort containers in a specific order.
+      - name: is_active
+        description: Indicates whether the container is currently active.
+  - name: int_ft__cai__dim_enterprises
+    description:
+      This model consolidates enterprise data from various sources, providing
+      a comprehensive view of enterprise attributes, including location, hierarchy,
+      and status. It is used to analyze enterprise structures and relationships within
+      the organization.
+    columns:
+      - name: ft_enterprise_sk
+        description: A surrogate key uniquely identifying each enterprise record.
+        tests:
+          - unique
+          - not_null
+      - name: enterprise_id
+        description: The unique identifier for the enterprise.
+      - name: parent_org_unit_id
+        description: The identifier for the parent organizational unit of the enterprise.
+      - name: parent_id
+        description:
+          The identifier for the parent entity, which could be a group or organizational
+          unit.
+      - name: enterprise_name
+        description: The name of the enterprise.
+      - name: location_name
+        description: The name of the location associated with the enterprise.
+      - name: province
+        description:
+          The province where the enterprise is located, derived from the county
+          information.
+      - name: is_active
+        description: Indicates whether the enterprise is currently active.
+  - name: int_ft__cai__dim_populations
+    description:
+      This model consolidates population data from various sources, focusing
+      on fish populations and their associated containers. It filters out populations
+      involved in subtransfers and calculates additional attributes like fish group
+      and date ranges for analysis.
+    columns:
+      - name: scenario_id
+        description:
+          A static identifier for the scenario, used for consistent reference
+          across analyses.
+      - name: population_id
+        description: Unique identifier for each fish population.
+        tests:
+          - unique
+          - not_null
+      - name: container_id
+        description: Identifier for the container associated with the fish population.
+      - name: population_name
+        description: Name of the fish population.
+      - name: species_id
+        description: Identifier for the species of the fish population.
+      - name: start_time
+        description: Timestamp indicating when the population started.
+      - name: end_time
+        description: Timestamp indicating when the population ended.
+      - name: input_year
+        description: Year the population data was inputted.
+      - name: input_number
+        description: Project number associated with the population input.
+      - name: running_number
+        description: Sequential number for tracking the population.
+      - name: fish_group
+        description:
+          Concatenated string representing the fish group, combining year,
+          project, and running numbers.
+      - name: start_date
+        description: Date when the population started.
+      - name: end_date
+        description: Date when the population ended, adjusted to the next day if applicable.
+  - name: int_ft__cai__insurance_profile
+    description: This model consolidates insurance profile data with pricing details
+      to provide a comprehensive view of insurance policies, including policy numbers,
+      descriptions, and associated pricing metrics such as price per fish and price
+      per kg. It is useful for analyzing insurance coverage and pricing strategies across
+      different species and weight ranges.
+    columns:
+    - name: ft_insurance_sk
+      tests:
+         - unique
+         - not_null
+      description: A surrogate key uniquely identifying each insurance profile entry.
+    - name: site_id
+      description: The identifier for the site or organizational unit associated with
+        the insurance policy.
+    - name: policy_id
+      description: The unique identifier for the insurance policy.
+    - name: policy_date
+      description: The date when the insurance policy was issued.
+    - name: policy_number
+      description: The official number assigned to the insurance policy.
+    - name: policy_description
+      description: A detailed description of the insurance policy.
+    - name: currency_id
+      description: The identifier for the currency used in the pricing details.
+    - name: species_id
+      description: The identifier for the species associated with the insurance policy.
+    - name: from_weight
+      description: The starting weight range for which the pricing applies.
+    - name: to_weight
+      description: The ending weight range for which the pricing applies.
+    - name: price_per_fish
+      description: The price assigned per individual fish within the specified weight
+        range.
+    - name: price_per_kg
+      description: The price assigned per kilogram within the specified weight range.

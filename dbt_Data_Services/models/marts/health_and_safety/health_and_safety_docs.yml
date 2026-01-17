@@ -1,0 +1,224 @@
+models:
+  - name: fct_field_level_hazard_assessment
+    description: >
+      This model provides a comprehensive overview of field-level hazard
+      assessments, capturing detailed information about potential hazards,
+      safety measures, and inspection results. It is used to ensure workplace
+      safety by identifying and documenting hazards, inspections, and safety
+      compliance in various work environments.
+    columns:
+      - name: executionid
+        description: A unique identifier for each hazard assessment execution.
+        tests:
+          - unique
+          - not_null
+      - name: form_name
+        description: The name of the form used for the hazard assessment.
+      - name: created_date
+        description: The date when the hazard assessment record was created.
+      - name: submitdate
+        description: The timestamp when the hazard assessment was submitted.
+      - name: submit_monthyear
+        description: The month and year when the hazard assessment was submitted.
+      - name: login_name
+        description: The login name of the user who submitted the hazard assessment.
+      - name: company_division
+        description: The division of the company where the hazard assessment was conducted.
+      - name: supervisor_manager
+        description: The name of the supervisor or manager overseeing the hazard assessment.
+      - name: vessel
+        description: The vessel associated with the hazard assessment, if applicable.
+      - name: completed_by
+        description: The name of the person who completed the hazard assessment.
+      - name: date
+        description: The date on which the hazard assessment was conducted.
+      - name: muster_point
+        description: The designated muster point for safety in case of an emergency.
+      - name: q01_work_area_clean
+        description: Indicates if the work area is clean and free of hazards.
+      - name: q02_material_storage
+        description: Indicates if materials are stored properly to prevent hazards.
+      - name: q03_dust_mist_fumes
+        description: Indicates the presence of dust, mist, or fumes in the work area.
+      - name: q04_noise_area
+        description: Indicates if the work area is a high noise area.
+      - name: q05_extreme_temperatures
+        description: Indicates if extreme temperatures are present in the work area.
+      - name: q06_spill_potential
+        description: Indicates the potential for spills in the work area.
+      - name: q07_waste_managed
+        description: Indicates if waste is managed properly in the work area.
+      - name: q08_excavation_permit
+        description: Indicates if an excavation permit is required for the work area.
+      - name: q09_other_workers
+        description: Indicates the presence of other workers in the work area.
+      - name: q10_weather_conditions
+        description: Indicates the weather conditions affecting the work area.
+      - name: q11_msds_reviewed
+        description: Indicates if the Material Safety Data Sheets (MSDS) have been reviewed.
+      - name: q12_awkward_position
+        description: Indicates if workers are required to work in awkward positions.
+      - name: q13_over_extension
+        description: Indicates if there is a risk of over-extension during work.
+      - name: q14_twisting_bending
+        description: Indicates if twisting or bending is required during work.
+      - name: q15_tight_area
+        description: Indicates if the work area is tight or confined.
+      - name: q16_lift_heavy_awkward
+        description: Indicates if heavy or awkward lifting is required.
+      - name: q17_hands_not_visible
+        description: Indicates if workers' hands are not visible during work.
+      - name: q18_working_above_head
+        description: Indicates if work is performed above head level.
+      - name: q19_site_access
+        description: Indicates if site access is restricted or controlled.
+      - name: q20_scaffold_inspected
+        description: Indicates if scaffolding has been inspected for safety.
+      - name: q21_ladders_tied_off
+        description: Indicates if ladders are properly tied off for safety.
+      - name: q22_slips_trips
+        description: Indicates the potential for slips and trips in the work area.
+      - name: q23_hoisting
+        description: Indicates if hoisting operations are conducted in the work area.
+      - name: q24_excavation_routes
+        description: Indicates if excavation routes are clearly marked and safe.
+      - name: q25_confined_space
+        description: Indicates if the work area is a confined space.
+      - name: q26_barricades_signs
+        description: Indicates if barricades and signs are in place for safety.
+      - name: q27_hole_coverings
+        description: Indicates if hole coverings are in place to prevent falls.
+      - name: q28_trenching_structures
+        description: Indicates if trenching structures are safe and secure.
+      - name: q29_rig_guidelines
+        description: Indicates if rigging guidelines are followed in the work area.
+      - name: q30_power_lines
+        description: Indicates the presence of power lines in the work area.
+      - name: q31_falling_items
+        description: Indicates the risk of falling items in the work area.
+      - name: q32_hoisting_overhead
+        description: Indicates if hoisting is conducted overhead.
+      - name: q33_proper_tools
+        description: Indicates if proper tools are used for the work.
+      - name: q34_equipment_inspected
+        description: Indicates if equipment has been inspected for safety.
+      - name: q35_tank_plumbing
+        description: Indicates if tank plumbing is safe and secure.
+      - name: q36_hoses_inspected
+        description: Indicates if hoses have been inspected for safety.
+      - name: q37_high_pressure
+        description: Indicates the presence of high-pressure systems in the work area.
+      - name: q38_high_temp_fluids
+        description: Indicates the presence of high-temperature fluids in the work area.
+      - name: q39_no_procedure
+        description: Indicates if there is no procedure in place for the work.
+      - name: q40_confusing_instructions
+        description: Indicates if instructions for the work are confusing.
+      - name: q41_no_training
+        description: Indicates if workers have not received training for the work.
+      - name: q42_first_time
+        description: Indicates if it is the first time the work is being conducted.
+      - name: q43_working_alone
+        description: Indicates if workers are working alone in the work area.
+      - name: q44_ppe_inspected
+        description: Indicates if personal protective equipment (PPE) has been inspected.
+      - name: q45_communications_plan
+        description: Indicates if a communications plan is in place for safety.
+      - name: q46_other_hazard_1
+        description: Description of any other identified hazard not covered by previous questions.
+      - name: q47_other_hazard_2
+        description: Description of any other identified hazard not covered by previous questions.
+      - name: q48_other_hazard_3
+        description: Description of any other identified hazard not covered by previous questions.
+      - name: q49_other_hazard_4
+        description: Description of any other identified hazard not covered by previous questions.
+      - name: preuse_inspection_done
+        description: Indicates if a pre-use inspection has been completed.
+      - name: is_worker_alone
+        description: Indicates if the worker is alone during the task.
+      - name: explain_if_alone
+        description: Explanation of why the worker is alone, if applicable.
+      - name: permits_closed_out
+        description: Indicates if all required permits have been closed out.
+      - name: hazards_remaining
+        description: Indicates if any hazards remain after the assessment.
+      - name: explain_hazards_remaining
+        description: Explanation of any remaining hazards after the assessment.
+      - name: incidents_or_injuries
+        description: Indicates if any incidents or injuries occurred during the task.
+      - name: explain_incidents_injuries
+        description: Explanation of any incidents or injuries that occurred.
+      - name: area_cleaned_after_shift
+        description: Indicates if the work area was cleaned after the shift.
+      - name: worker_name_1
+        description: Name of the first worker involved in the task.
+      - name: worker_name_2
+        description: Name of the second worker involved in the task.
+      - name: worker_name_3
+        description: Name of the third worker involved in the task.
+      - name: worker_name_4
+        description: Name of the fourth worker involved in the task.
+
+  - name: fct_monthly_fwhatcheries
+    description: >
+      This model aggregates monthly health and safety inspection data for
+      hatcheries, providing a comprehensive overview of compliance and safety
+      measures.
+    columns:
+      - name: executionid
+        description: Unique identifier for each execution of the inspection form.
+        tests:
+          - unique
+          - not_null
+      - name: form_name
+        description: Name of the form used for the inspection.
+      - name: created_date
+        description: Date when the inspection form was created.
+      - name: submitdate
+        description: Timestamp when the inspection form was submitted.
+      - name: submit_monthyear
+        description: Month and year when the inspection form was submitted.
+      - name: login_name
+        description: Name of the user who logged in to submit the form.
+      - name: location
+        description: Location of the hatchery where the inspection took place.
+      - name: supervisor_manager
+        description: Name of the supervisor or manager overseeing the inspection.
+      - name: hatchery_name
+        description: Name of the hatchery being inspected.
+      - name: inspection_completed_by
+        description: Name of the person who completed the inspection.
+      - name: date_of_inspection
+        description: Date when the inspection was conducted.
+
+  - name: fct_monthly_swoperations
+    description: >
+      This model provides a comprehensive monthly summary of health and safety
+      operations, capturing various inspection and compliance metrics across
+      different company divisions and site locations.
+    columns:
+      - name: executionid
+        description: A unique identifier for each execution of the safety operation.
+        tests:
+          - unique
+          - not_null
+      - name: form_name
+        description: The name of the form used for recording the safety operation.
+      - name: created_date
+        description: The date when the safety operation record was created.
+      - name: submitdate
+        description: The timestamp when the safety operation was submitted.
+      - name: submit_monthyear
+        description: The month and year when the safety operation was submitted.
+      - name: login_name
+        description: The login name of the user who submitted the safety operation.
+      - name: company_division
+        description: The division of the company where the safety operation took place.
+      - name: supervisor_manager
+        description: The supervisor or manager responsible for the safety operation.
+      - name: site_location
+        description: The location of the site where the safety operation was conducted.
+      - name: inspection_completed_by
+        description: The individual who completed the safety inspection.
+      - name: date_of_inspection
+        description: The date when the safety inspection was conducted.

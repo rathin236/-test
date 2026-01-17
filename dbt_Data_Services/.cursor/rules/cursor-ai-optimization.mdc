@@ -1,0 +1,216 @@
+---
+alwaysApply: false
+---
+# Cursor AI Optimization for dbt Projects
+
+## Effective AI Prompting for dbt Work
+
+### Context-Rich Prompts
+When asking AI to help with dbt models, provide context:
+
+**Good:**
+```
+Create a staging model for D365 sales orders that:
+- Sources from d365.sales_order_header
+- Standardizes currency to USD using convert_to_usd macro
+- Renames columns to snake_case
+- Filters out test data (company_code != 'TEST')
+- Follows our staging conventions (stg_ prefix)
+```
+
+**Not Good:**
+```
+Make a sales order model
+```
+
+### Reference Existing Patterns
+- Ask AI to "follow the pattern in `stg_d365__sales_order_lines`"
+- Reference similar models: "Similar to `int_global_sales__unioned` but for finance"
+- Point to macros: "Use the `convert_to_usd()` macro from `macros/global_sales/`"
+
+### Domain-Specific Context
+When working on models, mention:
+- **Which system**: D365, GP, SAP, etc.
+- **Which domain**: Global Sales, Finance, Saltwater, etc.
+- **Which layer**: staging, intermediate, or marts
+- **Business context**: What the data represents
+
+## Using AI for Code Generation
+
+### Staging Models
+Ask AI to:
+1. Generate staging model from source definition
+2. Include proper column casting and renaming
+3. Add null handling
+4. Follow naming conventions
+
+**Prompt Template:**
+```
+Create a staging model named stg_<system>__<table> that:
+- Sources from {{ source('<system>', '<table>') }}
+- Casts date columns properly
+- Renames columns to snake_case
+- Handles nulls appropriately
+- Follows the pattern in models/staging/<system>/stg_<system>__<similar_table>.sql
+```
+
+### Intermediate Models
+Ask AI to:
+1. Combine multiple staging models
+2. Apply business logic transformations
+3. Use existing macros when applicable
+4. Document complex logic
+
+**Prompt Template:**
+```
+Create an intermediate model int_<domain>__<description> that:
+- Unions data from [list staging models]
+- Applies [business logic]
+- Uses [specific macros] for currency conversion
+- Follows the pattern in models/intermediate/<domain>/int_<domain>__<similar>.sql
+```
+
+### Documentation Generation
+Ask AI to:
+1. Generate YAML documentation from SQL model
+2. Extract column descriptions
+3. Suggest appropriate tests
+4. Add business context
+
+**Prompt:**
+```
+Generate dbt YAML documentation for [model name]:
+- Include model description
+- Document all columns with business context
+- Suggest appropriate tests (not_null, unique, etc.)
+- Follow the format in models/marts/<domain>/_<domain>__models.yml
+```
+
+## AI-Assisted Code Review
+
+### Before Review
+Ask AI to:
+- Check for common dbt issues
+- Validate naming conventions
+- Suggest missing tests
+- Review SQL best practices
+
+**Prompt:**
+```
+Review this dbt model for:
+- Naming convention compliance
+- Missing ref() or source() calls
+- Appropriate materialization
+- Missing tests
+- Documentation gaps
+```
+
+### Refactoring Help
+Ask AI to:
+- Refactor repetitive code
+- Extract common logic to macros
+- Improve query performance
+- Standardize patterns
+
+## Learning with AI
+
+### Understanding Existing Code
+Ask AI to:
+- Explain what a complex model does
+- Walk through business logic
+- Identify dependencies
+- Suggest improvements
+
+**Prompt:**
+```
+Explain this dbt model:
+- What business logic does it implement?
+- What are its dependencies?
+- How does it fit into the overall data flow?
+- Are there any potential improvements?
+```
+
+### Learning dbt Concepts
+Ask AI to:
+- Explain dbt features (materializations, macros, tests)
+- Show examples from your codebase
+- Compare approaches
+- Best practices for your use case
+
+## Common AI Tasks
+
+### Model Creation Workflow
+1. **Source Definition**: Ask AI to generate `_sources.yml` entry
+2. **Staging Model**: Generate staging model from source
+3. **Intermediate Model**: Create transformation logic
+4. **Mart Model**: Build business-ready dataset
+5. **Documentation**: Generate YAML docs
+6. **Tests**: Suggest appropriate tests
+
+### Refactoring Workflow
+1. **Identify Pattern**: Ask AI to find similar code patterns
+2. **Create Macro**: Extract to reusable macro
+3. **Update Models**: Apply macro across models
+4. **Test**: Verify no breaking changes
+
+### Documentation Workflow
+1. **Extract Logic**: Ask AI to explain model purpose
+2. **Generate YAML**: Create documentation structure
+3. **Review**: Validate completeness
+4. **Enhance**: Add business context manually
+
+## AI Limitations & When to Ask Humans
+
+### Use AI For:
+- ✅ Code generation from clear requirements
+- ✅ Following existing patterns
+- ✅ Documentation generation
+- ✅ Test suggestions
+- ✅ SQL optimization suggestions
+- ✅ Refactoring repetitive code
+
+### Ask Humans For:
+- ❌ Business logic validation
+- ❌ Complex domain-specific decisions
+- ❌ Integration strategy (which systems to combine)
+- ❌ Data quality expectations
+- ❌ Production deployment decisions
+- ❌ Access/permission requests
+
+## Prompt Engineering Tips
+
+### Be Specific
+- ✅ "Create a staging model following the pattern in `stg_gp_cai__PM00200`"
+- ❌ "Make a staging model"
+
+### Include Constraints
+- ✅ "Use snake_case, filter test data, handle nulls"
+- ❌ "Clean the data"
+
+### Reference Examples
+- ✅ "Similar to `int_global_sales__unioned` but for finance AP data"
+- ❌ "Union some tables"
+
+### Iterate
+- Start with broad request
+- Refine based on AI output
+- Ask follow-up questions
+- Request specific changes
+
+## Cursor-Specific Features
+
+### Codebase Understanding
+- Use Cursor's codebase search to find similar patterns
+- Reference file paths in prompts
+- Ask AI to explain existing code before modifying
+
+### Multi-File Edits
+- Ask AI to update related files together:
+  - Model + Documentation + Tests
+  - Source definition + Staging model
+  - Macro + All models using it
+
+### Context Awareness
+- Cursor understands your project structure
+- Reference folder paths: "in `models/staging/d365/`"
+- Mention configuration: "following `dbt_project.yml` patterns"

@@ -1,0 +1,829 @@
+version: 2
+
+models:
+  - name: int_tn_fresh_yield_reporting__dim_item_innova
+    description: ""
+    columns:
+      - name: ItemDescription
+        quote: true
+        description: ""
+
+      - name: ItemDisplayDescription
+        quote: true
+        description: ""
+
+      - name: ItemType
+        quote: true
+        description: ""
+
+      - name: ItemClass
+        quote: true
+        description: ""
+
+      - name: CatchArea
+        quote: true
+        description: ""
+
+      - name: Category
+        quote: true
+        description: ""
+
+      - name: CWCategory
+        quote: true
+        description: ""
+
+      - name: Division
+        quote: true
+        description: ""
+
+      - name: Family
+        quote: true
+        description: ""
+
+      - name: FinishedForm
+        quote: true
+        description: ""
+
+      - name: Form
+        quote: true
+        description: ""
+
+      - name: Grade
+        quote: true
+        description: ""
+
+      - name: HighLevelCategory
+        quote: true
+        description: ""
+
+      - name: HighLevelGrade
+        quote: true
+        description: ""
+
+      - name: InsidePackType
+        quote: true
+        description: ""
+
+      - name: MasterPackagingType
+        quote: true
+        description: ""
+
+      - name: Scaled
+        quote: true
+        description: ""
+
+      - name: Size
+        quote: true
+        description: ""
+
+      - name: SkinOnOff
+        quote: true
+        description: ""
+
+      - name: SkinningType
+        quote: true
+        description: ""
+
+      - name: Species
+        quote: true
+        description: ""
+
+      - name: SubCategory
+        quote: true
+        description: ""
+
+      - name: Subspecies
+        quote: true
+        description: ""
+
+      - name: Trim
+        quote: true
+        description: ""
+
+      - name: WholeVA
+        quote: true
+        description: ""
+
+      - name: WildOrFarmed
+        quote: true
+        description: ""
+
+      - name: YieldClass
+        quote: true
+        description: ""
+
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: Key_Item
+        quote: true
+        description: ""
+
+  - name: int_tn_fresh_yield_reporting__dim_item_ns
+    description: ""
+    columns:
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: ItemDescription
+        quote: true
+        description: ""
+
+      - name: ItemDisplayDescription
+        quote: true
+        description: ""
+
+      - name: ItemType
+        quote: true
+        description: ""
+
+      - name: ItemClass
+        quote: true
+        description: ""
+
+      - name: CatchArea
+        quote: true
+        description: ""
+
+      - name: Category
+        quote: true
+        description: ""
+
+      - name: CWCategory
+        quote: true
+        description: ""
+
+      - name: Division
+        quote: true
+        description: ""
+
+      - name: Family
+        quote: true
+        description: ""
+
+      - name: FinishedForm
+        quote: true
+        description: ""
+
+      - name: Form
+        quote: true
+        description: ""
+
+      - name: Grade
+        quote: true
+        description: ""
+
+      - name: HighLevelCategory
+        quote: true
+        description: ""
+
+      - name: HighLevelGrade
+        quote: true
+        description: ""
+
+      - name: InsidePackType
+        quote: true
+        description: ""
+
+      - name: MasterPackagingType
+        quote: true
+        description: ""
+
+      - name: Scaled
+        quote: true
+        description: ""
+
+      - name: Size
+        quote: true
+        description: ""
+
+      - name: SkinOnOff
+        quote: true
+        description: ""
+
+      - name: SkinningType
+        quote: true
+        description: ""
+
+      - name: Species
+        quote: true
+        description: ""
+
+      - name: SubCategory
+        quote: true
+        description: ""
+
+      - name: SubSpecies
+        quote: true
+        description: ""
+
+      - name: Trim
+        quote: true
+        description: ""
+
+      - name: WholeVA
+        quote: true
+        description: ""
+
+      - name: WildOrFarmed
+        quote: true
+        description: ""
+
+      - name: YieldClass
+        quote: true
+        description: ""
+
+      - name: Key_Item
+        quote: true
+        description: ""
+
+  - name: int_tn_fresh_yield_reporting__dim_production_line_innova
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+
+      - name: Warehouse
+        quote: true
+        description: ""
+
+      - name: LineNumber
+        quote: true
+        description: ""
+
+      - name: Full Line Description
+        quote: true
+        description: ""
+
+      - name: LineDescription
+        quote: true
+        description: ""
+
+      - name: Key_Line
+        quote: true
+        description: ""
+
+  - name: int_tn_fresh_yield_reporting__dim_production_line_ns
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+
+      - name: Warehouse
+        quote: true
+        description: ""
+
+      - name: LineNumber
+        quote: true
+        description: ""
+
+      - name: Full Line Description
+        quote: true
+        description: ""
+
+      - name: LineDescription
+        quote: true
+        description: ""
+
+      - name: Key_Line
+        quote: true
+        description: ""
+
+  - name: int_tn_fresh_yield_reporting__processing_inputs_innova
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+
+      - name: Facility
+        quote: true
+        description: ""
+
+      - name: PalletNumber
+        quote: true
+        description: ""
+
+      - name: CaseNumber
+        quote: true
+        description: ""
+
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: PalletUoM
+        quote: true
+        description: ""
+
+      - name: PalletVolume
+        quote: true
+        description: ""
+
+      - name: CaseUoM
+        quote: true
+        description: ""
+
+      - name: CaseVolume
+        quote: true
+        description: ""
+
+      - name: Pieces
+        quote: true
+        description: ""
+
+      - name: FWtoLBConversion
+        quote: true
+        description: ""
+
+      - name: Lbs
+        quote: true
+        description: ""
+
+      - name: Units
+        quote: true
+        description: ""
+
+      - name: TransactionType
+        quote: true
+        description: ""
+
+      - name: ItemProfile
+        quote: true
+        description: ""
+
+      - name: ItemSetCheck
+        quote: true
+        description: ""
+
+      - name: dbDT
+        quote: true
+        description: ""
+
+      - name: Datetime_Transaction
+        quote: true
+        description: ""
+
+      - name: Date_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Contdtl
+        quote: true
+        description: ""
+
+      - name: Key_Company
+        quote: true
+        description: ""
+
+      - name: Key_Date
+        quote: true
+        description: ""
+
+      - name: Key_Line
+        quote: true
+        description: ""
+
+      - name: Key_Site
+        quote: true
+        description: ""
+
+      - name: Key_Item
+        quote: true
+        description: ""
+
+      - name: Key_Lot
+        quote: true
+        description: ""
+
+  - name: int_tn_fresh_yield_reporting__processing_inputs_ns
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+
+      - name: Facility
+        quote: true
+        description: ""
+
+      - name: PalletNumber
+        quote: true
+        description: ""
+
+      - name: CaseNumber
+        quote: true
+        description: ""
+
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: PalletUoM
+        quote: true
+        description: ""
+
+      - name: PalletVolume
+        quote: true
+        description: ""
+
+      - name: CaseUoM
+        quote: true
+        description: ""
+
+      - name: CaseVolume
+        quote: true
+        description: ""
+
+      - name: Pieces
+        quote: true
+        description: ""
+
+      - name: FWtoLBconversion
+        quote: true
+        description: ""
+
+      - name: TransactionType
+        quote: true
+        description: ""
+
+      - name: dbDT
+        quote: true
+        description: ""
+
+      - name: Datetime_Transaction
+        quote: true
+        description: ""
+
+      - name: Date_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Contdtl
+        quote: true
+        description: ""
+
+      - name: Key_Date
+        quote: true
+        description: ""
+
+      - name: Lbs
+        quote: true
+        description: ""
+
+      - name: Units
+        quote: true
+        description: ""
+
+      - name: ItemProfile
+        quote: true
+        description: ""
+
+      - name: ItemSetCheck
+        quote: true
+        description: ""
+
+      - name: Key_Company
+        quote: true
+        description: ""
+
+      - name: Key_Site
+        quote: true
+        description: ""
+
+      - name: Key_Item
+        quote: true
+        description: ""
+
+      - name: Key_Lot
+        quote: true
+        description: ""
+
+      - name: Key_Line
+        quote: true
+        description: ""
+
+  - name: int_tn_fresh_yield_reporting__processing_outputs_cases
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+
+      - name: Facility
+        quote: true
+        description: ""
+
+      - name: PalletNumber
+        quote: true
+        description: ""
+
+      - name: CaseNumber
+        quote: true
+        description: ""
+
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: PalletUoM
+        quote: true
+        description: ""
+
+      - name: PalletVolume
+        quote: true
+        description: ""
+
+      - name: CaseUoM
+        quote: true
+        description: ""
+
+      - name: CaseVolume
+        quote: true
+        description: ""
+
+      - name: FWtoLBconversion
+        quote: true
+        description: ""
+
+      - name: Units
+        quote: true
+        description: ""
+
+      - name: TransactionType
+        quote: true
+        description: ""
+
+      - name: ItemProfile
+        quote: true
+        description: ""
+
+      - name: dbDT
+        quote: true
+        description: ""
+
+      - name: Datetime_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Contdtl
+        quote: true
+        description: ""
+
+      - name: Key_Date
+        quote: true
+        description: ""
+
+      - name: Pieces
+        quote: true
+        description: ""
+
+      - name: Lbs
+        quote: true
+        description: ""
+
+      - name: ItemSetCheck
+        quote: true
+        description: ""
+
+      - name: Date_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Company
+        quote: true
+        description: ""
+
+      - name: Key_Site
+        quote: true
+        description: ""
+
+      - name: Key_Item
+        quote: true
+        description: ""
+
+      - name: Key_Lot
+        quote: true
+        description: ""
+
+      - name: Key_Line
+        quote: true
+        description: ""
+
+  - name: int_tn_fresh_yield_reporting__processing_outputs_pallets
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+
+      - name: Facility
+        quote: true
+        description: ""
+
+      - name: PalletNumber
+        quote: true
+        description: ""
+
+      - name: CaseNumber
+        quote: true
+        description: ""
+
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: PalletUoM
+        quote: true
+        description: ""
+
+      - name: PalletVolume
+        quote: true
+        description: ""
+
+      - name: CaseUoM
+        quote: true
+        description: ""
+
+      - name: CaseVolume
+        quote: true
+        description: ""
+
+      - name: FWtoLBconversion
+        quote: true
+        description: ""
+
+      - name: TransactionType
+        quote: true
+        description: ""
+
+      - name: ItemProfile
+        quote: true
+        description: ""
+
+      - name: dbDT
+        quote: true
+        description: ""
+
+      - name: Datetime_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Contdtl
+        quote: true
+        description: ""
+
+      - name: Pieces
+        quote: true
+        description: ""
+
+      - name: Lbs
+        quote: true
+        description: ""
+
+      - name: Units
+        quote: true
+        description: ""
+
+      - name: ItemSetCheck
+        quote: true
+        description: ""
+
+      - name: Date_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Company
+        quote: true
+        description: ""
+
+      - name: Key_Site
+        quote: true
+        description: ""
+
+      - name: Key_Date
+        quote: true
+        description: ""
+
+      - name: Key_Item
+        quote: true
+        description: ""
+
+      - name: Key_Lot
+        quote: true
+        description: ""
+
+      - name: Key_Line
+        quote: true
+        description: ""
+
+  - name: int_tn_fresh_yield_reporting__processing_outputs_qc
+    description: ""
+    columns:
+      - name: Company
+        quote: true
+        description: ""
+
+      - name: Facility
+        quote: true
+        description: ""
+
+      - name: PalletNumber
+        quote: true
+        description: ""
+
+      - name: CaseNumber
+        quote: true
+        description: ""
+
+      - name: ItemNumber
+        quote: true
+        description: ""
+
+      - name: PalletUoM
+        quote: true
+        description: ""
+
+      - name: PalletVolume
+        quote: true
+        description: ""
+
+      - name: CaseUoM
+        quote: true
+        description: ""
+
+      - name: CaseVolume
+        quote: true
+        description: ""
+
+      - name: Pieces
+        quote: true
+        description: ""
+
+      - name: FWtoLBconversion
+        quote: true
+        description: ""
+
+      - name: Lbs
+        quote: true
+        description: ""
+
+      - name: Units
+        quote: true
+        description: ""
+
+      - name: TransactionType
+        quote: true
+        description: ""
+
+      - name: ItemProfile
+        quote: true
+        description: ""
+
+      - name: ItemSetCheck
+        quote: true
+        description: ""
+
+      - name: dbDT
+        quote: true
+        description: ""
+
+      - name: Datetime_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Contdtl
+        quote: true
+        description: ""
+
+      - name: Key_Company
+        quote: true
+        description: ""
+
+      - name: Key_Site
+        quote: true
+        description: ""
+
+      - name: Date_Transaction
+        quote: true
+        description: ""
+
+      - name: Key_Date
+        quote: true
+        description: ""
+
+      - name: Key_Item
+        quote: true
+        description: ""
+
+      - name: Key_Lot
+        quote: true
+        description: ""
+
+      - name: Key_Line
+        quote: true
+        description: ""

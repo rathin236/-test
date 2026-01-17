@@ -1,0 +1,325 @@
+---
+alwaysApply: false
+---
+# dbt Best Practices
+
+## Model Organization
+
+### Layer Conventions
+Follow the established layered architecture:
+
+**Staging (`models/staging/`)**
+- Prefix: `stg_` (e.g., `stg_gp_cai__PM00200`)
+- Purpose: One-to-one with source tables, basic cleaning
+- Materialization: Views (configured in `dbt_project.yml`)
+- One model per source table/view
+- Always reference sources defined in `_<domain>__sources.yml`
+
+**Intermediate (`models/intermediate/`)**
+- Prefix: `int_` (e.g., `int_global_sales__unioned`)
+- Purpose: Business logic, reusable transformations
+- Materialization: Views (default), tables for complex aggregations
+- Combine multiple staging models
+- Reusable transformations (currency, date calcs, etc.)
+
+**Marts (`models/marts/`)**
+- Prefix: Domain-specific (e.g., `fct_sales`, `dim_customer`)
+- Purpose: Business-ready datasets for end users
+- Materialization: Tables (performance), views (real-time)
+- Organized by domain folder structure
+
+## Naming Conventions
+
+### Model Names
+- Use lowercase with underscores: `stg_d365__sales_order_lines`
+- Format: `<layer>_<source_system>__<entity_name>`
+- Double underscore `__` separates source system from entity
+- Keep names descriptive but concise
+
+### Column Names
+- ✅ Use lowercase with underscores: `order_amount_usd`
+- ✅ Be descriptive: `customer_id`, not `c_id`
+- ✅ Include units when relevant: `weight_lbs`, `amount_usd`
+- ❌ Avoid abbreviations unless widely understood
+- ❌ No camelCase or PascalCase
+
+### File Organization
+- Group models by domain/system: `models/staging/d365/`
+- Use `_sources.yml` for source definitions: `models/staging/d365/_d365__sources.yml`
+- Use `_models.yml` for model documentation: `models/marts/global_sales/_global_sales__models.yml`
+
+## Materializations
+
+### Choose Appropriately
+- **Views**: Fast iteration, always current, low storage
+  - Default for staging
+  - Use for simple transformations
+- **Tables**: Better performance, incremental builds possible
+  - Default for marts
+  - Use for heavy aggregations or frequent queries
+- **Incremental**: Large datasets, only new/changed rows
+  - Use when full refresh is expensive
+  - Requires unique key strategy
+
+### Configuration
+- Set in `dbt_project.yml` by folder path
+- Override in model `config()` block when needed
+- Document why you're overriding defaults
+
+## Dependencies & References
+
+### Always Use `ref()` and `source()`
+- ✅ `{{ ref('stg_d365__sales_orders') }}`
+- ✅ `{{ source('d365', 'sales_order_lines') }}`
+- ❌ Never hardcode schema/table names
+- ❌ Never use `dbt_utils.generate_schema_name()` directly
+
+### Always Use CTEs for Model References
+- ✅ **ALWAYS** create a CTE when referencing other models with `ref()` or `source()`
+- ✅ Reference the CTE in subsequent CTEs, never directly reference `ref()` or `source()` in FROM clauses
+- ❌ **NEVER** directly reference `{{ ref('model_name') }}` in a FROM clause
+
+**Correct Pattern:**
+```sql
+with 
+
+source_data as (
+    select * from {{ ref('stg_d365__sales_orders') }}
+),
+
+filtered as (
+    select *
+    from source_data
+    where order_date >= '2023-01-01'
+)
+
+select * from filtered
+```
+
+**Incorrect Pattern:**
+```sql
+with 
+
+filtered as (
+    select *
+    from {{ ref('stg_d365__sales_orders') }}  -- ❌ DON'T DO THIS
+    where order_date >= '2023-01-01'
+)
+
+select * from filtered
+```
+
+**Why:**
+- Improves readability and maintainability
+- Makes it easier to add transformations or filters
+- Consistent pattern across all models
+- Easier to debug and understand data flow
+
+### Mart Model CTE Guidelines
+- ✅ **Single CTE**: If mart is just passing through from intermediate (no transformations), use only ONE CTE
+- ✅ **Multiple CTEs**: Use multiple CTEs only when transformations are needed (joins, aggregations, calculations, etc.)
+- ❌ **Don't create unnecessary CTEs**: If you're just doing `select * from intermediate`, don't create multiple CTEs
+
+**Single CTE Pattern (Pass-through):**
+```sql
+with
+
+donations as (
+    select * from {{ ref('int_finance__donations') }}
+)
+
+select * from donations
+```
+
+**Multiple CTEs Pattern (With Transformations):**
+```sql
+with
+
+orders as (
+    select * from {{ ref('int_global_sales__orders') }}
+),
+
+order_lines as (
+    select * from {{ ref('int_global_sales__order_lines') }}
+),
+
+final as (
+    select
+        o.order_id,
+        o.order_date,
+        sum(ol.line_amount_usd) as total_amount_usd
+    from orders o
+    inner join order_lines ol
+        on o.order_id = ol.order_id
+    group by o.order_id, o.order_date
+)
+
+select * from final
+```
+
+**Why:**
+- Keeps code simple when no transformations are needed
+- Reduces unnecessary complexity
+- Still follows CTE pattern for model references
+- Multiple CTEs only when actually needed for business logic
+
+### Source Definitions
+- Always define sources in YAML before referencing
+- Include freshness checks where applicable
+- Document source tables and their purpose
+
+## Testing
+
+### Test Strategy
+- **Staging**: Test data types, not nulls for key fields
+- **Intermediate**: Test business logic, relationships
+- **Marts**: Test uniqueness, referential integrity
+
+### Test Coverage
+- Primary keys: Always test for `unique` and `not_null`
+- Foreign keys: Test relationships with `relationships`
+- Business rules: Use custom tests (e.g., `accepted_range`, `expression_is_true`)
+- Document why tests exist in YAML
+
+### Test Organization
+- Define tests in `_models.yml` files near models
+- Use generic tests from `dbt_utils` when appropriate
+- Create custom tests in `tests/generic/` for reusable logic
+
+## Documentation
+
+### Model Documentation
+- Document purpose in `description` field
+- Include business context and usage notes
+- Explain complex transformations
+
+### Column Documentation
+- Document all columns, especially business metrics
+- Include calculation formulas where applicable
+- Note data sources and transformations
+- Add examples for complex fields
+
+### YAML Structure
+```yaml
+models:
+  - name: fct_sales
+    description: |
+      Sales transaction fact table containing order-level sales data.
+      Aggregated from D365 and Northscope systems.
+    columns:
+      - name: order_amount_usd
+        description: Order amount in USD, converted at transaction date
+```
+
+## Tags
+
+### Use Tags Strategically
+- **Refresh schedules**: `refresh_1h`, `refresh_4h`, `refresh_10m`
+- **Business domains**: `Global_Sales`, `Finance`, `Saltwater`
+- **Systems**: `D365`, `GP`, `SAP`
+- **Layers**: `layer_mart`, `layer_staging`
+
+### Tag Consistency
+- Check existing tags in `dbt_project.yml` before adding new ones
+- Use existing tags when applicable
+- Document new tags in PR description
+
+## SQLFluff & yamllint Compliance
+
+### CRITICAL: All SQL Files Must Pass SQLFluff and yamllint
+- ✅ **ALWAYS** create SQL files that comply with `.sqlfluff` configuration
+- ✅ **ALWAYS** create YAML files that comply with `.yamllint` configuration
+- ❌ **NEVER** create files that will fail SQLFluff or yamllint in CI/CD
+
+### SQLFluff Requirements (from `.sqlfluff`)
+- **Keywords**: All lowercase (`select`, `from`, `where`, `case`, `when`, etc.)
+- **Identifiers**: All lowercase (table names, column names, aliases)
+- **Functions**: All lowercase (`coalesce`, `try_parse_json`, `date_trunc`, etc.)
+- **Literals**: All lowercase (`'nova scotia'`, not `'Nova Scotia'` - unless business requirement)
+- **Aliasing**: Explicit aliasing required for tables and columns
+- **Alias length**: Minimum 3 characters
+- **Line length**: Maximum 150 characters
+- **No trailing whitespace**: Remove all trailing spaces/tabs (LT01)
+- **File ending**: Must end with exactly one trailing newline (LT12)
+- **Dialect**: Snowflake
+- **Templater**: dbt
+
+### yamllint Requirements (from `.yamllint`)
+- **No trailing spaces**: Remove all trailing whitespace
+- **New line at end**: Files must end with newline
+- **Indentation**: Proper YAML indentation (typically 2 spaces)
+- **Line length**: Maximum 120 characters (warning only)
+- **Empty lines**: Proper use of empty lines
+
+### SQL File Formatting Checklist
+Before creating any SQL file, ensure:
+- [ ] All keywords are lowercase
+- [ ] All identifiers are lowercase
+- [ ] All functions are lowercase
+- [ ] Explicit aliases for all tables and columns
+- [ ] No trailing whitespace on any line
+- [ ] File ends with exactly one newline
+- [ ] Lines don't exceed 150 characters (unless unavoidable)
+- [ ] CTEs follow the established pattern
+
+### Example: Correctly Formatted SQL File
+```sql
+with
+
+staging as (
+    select * from {{ ref('stg_d365__sales_orders') }}
+),
+
+transformed as (
+    select
+        order_id,
+        customer_id,
+        order_date,
+        coalesce(try_parse_json(order_status):label::string, order_status::string) as order_status_label,
+        case
+            when region_code = 'us' then 'united states'
+            when region_code = 'ca' then 'canada'
+            else coalesce(region_code, 'unknown')
+        end as region_name
+    from staging
+)
+
+select * from transformed
+```
+
+**Note**: The file above:
+- ✅ All lowercase keywords and identifiers
+- ✅ No trailing whitespace
+- ✅ Ends with single newline
+- ✅ Explicit aliases
+- ✅ Proper CTE structure
+
+## Performance
+
+### Query Optimization
+- Use `WHERE` clauses early in CTEs to filter data
+- Avoid unnecessary joins
+- Use `SELECT` explicitly (not `SELECT *`) in final CTE
+- Limit window function partitions
+
+### Incremental Strategies
+- Choose appropriate strategy: `merge`, `delete+insert`, `append`
+- Use `is_incremental()` macro for conditional logic
+- Test incremental builds in dev before production
+
+## Common Patterns
+
+### Unioning Multiple Sources
+- Use `union_all` (not `union`) for performance
+- Align column order and types
+- Use macros like `schemas_with_table_from_folder()` for GP patterns
+
+### Currency Conversion
+- Use centralized macros: `{{ convert_to_usd() }}`
+- Always include conversion date
+- Document exchange rate source
+
+### Date Handling
+- Standardize to UTC where applicable
+- Use Snowflake date functions consistently
+- Include timezone conversions when needed

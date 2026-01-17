@@ -1,0 +1,80 @@
+resources:
+  repositories:
+  - repository: templates
+    type: git
+    name: 'Hvp.Common/pipeline-templates'
+    ref: 'develop'
+
+trigger:
+  branches:
+    include:
+    - develop
+    - release
+
+parameters:
+  - name: forceQaDeployment
+    displayName: 'Force QA Deployment'
+    type: boolean
+    default: false
+
+  - name: forceUatDeployment
+    displayName: 'Force UAT Deployment'
+    type: boolean
+    default: false
+
+  - name: forceProdDeployment
+    displayName: 'Force PROD Deployment'
+    type: boolean
+    default: false
+
+  - name: ignoreScanResults
+    displayName: Ignore Scan Results
+    type: boolean
+    default: false
+    
+variables:
+  - template: /standard-cicd-helpers/base-variables.yml@templates
+    parameters:
+      forceDevDeployment: false
+      forceQaDeployment: ${{ parameters.forceQaDeployment }}
+      forceUatDeployment: ${{ parameters.forceUatDeployment }}
+      forceProdDeployment: ${{ parameters.forceProdDeployment }}
+      majorVersion: 1
+      minorVersion: 0
+extends:
+  template: pipelines/standard-cicd-helpers/standard-stage-deploy.yml
+  parameters:
+  
+    # Custom templates for deploy stages and build job
+    resourceType: 'configs'
+
+    # Version information
+    majorVersion: ${{ variables.major }}
+    minorVersion: ${{ variables.minor }}
+    patchVersion: $(patch)
+    utilityVersion: '*'
+
+    # Environment deployment flags
+    deployToDev: false
+    deployToQa: ${{ variables.deployToQa }}
+    deployToUat: ${{ variables.deployToUat }}
+    deployToProd: ${{ variables.deployToProd }}
+    ignoreScanResults: ${{ parameters.ignoreScanResults }}
+
+    # Solution infrastructure code names
+    deploymentPlatform: 'trdna'
+    groupShortName: 'trdnasyn'
+    resourceShortName: 'trdna'
+    deploymentOs: 'linux'
+    platformSequence: '01'
+    solutionName: 'Hvp.Dna.EntRpt.ConfigFiles'
+
+    # Custom variables
+    variables:
+      configFilesPath: 'config'
+      storageAccountContainer: 'zone-raw'
+      storageAccountName:
+        d: 'eus2satrdnadld01'
+        q: 'eus2satrdnadlq01'
+        t: 'eus2satrdnadlt01'
+        p: 'eus2satrdnadlp01'

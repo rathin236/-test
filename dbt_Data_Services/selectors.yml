@@ -1,0 +1,22 @@
+# selectors.yml
+selectors:
+  # --- 10 minutes ---
+  - name: refresh_10m
+    definition:
+      union:
+        - 'tag:layer_mart,tag:refresh_10m'  # only these marts (intersection)
+        - '+tag:refresh_10m'                # ...and their parents (ancestors)
+
+  # --- 1 hour ---
+  - name: refresh_1h
+    definition:
+      union:
+        - 'tag:layer_mart,tag:refresh_1h'
+        - '+tag:refresh_1h'
+
+  # --- 4 hours ---
+  - name: refresh_4h
+    definition:
+      union:
+        - 'tag:layer_mart,tag:refresh_4h'
+        - '+tag:refresh_4h'

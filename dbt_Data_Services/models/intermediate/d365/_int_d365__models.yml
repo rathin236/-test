@@ -1,0 +1,432 @@
+version: 2
+
+models:
+  - name: int_d365__default_dimension_view
+    description: ""
+    columns:
+      - name: displayvalue
+        description: ""
+
+      - name: default_dimension
+        description: ""
+
+      - name: table_rec_id
+        description: ""
+
+      - name: entityinstance
+        description: ""
+
+      - name: partition_2
+        description: ""
+
+      - name: reportcolumnname
+        description: ""
+
+      - name: dimension_attribute_id
+        description: ""
+
+      - name: backingentitytype
+        description: ""
+
+      - name: keyattribute
+        description: ""
+
+      - name: nameattribute
+        description: ""
+
+      - name: name
+        description: ""
+
+      - name: partition_3
+        description: ""
+
+  - name: int_d365__dim_attribute_om_business_unit
+    description: ""
+    columns:
+      - name: key_
+        description: ""
+
+      - name: value_
+        description: ""
+
+      - name: partition
+        description: ""
+
+      - name: recid
+        description: ""
+
+      - name: name
+        description: ""
+
+      - name: partition_2
+        description: ""
+
+  - name: int_d365__dir_party_postal_address
+    description: ""
+    columns:
+      - name: party
+        description: ""
+
+      - name: party_location
+        description: ""
+
+      - name: isprimary
+        description: ""
+
+      - name: islocationowner
+        description: ""
+
+      - name: isprimarytaxregistration
+        description: ""
+
+      - name: table_rec_id
+        description: ""
+
+      - name: partition
+        description: ""
+
+      - name: recid
+        description: ""
+
+      - name: location_name
+        description: ""
+
+      - name: address
+        description: ""
+
+      - name: streetnumber
+        description: ""
+
+      - name: street
+        description: ""
+
+      - name: city
+        description: ""
+
+      - name: zipcode
+        description: ""
+
+      - name: state
+        description: ""
+
+      - name: county
+        description: ""
+
+      - name: countryregionid
+        description: ""
+
+      - name: district
+        description: ""
+
+      - name: timezone
+        description: ""
+
+      - name: longitude
+        description: ""
+
+      - name: latitude
+        description: ""
+
+      - name: location
+        description: ""
+
+      - name: validfrom
+        description: ""
+
+      - name: validto
+        description: ""
+
+      - name: isprivate
+        description: ""
+
+      - name: districtname
+        description: ""
+
+      - name: postal_address
+        description: ""
+
+      - name: streetid_ru
+        description: ""
+
+      - name: houseid_ru
+        description: ""
+
+      - name: flatid_ru
+        description: ""
+
+      - name: privateforparty
+        description: ""
+
+      - name: x_rec_id_logistics_postal_address
+        description: ""
+
+      - name: x_rec_version_logistics_postal_address
+        description: ""
+
+      - name: cityrecid
+        description: ""
+
+      - name: partition_2
+        description: ""
+
+  - name: int_d365__eco_res_product_attribute_value
+    description: ""
+    columns:
+      - name: value_
+        description: ""
+
+      - name: attribute
+        description: ""
+
+      - name: table_rec_id
+        description: ""
+
+      - name: partition
+        description: ""
+
+      - name: recid
+        description: ""
+
+      - name: product
+        description: ""
+
+      - name: partition_2
+        description: ""
+
+  - name: int_d365__pds_rebate_table
+    description: ""
+    columns:
+      - name: inventtransid
+        description: ""
+      - name: currencycode
+        description: ""
+      - name: pds_starting_rebate_amt
+        description: ""
+
+  - name: int_d365__vendor_account_name
+    description: ""
+    columns:
+      - name: vendor_id
+        description: ""
+
+      - name: line_of_business
+        description: ""
+
+      - name: name_description
+        description: ""
+
+      - name: vendor_name
+        description: ""
+
+      - name: bank_account
+        description: ""
+
+      - name: pay_mode
+        description: ""
+
+      - name: tax_group
+        description: ""
+
+      - name: vendor_group
+        description: ""
+
+      - name: w_9
+        description: ""
+
+  - name: int_d365__posting_type
+    description: ""
+    columns:
+      - name: enum_name
+        description: ""
+
+      - name: enum_label
+        description: ""
+
+      - name: enum_value
+        description: ""
+
+  - name: int_d365__main_account_type_vw
+    description: ""
+    columns:
+      - name: enum_name
+        description: ""
+
+      - name: enum_label
+        description: ""
+
+      - name: enum_value
+        description: ""
+
+  - name: int_d365__main_account_table
+    description: ""
+    columns:
+      - name: chart_of_accounts
+        description: ""
+
+      - name: main_account_id
+        description: ""
+
+      - name: main_account_name
+        description: ""
+
+      - name: main_account_type
+        description: ""
+
+      - name: account_category
+        description: ""
+
+      - name: recid
+        description: ""
+
+  - name: int_d365__general_journal_entries_it_costs
+    description: ""
+    columns:
+      - name: chart_of_accounts
+        description: ""
+
+      - name: main_account_id
+        description: ""
+
+      - name: main_account_name
+        description: ""
+
+      - name: main_account_type
+        description: ""
+
+      - name: account_category
+        description: ""
+
+      - name: vendor_name
+        description: ""
+
+      - name: vendor_id
+        description: ""
+
+      - name: bank_account
+        description: ""
+
+      - name: pay_mode
+        description: ""
+
+      - name: tax_group
+        description: ""
+
+      - name: vendor_group
+        description: ""
+
+      - name: w_9
+        description: ""
+
+      - name: create_date_time
+        description: ""
+
+      - name: invoice_date
+        description: ""
+
+      - name: posted_date_time
+        description: ""
+
+      - name: posted_year
+        description: ""
+
+      - name: approved
+        description: ""
+
+      - name: posted
+        description: ""
+
+      - name: journal_name
+        description: ""
+
+      - name: ledger_journal_number
+        description: ""
+
+      - name: general_journal_number
+        description: ""
+
+      - name: voucher
+        description: ""
+
+      - name: ledger_voucher
+        description: ""
+
+      - name: sub_ledger_voucher
+        description: ""
+
+      - name: cost_ledger_voucher
+        description: ""
+
+      - name: total_journal_credit
+        description: ""
+
+      - name: total_journal_debit
+        description: ""
+
+      - name: journal_offset
+        description: ""
+
+      - name: company
+        description: ""
+
+      - name: line_of_business
+        description: ""
+
+      - name: journal_description
+        description: ""
+
+      - name: payment_reference
+        description: ""
+
+      - name: invoice_account
+        description: ""
+
+      - name: payment
+        description: ""
+
+      - name: invoice_id
+        description: ""
+
+      - name: invoice_amount
+        description: ""
+
+      - name: sales_balance
+        description: ""
+
+      - name: posting_type
+        description: ""
+
+      - name: amount
+        description: ""
+
+      - name: accounting_currency_amount
+        description: ""
+
+      - name: general_journal_entry_currency
+        description: ""
+
+      - name: ledger_account
+        description: ""
+
+      - name: description
+        description: ""
+
+  - name: int_d365__dim_attribute_om_department
+    description: ""
+    columns:
+      - name: key_
+        description: ""
+
+      - name: value
+        description: ""
+
+      - name: partition
+        description: ""
+
+      - name: recid
+        description: ""
+
+      - name: name
+        description: ""
+
+      - name: partition2
+        description: ""

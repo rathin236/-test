@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+  - name: gp_information_schema
+    description: ""
+    database: gp
+    schema: information_schema
+    tables:
+      - name: schemata
+        description: ""
+        columns:
+          - name: catalog_name
+            description: ""
+          - name: schema_name
+            description: ""
+          - name: schema_owner
+            description: ""
+          - name: is_transient
+            description: ""
+          - name: is_managed_access
+            description: ""
+          - name: retention_time
+            description: ""
+          - name: default_character_set_catalog
+            description: ""
+          - name: default_character_set_schema
+            description: ""
+          - name: default_character_set_name
+            description: ""
+          - name: sql_path
+            description: ""
+          - name: created
+            description: ""
+          - name: last_altered
+            description: ""
+          - name: comment
+            description: ""
+      - name: tables
+        description: "Identifying valid schemas with required tables for AP, AR and GL"

@@ -1,0 +1,1 @@
+select * from {{ ref("int_ereq__dim_user") }}

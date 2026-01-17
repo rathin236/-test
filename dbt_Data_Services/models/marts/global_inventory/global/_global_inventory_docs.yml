@@ -1,0 +1,77 @@
+models:
+  - name: fact_inventory_global
+    description: This model consolidates inventory data from multiple sources (TNS and TNSF), providing a unified view of global inventory levels. It includes detailed information about items, their storage locations, and aging status, which is crucial for inventory management and decision-making.
+    columns:
+      - name: company
+        description: The company associated with the inventory record.
+      - name: sourcesystem
+        description: The source system from which the inventory data is derived.
+      - name: sourcesystemcode
+        description: A numeric code representing the source system.
+      - name: warehouse_sk
+        description: A surrogate key identifying the warehouse.
+      - name: item_id
+        description: The unique identifier for the item.
+      - name: batch_number
+        description: The batch number of the inventory item.
+      - name: pallet_number
+        description: The pallet number where the inventory item is stored.
+      - name: location_id_bin
+        description: The bin location ID within the warehouse.
+      - name: label_date
+        description: The date the inventory item was labeled.
+      - name: expiry_date
+        description: The expiration date of the inventory item.
+      - name: cases
+        description: The number of cases of the inventory item.
+      - name: quantity
+        description: The total quantity of the inventory item.
+      - name: available_quantity
+        description: The quantity of the inventory item available for use.
+      - name: picked_quantity
+        description: The quantity of the inventory item that has been picked for orders.
+      - name: unit_of_measure
+        description: The unit of measure for the inventory item.
+      - name: qty_lbs
+        description: The quantity of the inventory item in pounds.
+      - name: qty_kgs
+        description: The quantity of the inventory item in kilograms.
+      - name: age
+        description: The age of the inventory item in days.
+      - name: invent_status
+        description: The status of the inventory item.
+      - name: form
+        description: The form of the inventory item, defaulting to 'Frozen' if not specified.
+      - name: standard_unit
+        description: The standardized unit of measure for the inventory item.
+      - name: flag_age0to3days
+        description: Indicates if the inventory item is aged between 0 to 3 days.
+      - name: flag_age3to6days
+        description: Indicates if the inventory item is aged between 3 to 6 days.
+      - name: flag_age7plusdays
+        description: Indicates if the inventory item is aged 7 days or more.
+      - name: flag_age0to6m
+        description: Indicates if the inventory item is aged between 0 to 6 months.
+      - name: flag_age7to12m
+        description: Indicates if the inventory item is aged between 7 to 12 months.
+      - name: flag_age13to18m
+        description: Indicates if the inventory item is aged between 13 to 18 months.
+      - name: flag_age19to24m
+        description: Indicates if the inventory item is aged between 19 to 24 months.
+      - name: flag_age25morolder
+        description: Indicates if the inventory item is aged 25 months or older.
+      - name: flag_badproddate
+        description: Indicates if the inventory item has a bad production date.
+      - name: aging_groups_fresh
+        description: Categorizes the aging of fresh inventory items.
+      - name: aging_group_frozen
+        description: Categorizes the aging of frozen inventory items.
+      - name: sk_item_global
+        description: A global surrogate key for the item.
+      - name: sk_warehouse_global
+        description: A global surrogate key for the warehouse.
+      - name: fact_inventory_pk
+        description: The primary key for the fact inventory record.
+        tests:
+          - unique
+          - not_null

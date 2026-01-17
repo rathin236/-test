@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: int_global_sales__dim_invoice_accounts_northscope
+    description: ""
+    columns:
+      - name: sk_shipaddress
+        description: ""
+
+      - name: customer_id
+        description: ""
+
+      - name: invoice_customer_name
+        description: ""
+
+      - name: invoice_customer_number
+        description: ""
+
+      - name: invoice_address_civic_1
+        description: ""
+
+      - name: invoice_address_civic_1_2
+        description: ""
+
+      - name: invoice_address_city
+        description: ""
+
+      - name: invoice_address_state
+        description: ""
+
+      - name: invoice_address_postal_code
+        description: ""
+
+      - name: invoice_address_country
+        description: ""
+
+      - name: invoice_address_name
+        description: ""
+
+      - name: longitude
+        description: ""
+
+      - name: latitude
+        description: ""
+
+      - name: key_shipaddress
+        description: ""
+
+  - name: int_northscope__item_attribute_values_pre_pivot
+    description: ""
+    columns:
+      - name: item_description
+        description: ""
+
+      - name: item_type
+        description: ""
+
+      - name: uom_schedule_id
+        description: ""
+
+      - name: uom_schedule_description
+        description: ""
+
+      - name: attribute_description
+        description: ""
+
+      - name: default_unit_uom
+        description: ""
+
+      - name: default_weight_uom
+        description: ""
+
+      - name: default_price_uom
+        description: ""
+
+      - name: dataentitycompany_sk
+        description: ""
+
+      - name: source_system
+        description: ""
+
+      - name: item_sk
+        description: ""
+
+      - name: item_id
+        description: ""
+
+      - name: item_display_description
+        description: ""
+
+      - name: item_class
+        description: ""
+
+      - name: attribute_value
+        description: ""

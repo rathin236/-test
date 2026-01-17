@@ -1,0 +1,22 @@
+version: 2
+
+exposures:
+  # CPM - OneStream FishTalk
+  - name: cpm_onestream_fishtalk
+    label: CPM OneStream FishTalk Datasets
+    type: application
+    maturity: medium
+    tags: ["CPM OneStream", "FishTalk"]
+    description: >
+      FishTalk datasets used by the CPM OneStream application
+
+    depends_on:
+      - ref('biological_fcr')
+      - ref('generalized_growth_mortality_models')
+      - ref('hatchery_spec_growth_models')
+      - ref('production_overview')
+      - ref('production_overview_adjusted')
+
+    owner:
+      name: Martin Palkovic
+      email: martin.palkovic@cookeaqua.com

@@ -1,0 +1,71 @@
+# Azure CD to ensure source databases, schemas, and tables have proper permissions in Snowflake
+name: Snowflake Source Permissions
+
+parameters:
+  - name: jobName
+    default: 'SourcesCD'
+  - name: jobDisplay
+    default: 'Grant source objects proper permissions'
+
+variables:
+  - group: 'Snowflake Data Ops Service Account'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+  - job: ${{ parameters.jobName }}
+    timeoutInMinutes: 10
+    displayName: ${{ parameters.jobDisplay }}
+
+    workspace:
+      clean: outputs
+
+    steps:
+      # Checkout the repository
+      - checkout: self
+        fetchDepth: 0
+        clean: true
+
+      # List pipeline directory contents
+      - script: |
+          ls -R $(System.DefaultWorkingDirectory)
+        displayName: 'List directory contents'
+
+      # Print the build source version
+      - script: |
+          echo "Build.SourceVersion: $(Build.SourceVersion)"
+        displayName: 'Print Build.SourceVersion'
+
+      # Install required libraries
+      - script: |
+          pip install snowflake
+        displayName: 'Install Snowflake library'
+
+      # List all .yml files in the staging directory
+      - script: |
+          echo "All changes in this commit:"
+          git ls-files models/staging | grep '\.yml$'
+        displayName: 'List all .yml files in staging'
+
+      # Get list of changed .yml files and set them as a pipeline variable
+      - script: |
+          db_added=( $(git diff origin/main -- 'models/staging/*.yml' | grep -E '^\+.*database:' | awk -F'database: ' '{print $2}') )
+          array_str=$(IFS=,; echo "${db_added[*]}")
+          if [[ "${#db_added[@]}" -gt 0 ]]; then
+              for db in "${db_added[@]}"; do
+                  echo "The $db was added to the project."
+              done
+          fi
+          echo "##vso[task.setvariable variable=db_list]$array_str"
+        name: SetOutput
+        displayName: 'List new databases'
+
+      # Test Python file for Snowflake DB permissions
+      - script: |
+          python python/snowflake_dbt_permissions.py
+        displayName: 'Run Snowflake DB permissions script'
+        env:
+          ACCOUNT: $(SNOWFLAKE_DATA_OPS_SERVICE_ACCOUNT)
+          USER: $(SNOWFLAKE_DATA_OPS_SERVICE_USER)
+          PASSWORD: $(SNOWFLAKE_DATA_OPS_SERVICE_PASSWORD)

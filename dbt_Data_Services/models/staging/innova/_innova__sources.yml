@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+  - name: innova_fbdag
+    description: ""
+    database: innova
+    schema: tns_fbd_fbdag_dbo
+    tables:
+      - name: proc_matxacts
+        description: ""
+      - name: proc_plots
+        description: ""
+      - name: proc_materials
+        description: ""
+      - name: proc_lots
+        description: ""
+      - name: qcs_dataagg
+        description: ""
+      - name: proc_prperiods
+        description: ""
+      - name: qcs_stations
+        description: ""
+      - name: base_devices
+        description: ""
+      - name: proc_pos
+        description: ""
+      - name: proc_shifts
+        description: ""
+      - name: qcs_defectclasses
+        description: ""
+      - name: qcs_dataaggimages
+        description: ""
+      - name: qcs_dataaggreasons
+        description: ""
+      - name: qcs_programtemplateparameter
+        description: ""
+      - name: qcs_datatemplateparameter
+        description: ""
+      - name: qcs_dataaggvalues
+        description: ""
+      - name: qcs_dataaggtypecount
+        description: ""

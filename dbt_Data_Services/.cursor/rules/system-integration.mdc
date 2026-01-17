@@ -1,0 +1,42 @@
+---
+alwaysApply: false
+---
+# System Integration & Business Domains
+
+## M&A Integration Requirements
+
+### Integration-First Mindset
+Every solution must consider how it supports integration of new acquisitions.
+
+### Multiple Systems Landscape
+The company operates many acquired systems that must be integrated:
+- **D365** (Microsoft Dynamics)
+- **GP** (Great Plains)
+- **SAP** (European operations - Cooke Europe, Morubel, Slade Gorton)
+- **IFS** (various subsidiaries)
+- **Northscope**
+- **Navision**
+- And many others from acquisitions
+
+### Integration Principles
+- **Data harmonization**: Build models that unify data from diverse sources into consistent formats
+- **Legacy system support**: Maintain support for acquired company systems while building unified analytics
+- **Consistent patterns**: Use consistent naming, schemas, and patterns across all integrated systems
+- **Extensibility**: Design for easy integration when new acquisitions are added
+
+## Business Domain Priorities
+
+This platform serves multiple critical domains. Understand and prioritize Cooke's needs:
+
+- **Global Sales**: Multi-system sales data (D365, Northscope, CRM, etc.)
+- **Global Inventory**: Standardized inventory tracking across systems
+- **Finance**: AP/AR, vendor spend, financial reporting, donations across all entities
+- **Global Procurement**: Requisition management, purchasing workflows across systems
+- **Processing**: Production operations, yield reporting, process analytics (Boomi, Fresh Yield)
+- **Logistics & EDI**: Shipping, transportation, electronic data interchange (EDI 856)
+- **Saltwater Operations**: Farming, biological inventory, feed operations, aquaculture
+- **IT Operations**: Snowflake usage, Power BI analytics, system monitoring, infrastructure metrics
+- **Corporate Performance Management (CPM)**: Fishtalk, OneStream, SAP integration
+- **Quality & Safety**: QC scanners, quality assurance, corporate safety tracking
+- **Ancillary Services**: Exchange rates, supporting business functions, reference data
+- **Subsidiaries & Acquisitions**: Bioriginal, IFS systems, Navision, Urner Berry operations

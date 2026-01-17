@@ -1,0 +1,304 @@
+models:
+  - name: fact_cost_d365
+    description:
+      This model aggregates and organizes sales and cost data from the D365
+      system, providing a comprehensive view of sales transactions, inventory movements,
+      and associated costs. It is used to analyze sales performance, cost management,
+      and financial metrics across different dimensions such as company, order type,
+      and inventory location.
+    columns:
+      - name: pk_global_sales
+        description: Primary key for the global sales record.
+        tests:
+          - unique
+          - not_null
+      - name: inventtransid
+        description: Identifier for the inventory transaction.
+      - name: order_id
+        description: Unique identifier for the order.
+      - name: company
+        description: Name of the company associated with the transaction.
+      - name: order_status_id
+        description: Identifier for the status of the order.
+      - name: order_type_sk
+        description: Surrogate key for the type of order.
+      - name: inventory_location_id
+        description: Identifier for the inventory location.
+      - name: inventory_site_id
+        description: Identifier for the inventory site.
+      - name: create_date
+        description: Date when the record was created.
+      - name: delivery_date
+        description: Date when the order is scheduled for delivery.
+      - name: invoice_account
+        description: Account number for invoicing.
+      - name: customer_invoice_date
+        description: Date when the customer was invoiced.
+      - name: customer_account
+        description: Account number of the customer.
+      - name: shipping_date_confirmed
+        description: Date when the shipping was confirmed.
+      - name: shipping_date_requested
+        description: Date when the shipping was requested.
+      - name: item_id
+        description: Identifier for the item.
+      - name: salesperson_sk
+        description: Surrogate key for the salesperson.
+      - name: flag_price_adjustment
+        description: Indicator for price adjustment.
+      - name: invoice_id
+        description: Identifier for the invoice.
+      - name: ordered_amount
+        description: Total amount ordered.
+      - name: sales_amount
+        description: Total sales amount.
+      - name: sales_price
+        description: Price at which the item was sold.
+      - name: invoice_amount
+        description: Total amount invoiced.
+      - name: freight_rate
+        description: Rate charged for freight.
+      - name: ub_price_high
+        description: Upper bound of the price range.
+      - name: ub_price_avg
+        description: Average price within the range.
+      - name: ub_price_low
+        description: Lower bound of the price range.
+      - name: ordered_qty
+        description: Quantity ordered.
+      - name: ordered_volume_lbs
+        description: Volume of the order in pounds.
+      - name: sales_qty
+        description: Quantity sold.
+      - name: sales_volume_lbs
+        description: Volume of sales in pounds.
+      - name: invoice_volume_lbs
+        description: Volume invoiced in pounds.
+      - name: inv_qty
+        description: Quantity in inventory.
+      - name: estimated_cost
+        description: Estimated cost of the transaction.
+      - name: posted_cost
+        description: Cost posted to the financial records.
+      - name: adjusted_cost
+        description: Cost after adjustments.
+      - name: settled_cost
+        description: Final settled cost.
+      - name: rebates
+        description: Rebates applied to the transaction.
+      - name: returned_invoice
+        description: Indicator if the invoice was returned.
+      - name: date_financial
+        description: Date of the financial transaction.
+      - name: financial_division_id
+        description: Identifier for the financial division.
+      - name: delivery_address_id
+        description: Identifier for the delivery address.
+      - name: delivery_terms
+        description: Terms of delivery.
+      - name: customer_po
+        description: Customer purchase order number.
+      - name: mode
+        description: Mode of transportation or transaction.
+      - name: last_data_refresh
+        description: Date when the data was last refreshed.
+      - name: exchange_rate_usd_cad
+        description: Exchange rate from USD to CAD.
+      - name: sourcesystem
+        description: Source system of the data, which is D365.
+      - name: sourcesystemcode
+        description: Code representing the source system.
+      - name: price_uom
+        description: Unit of measure for the price.
+      - name: weight_uom
+        description: Unit of measure for the weight.
+      - name: sales_unit
+        description: Unit of measure for sales.
+      - name: currency
+        description: Currency used in the transaction.
+
+  - name: dim_d365__vend_external_item
+    description: This model provides a detailed view of vendor external items from the D365 system, focusing on the relationship between internal item identifiers and vendor-specific external identifiers. It is used to map and manage vendor-specific item information, ensuring accurate and consistent data across systems.
+    columns:
+      - name: sourcesystem
+        description: The source system of the data, which is D365.
+      - name: dataareaid
+        description: Identifier for the company within the D365 system.
+      - name: itemid
+        description: Internal identifier for the item.
+      - name: externalitemid
+        description: Vendor-specific external identifier for the item.
+      - name: externalitemtxt
+        description: Description of the vendor external item.
+      - name: sk_item_global
+        description: Surrogate key for the global item, generated using MD5 hash.
+      - name: vend_external_item_pk
+        description: Primary key for the vendor external item, generated using MD5 hash.
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_item_d365
+    description:
+      This model consolidates item data from various sources, including product
+      lines and CRM systems, to provide a comprehensive view of items in the D365 system.
+      It includes attributes such as product details, company information, and product
+      lifecycle status, which are essential for inventory management and product analysis.
+    columns:
+      - name: item_sk
+        description: A unique surrogate key for each item.
+      - name: Item ID
+        quote: true
+        description: Identifier for the item.
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: Name of Product
+      - name: name
+        description: The name of the company associated with the item.
+      - name: languageid
+        description: Id for language
+      - name: item_group
+        description: Item group an item belongs to.
+      - name: item_group_id
+        description: Item group ID of item group the item belongs to.
+      - name: item_description
+        description: Description of item.
+      - name: Country of Origin
+        quote: true
+        description: Item country of origin.
+      - name: Skin On Off
+        quote: true
+        description: Flag for skin on or off.
+      - name: Sub Category
+        quote: true
+        description: Sub category of item.
+      - name: Bone In Out
+        quote: true
+        description: Flag for Bone In or Out.
+      - name: Coolant
+        description: The type of coolant used for the item.
+      - name: Harvest
+        description: The harvest method or details for the item.
+      - name: Package Weight
+        quote: true
+        description: Packaged weight of the item.
+      - name: Scaled
+        description: Indicates if the item is scaled.
+      - name: trim
+        description: The trim level or details for the item.
+      - name: UB Code
+        quote: true
+        description: Sub category of item.
+      - name: Whole or VA
+        quote: true
+        description: Sub category of item.
+      - name: family
+        description: The family category of the item.
+      - name: form
+        description: The form or shape of the item.
+      - name: Package Unit Count
+        quote: true
+        description: Package Unit Count
+      - name: Pieces Per lb Count
+        quote: true
+        description: Pieces per lb count
+      - name: Production Size UOM
+        quote: true
+        description: Production Size UOM
+      - name: Production Phase
+        quote: true
+        description: Production Phase
+      - name: Skinning Type
+        quote: true
+        description: Skinning Type
+      - name: ASC Certification
+        quote: true
+        description: ASC Certification
+      - name: Species
+        quote: true
+        description: The species classification of the item.
+      - name: Sub-Species
+        quote: true
+        description: Sub-species
+      - name: Frozen Format
+        quote: true
+        description: Frozen Format
+      - name: category
+        description: The category classification of the item.
+      - name: High Level Grade
+        quote: true
+        description: High Level Grade
+      - name: grade
+        description: The quality grade of the item.
+      - name: brand
+        description: The brand associated with the item.
+      - name: Product Size
+        quote: true
+        description: Product Size
+      - name: Case Weight
+        quote: true
+        description: Case Weight
+      - name: Case Weight UOM
+        quote: true
+        description: Case Weight UOM
+      - name: Cooke/Raw
+        quote: true
+        description: Flag for cooked or raw
+      - name: NFT Label
+        quote: true
+        description: NFT Label
+      - name: Package Weight UOM
+        quote: true
+        description: Package Weight UOM
+      - name: MSC Certification
+        quote: true
+        description: MSC Certification
+      - name: certification
+        description: Certification details for the item.
+      - name: rwoa
+        description: RWOA details for the item.
+      - name: Catch Area
+        quote: true
+        description: Catch Area
+      - name: Inside Pack
+        quote: true
+        description: Inside Pack
+      - name: Master Packaging Type
+        quote: true
+        description: Master packaging type
+      - name: Product Label
+        quote: true
+        description: Product Label
+      - name: Value Add
+        quote: true
+        description: Value Add
+      - name: Product Form - Shrimp
+        quote: true
+        description: Shrimp product form
+      - name: flavour
+        description: The flavor profile of the item.
+      - name: Harvest Method
+        quote: true
+        description: Harvest Method
+      - name: Process Type
+        quote: true
+        description: Process Type
+      - name: MSC Number
+        quote: true
+        description: MSC Number
+      - name: crm_item_id
+        description: The CRM system identifier for the item.
+      - name: crm_item_sk
+        description: The surrogate key for the CRM item.
+      - name: productline_value
+        description: The value associated with the product line of the item.
+      - name: productline_name
+        description: The name of the product line associated with the item.
+      - name: productline_desc
+        description: The description of the product line associated with the item.
+      - name: product_lifecycle_status
+        description: The current lifecycle status of the product.
+      - name: Company
+        description: Data Area ID in D365 indicating company code

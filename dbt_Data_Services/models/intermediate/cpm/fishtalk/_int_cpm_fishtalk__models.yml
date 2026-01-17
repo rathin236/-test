@@ -1,0 +1,222 @@
+version: 2
+
+models:
+  - name: int_cpm_fishtalk__biological_fcr
+    description: ""
+    columns:
+      - name: company
+        description: ""
+        tests:
+          - not_null
+
+      - name: site
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: gp_site_id
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: ft_site_id
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: total_feed_consumed_kg
+        description: ""
+
+      - name: growth_kg
+        description: ""
+
+      - name: biological_fcr
+        description: ""
+
+      - name: biological_fcr_minus_mortality_culling_deviation
+        description: ""
+
+  - name: int_cpm_fishtalk__generalized_growth_mortality_models
+    description: ""
+    columns:
+      - name: site_type
+        description: ""
+
+      - name: month_name
+        description: ""
+
+      - name: average_growth_percent
+        description: ""
+
+      - name: average_mortality_percent
+        description: ""
+
+  - name: int_cpm_fishtalk__hatchery_spec_growth_models
+    description: ""
+    columns:
+      - name: company
+        description: ""
+
+      - name: site
+        description: ""
+        tests:
+          - not_null
+
+      - name: siteid
+        description: ""
+        tests:
+          - not_null
+
+      - name: gp_site_id
+        description: ""
+        tests:
+          - not_null
+
+      - name: month
+        description: ""
+
+      - name: average_weight_kg
+        description: ""
+
+      - name: average_growth_percent
+        description: ""
+
+      - name: average_mortality_percent
+        description: ""
+
+  - name: int_cpm_fishtalk__production_overview
+    description: ""
+    columns:
+      - name: company
+        description: ""
+
+      - name: site
+        description: ""
+
+      - name: siteid
+        description: ""
+
+      - name: gp_site_id
+        description: ""
+
+      - name: culls
+        description: ""
+
+      - name: transfers
+        description: ""
+
+      - name: transfers_in
+        description: ""
+
+      - name: transfers_out
+        description: ""
+
+      - name: inputs
+        description: ""
+
+      - name: sales
+        description: ""
+
+      - name: deviations
+        description: ""
+
+      - name: total_mortality
+        description: ""
+
+      - name: acclimation_mortality
+        description: ""
+
+      - name: entry_allowance_mortality
+        description: ""
+
+      - name: harvest_count
+        description: ""
+
+      - name: harvest_biomass
+        description: ""
+
+      - name: gen_month
+        description: ""
+
+      - name: end_count
+        description: ""
+
+      - name: biomass
+        description: ""
+
+  - name: int_cpm_fishtalk__production_overview_adjusted
+    description: ""
+    columns:
+      - name: gro_entity
+        description: ""
+        tests:
+          - not_null
+
+      - name: siteid
+        description: ""
+        tests:
+          - not_null
+
+      - name: site
+        description: ""
+        tests:
+          - not_null
+
+      - name: gp_site_id
+        description: ""
+        tests:
+          - not_null
+
+      - name: end_biomass_kg
+        description: ""
+
+      - name: fish_count
+        description: ""
+
+      - name: feed_purchased_kg
+        description: ""
+
+      - name: acclimation_mortality
+        description: ""
+
+      - name: gen_month
+        description: ""
+
+      - name: generation
+        description: ""
+
+      - name: culls
+        description: ""
+
+      - name: total_mortality
+        description: ""
+
+      - name: input_count
+        description: ""
+
+      - name: sales
+        description: ""
+
+      - name: deviations
+        description: ""
+
+      - name: harvest_count
+        description: ""
+
+      - name: harvest_biomass
+        description: ""
+
+      - name: total_feed_fed_kg
+        description: ""
+
+      - name: acclimation_mortality_count
+        description: ""
+
+      - name: acclimation_mortality_kg
+        description: ""
+
+      - name: unique_id
+        description: ""

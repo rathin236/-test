@@ -1,0 +1,143 @@
+version: 2
+
+models:
+  - name: d365__v_it_costs
+    description: ""
+    columns:
+      - name: chart_of_accounts
+        description: ""
+
+      - name: main_account_id
+        description: ""
+
+      - name: main_account_name
+        description: ""
+
+      - name: main_account_type
+        description: ""
+
+      - name: account_category
+        description: ""
+
+      - name: vendor_name
+        description: ""
+
+      - name: vendor_id
+        description: ""
+
+      - name: bank_account
+        description: ""
+
+      - name: pay_mode
+        description: ""
+
+      - name: tax_group
+        description: ""
+
+      - name: vendor_group
+        description: ""
+
+      - name: w_9
+        description: ""
+
+      - name: create_date_time
+        description: ""
+
+      - name: invoice_date
+        description: ""
+
+      - name: posted_date_time
+        description: ""
+
+      - name: posted_year
+        description: ""
+
+      - name: approved
+        description: ""
+
+      - name: posted
+        description: ""
+
+      - name: journal_name
+        description: ""
+
+      - name: ledger_journal_number
+        description: ""
+
+      - name: general_journal_number
+        description: ""
+
+      - name: voucher
+        description: ""
+
+      - name: ledger_voucher
+        description: ""
+
+      - name: sub_ledger_voucher
+        description: ""
+
+      - name: cost_ledger_voucher
+        description: ""
+
+      - name: total_journal_credit
+        description: ""
+
+      - name: total_journal_debit
+        description: ""
+
+      - name: journal_offset
+        description: ""
+
+      - name: company
+        description: ""
+
+      - name: line_of_business
+        description: ""
+
+      - name: journal_description
+        description: ""
+
+      - name: payment_reference
+        description: ""
+
+      - name: invoice_account
+        description: ""
+
+      - name: payment
+        description: ""
+
+      - name: invoice_id
+        description: ""
+
+      - name: invoice_amount
+        description: ""
+
+      - name: sales_balance
+        description: ""
+
+      - name: posting_type
+        description: ""
+
+      - name: amount
+        description: ""
+
+      - name: accounting_currency_amount
+        description: ""
+
+      - name: general_journal_entry_currency
+        description: ""
+
+      - name: ledger_account
+        description: ""
+
+      - name: description
+        description: ""
+
+      - name: exchange rate (usd-cad)
+        description: ""
+
+      - name: valid from (usd-cad)
+        description: ""
+
+      - name: valid to (usd-cad)
+        description: ""

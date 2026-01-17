@@ -1,0 +1,96 @@
+version: 2
+
+sources:
+  - name: raw_usage
+    description: ""
+    database: powerbi
+    tables:
+      - name: activities
+        description: ""
+        columns:
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: create_date
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: modified_date
+            description: ""
+
+      - name: apps
+        description: ""
+        columns:
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: create_date
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: modified_date
+            description: ""
+
+      - name: datasets
+        description: ""
+        columns:
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: create_date
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: modified_date
+            description: ""
+
+      - name: reports
+        description: ""
+        columns:
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: create_date
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: modified_date
+            description: ""
+
+      - name: groups
+        description: ""
+        columns:
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: create_date
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: modified_date
+            description: ""

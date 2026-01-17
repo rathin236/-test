@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: feeddata
+    description: ""
+    database: scaleaq
+    tables:
+      - name: site_info
+        description: ""
+      - name: company_info
+      - name: iot_raw_data

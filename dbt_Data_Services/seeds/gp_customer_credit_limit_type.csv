@@ -1,0 +1,4 @@
+credit_limit_type, credit_limit_desc
+0, None
+1, Unlimited
+2, Amount

@@ -1,0 +1,131 @@
+models:
+  - name: fct__ap_aging__all_invoices
+    description:
+      This model consolidates both paid and unpaid invoices to provide a
+      comprehensive view of accounts payable aging. It categorizes invoices based on
+      their payment status, such as overdue or due within specific time frames, aiding
+      in financial analysis and decision-making.
+    columns:
+      - name: sk_ap_global
+        description: A unique identifier for the accounts payable entry. (Primary Key of the Table)
+        tests:
+          - unique
+          - not_null
+      - name: company_id
+        description: The identifier for the company associated with the invoice.
+        tests:
+          - not_null
+      - name: vendor_id
+        description: The identifier for the vendor associated with the invoice.
+      - name: document_type_id
+        description:
+          The identifier for the type of document, such as invoice or credit
+          note.
+      - name: po_number
+        description: The purchase order number related to the invoice.
+      - name: company_currency
+        description: The currency in which the company operates.
+      - name: voucher
+        description: The voucher number associated with the invoice.
+      - name: status
+        description: The current status of the invoice, such as paid or unpaid.
+      - name: document_number
+        description: The unique number assigned to the document.
+        # data_tests:
+        #   - unique
+        #   - not_null
+      - name: document_date
+        description: The date when the document was issued.
+      - name: gl_posting_date
+        description: The date when the document was posted to the general ledger.
+      - name: due_date
+        description: The date by which the invoice is due for payment.
+      - name: cad_amount
+        description: The amount of the invoice in Canadian dollars.
+      - name: usd_amount
+        description: The amount of the invoice in US dollars.
+      - name: cad_purchase_amount
+        description: The purchase amount in Canadian dollars.
+      - name: usd_purchase_amount
+        description: The purchase amount in US dollars.
+      - name: sk_vendor_global
+        description: A unique identifier for the vendor.
+      - name: sk_doctype_global
+        description: A unique identifier for the document type.
+      - name: source_type
+        description: The source type of the invoice data.
+      - name: days_to_pay
+        description: The number of days taken to pay the invoice.
+      - name: days_to_overdue
+        description: The number of days the invoice is overdue.
+      - name: payment_status
+        description:
+          The payment status of the invoice, indicating whether it is overdue,
+          due, or paid within specific time frames.
+
+  - name: fct__ap_aging__paid_invoices
+    description:
+      This model consolidates paid invoice data from multiple sources, including
+      GP and D365, to provide a comprehensive view of accounts payable aging. It calculates
+      key metrics such as days to overdue and generates a unique identifier for each
+      invoice.
+    columns:
+      - name: sk_ap_global
+        description: Unique surrogate key for the accounts payable entry.
+        tests:
+          - unique
+          - not_null
+      - name: company_id
+        description: Identifier for the company associated with the invoice.
+      - name: vendor_id
+        description: Identifier for the vendor associated with the invoice.
+      - name: document_type_id
+        description: Identifier for the type of document, such as invoice or credit note.
+      - name: po_number
+        description: Purchase order number related to the invoice.
+      - name: company_currency
+        description: Currency in which the company's financials are reported.
+      - name: voucher
+        description: Voucher number for the invoice transaction.
+      - name: status
+        description: Current status of the invoice, such as paid or pending.
+      - name: document_number
+        description: Unique number assigned to the invoice document.
+      - name: document_date
+        description: Date when the invoice document was issued.
+      - name: gl_posting_date
+        description: Date when the invoice was posted to the general ledger.
+      - name: due_date
+        description: Date by which the invoice payment is due.
+      - name: currency_id
+        description: Currency in which the invoice is denominated.
+      - name: functional_document_amount
+        description: Amount of the invoice in the company's functional currency.
+      - name: originating_document_amount
+        description: Original amount of the invoice in the currency it was issued.
+      - name: cad_amount
+        description: Amount of the invoice converted to Canadian dollars.
+      - name: usd_amount
+        description: Amount of the invoice converted to US dollars.
+      - name: cad_purchase_amount
+        description: Purchase amount in Canadian dollars.
+      - name: usd_purchase_amount
+        description: Purchase amount in US dollars.
+      - name: originating_transaction_amount
+        description: Original transaction amount in the currency it was issued.
+      - name: functional_transaction_amount
+        description: Transaction amount in the company's functional currency.
+      - name: sk_vendor_global
+        description: Surrogate key for the global vendor.
+      - name: sk_doctype_global
+        description: Surrogate key for the global document type.
+      - name: source_type
+        description:
+          Source system from which the invoice data was obtained, such as GP
+          or D365.
+      - name: days_to_pay
+        description: Number of days taken to pay the invoice.
+      - name: days_to_overdue
+        description:
+          Number of days the invoice is overdue, calculated based on due date
+          and posting date.

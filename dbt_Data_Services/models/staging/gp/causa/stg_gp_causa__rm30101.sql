@@ -1,0 +1,87 @@
+with source as (
+
+    select * from {{ source('causa_dbo', 'rm30101') }}
+
+),
+
+renamed as (
+
+    select
+        cshrctyp,
+        pstusrid,
+        rmdtypal,
+        glpostdt,
+        dinvpdof,
+        dex_row_ts,
+        voidstts,
+        disavamt,
+        ppsamded,
+        postdate,
+        lstusred,
+        shipmthd,
+        mscschid,
+        wrofamnt,
+        bktslsam,
+        delete1,
+        ectrx,
+        trdisamt,
+        voiddate,
+        gstdsamt,
+        electronic,
+        cheknmbr,
+        discrtnd,
+        cprcstnm,
+        dscdlram,
+        duedate,
+        docnumbr,
+        slschdid,
+        simplifd,
+        factoring,
+        pymtrmid,
+        tax_date,
+        bachnumb,
+        lstedtdt,
+        balfwdnm,
+        costamnt,
+        curncyid,
+        slprsnid,
+        backouttradedisc,
+        bktmscam,
+        bktfrtam,
+        eftflag,
+        miscamnt,
+        docdate,
+        directdebit,
+        discdate,
+        trxsorce,
+        dscpctam,
+        ortrxamt,
+        custnmbr,
+        frtschid,
+        trxdscrn,
+        taxamnt,
+        curtrxam,
+        saledate,
+        distknam,
+        bchsourc,
+        corrctn,
+        taxschid,
+        frtamnt,
+        cashamnt,
+        dex_row_id,
+        adrscode,
+        noteindx,
+        aplywith,
+        comdlram,
+        slsamnt,
+        slstercd,
+        cspornbr,
+        _fivetran_deleted,
+        _fivetran_synced
+
+    from source
+
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

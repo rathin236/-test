@@ -1,0 +1,257 @@
+version: 2
+
+models:
+  - name: int_global_sales__fact_cost_adjusted_d365
+    description: ""
+    columns:
+      - name: order id
+        description: ""
+
+      - name: settletransid
+        description: ""
+
+      - name: company
+        description: ""
+
+      - name: release status
+        description: ""
+
+      - name: orderstatusid
+        description: ""
+
+      - name: salesstatusid
+        description: ""
+
+      - name: salestypeid
+        description: ""
+
+      - name: locationid
+        description: ""
+
+      - name: inventory location id
+        description: ""
+
+      - name: inventory site id
+        description: ""
+
+      - name: create date
+        description: ""
+
+      - name: delivery date
+        description: ""
+
+      - name: invoice account
+        description: ""
+
+      - name: customer invoice date
+        description: ""
+
+      - name: customer account
+        description: ""
+
+      - name: shipping date confirmed
+        description: ""
+
+      - name: shipping date requested
+        description: ""
+
+      - name: item id
+        description: ""
+
+      - name: remaining sales physical
+        description: ""
+
+      - name: sales price
+        description: ""
+
+      - name: sales amount
+        description: ""
+
+      - name: invoice amount
+        description: ""
+
+      - name: sales quantity
+        description: ""
+
+      - name: sales volume (lbs)
+        description: ""
+
+      - name: invoice quantity
+        description: ""
+
+      - name: inv uom
+        description: ""
+
+      - name: invoice volume (lbs)
+        description: ""
+
+      - name: sales unit
+        description: ""
+
+      - name: sourcing vender account
+        description: ""
+
+      - name: flag_price_adjustment
+        description: ""
+
+      - name: invoice id
+        description: ""
+
+      - name: estimated cost
+        description: ""
+
+      - name: posted cost
+        description: ""
+
+      - name: adjusted cost
+        description: ""
+
+      - name: settled cost
+        description: ""
+
+      - name: rebates
+        description: ""
+
+      - name: currency
+        description: ""
+
+      - name: returned invoice
+        description: ""
+
+      - name: date financial
+        description: ""
+
+      - name: financial division id
+        description: ""
+
+      - name: delivery address id
+        description: ""
+
+      - name: mode
+        description: ""
+
+      - name: last data refresh
+        description: ""
+
+      - name: exchange rate (usd-cad)
+        description: ""
+
+  - name: int_global_sales__fact_cost_d365
+    description: ""
+    columns:
+      - name: order id
+        description: ""
+
+      - name: company
+        description: ""
+
+      - name: release status
+        description: ""
+
+      - name: order status id
+        description: ""
+
+      - name: sales status id
+        description: ""
+
+      - name: sales type id
+        description: ""
+
+      - name: location id
+        description: ""
+
+      - name: inventory location id
+        description: ""
+
+      - name: inventory site id
+        description: ""
+
+      - name: create date
+        description: ""
+
+      - name: delivery date
+        description: ""
+
+      - name: invoice account
+        description: ""
+
+      - name: customer invoice date
+        description: ""
+
+      - name: customer account
+        description: ""
+
+      - name: shipping date confirmed
+        description: ""
+
+      - name: shipping date requested
+        description: ""
+
+      - name: item id
+        description: ""
+
+      - name: remaining sales physical
+        description: ""
+
+      - name: sales quantity
+        description: ""
+
+      - name: invoice quantity
+        description: ""
+
+      - name: inv uom
+        description: ""
+
+      - name: sales unit
+        description: ""
+
+      - name: sourcing vender account
+        description: ""
+
+      - name: flag_price_adjustment
+        description: ""
+
+      - name: invoice id
+        description: ""
+
+      - name: date financial
+        description: ""
+
+      - name: financial division id
+        description: ""
+
+      - name: delivery address id
+        description: ""
+
+      - name: mode
+        description: ""
+
+      - name: last data refresh
+        description: ""
+
+      - name: exchange rate (usd-cad)
+        description: ""
+
+      - name: sales amount
+        description: ""
+
+      - name: sales price
+        description: ""
+
+      - name: invoice amount
+        description: ""
+
+      - name: estimated cost
+        description: ""
+
+      - name: posted cost
+        description: ""
+
+      - name: settled cost
+        description: ""
+
+      - name: rebates
+        description: ""
+
+      - name: sales volume (lbs)
+        description: ""

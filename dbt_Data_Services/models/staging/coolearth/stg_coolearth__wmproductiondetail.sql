@@ -1,0 +1,80 @@
+with source as (
+
+    select * from {{ source('coolearth', 'wmproductiondetail') }}
+
+),
+
+renamed as (
+
+    select
+        customer,
+        shiptocountry,
+        labelname,
+        demandweight,
+        extshiptoaddress2,
+        orderkey,
+        labelproddatefmr,
+        overridectwtmin,
+        extshiptoaddress3,
+        wmproductiondetail_id,
+        extshiptocity,
+        linekey,
+        extshiptostate,
+        demandqty,
+        priority,
+        shiptoaddress2,
+        sellbydatedesc,
+        shoptocountry,
+        customeritem,
+        extshiptocountry,
+        shiptoaddress1,
+        warehouse,
+        proddatedesc,
+        orderstatus,
+        extshiptopostal,
+        outputitem,
+        ovrctwghthardlimit,
+        shiptoaddress3,
+        customerpo,
+        userkey,
+        overridectwtmax,
+        extshiptoaddress1,
+        outputpack,
+        instructions,
+        sochanged,
+        overridehardlimit,
+        casegrosstype,
+        producedqty,
+        sellbydays,
+        inputitem,
+        casegrosstare,
+        handlinginstructions,
+        carrier,
+        salesorderline,
+        customerpackedbyaddress,
+        shiptopostal,
+        ovrctwghtmaxwgt,
+        itemgroupdescription,
+        customergtin,
+        shiptocity,
+        shipdate,
+        company,
+        labelselldatefmt,
+        labellegalese,
+        createdate,
+        category,
+        producedweight,
+        shiptostate,
+        dbserverdatetime,
+        extshiptocustomer,
+        ovrctwghtminwgt,
+        custitemdesc,
+        _fivetran_deleted,
+        _fivetran_synced,
+        trim(salesorder) as salesorder
+
+    from source
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

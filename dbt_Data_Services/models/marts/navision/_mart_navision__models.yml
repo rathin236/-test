@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: navision__v_accounts_payable_actual
+    description: "Accounts payable actual from Navision."
+    columns:
+      - name: document_number_sequence_sk
+        description: "AP document identifier."
+        tests:
+          - not_null
+          - unique
+
+  - name: navision__v_accounts_payable_forecast
+    description: "Accounts payable forecast from Navision."
+    columns:
+      - name: document_number_sequence_sk
+        description: "AP document identifier."
+        tests:
+          - not_null
+          - unique
+
+  - name: navision__v_accounts_receivable_actual
+    description: "Accounts receivable actual from Navision."
+    columns:
+      - name: document_number_sequence_sk
+        description: "AR document identifier."
+        tests:
+          - not_null
+          - unique
+
+  - name: navision__v_accounts_receivable_forecast
+    description: "Accounts receivable forecast from Navision."
+    columns:
+      - name: document_number_sequence_sk
+        description: "AR document identifier."
+        tests:
+          - not_null
+          - unique

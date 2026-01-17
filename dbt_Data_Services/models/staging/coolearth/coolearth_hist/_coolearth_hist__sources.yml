@@ -1,0 +1,401 @@
+version: 2
+
+sources:
+  - name: coolearth_hist
+    description: ""
+    database: northscope_coolearth
+    schema: nsce_hist_dbo
+    tables:
+      - name: wms_pmint_tbl
+        description: ""
+        columns:
+          - name: wms_pmintl_id
+            description: ""
+          - name: gl_cmp_key
+            description: ""
+          - name: sa_user_key
+            description: ""
+          - name: backflushstatus
+            description: ""
+          - name: wms_pmint_crdt
+            description: ""
+          - name: pm_shop_ordtp
+            description: ""
+          - name: wms_pmint_error
+            description: ""
+          - name: sf_plant_key
+            description: ""
+          - name: wms_batch_id
+            description: ""
+          - name: dbserverdatetime
+            description: ""
+          - name: wms_contdtl_key
+            description: ""
+          - name: wms_pmint_sqty
+            description: ""
+          - name: backflushtxguid
+            description: ""
+          - name: pieces
+            description: ""
+          - name: wms_pmint_uom
+            description: ""
+          - name: in_item_key
+            description: ""
+          - name: wms_pmint_control
+            description: ""
+          - name: wms_pmint_bqty
+            description: ""
+          - name: wms_line_key
+            description: ""
+          - name: pm_shop_key
+            description: ""
+          - name: in_whs_key
+            description: ""
+          - name: trans_date
+            description: ""
+          - name: in_lot_key
+            description: ""
+          - name: trankey
+            description: ""
+          - name: wms_pmint_reason
+            description: ""
+          - name: wms_shift_key
+            description: ""
+          - name: im_pack_key
+            description: ""
+          - name: wms_conthdr_key
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_start
+            description: ""
+          - name: _fivetran_end
+            description: ""
+          - name: _fivetran_active
+            description: ""
+
+      - name: wms_bindtlst_tbl
+        description: ""
+        columns:
+          - name: gl_cmp_key
+            description: ""
+          - name: in_whs_key
+            description: ""
+          - name: wms_bin_key
+            description: ""
+          - name: wms_contdtl_key
+            description: ""
+          - name: wms_conthdr_key
+            description: ""
+          - name: wms_bin_height
+            description: ""
+          - name: wms_count_key
+            description: ""
+          - name: dont_trackvol
+            description: ""
+          - name: wms_bin_width
+            description: ""
+          - name: wms_contdtl_own
+            description: ""
+          - name: lastcount
+            description: ""
+          - name: wms_conthdr_lstmv
+            description: ""
+          - name: wms_count_status
+            description: ""
+          - name: wms_count_qty
+            description: ""
+          - name: wms_contdtl_qty
+            description: ""
+          - name: wms_bin_depth
+            description: ""
+          - name: wms_binst_pc
+            description: ""
+          - name: not_on_picklist
+            description: ""
+          - name: dbserverdatetime
+            description: ""
+          - name: wms_count_var
+            description: ""
+          - name: wms_contst_key
+            description: ""
+          - name: wms_bindtlst_tbl_id
+            description: ""
+          - name: volumetracked
+            description: ""
+          - name: in_item_key
+            description: ""
+          - name: wms_contdtl_puldt
+            description: ""
+          - name: wms_bin_vol
+            description: ""
+          - name: im_pack_key
+            description: ""
+          - name: wms_contdtl_alloc
+            description: ""
+          - name: wms_binst_rem
+            description: ""
+          - name: wms_zone_key
+            description: ""
+          - name: in_lot_key
+            description: ""
+          - name: wms_bin_type
+            description: ""
+          - name: pickable
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_start
+            description: ""
+          - name: _fivetran_end
+            description: ""
+          - name: _fivetran_active
+            description: ""
+
+      - name: wms_contdtl_tbl
+        description: ""
+        columns:
+          - name: gl_cmp_key
+            description: ""
+          - name: in_whs_key
+            description: ""
+          - name: wms_contdtl_key
+            description: ""
+          - name: wms_conthdr_key
+            description: ""
+          - name: wms_user_paramvc1
+            description: ""
+          - name: vendor_lot
+            description: ""
+          - name: wms_contdtl_puldt
+            description: ""
+          - name: wms_user_paramf5
+            description: ""
+          - name: wms_contst_key
+            description: ""
+          - name: wms_user_paramf2
+            description: ""
+          - name: wms_contdtl_coo
+            description: ""
+          - name: wms_user_paramf1
+            description: ""
+          - name: wms_user_paramf4
+            description: ""
+          - name: wms_user_paramf3
+            description: ""
+          - name: wms_user_paramf6
+            description: ""
+          - name: im_pack_key
+            description: ""
+          - name: wms_contdtl_kildt
+            description: ""
+          - name: wms_contdtl_opallet
+            description: ""
+          - name: wms_contdtl_prddt
+            description: ""
+          - name: wms_contdtl_item
+            description: ""
+          - name: wms_contdtl_country
+            description: ""
+          - name: wms_contdtl_ctwgt
+            description: ""
+          - name: wms_contdtl_crtdt
+            description: ""
+          - name: wms_contdtl_qty
+            description: ""
+          - name: wms_contdtl_own
+            description: ""
+          - name: wms_user_paramvc9
+            description: ""
+          - name: in_item_key
+            description: ""
+          - name: in_desc
+            description: ""
+          - name: wms_contdtl_tbl_id
+            description: ""
+          - name: wms_contdtl_alloc
+            description: ""
+          - name: in_lot_key
+            description: ""
+          - name: dbserverdatetime
+            description: ""
+          - name: wms_contdtl_vol
+            description: ""
+          - name: wms_contdtl_uom
+            description: ""
+          - name: wms_user_paramvc10
+            description: ""
+          - name: wms_contcase_uom
+            description: ""
+          - name: wms_user_paramvc6
+            description: ""
+          - name: so_prod_key
+            description: ""
+          - name: wms_user_paramvc3
+            description: ""
+          - name: wms_user_paramvc5
+            description: ""
+          - name: wms_user_paramvc2
+            description: ""
+          - name: wms_user_paramvc8
+            description: ""
+          - name: wms_user_paramvc7
+            description: ""
+          - name: wms_user_paramvc4
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_start
+            description: ""
+          - name: _fivetran_end
+            description: ""
+          - name: _fivetran_active
+            description: ""
+
+      - name: wms_conthdr_tbl
+        description: ""
+        columns:
+          - name: gl_cmp_key
+            description: ""
+          - name: in_whs_key
+            description: ""
+          - name: wms_conthdr_key
+            description: ""
+          - name: wms_conthdr_vol
+            description: ""
+          - name: wms_conthdr_lstdt
+            description: ""
+          - name: wms_contty_key
+            description: ""
+          - name: wms_contst_key
+            description: ""
+          - name: wms_contst_reldt
+            description: ""
+          - name: wms_conthdr_tbl_id
+            description: ""
+          - name: wms_conthdr_lstmv
+            description: ""
+          - name: wms_group_key
+            description: ""
+          - name: dbserverdatetime
+            description: ""
+          - name: track_input_method
+            description: ""
+          - name: wms_bin_key
+            description: ""
+          - name: labelid
+            description: ""
+          - name: sa_user_key
+            description: ""
+          - name: in_locn_key
+            description: ""
+          - name: lockcounter
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_start
+            description: ""
+          - name: _fivetran_end
+            description: ""
+          - name: _fivetran_active
+            description: ""
+
+      - name: wms_lot_tbl
+        description: ""
+        columns:
+          - name: en_item_key
+            description: ""
+          - name: en_lot_key
+            description: ""
+          - name: gl_cmp_key
+            description: ""
+          - name: julianyear
+            description: ""
+          - name: certifications
+            description: ""
+          - name: lotlastmodifiedby
+            description: ""
+          - name: killdt_updt_by
+            description: ""
+          - name: casewgt
+            description: ""
+          - name: product
+            description: ""
+          - name: harvestdate
+            description: ""
+          - name: noshiplist
+            description: ""
+          - name: vessel
+            description: ""
+          - name: wms_lot_killdt
+            description: ""
+          - name: grosswgt
+            description: ""
+          - name: printcerts
+            description: ""
+          - name: harvestid
+            description: ""
+          - name: finishedgoodtype
+            description: ""
+          - name: wms_lot_tbl_id
+            description: ""
+          - name: dbserverdatetime
+            description: ""
+          - name: avgprocessedwgt
+            description: ""
+          - name: lotcreatedby
+            description: ""
+          - name: cage
+            description: ""
+          - name: owner
+            description: ""
+          - name: projwgtavg
+            description: ""
+          - name: countryoforigin
+            description: ""
+          - name: ponumber
+            description: ""
+          - name: openva
+            description: ""
+          - name: deliverynote
+            description: ""
+          - name: rcvdate
+            description: ""
+          - name: killdt_lstupdt
+            description: ""
+          - name: lotsource
+            description: ""
+          - name: childguia
+            description: ""
+          - name: openwf
+            description: ""
+          - name: lotcreatedon
+            description: ""
+          - name: juliandate
+            description: ""
+          - name: tarewgt
+            description: ""
+          - name: productstate
+            description: ""
+          - name: guaranteedeclaration
+            description: ""
+          - name: lotlastmodifiedon
+            description: ""
+          - name: originlot
+            description: ""
+          - name: lotopen
+            description: ""
+          - name: motherguia
+            description: ""
+          - name: piececount
+            description: ""
+          - name: note
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_start
+            description: ""
+          - name: _fivetran_end
+            description: ""
+          - name: _fivetran_active
+            description: ""

@@ -1,0 +1,25 @@
+{%- set min_snowflake_date_query -%}
+select min(date) as minimum_rate_date
+from {{ ref('int_usage_rates') }}
+{% endset %}
+
+{% if execute %}
+    {% set min_date = run_query(min_snowflake_date_query)[0][0] %}
+{% else %}
+{% set min_date ='2020-01-01' %}
+{% endif %}
+
+with exchange as (
+
+    select
+
+        exchange_date,
+        rate
+
+    from {{ ref('stg_staging_prod_xref__currency_exchange_rates') }}
+
+    where from_ccy = 'USD' and to_ccy = 'CAD' and exchange_date >= '{{ min_date }}'
+
+)
+
+select * from exchange

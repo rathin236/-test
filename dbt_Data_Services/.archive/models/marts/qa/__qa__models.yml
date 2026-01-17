@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: bh_condition_factor_forms
+    description: "Curated dataset based on the Inspec BH Condition Factor Form.
+                  As of 2024-07-10 contains data for FBD and BLKS"
+    columns:
+      - name: form_id
+        description: "Primary key for the form."
+        data_tests:
+          - not_null
+          - unique
+      - name: lot_id
+        description: "Foreign key representing the lot."
+      - name: certification
+        description: "Certification details of the lot."
+      - name: facility
+        description: "Facility where the lot is processed."
+      - name: lotdetails
+        description: "Details of the lot."
+      - name: maturetraits_bighead
+        description: "Indicates if the mature traits include a big head."
+      - name: maturetraits_largekype
+        description: "Indicates if the mature traits include a large kype."
+      - name: maturetraits_notmature
+        description: "Indicates if the traits show that the lot is not mature."
+      - name: maturetraits_thinbelly
+        description: "Indicates if the mature traits include a thin belly."
+      - name: site_cage
+        description: "The site(s) cage(s) associated with the lot."
+      - name: gonadsweight
+        description: "Weight of the gonads."
+      - name: gindex
+        description: "Gonadosomatic index."
+      - name: kfultonfactor
+        description: "K Fulton factor."
+      - name: length
+        description: "Length in centimeters."
+      - name: roundweightlbs
+        description: "Rounded weight in pounds."
+      - name: created_date
+        description: "Date when the record was created."
+

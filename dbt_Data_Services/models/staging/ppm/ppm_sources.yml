@@ -1,0 +1,226 @@
+version: 2
+
+sources:
+  - name: ppm
+    description: ""
+    database: staging_prod
+    tables:
+      - name: entity_portfolio
+        description: ""
+        columns:
+          - name: entity_id
+            description: ""
+          - name: entity_name
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: insert_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: entity_typeid
+            description: ""
+
+      - name: entity_project
+        description: ""
+        columns:
+          - name: entity_id
+            description: ""
+          - name: entity_name
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: insert_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: entity_typeid
+            description: ""
+          - name: status
+            description: ""
+
+      - name: entity_request
+        description: ""
+        columns:
+          - name: entity_id
+            description: ""
+          - name: entity_name
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: insert_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: entity_typeid
+            description: ""
+
+      - name: entity_resource
+        description: ""
+        columns:
+          - name: entity_id
+            description: ""
+          - name: entity_name
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: insert_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: entity_typeid
+            description: ""
+
+      - name: entity_task
+        description: ""
+        columns:
+          - name: entity_id
+            description: ""
+          - name: entity_name
+            description: ""
+          - name: entity_typeid
+            description: ""
+          - name: project_id
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: insert_date
+            description: ""
+          - name: modified_date
+            description: ""
+
+      - name: entity_taskschedule
+        description: ""
+        columns:
+          - name: entity_id
+            description: ""
+          - name: entity_name
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: insert_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: entity_typeid
+            description: ""
+
+      - name: entities_fields
+        description: ""
+        columns:
+          - name: entity_name
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: insert_date
+            description: ""
+          - name: modified_date
+            description: ""
+
+      - name: resourcecapacity
+        description: ""
+        columns:
+          - name: resource_id
+            description: ""
+          - name: json_data
+            description: ""
+          - name: start_date
+            description: ""
+          - name: end_date
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: executionid
+            description: ""
+
+      - name: entity_user
+        description: ""
+        columns:
+          - name: entity_id
+            description: ""
+          - name: entity_name
+            description: ""
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: insert_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: entity_typeid
+            description: ""
+
+      - name: timesheetforuser
+        description: ""
+        columns:
+          - name: resource_id
+            description: ""
+          - name: json_data
+            description: ""
+          - name: start_date
+            description: ""
+          - name: end_date
+            description: ""
+          - name: status
+            description: ""
+          - name: timesheet_id
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: executionid
+            description: ""
+
+      - name: userallocationhours
+        description: ""
+        columns:
+          - name: json_data
+            description: ""
+          - name: start_date
+            description: ""
+          - name: end_date
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: executionid
+            description: ""
+          - name: allocation_id
+            description: ""
+
+      - name: demandcapacity
+        description: ""
+        columns:
+          - name: allocation_roleid
+            description: ""
+          - name: json_data
+            description: ""
+          - name: start_date
+            description: ""
+          - name: end_date
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: executionid
+            description: ""

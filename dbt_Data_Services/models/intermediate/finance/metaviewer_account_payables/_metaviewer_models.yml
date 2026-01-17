@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: int_metaviewer_ap__all_invoices
+    description: "Intermediate file combining invoices and journal activities"
+    columns:
+      - name: sk_transaction_pk
+        description: "Surrogate key built from transaction_id + step_number"
+        tests:
+          - not_null
+          - unique
+      - name: transaction_id
+        description: "Invoice identifier from payables_base"
+        tests:
+          - not_null
+      - name: step_number
+        description: "Activity step number, defaults to 0 if header only"
+        tests:
+          - not_null

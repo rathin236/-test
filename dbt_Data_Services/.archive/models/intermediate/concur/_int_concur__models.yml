@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: int_concur__distributions
+    description: "Intermediate model for transformations to expense report distributions"
+  - name: int_concur__transaction_insert
+    description: "Intermediate model for transformations to the transaction insert"
+  - name: int_concur__expense
+    description: "Intermediate model for transformations to the Concur Expense table"

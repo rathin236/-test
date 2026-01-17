@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: d365_cpm__v_transactions
+    description: "Table containing transaction data from D365 CPM."
+    columns:
+      - name: company_name
+        description: "Name of the company associated with the transaction."
+      - name: transaction_date
+        description: "Date of the transaction."
+      - name: period_number
+        description: "Accounting period number."
+      - name: status
+        description: "Status of the transaction."
+      - name: cancel
+        description: "Indicates if the transaction is cancelled."
+      - name: journalentry_number
+        description: "Journal entry number for the transaction."
+      - name: account_number
+        description: "Account number associated with the transaction."
+      - name: main_number
+        description: "Main account number related to the transaction."
+      - name: cost_center
+        description: "Cost center associated with the transaction."
+      - name: department
+        description: "Department involved in the transaction."
+      - name: division
+        description: "Division related to the transaction."
+      - name: location
+        description: "Location of the transaction."
+      - name: prod_line
+        description: "Product line associated with the transaction."
+      - name: cash_flow
+        description: "Cash flow category related to the transaction."
+      - name: corelationship
+        description: "Correlation identifier for the transaction."
+      - name: accounting_currency_debit_amount
+        description: "Debit amount in the accounting currency."
+      - name: accounting_currency_credit_amount
+        description: "Credit amount in the accounting currency."
+      - name: customer_name
+        description: "Name of the customer involved in the transaction."
+      - name: document_number
+        description: "Document number for the transaction."
+      - name: document_date
+        description: "Document date related to the transaction."
+      - name: transaction_currency
+        description: "Currency used for the transaction."
+      - name: exchange_rate
+        description: "Exchange rate used for the transaction."
+      - name: text_description
+        description: "Description or notes related to the transaction."
+      - name: transaction_currency_debit_amount
+        description: "Debit amount in the transaction currency."
+      - name: transaction_currency_credit_amount
+        description: "Credit amount in the transaction currency."
+
+      - name: journal_entry_number
+        description: Journal entry number for the transaction.
+      - name: voucher
+        description: Voucher number associated with the transaction.
+      - name: cost_centre
+        description: Cost centre associated with the transaction.
+      - name: product_line
+        description: Product line associated with the transaction.
+      - name: company_relationship
+        description: Company relationship identifier for the transaction.
+      - name: account_description
+        description: Description of the account associated with the transaction.
+      - name: main_account_description
+        description: Description of the main account related to the transaction.
+      - name: cost_centre_description
+        description: Description of the cost centre associated with the transaction.
+      - name: department_description
+        description: Description of the department involved in the transaction.
+      - name: division_description
+        description: Description of the division related to the transaction.
+      - name: location_description
+        description: Description of the location of the transaction.
+      - name: product_line_description
+        description: Description of the product line associated with the transaction.
+      - name: cash_flow_description
+        description: Description of the cash flow category related to the transaction.
+      - name: company_relationship_description
+        description: Description of the company relationship identifier for the transaction.
+      - name: customer_vendor_id
+        description: Identifier for the customer or vendor involved in the transaction.
+      - name: customer_vendor_name
+        description: Name of the customer or vendor involved in the transaction.
+      - name: canceled
+        description: Indicates if the transaction is canceled.

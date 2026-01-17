@@ -1,0 +1,877 @@
+version: 2
+
+sources:
+  - name: ndhc_dbo
+    description: ""
+    database: gp
+    tables:
+      - name: mc40000
+        description: "Functional Currency Table"
+      - name: pm00200
+        description: "Vendor Master Table"
+      - name: pm20000
+        description: "Vendor Open Payments"
+      - name: pm10000
+        description: "Vendor Work Payments"
+      - name: mc020103
+        description: "Multicurrency Table"
+      - name: pop10110
+        description: "Purchase Order Open Status"
+      - name: pop30110
+        description: "Purchase Order Historical Status"
+      - name: pm30200
+        description: "Vendor Paid Transactions"
+
+
+      - name: rm10101
+        description: ""
+        columns:
+          - name: docnumbr
+            description: ""
+          - name: pstgstus
+            description: ""
+          - name: rmdtypal
+            description: ""
+          - name: seqnumbr
+            description: ""
+          - name: userid
+            description: ""
+          - name: dcstatus
+            description: ""
+          - name: changed
+            description: ""
+          - name: custnmbr
+            description: ""
+          - name: categusd
+            description: ""
+          - name: trxsorce
+            description: ""
+          - name: projctid
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: ordbtamt
+            description: ""
+          - name: posted
+            description: ""
+          - name: orcrdamt
+            description: ""
+          - name: dstindx
+            description: ""
+          - name: currnidx
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: debitamt
+            description: ""
+          - name: crdtamnt
+            description: ""
+          - name: distref
+            description: ""
+          - name: posteddt
+            description: ""
+          - name: disttype
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: rm20101
+        description: ""
+        columns:
+          - name: custnmbr
+            description: ""
+          - name: docnumbr
+            description: ""
+          - name: rmdtypal
+            description: ""
+          - name: delete1
+            description: ""
+          - name: frtamnt
+            description: ""
+          - name: dscdlram
+            description: ""
+          - name: mscschid
+            description: ""
+          - name: discdate
+            description: ""
+          - name: bktslsam
+            description: ""
+          - name: agngbukt
+            description: ""
+          - name: cbkidchk
+            description: ""
+          - name: corrctn
+            description: ""
+          - name: ortrxamt
+            description: ""
+          - name: cprcstnm
+            description: ""
+          - name: eftflag
+            description: ""
+          - name: dex_row_ts
+            description: ""
+          - name: glpostdt
+            description: ""
+          - name: disavamt
+            description: ""
+          - name: frtschid
+            description: ""
+          - name: bktmscam
+            description: ""
+          - name: directdebit
+            description: ""
+          - name: curtrxam
+            description: ""
+          - name: bktfrtam
+            description: ""
+          - name: duedate
+            description: ""
+          - name: voiddate
+            description: ""
+          - name: pymtrmid
+            description: ""
+          - name: cshrctyp
+            description: ""
+          - name: bchsourc
+            description: ""
+          - name: taxschid
+            description: ""
+          - name: bachnumb
+            description: ""
+          - name: cbkidcsh
+            description: ""
+          - name: ppsamded
+            description: ""
+          - name: dscpctam
+            description: ""
+          - name: wrofamnt
+            description: ""
+          - name: shipmthd
+            description: ""
+          - name: trdisamt
+            description: ""
+          - name: backouttradedisc
+            description: ""
+          - name: gstdsamt
+            description: ""
+          - name: postdate
+            description: ""
+          - name: slschdid
+            description: ""
+          - name: aplywith
+            description: ""
+          - name: slprsnid
+            description: ""
+          - name: cbkidcrd
+            description: ""
+          - name: cashamnt
+            description: ""
+          - name: disavtkn
+            description: ""
+          - name: docdate
+            description: ""
+          - name: lstusred
+            description: ""
+          - name: noteindx
+            description: ""
+          - name: lstedtdt
+            description: ""
+          - name: costamnt
+            description: ""
+          - name: cheknmbr
+            description: ""
+          - name: saledate
+            description: ""
+          - name: electronic
+            description: ""
+          - name: ectrx
+            description: ""
+          - name: trxsorce
+            description: ""
+          - name: discrtnd
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: tax_date
+            description: ""
+          - name: pstusrid
+            description: ""
+          - name: slsamnt
+            description: ""
+          - name: dinvpdof
+            description: ""
+          - name: distknam
+            description: ""
+          - name: slstercd
+            description: ""
+          - name: miscamnt
+            description: ""
+          - name: voidstts
+            description: ""
+          - name: cspornbr
+            description: ""
+          - name: taxamnt
+            description: ""
+          - name: trxdscrn
+            description: ""
+          - name: comdlram
+            description: ""
+          - name: adrscode
+            description: ""
+          - name: factoring
+            description: ""
+          - name: simplifd
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: rm30301
+        description: ""
+        columns:
+          - name: docnumbr
+            description: ""
+          - name: rmdtypal
+            description: ""
+          - name: seqnumbr
+            description: ""
+          - name: posteddt
+            description: ""
+          - name: categusd
+            description: ""
+          - name: userid
+            description: ""
+          - name: projctid
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: orcrdamt
+            description: ""
+          - name: ordbtamt
+            description: ""
+          - name: dstindx
+            description: ""
+          - name: trxsorce
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: debitamt
+            description: ""
+          - name: crdtamnt
+            description: ""
+          - name: distref
+            description: ""
+          - name: custnmbr
+            description: ""
+          - name: disttype
+            description: ""
+          - name: currnidx
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: rm00101
+        description: ""
+        columns:
+          - name: custnmbr
+            description: ""
+          - name: rmtakacc
+            description: ""
+          - name: custpriority
+            description: ""
+          - name: mxwoftyp
+            description: ""
+          - name: prstadcd
+            description: ""
+          - name: custdisc
+            description: ""
+          - name: fnchatyp
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: shipcomplete
+            description: ""
+          - name: rmavacc
+            description: ""
+          - name: frstindt
+            description: ""
+          - name: fnchpcnt
+            description: ""
+          - name: fax
+            description: ""
+          - name: country
+            description: ""
+          - name: disgrper
+            description: ""
+          - name: finchid
+            description: ""
+          - name: ratetpid
+            description: ""
+          - name: zip
+            description: ""
+          - name: cntcprsn
+            description: ""
+          - name: mxwrofam
+            description: ""
+          - name: kpdsthst
+            description: ""
+          - name: stmtname
+            description: ""
+          - name: duegrper
+            description: ""
+          - name: docfmtid
+            description: ""
+          - name: integrationid
+            description: ""
+          - name: city
+            description: ""
+          - name: revalue_customer
+            description: ""
+          - name: declid
+            description: ""
+          - name: cbvat
+            description: ""
+          - name: ccode
+            description: ""
+          - name: modifdt
+            description: ""
+          - name: integrationsource
+            description: ""
+          - name: phone1
+            description: ""
+          - name: govcrpid
+            description: ""
+          - name: crlmtper
+            description: ""
+          - name: post_results_to
+            description: ""
+          - name: shipmthd
+            description: ""
+          - name: inactive
+            description: ""
+          - name: comment2
+            description: ""
+          - name: ccrdxpdt
+            description: ""
+          - name: taxexmt1
+            description: ""
+          - name: staddrcd
+            description: ""
+          - name: dex_row_ts
+            description: ""
+          - name: defcacty
+            description: ""
+          - name: phone2
+            description: ""
+          - name: crlmttyp
+            description: ""
+          - name: hold
+            description: ""
+          - name: upszone
+            description: ""
+          - name: rmovrpymtwrtoffacctidx
+            description: ""
+          - name: custname
+            description: ""
+          - name: crcardid
+            description: ""
+          - name: kptrxhst
+            description: ""
+          - name: phone3
+            description: ""
+          - name: crcrdnum
+            description: ""
+          - name: address2
+            description: ""
+          - name: govindid
+            description: ""
+          - name: gpsfointegrationid
+            description: ""
+          - name: orderfulfilldefault
+            description: ""
+          - name: shrtname
+            description: ""
+          - name: taxexmt2
+            description: ""
+          - name: creatddt
+            description: ""
+          - name: txrgnnum
+            description: ""
+          - name: salsterr
+            description: ""
+          - name: state
+            description: ""
+          - name: stmtcycl
+            description: ""
+          - name: kperhist
+            description: ""
+          - name: rmcshacc
+            description: ""
+          - name: noteindx
+            description: ""
+          - name: userlang
+            description: ""
+          - name: finchdlr
+            description: ""
+          - name: minpydlr
+            description: ""
+          - name: rmaracc
+            description: ""
+          - name: includeindp
+            description: ""
+          - name: custclas
+            description: ""
+          - name: comment1
+            description: ""
+          - name: bankname
+            description: ""
+          - name: chekbkid
+            description: ""
+          - name: taxschid
+            description: ""
+          - name: minpytyp
+            description: ""
+          - name: userdef2
+            description: ""
+          - name: cprcstnm
+            description: ""
+          - name: address1
+            description: ""
+          - name: crlmtpam
+            description: ""
+          - name: bnkbrnch
+            description: ""
+          - name: rmcosacc
+            description: ""
+          - name: adrscode
+            description: ""
+          - name: pymtrmid
+            description: ""
+          - name: minpypct
+            description: ""
+          - name: balnctyp
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: rmwracc
+            description: ""
+          - name: userdef1
+            description: ""
+          - name: rmivacc
+            description: ""
+          - name: send_email_statements
+            description: ""
+          - name: crlmtamt
+            description: ""
+          - name: rmslsacc
+            description: ""
+          - name: rmsoracc
+            description: ""
+          - name: kpcalhst
+            description: ""
+          - name: prbtadcd
+            description: ""
+          - name: slprsnid
+            description: ""
+          - name: prclevel
+            description: ""
+          - name: rmfcgacc
+            description: ""
+          - name: address3
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: rm30101
+        description: ""
+        columns:
+          - name: custnmbr
+            description: ""
+          - name: docnumbr
+            description: ""
+          - name: rmdtypal
+            description: ""
+          - name: costamnt
+            description: ""
+          - name: slsamnt
+            description: ""
+          - name: comdlram
+            description: ""
+          - name: lstusred
+            description: ""
+          - name: pstusrid
+            description: ""
+          - name: cspornbr
+            description: ""
+          - name: pymtrmid
+            description: ""
+          - name: slstercd
+            description: ""
+          - name: directdebit
+            description: ""
+          - name: docdate
+            description: ""
+          - name: bktmscam
+            description: ""
+          - name: bktfrtam
+            description: ""
+          - name: taxschid
+            description: ""
+          - name: ortrxamt
+            description: ""
+          - name: taxamnt
+            description: ""
+          - name: miscamnt
+            description: ""
+          - name: discrtnd
+            description: ""
+          - name: saledate
+            description: ""
+          - name: trxdscrn
+            description: ""
+          - name: corrctn
+            description: ""
+          - name: frtschid
+            description: ""
+          - name: dscpctam
+            description: ""
+          - name: slschdid
+            description: ""
+          - name: aplywith
+            description: ""
+          - name: postdate
+            description: ""
+          - name: eftflag
+            description: ""
+          - name: lstedtdt
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: disavamt
+            description: ""
+          - name: cheknmbr
+            description: ""
+          - name: cprcstnm
+            description: ""
+          - name: voidstts
+            description: ""
+          - name: simplifd
+            description: ""
+          - name: glpostdt
+            description: ""
+          - name: dex_row_ts
+            description: ""
+          - name: wrofamnt
+            description: ""
+          - name: trxsorce
+            description: ""
+          - name: electronic
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: ppsamded
+            description: ""
+          - name: dinvpdof
+            description: ""
+          - name: bktslsam
+            description: ""
+          - name: voiddate
+            description: ""
+          - name: slprsnid
+            description: ""
+          - name: cshrctyp
+            description: ""
+          - name: dscdlram
+            description: ""
+          - name: bachnumb
+            description: ""
+          - name: discdate
+            description: ""
+          - name: gstdsamt
+            description: ""
+          - name: balfwdnm
+            description: ""
+          - name: trdisamt
+            description: ""
+          - name: duedate
+            description: ""
+          - name: curtrxam
+            description: ""
+          - name: frtamnt
+            description: ""
+          - name: backouttradedisc
+            description: ""
+          - name: mscschid
+            description: ""
+          - name: delete1
+            description: ""
+          - name: ectrx
+            description: ""
+          - name: distknam
+            description: ""
+          - name: factoring
+            description: ""
+          - name: cashamnt
+            description: ""
+          - name: tax_date
+            description: ""
+          - name: adrscode
+            description: ""
+          - name: shipmthd
+            description: ""
+          - name: bchsourc
+            description: ""
+          - name: noteindx
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: pm30600
+        description: ""
+        columns:
+          - name: aptvchnm
+            description: ""
+          - name: cntrltyp
+            description: ""
+          - name: dstsqnum
+            description: ""
+          - name: spcldist
+            description: ""
+          - name: vchrnmbr
+            description: ""
+          - name: pstgdate
+            description: ""
+          - name: disttype
+            description: ""
+          - name: trxsorce
+            description: ""
+          - name: changed
+            description: ""
+          - name: doctype
+            description: ""
+          - name: vendorid
+            description: ""
+          - name: pstgstus
+            description: ""
+          - name: orcrdamt
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: crdtamnt
+            description: ""
+          - name: dstindx
+            description: ""
+          - name: ordbtamt
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: aptodcty
+            description: ""
+          - name: debitamt
+            description: ""
+          - name: distref
+            description: ""
+          - name: currnidx
+            description: ""
+          - name: userid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: pm10100
+        description: ""
+        columns:
+          - name: aptvchnm
+            description: ""
+          - name: cntrltyp
+            description: ""
+          - name: dstsqnum
+            description: ""
+          - name: spcldist
+            description: ""
+          - name: vchrnmbr
+            description: ""
+          - name: iccurrid
+            description: ""
+          - name: interid
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: pstgstus
+            description: ""
+          - name: iccurrix
+            description: ""
+          - name: decplacs
+            description: ""
+          - name: mctrxstt
+            description: ""
+          - name: currnidx
+            description: ""
+          - name: disttype
+            description: ""
+          - name: changed
+            description: ""
+          - name: userid
+            description: ""
+          - name: ordbtamt
+            description: ""
+          - name: ratetpid
+            description: ""
+          - name: curncyid
+            description: ""
+          - name: distref
+            description: ""
+          - name: crdtamnt
+            description: ""
+          - name: pstgdate
+            description: ""
+          - name: rtclcmtd
+            description: ""
+          - name: vendorid
+            description: ""
+          - name: exchdate
+            description: ""
+          - name: denxrate
+            description: ""
+          - name: dstindx
+            description: ""
+          - name: aptodcty
+            description: ""
+          - name: debitamt
+            description: ""
+          - name: expndate
+            description: ""
+          - name: exgtblid
+            description: ""
+          - name: orcrdamt
+            description: ""
+          - name: time1
+            description: ""
+          - name: xchgrate
+            description: ""
+          - name: correspondingunit
+            description: ""
+          - name: trxsorce
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl00100
+        description: ""
+        columns:
+          - name: actindx
+            description: ""
+          - name: tpclblnc
+            description: ""
+          - name: postprin
+            description: ""
+          - name: inflaequ
+            description: ""
+          - name: active
+            description: ""
+          - name: actnumbr_10
+            description: ""
+          - name: decplacs
+            description: ""
+          - name: accttype
+            description: ""
+          - name: actnumbr_9
+            description: ""
+          - name: dex_row_id
+            description: ""
+          - name: dsplkups
+            description: ""
+          - name: actnumbr_3
+            description: ""
+          - name: actnumbr_6
+            description: ""
+          - name: balfrclc
+            description: ""
+          - name: postpurchin
+            description: ""
+          - name: modifdt
+            description: ""
+          - name: fxdorvar
+            description: ""
+          - name: inflarev
+            description: ""
+          - name: usrdefs1
+            description: ""
+          - name: acctentr
+            description: ""
+          - name: dex_row_ts
+            description: ""
+          - name: creatddt
+            description: ""
+          - name: postivin
+            description: ""
+          - name: clear_balance
+            description: ""
+          - name: cnvrmthd
+            description: ""
+          - name: mnacsgmt
+            description: ""
+          - name: actnumbr_7
+            description: ""
+          - name: hstrclrt
+            description: ""
+          - name: usrdefs2
+            description: ""
+          - name: postslsin
+            description: ""
+          - name: actnumbr_1
+            description: ""
+          - name: actnumbr_4
+            description: ""
+          - name: actalias
+            description: ""
+          - name: userdef2
+            description: ""
+          - name: accatnum
+            description: ""
+          - name: actdescr
+            description: ""
+          - name: adjinfl
+            description: ""
+          - name: actnumbr_8
+            description: ""
+          - name: pstngtyp
+            description: ""
+          - name: actnumbr_2
+            description: ""
+          - name: actnumbr_5
+            description: ""
+          - name: workflow_status
+            description: ""
+          - name: noteindx
+            description: ""
+          - name: userdef1
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl00105
+        description: ""
+      - name: gl20000
+        description: ""
+      - name: gl30000
+        description: ""
+      - name: pop30300
+        description: ""

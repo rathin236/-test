@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: int_boomi__process_reporting
+    description: ""
+    columns:
+      - name: atomname
+        description: ""
+        tests:
+          - not_null
+
+      - name: processid
+        description: ""
+        tests:
+          - not_null
+
+      - name: processname
+        description: ""
+        tests:
+          - not_null
+
+      - name: status
+        description: ""
+        tests:
+          - not_null
+
+      - name: executiontype
+        description: ""
+
+      - name: executiontime
+        description: ""
+
+      - name: executionid
+        description: ""
+        tests:
+          - not_null
+          - unique
+
+      - name: executionduration
+        description: ""
+
+      - name: inbounddocumentcount
+        description: ""
+
+      - name: inbounddocumentsize
+        description: ""
+
+      - name: inbounderrordocumentcount
+        description: ""
+
+      - name: outbounddocumentcount
+        description: ""
+
+      - name: outbounddocumentsize
+        description: ""
+
+      - name: insert_date
+        description: ""
+
+      - name: start_date
+        description: ""
+
+      - name: end_date
+        description: ""

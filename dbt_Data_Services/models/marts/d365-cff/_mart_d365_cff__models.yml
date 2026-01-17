@@ -1,0 +1,174 @@
+version: 2
+
+models:
+  - name: D365_CFF__V_ACCOUNTS_PAYABLE_FORECAST
+    columns:
+      - name: COMPANYNAME
+        description: "Company Name"
+      - name: VOUCHER
+        description: "Voucher"
+      - name: CUSTOMERID
+        description: "Customer ID"
+      - name: VENDORID
+        description: "Vendor ID"
+      - name: ORIGINATINGMASTERNAME
+        description: "Originating Master Name"
+      - name: CUSTOMERCLASS
+        description: "Customer Class"
+      - name: VENDORCLASS
+        description: "Vendor Class"
+      - name: CURRENCYID
+        description: "Currency ID"
+      - name: DOCUMENTNUMBER
+        description: "Document Number"
+      - name: DOCUMENTTYPE
+        description: "Document Type"
+      - name: DOCUMENTDATE
+        description: "Document Date"
+      - name: TRANSACTIONDATE
+        description: "Transaction Date"
+      - name: INVOICEDUEDATE
+        description: "Invoice Due Date"
+      - name: ACCOUNTNUMBER
+        description: "Account Number"
+      - name: ACCOUNTNAME
+        description: "Account Name"
+      - name: DISTRIBUTIONTYPE
+        description: "Distribution Type"
+      - name: ORIGINATINGAMOUNT
+        description: "Originating Amount"
+      - name: REFERENCE
+        description: "Reference"
+      - name: PAIDOFFDATE
+        description: "Paid Off Date"
+      - name: CURRENTTRANSACTIONAMOUNT
+        description: "Current Transaction Amount"
+
+  - name: D365_CFF__V_ACCOUNTS_PAYABLE_ACTUAL
+    columns:
+      - name: COMPANYNAME
+        description: "Company Name"
+      - name: VOUCHER
+        description: "Voucher"
+      - name: CUSTOMERID
+        description: "Customer ID"
+      - name: VENDORID
+        description: "Vendor ID"
+      - name: ORIGINATINGMASTERNAME
+        description: "Originating Master Name"
+      - name: CUSTOMERCLASS
+        description: "Customer Class"
+      - name: VENDORCLASS
+        description: "Vendor Class"
+      - name: CURRENCYID
+        description: "Currency ID"
+      - name: DOCUMENTNUMBER
+        description: "Document Number"
+      - name: DOCUMENTTYPE
+        description: "Document Type"
+      - name: DOCUMENTDATE
+        description: "Document Date"
+      - name: TRANSACTIONDATE
+        description: "Transaction Date"
+      - name: INVOICEDUEDATE
+        description: "Invoice Due Date"
+      - name: ACCOUNTNUMBER
+        description: "Account Number"
+      - name: ACCOUNTNAME
+        description: "Account Name"
+      - name: DISTRIBUTIONTYPE
+        description: "Distribution Type"
+      - name: ORIGINATINGAMOUNT
+        description: "Originating Amount"
+      - name: REFERENCE
+        description: "Reference"
+      - name: PAIDOFFDATE
+        description: "Paid Off Date"
+      - name: CURRENTTRANSACTIONAMOUNT
+        description: "Current Transaction Amount"
+
+  - name: D365_CFF__V_ACCOUNTS_RECEIVABLE_FORECAST
+    columns:
+      - name: COMPANYNAME
+        description: "Company Name"
+      - name: VOUCHER
+        description: "Voucher"
+      - name: CUSTOMERID
+        description: "Customer ID"
+      - name: VENDORID
+        description: "Vendor ID"
+      - name: ORIGINATINGMASTERNAME
+        description: "Originating Master Name"
+      - name: CUSTOMERCLASS
+        description: "Customer Class"
+      - name: VENDORCLASS
+        description: "Vendor Class"
+      - name: CURRENCYID
+        description: "Currency ID"
+      - name: DOCUMENTNUMBER
+        description: "Document Number"
+      - name: DOCUMENTTYPE
+        description: "Document Type"
+      - name: DOCUMENTDATE
+        description: "Document Date"
+      - name: TRANSACTIONDATE
+        description: "Transaction Date"
+      - name: INVOICEDUEDATE
+        description: "Invoice Due Date"
+      - name: ACCOUNTNUMBER
+        description: "Account Number"
+      - name: ACCOUNTNAME
+        description: "Account Name"
+      - name: DISTRIBUTIONTYPE
+        description: "Distribution Type"
+      - name: ORIGINATINGAMOUNT
+        description: "Originating Amount"
+      - name: REFERENCE
+        description: "Reference"
+      - name: PAIDOFFDATE
+        description: "Paid Off Date"
+      - name: CURRENTTRANSACTIONAMOUNT
+        description: "Current Transaction Amount"
+
+  - name: D365_CFF__V_ACCOUNTS_RECEIVABLE_ACTUAL
+    columns:
+      - name: COMPANYNAME
+        description: "Company Name"
+      - name: VOUCHER
+        description: "Voucher"
+      - name: CUSTOMERID
+        description: "Customer ID"
+      - name: VENDORID
+        description: "Vendor ID"
+      - name: ORIGINATINGMASTERNAME
+        description: "Originating Master Name"
+      - name: CUSTOMERCLASS
+        description: "Customer Class"
+      - name: VENDORCLASS
+        description: "Vendor Class"
+      - name: CURRENCYID
+        description: "Currency ID"
+      - name: DOCUMENTNUMBER
+        description: "Document Number"
+      - name: DOCUMENTTYPE
+        description: "Document Type"
+      - name: DOCUMENTDATE
+        description: "Document Date"
+      - name: TRANSACTIONDATE
+        description: "Transaction Date"
+      - name: INVOICEDUEDATE
+        description: "Invoice Due Date"
+      - name: ACCOUNTNUMBER
+        description: "Account Number"
+      - name: ACCOUNTNAME
+        description: "Account Name"
+      - name: DISTRIBUTIONTYPE
+        description: "Distribution Type"
+      - name: ORIGINATINGAMOUNT
+        description: "Originating Amount"
+      - name: REFERENCE
+        description: "Reference"
+      - name: PAIDOFFDATE
+        description: "Paid Off Date"
+      - name: CURRENTTRANSACTIONAMOUNT
+        description: "Current Transaction Amount"

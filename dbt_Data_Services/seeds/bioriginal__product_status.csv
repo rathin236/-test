@@ -1,0 +1,8 @@
+SALES_ORDER_STATUS,SALES_ORDER_STATUS_NAME,SALES_ORDER_STATUS_SUMMARY
+5,Free,Open Orders
+10,Approved,Open Orders
+20,In Process,Open Orders
+25,Modified,Open Orders
+30,Closed,Invoiced Orders
+35,Canceled,Canceled Orderd
+40,Blocked,Open Orders

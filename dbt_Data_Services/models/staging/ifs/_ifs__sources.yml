@@ -1,0 +1,1904 @@
+version: 2
+
+sources:
+  - name: ifs_prod_omeg1app
+    freshness:
+      warn_after:
+        count: 4
+        period: hour
+      error_after:
+        count: 24
+        period: hour
+    description: ""
+    database: ifs
+    schema: ifs_prod_omeg1app
+    tables:
+      - name: document_text_tab
+        description: ""
+        columns:
+          - name: note_id
+            description: ""
+          - name: output_type
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: note_text
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: purchase_order_line_tab
+        description: ""
+        columns:
+          - name: line_no
+            description: ""
+          - name: order_no
+            description: ""
+          - name: release_no
+            description: ""
+          - name: srv_service_type
+            description: ""
+          - name: price_unit_meas
+            description: ""
+          - name: sample_qty
+            description: ""
+          - name: part_no
+            description: ""
+          - name: replaces_line_no
+            description: ""
+          - name: serial_no
+            description: ""
+          - name: taxable
+            description: ""
+          - name: blanket_order
+            description: ""
+          - name: project_cost_element
+            description: ""
+          - name: delivery_terms
+            description: ""
+          - name: input_gtin_no
+            description: ""
+          - name: wanted_delivery_date
+            description: ""
+          - name: last_ord_conf_reminder
+            description: ""
+          - name: planned_receipt_date
+            description: ""
+          - name: tax_amount
+            description: ""
+          - name: unit_meas
+            description: ""
+          - name: tax_exempt
+            description: ""
+          - name: weight_net
+            description: ""
+          - name: requisition_no
+            description: ""
+          - name: stat_grp
+            description: ""
+          - name: fbuy_unit_price
+            description: ""
+          - name: conv_factor
+            description: ""
+          - name: campaign_id
+            description: ""
+          - name: intrastat_affected
+            description: ""
+          - name: project_address
+            description: ""
+          - name: buy_qty_due
+            description: ""
+          - name: freeze_flag
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: lot_batch_no
+            description: ""
+          - name: company
+            description: ""
+          - name: pre_accounting_id
+            description: ""
+          - name: close_code
+            description: ""
+          - name: ean_location_del_addr
+            description: ""
+          - name: req_release
+            description: ""
+          - name: currency_type
+            description: ""
+          - name: ext_transport_calendar_id
+            description: ""
+          - name: input_conv_factor
+            description: ""
+          - name: additional_cost_amount
+            description: ""
+          - name: buy_unit_meas
+            description: ""
+          - name: qty_on_order
+            description: ""
+          - name: blanket_line
+            description: ""
+          - name: note_id
+            description: ""
+          - name: part_revision
+            description: ""
+          - name: job_id
+            description: ""
+          - name: automatic_invoice
+            description: ""
+          - name: last_delivery_reminder
+            description: ""
+          - name: activity_seq
+            description: ""
+          - name: cancel_reason
+            description: ""
+          - name: last_activity_date
+            description: ""
+          - name: delivery_note_ref
+            description: ""
+          - name: configuration_id
+            description: ""
+          - name: despatch_date
+            description: ""
+          - name: del_terms_location
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: description
+            description: ""
+          - name: demand_release
+            description: ""
+          - name: replaces_release_no
+            description: ""
+          - name: outside_operation_notes
+            description: ""
+          - name: kanban_receipt_location
+            description: ""
+          - name: note_text
+            description: ""
+          - name: original_part_no
+            description: ""
+          - name: purch_ship_back
+            description: ""
+          - name: addr_flag
+            description: ""
+          - name: purchase_site
+            description: ""
+          - name: intrastat_conv_factor
+            description: ""
+          - name: project_id
+            description: ""
+          - name: purchase_modified
+            description: ""
+          - name: deliver_to_customer_no
+            description: ""
+          - name: input_unit_meas
+            description: ""
+          - name: buyer_code
+            description: ""
+          - name: hide_price
+            description: ""
+          - name: delnote_no
+            description: ""
+          - name: demand_order_type
+            description: ""
+          - name: manufacturer_part_no
+            description: ""
+          - name: input_qty
+            description: ""
+          - name: exchange_item
+            description: ""
+          - name: despatch_qty
+            description: ""
+          - name: destination_id
+            description: ""
+          - name: qc_code
+            description: ""
+          - name: date_entered
+            description: ""
+          - name: internal_control_time
+            description: ""
+          - name: eng_chg_level
+            description: ""
+          - name: replaces_order_no
+            description: ""
+          - name: demand_order_no
+            description: ""
+          - name: original_qty
+            description: ""
+          - name: rowtype
+            description: ""
+          - name: ord_conf_reminder
+            description: ""
+          - name: purchase_payment_type
+            description: ""
+          - name: process_type
+            description: ""
+          - name: close_tolerance
+            description: ""
+          - name: fee_code
+            description: ""
+          - name: pay_tax
+            description: ""
+          - name: tax_ship_address
+            description: ""
+          - name: demand_order_code
+            description: ""
+          - name: sample_percent
+            description: ""
+          - name: volume_net
+            description: ""
+          - name: rowstate
+            description: ""
+          - name: revised_qty
+            description: ""
+          - name: discount
+            description: ""
+          - name: replaces_receipt_no
+            description: ""
+          - name: default_addr_flag
+            description: ""
+          - name: demand_code
+            description: ""
+          - name: ord_conf_rem_num
+            description: ""
+          - name: defect_part_key_ref
+            description: ""
+          - name: customs_stat_no
+            description: ""
+          - name: promised_delivery_date
+            description: ""
+          - name: assortment
+            description: ""
+          - name: over_delivery_tolerance
+            description: ""
+          - name: technical_coordinator_id
+            description: ""
+          - name: forwarder_id
+            description: ""
+          - name: address_id
+            description: ""
+          - name: internal_dest_desc
+            description: ""
+          - name: condition_code
+            description: ""
+          - name: contract
+            description: ""
+          - name: demand_sequence_no
+            description: ""
+          - name: manufacturer_id
+            description: ""
+          - name: demand_operation_no
+            description: ""
+          - name: currency_code
+            description: ""
+          - name: req_line
+            description: ""
+          - name: buy_unit_price
+            description: ""
+          - name: owning_customer_no
+            description: ""
+          - name: ship_via_code
+            description: ""
+          - name: currency_rate
+            description: ""
+          - name: standard_order_qty
+            description: ""
+          - name: core_deposit
+            description: ""
+          - name: invoicing_supplier
+            description: ""
+          - name: intrastat_exempt
+            description: ""
+          - name: is_exchange_part
+            description: ""
+          - name: inventory_part
+            description: ""
+          - name: planned_delivery_date
+            description: ""
+          - name: qty_scrapped_supplier
+            description: ""
+          - name: order_code
+            description: ""
+          - name: delivery_rem_num
+            description: ""
+          - name: price_conv_factor
+            description: ""
+          - name: delivery_control_code
+            description: ""
+          - name: inspection_code
+            description: ""
+          - name: core_deposit_base
+            description: ""
+          - name: receive_case
+            description: ""
+          - name: part_ownership
+            description: ""
+          - name: delivery_flag
+            description: ""
+          - name: service_type
+            description: ""
+          - name: warranty_id
+            description: ""
+          - name: delivery_reminder
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: purchase_order_invoice_tab
+        description: ""
+        columns:
+          - name: ap_invoice_no
+            description: ""
+          - name: invoice_company
+            description: ""
+          - name: invoice_id
+            description: ""
+          - name: line_no
+            description: ""
+          - name: order_no
+            description: ""
+          - name: receipt_no
+            description: ""
+          - name: release_no
+            description: ""
+          - name: series_id
+            description: ""
+          - name: msg_version_no
+            description: ""
+          - name: date_entered
+            description: ""
+          - name: price_unit_meas
+            description: ""
+          - name: part_no
+            description: ""
+          - name: price_difference
+            description: ""
+          - name: contract
+            description: ""
+          - name: currency_code
+            description: ""
+          - name: currency_rate
+            description: ""
+          - name: unit_meas
+            description: ""
+          - name: unit_price_diff
+            description: ""
+          - name: matching_date
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: invoicing_supplier
+            description: ""
+          - name: unit_price_paid
+            description: ""
+          - name: fee_code
+            description: ""
+          - name: last_inv_line_total
+            description: ""
+          - name: msg_sequence_no
+            description: ""
+          - name: conv_factor
+            description: ""
+          - name: qty_invoiced
+            description: ""
+          - name: price_conv_factor
+            description: ""
+          - name: advice_id
+            description: ""
+          - name: purchase_matching_type
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: additional_cost
+            description: ""
+          - name: discount
+            description: ""
+          - name: funit_price_diff
+            description: ""
+          - name: last_inv_buy_qty_due
+            description: ""
+          - name: buy_unit_meas
+            description: ""
+          - name: matched_by_user
+            description: ""
+          - name: transaction_reval_executed
+            description: ""
+          - name: funit_price_paid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: supplier_info_address_tab
+        description: ""
+        columns:
+          - name: address_id
+            description: ""
+          - name: supplier_id
+            description: ""
+          - name: party
+            description: ""
+          - name: zip_code
+            description: ""
+          - name: default_domain
+            description: ""
+          - name: state
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: ean_location
+            description: ""
+          - name: valid_to
+            description: ""
+          - name: party_type
+            description: ""
+          - name: country
+            description: ""
+          - name: city
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: address
+            description: ""
+          - name: valid_from
+            description: ""
+          - name: address1
+            description: ""
+          - name: address2
+            description: ""
+          - name: county
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: company_tab
+        description: ""
+        columns:
+          - name: company
+            description: ""
+          - name: party
+            description: ""
+          - name: activity_start_date
+            description: ""
+          - name: domain_id
+            description: ""
+          - name: default_domain
+            description: ""
+          - name: auth_id_expire_date
+            description: ""
+          - name: default_language
+            description: ""
+          - name: party_type
+            description: ""
+          - name: country
+            description: ""
+          - name: from_template_id
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: identifier_reference
+            description: ""
+          - name: creation_parameters
+            description: ""
+          - name: template_company
+            description: ""
+          - name: from_company
+            description: ""
+          - name: authorization_id
+            description: ""
+          - name: created_by
+            description: ""
+          - name: association_no
+            description: ""
+          - name: doc_recip_address_pos
+            description: ""
+          - name: creation_date
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: logotype
+            description: ""
+          - name: name
+            description: ""
+          - name: identifier_ref_validation
+            description: ""
+          - name: print_senders_address
+            description: ""
+          - name: corporate_form
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: part_catalog_tab
+        description: ""
+        columns:
+          - name: part_no
+            description: ""
+          - name: storage_depth_requirement
+            description: ""
+          - name: storage_volume_requirement
+            description: ""
+          - name: uom_for_volume_net
+            description: ""
+          - name: min_storage_temperature
+            description: ""
+          - name: multilevel_tracking
+            description: ""
+          - name: weight_net
+            description: ""
+          - name: condition_code_usage
+            description: ""
+          - name: storage_width_requirement
+            description: ""
+          - name: uom_for_weight
+            description: ""
+          - name: catch_unit_enabled
+            description: ""
+          - name: storage_height_requirement
+            description: ""
+          - name: part_main_group
+            description: ""
+          - name: freight_factor
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: volume_net
+            description: ""
+          - name: lot_tracking_code
+            description: ""
+          - name: text_id_
+            description: ""
+          - name: capacity_req_group_id
+            description: ""
+          - name: stop_arrival_issued_serial
+            description: ""
+          - name: lot_quantity_rule
+            description: ""
+          - name: storage_weight_requirement
+            description: ""
+          - name: position_part
+            description: ""
+          - name: sup_warranty_id
+            description: ""
+          - name: uom_for_length
+            description: ""
+          - name: max_storage_temperature
+            description: ""
+          - name: eng_serial_tracking_code
+            description: ""
+          - name: serial_tracking_code
+            description: ""
+          - name: cust_warranty_id
+            description: ""
+          - name: description
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: uom_for_temperature
+            description: ""
+          - name: info_text
+            description: ""
+          - name: uom_for_volume
+            description: ""
+          - name: allow_as_not_consumed
+            description: ""
+          - name: configurable
+            description: ""
+          - name: unit_code
+            description: ""
+          - name: max_storage_humidity
+            description: ""
+          - name: stop_new_serial_in_rma
+            description: ""
+          - name: sub_lot_rule
+            description: ""
+          - name: std_name_id
+            description: ""
+          - name: component_lot_rule
+            description: ""
+          - name: min_storage_humidity
+            description: ""
+          - name: capability_req_group_id
+            description: ""
+          - name: input_unit_meas_group_id
+            description: ""
+          - name: uom_for_weight_net
+            description: ""
+          - name: serial_rule
+            description: ""
+          - name: condition_req_group_id
+            description: ""
+          - name: receipt_issue_serial_track
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: inventory_transaction_hist_tab
+        description: ""
+        columns:
+          - name: transaction_id
+            description: ""
+          - name: delivery_overhead
+            description: ""
+          - name: owning_vendor_no
+            description: ""
+          - name: part_no
+            description: ""
+          - name: serial_no
+            description: ""
+          - name: eng_chg_level
+            description: ""
+          - name: quantity
+            description: ""
+          - name: date_time_created
+            description: ""
+          - name: pre_trans_level_qty_in_transit
+            description: ""
+          - name: modify_date_applied_user
+            description: ""
+          - name: alt_source_ref_type
+            description: ""
+          - name: alt_source_ref3
+            description: ""
+          - name: alt_source_ref4
+            description: ""
+          - name: alt_source_ref1
+            description: ""
+          - name: alt_source_ref2
+            description: ""
+          - name: date_applied
+            description: ""
+          - name: location_group
+            description: ""
+          - name: pallet_id
+            description: ""
+          - name: userid
+            description: ""
+          - name: transaction_code
+            description: ""
+          - name: original_transaction_id
+            description: ""
+          - name: accounting_id
+            description: ""
+          - name: sequence_no
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: lot_batch_no
+            description: ""
+          - name: pre_accounting_id
+            description: ""
+          - name: pre_trans_level_qty_in_stock
+            description: ""
+          - name: expiration_date
+            description: ""
+          - name: location_no
+            description: ""
+          - name: source
+            description: ""
+          - name: valuestat_flag
+            description: ""
+          - name: catch_quantity
+            description: ""
+          - name: catch_direction
+            description: ""
+          - name: abnormal_demand
+            description: ""
+          - name: date_created
+            description: ""
+          - name: inventory_part_cost_level
+            description: ""
+          - name: qty_reversed
+            description: ""
+          - name: partstat_flag
+            description: ""
+          - name: activity_seq
+            description: ""
+          - name: condition_code
+            description: ""
+          - name: previous_owning_customer_no
+            description: ""
+          - name: contract
+            description: ""
+          - name: transit_location_group
+            description: ""
+          - name: order_no
+            description: ""
+          - name: inventory_valuation_method
+            description: ""
+          - name: configuration_id
+            description: ""
+          - name: owning_customer_no
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: project_id
+            description: ""
+          - name: release_no
+            description: ""
+          - name: line_item_no
+            description: ""
+          - name: direction
+            description: ""
+          - name: order_type
+            description: ""
+          - name: modify_date_applied_date
+            description: ""
+          - name: previous_part_ownership
+            description: ""
+          - name: waiv_dev_rej_no
+            description: ""
+          - name: reject_code
+            description: ""
+          - name: previous_owning_vendor_no
+            description: ""
+          - name: transaction_report_id
+            description: ""
+          - name: part_ownership
+            description: ""
+          - name: receipt_date
+            description: ""
+          - name: report_earned_value
+            description: ""
+          - name: del_type
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: purchase_part_tab
+        description: ""
+        columns:
+          - name: contract
+            description: ""
+          - name: part_no
+            description: ""
+          - name: eng_attribute
+            description: ""
+          - name: inventory_flag
+            description: ""
+          - name: taxable
+            description: ""
+          - name: description
+            description: ""
+          - name: standard_pack_size
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: process_type
+            description: ""
+          - name: note_text
+            description: ""
+          - name: over_delivery
+            description: ""
+          - name: stat_grp
+            description: ""
+          - name: close_tolerance
+            description: ""
+          - name: buyer_code
+            description: ""
+          - name: dop_pegged_po_update_flag
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: close_code
+            description: ""
+          - name: text_id_
+            description: ""
+          - name: date_cre
+            description: ""
+          - name: qc_date
+            description: ""
+          - name: default_buy_unit_meas
+            description: ""
+          - name: over_delivery_tolerance
+            description: ""
+          - name: technical_coordinator_id
+            description: ""
+          - name: note_id
+            description: ""
+          - name: qc_code
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: lot_batch_master_tab
+        description: ""
+        columns:
+          - name: lot_batch_no
+            description: ""
+          - name: part_no
+            description: ""
+          - name: shipped_qty
+            description: ""
+          - name: last_sales_date
+            description: ""
+          - name: scrapped_qty
+            description: ""
+          - name: manufactured_date
+            description: ""
+          - name: condition_code
+            description: ""
+          - name: order_type
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: best_before_date
+            description: ""
+          - name: order_ref1
+            description: ""
+          - name: order_ref3
+            description: ""
+          - name: text_id_
+            description: ""
+          - name: order_ref2
+            description: ""
+          - name: create_date
+            description: ""
+          - name: order_ref4
+            description: ""
+          - name: expiration_date
+            description: ""
+          - name: received_qty
+            description: ""
+          - name: parent_part_no
+            description: ""
+          - name: potency
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: note_text
+            description: ""
+          - name: parent_lot
+            description: ""
+          - name: initial_contract
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: purchase_order_line_hist_tab
+        description: ""
+        columns:
+          - name: history_no
+            description: ""
+          - name: revision
+            description: ""
+          - name: date_entered
+            description: ""
+          - name: release_no
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: userid
+            description: ""
+          - name: order_no
+            description: ""
+          - name: hist_objstate
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: line_no
+            description: ""
+          - name: message_text
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gen_led_voucher_row_tab
+        description: ""
+        columns:
+          - name: accounting_year
+            description: ""
+          - name: company
+            description: ""
+          - name: row_no
+            description: ""
+          - name: voucher_no
+            description: ""
+          - name: voucher_type
+            description: ""
+          - name: matching_period
+            description: ""
+          - name: third_currency_credit_amount
+            description: ""
+          - name: quantity
+            description: ""
+          - name: third_currency_debit_amount
+            description: ""
+          - name: auto_tax_vou_entry
+            description: ""
+          - name: voucher_date
+            description: ""
+          - name: text
+            description: ""
+          - name: internal_accounting
+            description: ""
+          - name: account
+            description: ""
+          - name: curr_accounting
+            description: ""
+          - name: corrected
+            description: ""
+          - name: trans_code
+            description: ""
+          - name: allocation_id
+            description: ""
+          - name: aut_coding_seq
+            description: ""
+          - name: mpccom_accounting_id
+            description: ""
+          - name: internal_seq_number
+            description: ""
+          - name: credit_amount
+            description: ""
+          - name: aut_coding_parent_row
+            description: ""
+          - name: project_accounting
+            description: ""
+          - name: sequence_no
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: exclude_periodical_cap
+            description: ""
+          - name: old_row_no
+            description: ""
+          - name: code_j
+            description: ""
+          - name: activate_code
+            description: ""
+          - name: currency_credit_amount
+            description: ""
+          - name: code_g
+            description: ""
+          - name: code_f
+            description: ""
+          - name: several_count_acc
+            description: ""
+          - name: code_i
+            description: ""
+          - name: code_h
+            description: ""
+          - name: code_c
+            description: ""
+          - name: code_b
+            description: ""
+          - name: code_e
+            description: ""
+          - name: reference_serie
+            description: ""
+          - name: code_d
+            description: ""
+          - name: optional_code
+            description: ""
+          - name: old_period
+            description: ""
+          - name: period_allocation
+            description: ""
+          - name: row_group_id
+            description: ""
+          - name: aut_coding_rule
+            description: ""
+          - name: reference_row_no
+            description: ""
+          - name: currency_code
+            description: ""
+          - name: parent_row
+            description: ""
+          - name: matching_year
+            description: ""
+          - name: matching_no
+            description: ""
+          - name: currency_rate
+            description: ""
+          - name: matching_date
+            description: ""
+          - name: object_id
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: project_activity_id
+            description: ""
+          - name: accounting_period
+            description: ""
+          - name: summerized
+            description: ""
+          - name: multi_company_id
+            description: ""
+          - name: counter_account
+            description: ""
+          - name: ncf_settlement_date
+            description: ""
+          - name: currency_debet_amount
+            description: ""
+          - name: project_id
+            description: ""
+          - name: posting_combination_id
+            description: ""
+          - name: vou_text_udpdated
+            description: ""
+          - name: ledger_count_acc
+            description: ""
+          - name: reference_number
+            description: ""
+          - name: conversion_factor
+            description: ""
+          - name: journal_id
+            description: ""
+          - name: debet_amount
+            description: ""
+          - name: party_type_id
+            description: ""
+          - name: org_parent_row
+            description: ""
+          - name: autobook
+            description: ""
+          - name: process_code
+            description: ""
+          - name: transfer_id
+            description: ""
+          - name: year_period_key
+            description: ""
+          - name: alloc_line_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gen_led_voucher_tab
+        description: ""
+        columns:
+          - name: accounting_year
+            description: ""
+          - name: company
+            description: ""
+          - name: voucher_no
+            description: ""
+          - name: voucher_type
+            description: ""
+          - name: voucher_text
+            description: ""
+          - name: entered_by_user_group
+            description: ""
+          - name: user_group
+            description: ""
+          - name: voucher_date
+            description: ""
+          - name: simulation_voucher
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: accounting_period
+            description: ""
+          - name: userid
+            description: ""
+          - name: multi_company_id
+            description: ""
+          - name: status_cancelled
+            description: ""
+          - name: approval_date
+            description: ""
+          - name: accounting_text_id
+            description: ""
+          - name: internal_seq_number
+            description: ""
+          - name: vou_text_udpdated
+            description: ""
+          - name: approved_by_userid
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: voucher_no_reference
+            description: ""
+          - name: voucher_type_reference
+            description: ""
+          - name: text_id_
+            description: ""
+          - name: approved_by_user_group
+            description: ""
+          - name: function_group
+            description: ""
+          - name: accounting_year_reference
+            description: ""
+          - name: date_reg
+            description: ""
+          - name: transfer_id
+            description: ""
+          - name: jou_no
+            description: ""
+          - name: voucher_text2
+            description: ""
+          - name: transferred
+            description: ""
+          - name: interim_voucher
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: codestring_comb_tab
+        description: ""
+        columns:
+          - name: posting_combination_id
+            description: ""
+          - name: codestring
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: account
+            description: ""
+          - name: code_j
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: code_g
+            description: ""
+          - name: code_f
+            description: ""
+          - name: code_i
+            description: ""
+          - name: code_h
+            description: ""
+          - name: code_c
+            description: ""
+          - name: code_b
+            description: ""
+          - name: code_e
+            description: ""
+          - name: code_d
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: accounting_code_part_value_tab
+        description: ""
+        columns:
+          - name: code_part
+            description: ""
+          - name: code_part_value
+            description: ""
+          - name: company
+            description: ""
+          - name: accnt_group
+            description: ""
+          - name: req_text
+            description: ""
+          - name: ncf_override_fee
+            description: ""
+          - name: unit_price
+            description: ""
+          - name: voucher_date
+            description: ""
+          - name: text
+            description: ""
+          - name: rowtype
+            description: ""
+          - name: project_reopened
+            description: ""
+          - name: valid_until
+            description: ""
+          - name: logical_account_type
+            description: ""
+          - name: poc_method
+            description: ""
+          - name: grant_allowance
+            description: ""
+          - name: req_quantity
+            description: ""
+          - name: project_origin
+            description: ""
+          - name: revision_accounting
+            description: ""
+          - name: conv_factor
+            description: ""
+          - name: req_code_f
+            description: ""
+          - name: req_code_e
+            description: ""
+          - name: req_code_h
+            description: ""
+          - name: project_type
+            description: ""
+          - name: ledg_flag
+            description: ""
+          - name: capitalization_post_method
+            description: ""
+          - name: req_code_g
+            description: ""
+          - name: req_code_b
+            description: ""
+          - name: req_code_d
+            description: ""
+          - name: project_group
+            description: ""
+          - name: req_code_c
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: bud_account
+            description: ""
+          - name: req_code_j
+            description: ""
+          - name: curr_balance
+            description: ""
+          - name: req_code_i
+            description: ""
+          - name: req_process_code
+            description: ""
+          - name: exclude_periodical_cap
+            description: ""
+          - name: specific_cap_principles
+            description: ""
+          - name: code_j
+            description: ""
+          - name: closed_acc_period
+            description: ""
+          - name: code_g
+            description: ""
+          - name: code_f
+            description: ""
+          - name: ncf_inv_stat_fee
+            description: ""
+          - name: code_i
+            description: ""
+          - name: req_budget_quantity
+            description: ""
+          - name: code_h
+            description: ""
+          - name: code_c
+            description: ""
+          - name: code_b
+            description: ""
+          - name: code_e
+            description: ""
+          - name: cons_accnt
+            description: ""
+          - name: code_d
+            description: ""
+          - name: finally_invoiced
+            description: ""
+          - name: party
+            description: ""
+          - name: req_budget_code_b
+            description: ""
+          - name: req_budget_code_c
+            description: ""
+          - name: req_budget_code_d
+            description: ""
+          - name: req_budget_code_e
+            description: ""
+          - name: user_group
+            description: ""
+          - name: revenue_recog_method
+            description: ""
+          - name: req_budget_code_f
+            description: ""
+          - name: req_budget_code_g
+            description: ""
+          - name: req_budget_code_h
+            description: ""
+          - name: contract
+            description: ""
+          - name: project_progress_method
+            description: ""
+          - name: stat_account
+            description: ""
+          - name: externally_created
+            description: ""
+          - name: accnt_type
+            description: ""
+          - name: description
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: tax_code_mandatory
+            description: ""
+          - name: project_leader
+            description: ""
+          - name: req_budget_code_i
+            description: ""
+          - name: req_budget_code_j
+            description: ""
+          - name: valid_from
+            description: ""
+          - name: sort_value
+            description: ""
+          - name: exclude_proj_followup
+            description: ""
+          - name: project_status
+            description: ""
+          - name: accounting_text_id
+            description: ""
+          - name: posting_combination_id
+            description: ""
+          - name: no_archiving_trans
+            description: ""
+          - name: ready_date
+            description: ""
+          - name: finally_invo_acc_period
+            description: ""
+          - name: cons_code_part_value
+            description: ""
+          - name: voucher_type
+            description: ""
+          - name: customer_no
+            description: ""
+          - name: curr_rate
+            description: ""
+          - name: process_code
+            description: ""
+          - name: contrib_margin
+            description: ""
+          - name: tax_handling_value
+            description: ""
+          - name: order_number
+            description: ""
+          - name: tax_flag
+            description: ""
+          - name: close_at_final_invo
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: purchase_order_tab
+        description: ""
+        columns:
+          - name: order_no
+            description: ""
+          - name: contact
+            description: ""
+          - name: date_entered
+            description: ""
+          - name: pick_list_flag
+            description: ""
+          - name: recipient_name
+            description: ""
+          - name: central_order_flag
+            description: ""
+          - name: delivery_terms
+            description: ""
+          - name: language_code
+            description: ""
+          - name: reject_reason_id
+            description: ""
+          - name: authorize_id
+            description: ""
+          - name: change_request_sent
+            description: ""
+          - name: addr_state
+            description: ""
+          - name: tax_exempt
+            description: ""
+          - name: county
+            description: ""
+          - name: order_date
+            description: ""
+          - name: pay_tax
+            description: ""
+          - name: delivery_address
+            description: ""
+          - name: label_note
+            description: ""
+          - name: addr_1
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: addr_no
+            description: ""
+          - name: change_date
+            description: ""
+          - name: addr_3
+            description: ""
+          - name: rowstate
+            description: ""
+          - name: addr_2
+            description: ""
+          - name: addr_5
+            description: ""
+          - name: pre_accounting_id
+            description: ""
+          - name: addr_4
+            description: ""
+          - name: vendor_co_no
+            description: ""
+          - name: text_id_
+            description: ""
+          - name: total_amt_at_auth
+            description: ""
+          - name: rejected_date
+            description: ""
+          - name: orders_sequence_no
+            description: ""
+          - name: rejected_by
+            description: ""
+          - name: authorization_rejected
+            description: ""
+          - name: ext_transport_calendar_id
+            description: ""
+          - name: printed_flag
+            description: ""
+          - name: note_id
+            description: ""
+          - name: forwarder_id
+            description: ""
+          - name: task_id
+            description: ""
+          - name: country_code
+            description: ""
+          - name: revision
+            description: ""
+          - name: vendor_no
+            description: ""
+          - name: zip_code
+            description: ""
+          - name: contract
+            description: ""
+          - name: wanted_receipt_date
+            description: ""
+          - name: cancel_reason
+            description: ""
+          - name: order_sent
+            description: ""
+          - name: currency_code
+            description: ""
+          - name: template_id
+            description: ""
+          - name: ship_via_code
+            description: ""
+          - name: document_address_id
+            description: ""
+          - name: orders_version_no
+            description: ""
+          - name: del_terms_location
+            description: ""
+          - name: case_id
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: invoicing_supplier
+            description: ""
+          - name: note_text
+            description: ""
+          - name: reference
+            description: ""
+          - name: intrastat_exempt
+            description: ""
+          - name: addr_flag
+            description: ""
+          - name: address1
+            description: ""
+          - name: project_id
+            description: ""
+          - name: buyer_code
+            description: ""
+          - name: address2
+            description: ""
+          - name: authorize_code
+            description: ""
+          - name: blanket_date
+            description: ""
+          - name: order_code
+            description: ""
+          - name: consolidated_flag
+            description: ""
+          - name: approval_rule
+            description: ""
+          - name: customer_po_no
+            description: ""
+          - name: internal_destination
+            description: ""
+          - name: doc_addr_no
+            description: ""
+          - name: schedule_agreement_order
+            description: ""
+          - name: ordchg_version_no
+            description: ""
+          - name: project_address_id
+            description: ""
+          - name: ordchg_sequence_no
+            description: ""
+          - name: city
+            description: ""
+          - name: project_address_flag
+            description: ""
+          - name: purchase_code
+            description: ""
+          - name: destination_id
+            description: ""
+          - name: pay_term_id
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: supplier_info_tab
+        description: ""
+        columns:
+          - name: supplier_id
+            description: ""
+          - name: party
+            description: ""
+          - name: association_no
+            description: ""
+          - name: creation_date
+            description: ""
+          - name: default_domain
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: suppliers_own_id
+            description: ""
+          - name: name
+            description: ""
+          - name: text_id_
+            description: ""
+          - name: default_language
+            description: ""
+          - name: party_type
+            description: ""
+          - name: country
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: identifier_reference
+            description: ""
+          - name: identifier_ref_validation
+            description: ""
+          - name: picture_id
+            description: ""
+          - name: corporate_form
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: invoice_tab
+        description: ""
+        columns:
+          - name: company
+            description: ""
+          - name: invoice_id
+            description: ""
+          - name: voucher_text
+            description: ""
+          - name: msg_version_no
+            description: ""
+          - name: accounting_period_ref
+            description: ""
+          - name: text_id_sup_
+            description: ""
+          - name: vat_dom_amount
+            description: ""
+          - name: tax_invoice_number
+            description: ""
+          - name: send_flag_attr
+            description: ""
+          - name: int_allowed
+            description: ""
+          - name: invoice_date
+            description: ""
+          - name: multi_invoice_voucher
+            description: ""
+          - name: creator
+            description: ""
+          - name: error_text
+            description: ""
+          - name: delivery_address_id
+            description: ""
+          - name: transfer_error
+            description: ""
+          - name: withheld_voucher_type
+            description: ""
+          - name: pre_acc_code_string
+            description: ""
+          - name: post_error
+            description: ""
+          - name: rowkey
+            description: ""
+          - name: cash
+            description: ""
+          - name: gross_up
+            description: ""
+          - name: national_bank_code
+            description: ""
+          - name: identity
+            description: ""
+          - name: invoice_fee
+            description: ""
+          - name: net_dom_amount
+            description: ""
+          - name: delivery_date
+            description: ""
+          - name: vat_curr_amount
+            description: ""
+          - name: is_vat
+            description: ""
+          - name: voucher_final_post
+            description: ""
+          - name: automatic_invoice
+            description: ""
+          - name: adv_inv
+            description: ""
+          - name: proposal_exist
+            description: ""
+          - name: supply_country
+            description: ""
+          - name: voucher_date_ref
+            description: ""
+          - name: text_id_co_
+            description: ""
+          - name: c1
+            description: ""
+          - name: c2
+            description: ""
+          - name: voucher_vat_only
+            description: ""
+          - name: c3
+            description: ""
+          - name: c4
+            description: ""
+          - name: receipt_ref
+            description: ""
+          - name: jour_no_print
+            description: ""
+          - name: c5
+            description: ""
+          - name: c6
+            description: ""
+          - name: party_type
+            description: ""
+          - name: original_result_key
+            description: ""
+          - name: c7
+            description: ""
+          - name: project_activity_id
+            description: ""
+          - name: c8
+            description: ""
+          - name: rowversion
+            description: ""
+          - name: send_time
+            description: ""
+          - name: c9
+            description: ""
+          - name: acc_year_invoice_date
+            description: ""
+          - name: load_type
+            description: ""
+          - name: po_ref_number
+            description: ""
+          - name: msg_sequence_no
+            description: ""
+          - name: project_id
+            description: ""
+          - name: pl_pay_date
+            description: ""
+          - name: aff_line_post
+            description: ""
+          - name: head_data
+            description: ""
+          - name: due_date
+            description: ""
+          - name: sub_con_no
+            description: ""
+          - name: send_error
+            description: ""
+          - name: collect
+            description: ""
+          - name: chk_handling_code
+            description: ""
+          - name: old_adv_inv
+            description: ""
+          - name: d1
+            description: ""
+          - name: d2
+            description: ""
+          - name: d3
+            description: ""
+          - name: prelim_code
+            description: ""
+          - name: d4
+            description: ""
+          - name: series_reference
+            description: ""
+          - name: send_msg_id
+            description: ""
+          - name: bank_account
+            description: ""
+          - name: curr_rate
+            description: ""
+          - name: nature_of_business
+            description: ""
+          - name: payment_address_id
+            description: ""
+          - name: pay_term_id
+            description: ""
+          - name: withheld_accounting_year
+            description: ""
+          - name: withheld_voucher_no
+            description: ""
+          - name: proposed_voucher_group
+            description: ""
+          - name: invoice_recipient
+            description: ""
+          - name: text_id_cus_
+            description: ""
+          - name: rowtype
+            description: ""
+          - name: correction
+            description: ""
+          - name: language_code
+            description: ""
+          - name: pay_term_base_date
+            description: ""
+          - name: invoice_type
+            description: ""
+          - name: debit_invoice_id
+            description: ""
+          - name: number_reference
+            description: ""
+          - name: tax_invoice_series_id
+            description: ""
+          - name: ok_create_voucher
+            description: ""
+          - name: div_factor
+            description: ""
+          - name: tax_id_number
+            description: ""
+          - name: c11
+            description: ""
+          - name: delivery_party
+            description: ""
+          - name: canceled_time
+            description: ""
+          - name: code_a
+            description: ""
+          - name: c10
+            description: ""
+          - name: n1
+            description: ""
+          - name: c13
+            description: ""
+          - name: n2
+            description: ""
+          - name: js_invoice_state
+            description: ""
+          - name: c12
+            description: ""
+          - name: n3
+            description: ""
+          - name: n4
+            description: ""
+          - name: n5
+            description: ""
+          - name: creators_reference
+            description: ""
+          - name: tax_curr_rate
+            description: ""
+          - name: creation_date
+            description: ""
+          - name: invoice_version
+            description: ""
+          - name: price_adjustment
+            description: ""
+          - name: rowstate
+            description: ""
+          - name: acc_period_invoice_date
+            description: ""
+          - name: code_j
+            description: ""
+          - name: code_g
+            description: ""
+          - name: code_f
+            description: ""
+          - name: accounting_year_ref
+            description: ""
+          - name: code_i
+            description: ""
+          - name: ncf_reference
+            description: ""
+          - name: code_h
+            description: ""
+          - name: code_c
+            description: ""
+          - name: code_b
+            description: ""
+          - name: code_e
+            description: ""
+          - name: sent
+            description: ""
+          - name: code_d
+            description: ""
+          - name: tax_curr_type
+            description: ""
+          - name: liability_type
+            description: ""
+          - name: series_id
+            description: ""
+          - name: correction_invoice_id
+            description: ""
+          - name: js_virtual_invoice_no
+            description: ""
+          - name: transfer_status
+            description: ""
+          - name: batch_id
+            description: ""
+          - name: media_code
+            description: ""
+          - name: send_error_step
+            description: ""
+          - name: net_curr_amount
+            description: ""
+          - name: attachments
+            description: ""
+          - name: voucher_no_ref
+            description: ""
+          - name: delivery_identity
+            description: ""
+          - name: arrival_date
+            description: ""
+          - name: create_state
+            description: ""
+          - name: currency
+            description: ""
+          - name: branch
+            description: ""
+          - name: send_status
+            description: ""
+          - name: invoice_address_id
+            description: ""
+          - name: jour_no_voucher
+            description: ""
+          - name: voucher_type_ref
+            description: ""
+          - name: invoice_no
+            description: ""
+          - name: way_pay_id
+            description: ""
+          - name: tax_id_type
+            description: ""
+          - name: self_billing_ref
+            description: ""
+          - name: tax_invoice_date
+            description: ""
+          - name: deduction_group
+            description: ""
+          - name: payer_identity
+            description: ""
+          - name: aff_base_ledg_post
+            description: ""
+          - name: multi_company_invoice
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""

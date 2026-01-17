@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: timesheet
+    description: ""
+    database: pronto_forms
+    tables:
+      - name: maintenance
+        description: ""
+
+  - name: pronto_forms
+    database: pronto_forms
+    schema: nni
+    tables:
+      - name: inventory
+        description: ""
+
+  - name: health_and_safety
+    description: "Health and Safety schema from pronto_forms"
+    database: pronto_forms
+    schema: health_and_safety
+    tables:
+      - name: pronto_forms_raw
+        description: "Raw form submission data from ProntoForms"

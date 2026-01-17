@@ -1,0 +1,58 @@
+models:
+  - name: dim_gp__vendors
+    description:
+      This model consolidates vendor data from multiple sources into a unified
+      format, allowing for consistent analysis and reporting. It categorizes vendors
+      by type and assigns a sort order to facilitate organized data presentation.
+    columns:
+      - name: company_id
+        description: A unique identifier for the company associated with the vendor.
+      - name: vendor_type_sort
+        description:
+          A numerical representation of the vendor type for sorting purposes,
+          where 'Trade' is 1, 'Related Party' is 2, 'Inter Company' is 3, and 'SCF Vendor'
+          is 4.
+      - name: sk_vendor_global
+        description: Primary Key for the vendor dimension
+        tests:
+          - not_null
+          - unique
+
+      - name: vendor_id
+        description: A unique identifier for each vendor.
+      - name: vendor_name
+        description: The name of the vendor.
+      - name: vendor_class
+        description: The classification of the vendor.
+      - name: created_date
+        description: The date when the vendor record was created.
+      - name: userdef1
+        description: A user-defined field for additional vendor information.
+      - name: payment_terms_id
+        description: Identifier for the payment terms associated with the vendor.
+      - name: address_1
+        description: The primary address line for the vendor.
+      - name: address_2
+        description: The secondary address line for the vendor.
+      - name: address_3
+        description: The tertiary address line for the vendor.
+      - name: city
+        description: The city where the vendor is located.
+      - name: state
+        description: The state where the vendor is located.
+      - name: zip_code
+        description: The postal code for the vendor's location.
+      - name: country
+        description: The country where the vendor is located.
+      - name: currency_id
+        description: The currency identifier used by the vendor.
+      - name: tax_id
+        description: The tax identification number for the vendor.
+      - name: vendor_status
+        description: The current status of the vendor.
+      - name: ten99_type
+        description: The 1099 tax classification type for the vendor.
+      - name: vendor_type
+        description: The type of vendor, such as Trade, Related Party, Inter Company, or SCF Vendor.
+      - name: sk_company_id
+        description: A surrogate key for the company associated with the vendor.

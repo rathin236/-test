@@ -1,0 +1,66 @@
+{{ config(materialized='view') }}
+
+with source as (
+    select *
+    from {{ source('finops_synapse', 'inventdim') }}
+),
+
+renamed as (
+    select
+        id,
+        sink_created_on,
+        sink_modified_on,
+        sysdatastatecode,
+        configid,
+        inventbatchid,
+        inventcolorid,
+        inventdimid,
+        inventgtdid_ru,
+        inventlocationid,
+        inventownerid_ru,
+        inventprofileid_ru,
+        inventserialid,
+        inventsiteid,
+        inventsizeid,
+        inventstatusid,
+        inventstyleid,
+        inventversionid,
+        licenseplateid,
+        wmslocationid,
+        wmspalletid,
+        sha_1_hashhex,
+        inventdimension_1,
+        inventdimension_2,
+        inventdimension_3,
+        inventdimension_4,
+        inventdimension_5,
+        inventdimension_6,
+        inventdimension_7,
+        inventdimension_8,
+        inventdimension_9,
+        inventdimension_10,
+        inventdimension_11,
+        inventdimension_12,
+        sha_3_hashhex,
+        modifieddatetime,
+        modifiedby,
+        modifiedtransactionid,
+        createddatetime,
+        createdby,
+        createdtransactionid,
+        dataareaid,
+        recversion,
+        partition,
+        sysrowversion,
+        recid,
+        tableid,
+        versionnumber,
+        createdon,
+        modifiedon,
+        _fivetran_deleted,
+        _fivetran_synced
+    from source
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

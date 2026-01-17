@@ -1,0 +1,65 @@
+models:
+  - name: fact_inventory_d365_current
+    description:
+      This model provides a comprehensive view of the current inventory status
+      from the D365 system, including details about the company, warehouse, item, and
+      inventory specifics such as batch and pallet numbers, location, dates, quantities,
+      and inventory status. It is useful for tracking and managing inventory levels,
+      ensuring accurate stock information, and supporting decision-making in supply
+      chain operations.
+    columns:
+      - name: company
+        description: The company associated with the inventory record.
+      - name: sourcesystem
+        description: The source system from which the inventory data is derived.
+      - name: sourcesystemcode
+        description: A code representing the source system.
+      - name: warehouse_sk
+        description: The surrogate key for the warehouse where the inventory is stored.
+      - name: item_id
+        description: The unique identifier for the item in the inventory.
+      - name: batch_number
+        description: The batch number associated with the inventory item.
+      - name: pallet_number
+        description: The pallet number on which the inventory item is stored.
+      - name: location_id_bin
+        description: The location or bin identifier where the inventory is stored.
+      - name: label_date
+        description: The date when the inventory label was created.
+      - name: expiry_date
+        description: The date when the inventory item is set to expire.
+      - name: cases
+        description: The number of cases of the inventory item.
+      - name: quantity
+        description: The total quantity of the inventory item.
+      - name: available_quantity
+        description: The quantity of the inventory item that is available for use.
+      - name: available_cases
+        description: The number of available cases of the inventory item.
+      - name: available_lbs
+        description: The available weight of the inventory item in pounds.
+      - name: picked_quantity
+        description: The quantity of the inventory item that has been picked for use.
+      - name: picked_cases
+        description: The number of cases of the inventory item that have been picked.
+      - name: picked_lbs
+        description: The weight of the inventory item that has been picked, in pounds.
+      - name: unit_of_measure
+        description: The unit of measure for the inventory item.
+      - name: qty_lbs
+        description: The total weight of the inventory item in pounds.
+      - name: qty_kgs
+        description: The total weight of the inventory item in kilograms.
+      - name: age
+        description: The age of the inventory item.
+      - name: invent_status
+        description: The status of the inventory item.
+      - name: form
+        description: The form or type of the inventory item.
+      - name: fact_inventory_pk
+        description:
+          The primary key for the fact inventory record, generated as a hash
+          of key attributes.
+        tests:
+          - unique
+          - not_null

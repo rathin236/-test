@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: nb681_dbo
+    description: ""
+    database: gp
+    tables:
+      - name: mc40000
+        description: "Functional Currency Table"
+      - name: pm00200
+        description: "Vendor Master Table"
+      - name: pm20000
+        description: "Vendor Open Payments"
+      - name: pm30200
+        description: "Vendor Paid Payments"
+      - name: gl00100
+        description: ""
+      - name: gl00105
+        description: ""
+      - name: gl20000
+        description: ""
+      - name: gl30000
+        description: ""
+      - name: pop30300
+        description: ""
+      - name: pm10000
+        description: "Vendor Work Payments"

@@ -1,0 +1,1193 @@
+version: 2
+
+models:
+  - name: dim_account_salesperson
+    description: >
+
+      " This dimension table links salespersons to their respective customers across
+      both D365 and NorthScope systems. It serves as a reference dimension for
+      invoice and sales analysis by connecting to the DIM_INVOICE_ACCOUNTS table
+      through the customer number. The table includes salesperson details,
+      customer identifiers, and source system lineage."
+    columns:
+      - name: invoicecustomer_number
+        description: >
+
+          " The unique identifier or customer number used for invoicing within the ERP
+          system. Acts as the key linking customers to their corresponding salesperson."
+        tests:
+          - not_null
+          - unique
+
+      - name: salespersons name
+        description: >
+
+          " The full name of the salesperson responsible for the customer account.
+          Derived from the ERP sales module (NorthScope or D365)."
+
+      - name: create date
+        description: >
+
+          " The date when the customer record was originally created in the source system.
+          Useful for analyzing account longevity or sales assignment history"
+
+      - name: sourcesystem
+        description: >
+
+          " Identifies the source ERP system from which the record originated
+          (e.g., 'D365' or 'NORTHSCOPE'). Enables system-level filtering
+          and data lineage tracking."
+
+  - name: dim_company
+    description: >
+      This dimension identifies which Cooke company is linked to each order. It serves as a bridge between source
+      systems (D365 and NorthScope) and connects to the FACT_SALES_COST table via a foreign key relationship.
+    columns:
+      - name: sk_company_global
+        description: >
+          A unique surrogate key generated using an MD5 hash of the company identifier and source system. Used as the
+          primary key for linking across systems and models.
+        tests:
+          - unique
+          - not_null
+
+      - name: company
+        description: >
+          The internal company identifier used in the ERP source system (e.g., D365 or NorthScope).
+
+      - name: company name
+        description: >
+          The full descriptive name of the company as maintained in the ERP system for business and reporting purposes.
+
+      - name: sourcesystem
+        description: >
+          Indicates the originating source system for the record, such as 'D365' or 'NORTHSCOPE'.
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Useful for efficient joins and
+          filtering in downstream models.
+
+  - name: dim_customer_accounts
+    description: >
+      This dimension contains detailed customer information used for deliveries and sales analysis. It consolidates
+      customer data from both D365 and NorthScope systems and links to the FACT_SALES_COST table via a foreign key.
+    columns:
+      - name: sk_customer_id_global
+        description: >
+          A globally unique surrogate key generated using a combination of the Customer ID or Customer Address SK and
+          the source system. Used for cross-system consistency and joins.
+        tests:
+          - unique
+          - not_null
+
+      - name: sk_customer_id_targets
+        description: >
+          A surrogate key specifically generated for mapping customer targets and related performance metrics. Derived
+          from the Customer ID and source system.
+
+      - name: customer_address_sk
+        description: >
+          The unique key identifying the customer's address record in the source system. Ensures accurate linkage to
+          delivery and location details.
+
+      - name: customer id
+        description: >
+          The internal identifier for the customer record in the ERP system (D365 or NorthScope).
+
+      - name: customer name
+        description: >
+          The name of the customer or business entity as registered in the ERP system.
+
+      - name: customer group
+        description: >
+          Represents the customer classification or grouping used for reporting, pricing, or segmentation within the
+          ERP.
+
+      - name: customer business type
+        description: >
+          Indicates the business category or nature of the customer, such as wholesaler, distributor, or retailer.
+
+      - name: location alias
+        description: >
+          A short or alternative name for the customer’s location, typically used for internal reporting or mapping.
+
+      - name: location name
+        description: >
+          The official or full name of the customer’s delivery or business location.
+
+      - name: address
+        description: >
+          The complete address of the customer’s main or delivery location, including street, city, and postal details.
+
+      - name: street
+        description: >
+          The street name or line address of the customer’s location.
+
+      - name: city
+        description: >
+          The city where the customer’s location resides.
+
+      - name: zip code
+        description: >
+          The postal or ZIP code associated with the customer’s address.
+
+      - name: state
+        description: >
+          The state or province associated with the customer’s address.
+
+      - name: country
+        description: >
+          The country where the customer’s business or delivery address is located.
+
+      - name: longitude
+        description: >
+          The longitude coordinate for the customer’s address, used for mapping or geospatial analysis.
+
+      - name: latitude
+        description: >
+          The latitude coordinate for the customer’s address, used for mapping or geospatial analysis.
+
+      - name: valid from
+        description: >
+          The date from which the customer record or address is valid in the system.
+
+      - name: valid to
+        description: >
+          The date until which the customer record or address remains valid.
+
+      - name: is active
+        description: >
+          Indicates whether the customer record is currently active in the ERP system (true/false).
+
+      - name: company_name
+        description: >
+          The name of the Cooke company associated with the customer record, used for organizational linkage.
+
+      - name: customer type
+        description: >
+          Categorizes the customer as either 'Intercompany' (internal Cooke entities) or 'External' (third-party
+          customers).
+
+      - name: sourcesystem
+        description: >
+          Identifies the originating source system for the record (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Used for efficient joins and
+          filtering.
+
+      - name: row_number
+        description: >
+          A system-generated sequence number used to isolate the most recent customer record per Customer ID or Address
+          SK.
+
+  - name: dim_customer_item_targets
+    description: >
+      This dimension defines quarterly customer sales targets at both the item and category level. It links customers
+      and items through surrogate keys for performance tracking and reporting purposes.
+    columns:
+      - name: quarter
+        description: >
+          The fiscal or calendar quarter associated with the customers sales target (e.g., Q1, Q2, Q3, Q4).
+
+      - name: item_id
+        description: >
+          The unique identifier of the product or item for which the sales target is defined.
+
+      - name: customer_id
+        description: >
+          The identifier of the customer linked to the item target record.
+
+      - name: sk_item_targets
+        description: >
+          A surrogate key generated using the item ID and source system. Used to uniquely identify item-level target
+          records across systems.
+
+      - name: sk_customer_id_targets
+        description: >
+          A surrogate key generated using the customer ID and source system. Used to link customer-level target records
+          across models.
+
+      - name: source_system
+        description: >
+          Indicates the originating source system for the record (e.g., D365, NorthScope, or other sales tracking
+          system).
+
+      - name: customer_name
+        description: >
+          The full name of the customer as recorded in the source system.
+
+      - name: item_description
+        description: >
+          A descriptive name or label for the item, providing clarity for reporting and analysis.
+
+      - name: combined_item_category
+        description: >
+          A consolidated category that groups similar items together for aggregated sales and target reporting.
+
+      - name: customer_target_by_item_id
+        description: >
+          Represents the specific sales target amount or quantity assigned to the customer for this particular item.
+
+      - name: customer_target_by_item_category
+        description: >
+          Represents the aggregated sales target amount or quantity for the customer across all items within a shared
+          category.
+
+  - name: dim_invoice_accounts
+    description: >
+      This dimension contains customer information specific to invoicing. It consolidates records from both D365 and
+      NorthScope systems and connects to the FACT_SALES_COST table via a foreign key for sales and financial analysis.
+    columns:
+      - name: sk_invoice_account_global
+        description: >
+          A unique surrogate key generated using the Invoice ID or Invoice ID SK combined with the source system.
+          Ensures consistent joins across systems.
+        tests:
+          - not_null
+          - unique
+
+      - name: invoice id
+        description: >
+          The internal identifier assigned to each invoice within the ERP system.
+
+      - name: invoice_id_sk
+        description: >
+          A surrogate key that uniquely identifies each invoice record within its source system.
+
+      - name: invoicing customer name
+        description: >
+          The full name of the customer receiving the invoice, as recorded in the ERP system.
+
+      - name: customer business type
+        description: >
+          Indicates the type of business or relationship for the invoicing customer (e.g., distributor, wholesaler,
+          retailer).
+
+      - name: location
+        description: >
+          A unique identifier or code representing the customer's location associated with the invoice.
+
+      - name: location name
+        description: >
+          The descriptive or full name of the customers invoicing location.
+
+      - name: address
+        description: >
+          The full invoicing address for the customer, combining street, city, state, and postal details.
+
+      - name: street
+        description: >
+          The street portion of the invoicing address for the customer.
+
+      - name: city
+        description: >
+          The city where the invoice is issued or where the customer is located.
+
+      - name: zip code
+        description: >
+          The postal or ZIP code associated with the invoicing address.
+
+      - name: state
+        description: >
+          The state or province corresponding to the invoicing address.
+
+      - name: country
+        description: >
+          The country where the invoicing customer is located.
+
+      - name: longitude
+        description: >
+          The longitude coordinate of the invoicing customers address, used for mapping or analysis.
+
+      - name: latitude
+        description: >
+          The latitude coordinate of the invoicing customers address, used for mapping or analysis.
+
+      - name: valid from
+        description: >
+          The start date indicating when the invoicing customer record became valid in the system.
+
+      - name: valid to
+        description: >
+          The end date indicating when the invoicing customer record is no longer valid.
+
+      - name: sourcesystem
+        description: >
+          Identifies the source ERP system for the record (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code identifying the source system (0 = D365, 1 = NORTHSCOPE). Used for efficient joins and
+          filtering in downstream models.
+
+  - name: dim_invoice_id
+    description: >
+      This dimension provides a unified view of all invoice identifiers across D365 and NorthScope systems. It ensures
+      consistency in invoice references used for reporting and links to the FACT_SALES_COST table via a foreign key.
+    columns:
+      - name: sk_invoice_id_global
+        description: >
+          A unique surrogate key generated using the Invoice ID and source system. Serves as the global identifier for
+          invoices across all ERP sources.
+        tests:
+          - not_null
+          - unique
+
+      - name: row_num
+        description: >
+          A sequential number assigned to identify the first (most relevant) record per unique invoice ID within each
+          source system, ensuring deduplication.
+
+      - name: invoice id
+        description: >
+          The original invoice identifier as recorded in the source ERP system. Used for traceability and reconciliation
+          purposes.
+
+      - name: sourcesystem
+        description: >
+          Indicates the originating source system for the invoice record (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Used for efficient joins and
+          filtering in downstream data models.
+
+  - name: dim_item
+    description: >
+      This dimension provides comprehensive information on all items sold or produced across D365 and NorthScope
+      systems. It serves as a master reference for product details, packaging, certifications, and classifications, and
+      connects to the FACT_SALES_COST table via a foreign key.
+    columns:
+      - name: "Item_SK"
+        description: >
+          The unique identifier for the item record within the source system.
+
+      - name: item id
+        description: >
+          The primary item identifier used across ERP systems for sales, inventory, and reporting.
+
+      - name: product name
+        description: >
+          The descriptive name of the product or item.
+
+      - name: language id
+        description: >
+          The language code associated with the item name or description for multilingual reporting.
+
+      - name: item group
+        description: >
+          The grouping or category under which the item is classified within the ERP.
+
+      - name: item group id
+        description: >
+          The unique identifier representing the item’s group or classification.
+
+      - name: item description
+        description: >
+          A detailed textual description of the item as maintained in the source system.
+
+      - name: country of origin
+        description: >
+          Specifies the country where the item was produced, harvested, or processed.
+
+      - name: skin on off
+        description: >
+          Indicates whether the product is sold with skin on or skin off (for seafood and meat products).
+
+      - name: sub category
+        description: >
+          A lower-level category that further classifies the item within its main item group.
+
+      - name: bone in out
+        description: >
+          Specifies whether the item is bone-in or boneless, applicable to seafood and meat products.
+
+      - name: coolant
+        description: >
+          Describes the type of coolant or preservation method used during packaging or shipping.
+
+      - name: harvest
+        description: >
+          Indicates the harvest method or type of harvest associated with the product.
+
+      - name: package weight
+        description: >
+          The weight of the item per individual package.
+
+      - name: scaled
+        description: >
+          Indicates whether the product is pre-scaled or unscaled.
+
+      - name: trim
+        description: >
+          Specifies the trim level or processing stage of the item.
+
+      - name: ub code
+        description: >
+          A unique business or internal code associated with the product.
+
+      - name: whole or va
+        description: >
+          Indicates whether the item is sold whole or as a value-added (processed) product.
+
+      - name: family
+        description: >
+          The product family classification used for broader category grouping.
+
+      - name: form
+        description: >
+          The physical or presentation form of the product (e.g., fillet, portion, tail).
+
+      - name: package unit count
+        description: >
+          The number of units included per package.
+
+      - name: pieces per lb count
+        description: >
+          The count of individual pieces contained per pound of product weight.
+
+      - name: product size uom
+        description: >
+          The unit of measure for the product size (e.g., lbs, oz, g).
+
+      - name: production phase
+        description: >
+          Indicates the stage of production the product belongs to (e.g., harvest, processing, packaging).
+
+      - name: skinning type
+        description: >
+          Specifies the method of skinning applied to the product.
+
+      - name: asc certification
+        description: >
+          Indicates whether the product holds ASC (Aquaculture Stewardship Council) certification for sustainable
+          farming.
+
+      - name: species
+        description: >
+          The main biological species of the product (e.g., salmon, cod, shrimp).
+
+      - name: sub-species
+        description: >
+          The sub-species or variant of the main species.
+
+      - name: frozen format
+        description: >
+          Defines whether the item is frozen and the method used (e.g., IQF, block frozen).
+
+      - name: category
+        description: >
+          The top-level classification grouping of the product within the company’s catalog.
+
+      - name: high level grade
+        description: >
+          Represents the general quality classification of the product (e.g., premium, standard).
+
+      - name: grade
+        description: >
+          The detailed grade or quality designation assigned to the product.
+
+      - name: brand
+        description: >
+          The commercial brand name under which the item is marketed.
+
+      - name: product size
+        description: >
+          Specifies the size of the product as labeled or standardized for sale.
+
+      - name: case weight
+        description: >
+          The total weight of one full case of the product.
+
+      - name: case weight uom
+        description: >
+          The unit of measure used for case weight (e.g., kg, lbs).
+
+      - name: cooked/raw
+        description: >
+          Indicates whether the product is sold in cooked or raw form.
+
+      - name: nft label
+        description: >
+          Refers to the Nutritional Facts Table label configuration for the product.
+
+      - name: package weight uom
+        description: >
+          The unit of measure used to define the weight of a single package.
+
+      - name: msc certification
+        description: >
+          Indicates whether the item is certified by the Marine Stewardship Council (MSC) for sustainability.
+
+      - name: certification
+        description: >
+          Lists any other certifications associated with the product (e.g., organic, halal, BRC).
+
+      - name: rwoa
+        description: >
+          An internal field related to product approval or operational attributes.
+
+      - name: catch area
+        description: >
+          Specifies the geographical fishing or harvesting area where the product originated.
+
+      - name: inside pack
+        description: >
+          Describes what is included inside the product’s packaging (e.g., inner bag contents).
+
+      - name: master packaging type
+        description: >
+          Specifies the type of outer or master packaging used (e.g., box, carton, case).
+
+      - name: product label
+        description: >
+          The labeling type or format associated with the product.
+
+      - name: value add
+        description: >
+          Indicates whether the product includes additional processing or preparation beyond raw form (e.g., marinated,
+          breaded).
+
+      - name: product form - shrimp
+        description: >
+          Defines the specific form for shrimp products (e.g., peeled, headless, deveined).
+
+      - name: flavour
+        description: >
+          Describes the flavoring or seasoning applied to the product, if applicable.
+
+      - name: harvest method
+        description: >
+          Describes the harvest technique or source of the product (e.g., wild-caught, farm-raised).
+
+      - name: process type
+        description: >
+          The type of processing applied to the product (e.g., fresh, frozen, smoked).
+
+      - name: msc number
+        description: >
+          The official MSC certification number for traceability and compliance.
+
+      - name: crm_item_id
+        description: >
+          The corresponding item identifier from the CRM system, linking ERP and CRM records.
+
+      - name: crm_item_sk
+        description: >
+          The surrogate key from the CRM system that uniquely identifies the item record.
+
+      - name: productline_value
+        description: >
+          The internal code or value representing the product line.
+
+      - name: productline_name
+        description: >
+          The descriptive name of the product line the item belongs to.
+
+      - name: productline_desc
+        description: >
+          A brief description of the product line for reporting and categorization.
+
+      - name: product_lifecycle_status
+        description: >
+          Indicates the current lifecycle stage of the product (e.g., Active, Discontinued, Development).
+
+      - name: sourcesystem
+        description: >
+          Identifies the source ERP system for the record (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE).
+
+      - name: sk_item_global
+        description: >
+          A globally unique surrogate key generated using the Item_SK or Item ID combined with the source system for
+          consistent joins across systems.
+        tests:
+          - not_null
+          - unique
+
+      - name: sk_item_targets
+        description: >
+          A surrogate key generated using the Item ID and source system, used for linking item-level targets and
+          performance data.
+
+  - name: dim_mode
+    description: >
+      This dimension provides standardized information about carrier modes (e.g., air, sea, ground) used for customer
+      orders. It consolidates mode data from D365 and NorthScope systems and connects to the FACT_SALES_COST table via a
+      foreign key.
+    columns:
+      - name: sk_mode_global
+        description: >
+          A unique surrogate key generated using the Mode and source system. Ensures consistent joins and data integrity
+          across systems.
+        tests:
+          - not_null
+          - unique
+
+      - name: mode
+        description: >
+          The transportation mode or method used for the order (e.g., air, truck, vessel, courier).
+
+      - name: sourcesystem
+        description: >
+          Identifies the originating ERP system for the mode record (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Used for efficient filtering and
+          joins in downstream reporting.
+
+  - name: dim_order_id
+    description: >
+      This dimension provides a consolidated view of all order identifiers across D365 and NorthScope systems. It
+      ensures each order is uniquely represented and connects to the FACT_SALES_COST table via a foreign key for
+      order-level analysis.
+    columns:
+      - name: row_num
+        description: >
+          A sequential number used to isolate the most relevant record per unique Order ID. Ensures deduplication
+          between source systems.
+
+      - name: sk_order_id_global
+        description: >
+          PK for the dim.
+        tests:
+          - not_null
+          - unique
+
+      - name: order id
+        description: >
+          The unique identifier assigned to each sales order in the ERP system. Used to link sales transactions to
+          order-level data.
+
+      - name: sourcesystem
+        description: >
+          Identifies the ERP source system where the order originated (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Useful for efficient joins and
+          filtering in downstream models.
+
+  - name: dim_order_status
+    description: >
+      This dimension provides standardized information about the status of sales orders across D365 and NorthScope
+      systems. It enables consistent reporting and connects to the FACT_SALES_COST table via a foreign key.
+    columns:
+      - name: sk_order_status_id_global
+        description: >
+          A unique surrogate key generated using the Order Status ID and source system. Ensures consistent
+          identification and joins across systems.
+        tests:
+          - not_null
+          - unique
+
+      - name: order status id
+        description: >
+          The numeric or internal identifier assigned to each order status within the ERP system.
+
+      - name: order status
+        description: >
+          The descriptive name of the order’s current status (e.g., Open, Shipped, Invoiced, Closed).
+
+      - name: sourcesystem
+        description: >
+          Indicates the originating ERP system for the record (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Used for efficient filtering and
+          joins in downstream data models.
+
+  - name: dim_order_type
+    description: >
+      This dimension defines the various types of customer orders used across D365 and NorthScope systems. It
+      standardizes order type naming conventions and connects to the FACT_SALES_COST table via a foreign key for
+      reporting and analysis.
+    columns:
+      - name: sk_order_type_id_global
+        description: >
+          A unique surrogate key generated using the Order Type ID and source system. Ensures consistency and enables
+          cross-system joins.
+        tests:
+          - not_null
+          - unique
+
+      - name: order type id
+        description: >
+          The numeric or internal identifier assigned to each order type within the ERP system.
+
+      - name: order type
+        description: >
+          The descriptive name of the order type (e.g., Sales Order, Returned Order, Quotation).
+
+      - name: sourcesystem
+        description: >
+          Indicates the ERP source system from which the record originates (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Used for filtering and joining
+          records efficiently.
+
+  - name: dim_salesperson
+    description: >
+      This dimension contains detailed information about salespersons responsible for transactions across D365 and
+      NorthScope systems. It standardizes salesperson data and connects to the FACT_SALES_COST table via a foreign key
+      for performance and sales analysis.
+    columns:
+      - name: salesperson_sk
+        description: >
+          The unique identifier for the salesperson record within the source system.
+
+      - name: salesperson id
+        description: >
+          The internal or external ID assigned to the salesperson within the ERP system.
+
+      - name: salesperson name
+        description: >
+          The full name of the salesperson responsible for handling customer orders or accounts.
+
+      - name: email
+        description: >
+          The business email address of the salesperson used for communication and record reference.
+
+      - name: is inactive
+        description: >
+          Indicates whether the salesperson is currently inactive in the ERP system (1 = inactive, 0 = active).
+
+      - name: salespersontypeen
+        description: >
+          Specifies the salesperson classification or type (e.g., internal, external, territory-based).
+
+      - name: sourcesystem
+        description: >
+          Identifies the source ERP system from which the salesperson record originates (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Used for filtering and joining in
+          downstream data models.
+
+      - name: sk_salesperson_global
+        description: >
+          A globally unique surrogate key generated using the Salesperson_SK and source system. Ensures consistency and
+          deduplication across multiple systems.
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_site
+    description: >
+      This dimension provides standardized information about company sites across D365 and NorthScope systems. A site
+      represents a physical or organizational location that may contain one or more warehouses. It connects to the
+      FACT_SALES_COST table via a foreign key for operational and financial reporting.
+    columns:
+      - name: sk_site_global
+        description: >
+          A globally unique surrogate key generated using the Site_SK and source system. Used to maintain consistent
+          joins and eliminate duplicates across systems.
+        tests:
+          - not_null
+          - unique
+
+      - name: site_sk
+        description: >
+          The unique site identifier within the source ERP system.
+
+      - name: site name
+        description: >
+          The descriptive name of the site or facility location.
+
+      - name: site id
+        description: >
+          The internal or external identifier for the site within the ERP system.
+
+      - name: site registration code
+        description: >
+          The official registration or code assigned to the site for compliance or identification purposes.
+
+      - name: address
+        description: >
+          The full address of the site, including street, city, and postal information.
+
+      - name: street
+        description: >
+          The street portion of the site’s address.
+
+      - name: city
+        description: >
+          The city where the site is located.
+
+      - name: state
+        description: >
+          The state or province in which the site operates.
+
+      - name: postal code
+        description: >
+          The postal or ZIP code corresponding to the site’s address.
+
+      - name: country
+        description: >
+          The country where the site is registered or operates.
+
+      - name: sourcesystem
+        description: >
+          Identifies the ERP source system from which the record originates (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Used for efficient filtering and
+          joins in downstream reporting.
+
+  - name: dim_sourcesystem
+    description: >
+      This dimension identifies the originating ERP system from which sales, financial, or operational data is sourced.
+      It is used to distinguish records between D365 and NorthScope and connects to the FACT_SALES_COST table via a
+      foreign key.
+    columns:
+      - name: sk_sourcesystem_global
+        description: >
+          A numeric surrogate key representing the source system (0 = D365, 1 = NORTHSCOPE). Used for efficient joins
+          and filtering in downstream data models.
+        tests:
+          - not_null
+          - unique
+
+      - name: sourcesystem
+        description: >
+          The name of the ERP or data source system where the record originates (e.g., 'D365' or 'NORTHSCOPE').
+
+  - name: dim_uom
+    description: >
+      This dimension standardizes all units of measure (UOM) used across D365 and NorthScope systems. It supports
+      consistent reporting of product quantities, pricing, and conversions, and connects to the FACT_SALES_COST table
+      via a foreign key.
+    columns:
+      - name: uom
+        description: >
+          The unit of measure used for product quantities and pricing (e.g., LB, KG, CASE, BOX). Extracted from the
+          source ERP system.
+
+      - name: sourcesystem
+        description: >
+          Indicates the ERP source system from which the UOM record originates (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Used for filtering and joining
+          across models.
+
+      - name: sk_uom_global
+        description: >
+          A globally unique surrogate key generated using the UOM and source system. Ensures consistency across both ERP
+          systems and downstream models.
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_warehouse
+    description: >
+      This dimension provides standardized information about company warehouses across D365 and NorthScope systems. Each
+      warehouse belongs to a single site and is used for storing, shipping, and receiving goods. It connects to the
+      FACT_SALES_COST table via a foreign key for logistics and operational reporting.
+    columns:
+      - name: sk_warehouse_global
+        description: >
+          A globally unique surrogate key generated using the Warehouse_SK and source system. Ensures consistent
+          identification and deduplication of warehouses across systems.
+        tests:
+          - not_null
+          - unique
+
+      - name: warehouse_sk
+        description: >
+          The unique identifier for the warehouse record within the source ERP system.
+
+      - name: mastered warehouse
+        description: >
+          Indicates whether the warehouse is designated as a master or primary warehouse within the operational
+          hierarchy.
+
+      - name: location name
+        description: >
+          The descriptive name of the physical location where the warehouse is situated.
+
+      - name: location id
+        description: >
+          The internal identifier representing the warehouse’s associated location in the ERP system.
+
+      - name: warehouse name
+        description: >
+          The full name of the warehouse as defined in the ERP system.
+
+      - name: warehouse id
+        description: >
+          The internal or external warehouse code used for referencing the warehouse in business transactions.
+
+      - name: warehouse registration code
+        description: >
+          An official or compliance-related registration code assigned to the warehouse.
+
+      - name: address
+        description: >
+          The full address of the warehouse, including street, city, and postal details.
+
+      - name: street
+        description: >
+          The street portion of the warehouse’s address.
+
+      - name: city
+        description: >
+          The city where the warehouse is located.
+
+      - name: state
+        description: >
+          The state or province where the warehouse operates.
+
+      - name: postal code
+        description: >
+          The postal or ZIP code associated with the warehouse’s location.
+
+      - name: country
+        description: >
+          The country where the warehouse is located or registered.
+
+      - name: sourcesystem
+        description: >
+          Identifies the ERP source system from which the warehouse record originates (e.g., 'D365' or 'NORTHSCOPE').
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code representing the source system (0 = D365, 1 = NORTHSCOPE). Used for efficient joins and
+          filtering in downstream data models.
+
+  - name: fct_sales_cost
+    description: >
+      This fact table consolidates sales and costing information from both D365 and NorthScope systems at the Order,
+      Item, and Invoice granularity. It combines financial and operational metrics including sales amounts, costs,
+      quantities, margins, and dates to enable comprehensive profitability and performance reporting.
+    columns:
+      - name: order id
+        description: >
+          The unique identifier for the sales order in the ERP system.
+
+      - name: create date
+        description: >
+          The date when the sales order was originally created.
+
+      - name: customer invoice date
+        description: >
+          The date when the customer invoice was generated for the order.
+
+      - name: shipping date confirmed
+        description: >
+          The date the shipping details were confirmed in the system.
+
+      - name: shipping date requested
+        description: >
+          The date requested by the customer for the order to be shipped.
+
+      - name: flag_price_adjustment
+        description: >
+          A flag indicating whether a manual or automated price adjustment occurred on the order.
+
+      - name: ordered amount
+        description: >
+          The total monetary value of the order at the time it was placed.
+
+      - name: sales amount
+        description: >
+          The total revenue amount from the sale, excluding taxes or freight.
+
+      - name: sales price
+        description: >
+          The unit sale price applied to the product on the order.
+
+      - name: invoice amount
+        description: >
+          The total amount billed on the customer invoice for the order.
+
+      - name: freight rate
+        description: >
+          The cost of freight or shipping charges applied to the order.
+
+      - name: ub_price_high
+        description: >
+          The highest unit price recorded for the item within the defined price band.
+
+      - name: ub_price_avg
+        description: >
+          The average unit price recorded for the item within the defined price band.
+
+      - name: ub_price_low
+        description: >
+          The lowest unit price recorded for the item within the defined price band.
+
+      - name: ordered qty
+        description: >
+          The quantity of product units ordered by the customer.
+
+      - name: ordered volume (lbs)
+        description: >
+          The total ordered weight of products expressed in pounds (Lbs).
+
+      - name: sales qty
+        description: >
+          The total quantity of product units sold or fulfilled from the order.
+
+      - name: sales volume (lbs)
+        description: >
+          The total sold weight of products expressed in pounds (Lbs).
+
+      - name: invoice volume (lbs)
+        description: >
+          The total weight of invoiced items expressed in pounds (Lbs).
+
+      - name: inv qty
+        description: >
+          The total number of units included in the final invoice.
+
+      - name: estimated cost
+        description: >
+          The initially estimated production or procurement cost of the sold items.
+
+      - name: posted cost
+        description: >
+          The final cost posted to the general ledger for the order.
+
+      - name: adjusted cost
+        description: >
+          Represents cost adjustments made after posting, including corrections or revaluations.
+
+      - name: settled cost
+        description: >
+          The total cost of goods sold (COGS) settled for the order after all adjustments.
+
+      - name: rebates
+        description: >
+          Any rebates or discounts applied to the order.
+
+      - name: currency
+        description: >
+          The currency code (e.g., USD, CAD) in which the transaction was recorded.
+
+      - name: returned invoice
+        description: >
+          Indicates if the invoice was returned or reversed (e.g., due to customer return or correction).
+
+      - name: date financial
+        description: >
+          The financial posting date associated with the transaction.
+
+      - name: financial division id
+        description: >
+          The identifier of the financial division or entity associated with the transaction.
+
+      - name: last data refresh
+        description: >
+          The timestamp when this record was last updated or refreshed in the warehouse.
+
+      - name: exchange rate (usd-cad)
+        description: >
+          The exchange rate applied to convert between USD and CAD for financial reporting.
+
+      - name: sourcesystemcode
+        description: >
+          A numeric code identifying the source system (0 = D365, 1 = NORTHSCOPE). Used for filtering and joins.
+
+      - name: delivery terms
+        description: >
+          Specifies the delivery or shipping terms associated with the order (e.g., FOB, CIF).
+
+      - name: customer po
+        description: >
+          The purchase order number provided by the customer for reference.
+
+      - name: price uom
+        description: >
+          The unit of measure used for pricing (e.g., LB, KG, CASE).
+
+      - name: weight uom
+        description: >
+          The unit of measure used for weight (e.g., LB, KG).
+
+      - name: gross margin
+        description: >
+          The calculated gross margin for the order, derived as Sales Amount + Posted Cost + Adjusted Cost + Rebates for
+          D365 records.
+
+      - name: date category
+        description: >
+          A categorical time dimension used for grouping transactions (e.g., Current Year, Previous Year, Previous
+          Month, Previous Week).
+
+      - name: sk_company_global
+        description: >
+          Surrogate key referencing the company associated with the order.
+
+      - name: sk_order_status_id_global
+        description: >
+          Surrogate key referencing the order status dimension.
+
+      - name: sk_order_type_id_global
+        description: >
+          Surrogate key referencing the order type dimension.
+
+      - name: sk_warehouse_global
+        description: >
+          Surrogate key referencing the warehouse dimension.
+
+      - name: sk_site_global
+        description: >
+          Surrogate key referencing the site dimension.
+
+      - name: sk_salesperson_global
+        description: >
+          Surrogate key referencing the salesperson dimension.
+
+      - name: sk_uom_global
+        description: >
+          Surrogate key referencing the unit of measure (UOM) dimension.
+
+      - name: sk_mode_global
+        description: >
+          Surrogate key referencing the mode or transportation method dimension.
+
+      - name: sk_item_global
+        description: >
+          Surrogate key referencing the item dimension.
+
+      - name: sk_invoice_id_global
+        description: >
+          Surrogate key referencing the invoice ID dimension.
+
+      - name: sk_customer_id_global
+        description: >
+          Surrogate key referencing the customer dimension.
+
+      - name: sk_invoice_account_global
+        description: >
+          Surrogate key referencing the invoice account dimension.
+
+      - name: pk_global_sales
+        description: >
+          Primary key for the fact table
+        tests:
+          - not_null
+          - unique
+
+      - name: delivery date
+        description: >
+          The numeric date (YYYYMMDD) representing the delivery date for the order. Defaults to the Create Date if
+          missing.
+
+      - name: ship date
+        description: >
+          The numeric date (YYYYMMDD) representing the requested or actual ship date for the order.

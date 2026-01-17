@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: inspec_blks
+    description: "Inspec data for Blacks Harbour"
+    database: inspec
+    schema: tns_blks_prod_dbo
+    tables:
+      - name: qcbhconditionfactor
+        description: "BH condition factor form data. Form is located
+        at http://inspec-us-blks-live.cai.cookeaqua.com/qc/form/BHConditionFactor"
+  - name: inspec_fbd
+    description: "Inspec data for Fundy Bay Drive"
+    database: inspec
+    schema: tns_fbd_prod_dbo
+    tables:
+      - name: qcbhconditionfactor
+        description: "BH condition factor form data. Form is located
+        at http://inspec-us-fbd-live.cai.cookeaqua.com/qc/form/BHConditionFactor"
+      - name: qcbhreceivinggillinspection
+        description: ""
+      - name: QcFBDLineTemperatures
+        description: "FBD line temperatures form data. Form is located
+        at http://inspec-us-fbd-live.cai.cookeaqua.com/qc/form/FBDLineTemperatures"
+      - name: qcfbdtemperaturelogginginformation
+        description: "FBD temperature logging form data. Form is located
+        at http://inspec-us-fbd-live.cai.cookeaqua.com/qc/form/FBDTemperatureLoggingInformation"
+      - name: qcbhpersonalhygienegmps
+        description: "FBD personal hygiene gmps form data. Form is located at
+        http://inspec-us-fbd-live.cai.cookeaqua.com/qc/form/BHPersonalHygieneGMPs "
+      - name: qcfbdemployeegmp
+        description: "FBD  employee gmp form data. Form is located at
+        http://inspec-us-fbd-live.cai.cookeaqua.com/qc/form/BHPersonalHygieneGMPs"

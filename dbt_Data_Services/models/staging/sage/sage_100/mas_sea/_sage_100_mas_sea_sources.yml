@@ -1,0 +1,800 @@
+version: 2
+
+sources:
+  - name: mas_sea_dbo
+    description: ""
+    database: sage
+    tables:
+      - name: ap_invoicehistoryheader
+        description: ""
+        columns:
+          - name: headerseqno
+            description: ""
+          - name: invoiceno
+            description: ""
+          - name: form1099
+            description: ""
+          - name: vendorname
+            description: ""
+          - name: apdivisionno
+            description: ""
+          - name: shiptozipcode
+            description: ""
+          - name: fob
+            description: ""
+          - name: codamount
+            description: ""
+          - name: retentionamt
+            description: ""
+          - name: nontaxableamt
+            description: ""
+          - name: jobno
+            description: ""
+          - name: purchasezipcode
+            description: ""
+          - name: purchasestate
+            description: ""
+          - name: shiptostate
+            description: ""
+          - name: customerno
+            description: ""
+          - name: purchasecity
+            description: ""
+          - name: taxableamt
+            description: ""
+          - name: invoicetype
+            description: ""
+          - name: udf_import_dua
+            description: ""
+          - name: modulecode
+            description: ""
+          - name: purchasecountrycode
+            description: ""
+          - name: shiptoaddress3
+            description: ""
+          - name: sourcejournalno
+            description: ""
+          - name: netinvoiceamt
+            description: ""
+          - name: freightamt
+            description: ""
+          - name: shiptoname
+            description: ""
+          - name: shiptoaddress2
+            description: ""
+          - name: invoicediscountdate
+            description: ""
+          - name: receiptdate
+            description: ""
+          - name: bankcode
+            description: ""
+          - name: shiptocode
+            description: ""
+          - name: purchasename
+            description: ""
+          - name: receiptno
+            description: ""
+          - name: timeupdated
+            description: ""
+          - name: timecreated
+            description: ""
+          - name: invoicedate
+            description: ""
+          - name: taxamt
+            description: ""
+          - name: transactiondate
+            description: ""
+          - name: taxclass
+            description: ""
+          - name: confirmto
+            description: ""
+          - name: userkey
+            description: ""
+          - name: discountamt
+            description: ""
+          - name: usetax
+            description: ""
+          - name: vendorno
+            description: ""
+          - name: purchaseorderdate
+            description: ""
+          - name: multiplepurchaseordersapplied
+            description: ""
+          - name: purchaseordertype
+            description: ""
+          - name: shiptocountrycode
+            description: ""
+          - name: dateupdated
+            description: ""
+          - name: prepaidcheckno
+            description: ""
+          - name: shipvia
+            description: ""
+          - name: invoiceamt
+            description: ""
+          - name: purchaseaddress3
+            description: ""
+          - name: totalcostforfrghtalloc
+            description: ""
+          - name: datecreated
+            description: ""
+          - name: shiptocity
+            description: ""
+          - name: codcheckno
+            description: ""
+          - name: box1099
+            description: ""
+          - name: codno
+            description: ""
+          - name: usercreatedkey
+            description: ""
+          - name: holdpayment
+            description: ""
+          - name: ardivisionno
+            description: ""
+          - name: purchaseaddress2
+            description: ""
+          - name: purchaseorderno
+            description: ""
+          - name: prepaidpaymentdate
+            description: ""
+          - name: separatecheck
+            description: ""
+          - name: purchaseaddress1
+            description: ""
+          - name: multipleprepaymentsapplied
+            description: ""
+          - name: nonrecoverableamt
+            description: ""
+          - name: requireddate
+            description: ""
+          - name: taxschedule
+            description: ""
+          - name: userupdatedkey
+            description: ""
+          - name: purchaseaddresscode
+            description: ""
+          - name: invoiceduedate
+            description: ""
+          - name: sourcejournal
+            description: ""
+          - name: prepaidapplytoinvoiceno
+            description: ""
+          - name: nontaxablemiscchargeamt
+            description: ""
+          - name: encryptedvals
+            description: ""
+          - name: termscode
+            description: ""
+          - name: prepaidfreight
+            description: ""
+          - name: shiptoaddress1
+            description: ""
+          - name: prepaymentamt
+            description: ""
+          - name: warehousecode
+            description: ""
+          - name: taxablemiscchargeamt
+            description: ""
+          - name: comment
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: ap_checkhistoryheader
+        description: ""
+        columns:
+          - name: bankcode
+            description: ""
+          - name: checkno
+            description: ""
+          - name: checkseqno
+            description: ""
+          - name: clearedbank
+            description: ""
+          - name: checkcomment
+            description: ""
+          - name: udf_tcambio
+            description: ""
+          - name: transferdiscountamt
+            description: ""
+          - name: sourcejournal
+            description: ""
+          - name: timeupdated
+            description: ""
+          - name: apdivisionno
+            description: ""
+          - name: cleareddate
+            description: ""
+          - name: udf_entrega_a
+            description: ""
+          - name: transfervendorno
+            description: ""
+          - name: udf_ck_nomctabanca
+            description: ""
+          - name: usercreatedkey
+            description: ""
+          - name: encryptedvals
+            description: ""
+          - name: datecreated
+            description: ""
+          - name: udf_ck_comment
+            description: ""
+          - name: udf_ck_ctabanco
+            description: ""
+          - name: udf_ck_nombanco
+            description: ""
+          - name: transferinvoiceno
+            description: ""
+          - name: checktype
+            description: ""
+          - name: udf_ck_ttransac
+            description: ""
+          - name: transferform1099
+            description: ""
+          - name: transferapdivisionno
+            description: ""
+          - name: checkamt
+            description: ""
+          - name: vendorname
+            description: ""
+          - name: sourcejournalbatchno
+            description: ""
+          - name: achelectronicpayment
+            description: ""
+          - name: userupdatedkey
+            description: ""
+          - name: vendorno
+            description: ""
+          - name: wiretransferno
+            description: ""
+          - name: dateupdated
+            description: ""
+          - name: transferbox1099
+            description: ""
+          - name: checkdate
+            description: ""
+          - name: transactiondate
+            description: ""
+          - name: timecreated
+            description: ""
+          - name: transferinvoicedate
+            description: ""
+          - name: achelectronicpaymentamt
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl_bank
+        description: ""
+        columns:
+          - name: bankcode
+            description: ""
+          - name: bankaccountno
+            description: ""
+          - name: statementbalance
+            description: ""
+          - name: bankcloudlastdownloadtime
+            description: ""
+          - name: currentbankbalance
+            description: ""
+          - name: nextcheckno
+            description: ""
+          - name: initialnextpayrollcheckno
+            description: ""
+          - name: startingpayrollcheckno
+            description: ""
+          - name: bankcloudlasttransactionid
+            description: ""
+          - name: nooutstandingdeposits
+            description: ""
+          - name: outstandingadjusttotal
+            description: ""
+          - name: checkprintingstatus
+            description: ""
+          - name: outstandingdeposittotal
+            description: ""
+          - name: bankdesc
+            description: ""
+          - name: encryptedvals
+            description: ""
+          - name: bankcloudlastdownloaddate
+            description: ""
+          - name: bankcloudaccountid
+            description: ""
+          - name: numberoutstandingadjust
+            description: ""
+          - name: nextpayrollcheckno
+            description: ""
+          - name: outstandingchecktotal
+            description: ""
+          - name: numberoutstandingchecks
+            description: ""
+          - name: cashaccountkey
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: ar_invoicehistoryheader
+        description: ""
+        columns:
+          - name: headerseqno
+            description: ""
+          - name: invoiceno
+            description: ""
+          - name: userupdatedkey
+            description: ""
+          - name: datecreated
+            description: ""
+          - name: shipweight
+            description: ""
+          - name: ebmusertype
+            description: ""
+          - name: udf_lab_origen4
+            description: ""
+          - name: salespersonno4
+            description: ""
+          - name: udf_sell_1
+            description: ""
+          - name: costsubjecttocomm
+            description: ""
+          - name: shipperid
+            description: ""
+          - name: shippinginvoice
+            description: ""
+          - name: ordertype
+            description: ""
+          - name: udf_lab_entregado
+            description: ""
+          - name: udf_blanketpo
+            description: ""
+          - name: udf_lab_origen2
+            description: ""
+          - name: discountrate
+            description: ""
+          - name: timeupdated
+            description: ""
+          - name: udf_master_bl
+            description: ""
+          - name: invoicedate
+            description: ""
+          - name: weight
+            description: ""
+          - name: batchfax
+            description: ""
+          - name: salesorderno
+            description: ""
+          - name: orderdate
+            description: ""
+          - name: billtocountrycode
+            description: ""
+          - name: shiptocode
+            description: ""
+          - name: udf_lab_condiciones
+            description: ""
+          - name: udf_p_cabezal
+            description: ""
+          - name: nontaxablesalesamt
+            description: ""
+          - name: taxexemptno
+            description: ""
+          - name: paymenttype
+            description: ""
+          - name: salespersondivisionno5
+            description: ""
+          - name: jobno
+            description: ""
+          - name: emailaddress
+            description: ""
+          - name: discountamt
+            description: ""
+          - name: amountsubjecttodiscount
+            description: ""
+          - name: shiptoaddress3
+            description: ""
+          - name: udf_sell_3
+            description: ""
+          - name: freightamt
+            description: ""
+          - name: udf_lab_desc_pl
+            description: ""
+          - name: rmano
+            description: ""
+          - name: splitcommrate4
+            description: ""
+          - name: udf_num_cont
+            description: ""
+          - name: billtozipcode
+            description: ""
+          - name: billtostate
+            description: ""
+          - name: costofsalesamt
+            description: ""
+          - name: shiptoname
+            description: ""
+          - name: checknofordeposit
+            description: ""
+          - name: crmpersonid
+            description: ""
+          - name: udf_lab_deformidad
+            description: ""
+          - name: salespersonno5
+            description: ""
+          - name: shiptoaddress1
+            description: ""
+          - name: otherpaymenttyperefno
+            description: ""
+          - name: customerpono
+            description: ""
+          - name: ardivisionno
+            description: ""
+          - name: udf_lab_det_tanq_3
+            description: ""
+          - name: dateupdated
+            description: ""
+          - name: salespersondivisionno2
+            description: ""
+          - name: splitcommrate2
+            description: ""
+          - name: udf_lab_densidad
+            description: ""
+          - name: salespersondivisionno
+            description: ""
+          - name: comment
+            description: ""
+          - name: retentionamt
+            description: ""
+          - name: billtoaddress3
+            description: ""
+          - name: udf_lab_det_tanq_1
+            description: ""
+          - name: einvoiceid
+            description: ""
+          - name: commissionrate
+            description: ""
+          - name: crmuserid
+            description: ""
+          - name: shiptostate
+            description: ""
+          - name: crmopportunityid
+            description: ""
+          - name: termscode
+            description: ""
+          - name: udf_lab_limpieza
+            description: ""
+          - name: commissionamt
+            description: ""
+          - name: udf_lab_edad
+            description: ""
+          - name: salespersonno2
+            description: ""
+          - name: udf_cod_dei
+            description: ""
+          - name: udf_lab_origen
+            description: ""
+          - name: billtoaddress1
+            description: ""
+          - name: shiptocity
+            description: ""
+          - name: paymenttypecategory
+            description: ""
+          - name: billtodivisionno
+            description: ""
+          - name: salestaxamt
+            description: ""
+          - name: discountduedate
+            description: ""
+          - name: salessubjecttocomm
+            description: ""
+          - name: sourcejournal
+            description: ""
+          - name: warehousecode
+            description: ""
+          - name: udf_lab_origen3
+            description: ""
+          - name: transactiondate
+            description: ""
+          - name: udf_lab_vol_cub
+            description: ""
+          - name: repetitiveinvoicerefno
+            description: ""
+          - name: udf_lab_ciclo
+            description: ""
+          - name: multipledepositsapplied
+            description: ""
+          - name: journalnoglbatchno
+            description: ""
+          - name: udf_lab_origen1
+            description: ""
+          - name: invoiceduedate
+            description: ""
+          - name: userkey
+            description: ""
+          - name: salespersondivisionno3
+            description: ""
+          - name: numberofpackages
+            description: ""
+          - name: salespersonno
+            description: ""
+          - name: udf_lab_totlarva
+            description: ""
+          - name: udf_march_nav
+            description: ""
+          - name: timecreated
+            description: ""
+          - name: shipzone
+            description: ""
+          - name: splitcommrate5
+            description: ""
+          - name: salespersonno3
+            description: ""
+          - name: depositamt
+            description: ""
+          - name: residentialaddress
+            description: ""
+          - name: udf_t_cambio
+            description: ""
+          - name: shiptoaddress2
+            description: ""
+          - name: customerno
+            description: ""
+          - name: faxno
+            description: ""
+          - name: shipvia
+            description: ""
+          - name: confirmto
+            description: ""
+          - name: udf_n_marchamo
+            description: ""
+          - name: udf_lab_det_tanq_4
+            description: ""
+          - name: billtocustomerno
+            description: ""
+          - name: modulecode
+            description: ""
+          - name: splitcommrate3
+            description: ""
+          - name: udf_lab_tembarque
+            description: ""
+          - name: multiplesalesordersapplied
+            description: ""
+          - name: billtoname
+            description: ""
+          - name: taxablesalesamt
+            description: ""
+          - name: billtocity
+            description: ""
+          - name: taxschedule
+            description: ""
+          - name: usercreatedkey
+            description: ""
+          - name: multiplecustomerponos
+            description: ""
+          - name: udf_lab_det_tanq_2
+            description: ""
+          - name: invoicetype
+            description: ""
+          - name: shipdate
+            description: ""
+          - name: ebmsubmissiontype
+            description: ""
+          - name: ebmuseridsubmittingthisorder
+            description: ""
+          - name: fob
+            description: ""
+          - name: udf_lab_salinidad
+            description: ""
+          - name: shiptocountrycode
+            description: ""
+          - name: applytoinvoiceno
+            description: ""
+          - name: splitcommissions
+            description: ""
+          - name: shiptozipcode
+            description: ""
+          - name: salespersondivisionno4
+            description: ""
+          - name: billtoaddress2
+            description: ""
+          - name: crmcompanyid
+            description: ""
+          - name: udf_lab_temp
+            description: ""
+          - name: encryptedvals
+            description: ""
+          - name: udf_sell_2
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl_detailposting
+        description: ""
+        columns:
+          - name: accountkey
+            description: ""
+          - name: journalregisterno
+            description: ""
+          - name: postingdate
+            description: ""
+          - name: sequenceno
+            description: ""
+          - name: sourcejournal
+            description: ""
+          - name: timecreated
+            description: ""
+          - name: poissuecomment
+            description: ""
+          - name: creditamount
+            description: ""
+          - name: documentno
+            description: ""
+          - name: docsequenceno
+            description: ""
+          - name: linedate
+            description: ""
+          - name: postingcomment
+            description: ""
+          - name: linebankcode
+            description: ""
+          - name: datecreated
+            description: ""
+          - name: usercreatedkey
+            description: ""
+          - name: batchtype
+            description: ""
+          - name: debitamount
+            description: ""
+          - name: linedocrefer
+            description: ""
+          - name: documenttype
+            description: ""
+          - name: headerrec
+            description: ""
+          - name: sourcemodule
+            description: ""
+          - name: receiptno
+            description: ""
+          - name: batchno
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl_account
+        description: ""
+        columns:
+          - name: accountkey
+            description: ""
+          - name: rollupcode1
+            description: ""
+          - name: accounttype
+            description: ""
+          - name: accountcategory
+            description: ""
+          - name: accountgroup
+            description: ""
+          - name: mainaccountcode
+            description: ""
+          - name: rollupcode4
+            description: ""
+          - name: rawaccount
+            description: ""
+          - name: dateend
+            description: ""
+          - name: dateupdated
+            description: ""
+          - name: timecreated
+            description: ""
+          - name: account
+            description: ""
+          - name: userupdatedkey
+            description: ""
+          - name: rollupcode3
+            description: ""
+          - name: clearbalance
+            description: ""
+          - name: cashflowstype
+            description: ""
+          - name: companycode
+            description: ""
+          - name: status
+            description: ""
+          - name: rollupcode2
+            description: ""
+          - name: accountdesc
+            description: ""
+          - name: udf_sort
+            description: ""
+          - name: timeupdated
+            description: ""
+          - name: datecreated
+            description: ""
+          - name: datestart
+            description: ""
+          - name: usercreatedkey
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl_accountsegment
+        description: ""
+        columns:
+          - name: accountkey
+            description: ""
+          - name: segmentno
+            description: ""
+          - name: subaccountcode
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl_subaccount
+        description: ""
+        columns:
+          - name: segmentno
+            description: ""
+          - name: subaccountcode
+            description: ""
+          - name: userupdatedkey
+            description: ""
+          - name: timeupdated
+            description: ""
+          - name: usercreatedkey
+            description: ""
+          - name: datecreated
+            description: ""
+          - name: subaccountshortdesc
+            description: ""
+          - name: timecreated
+            description: ""
+          - name: printfinancialstmts
+            description: ""
+          - name: datestart
+            description: ""
+          - name: status
+            description: ""
+          - name: dateend
+            description: ""
+          - name: dateupdated
+            description: ""
+          - name: subaccountdesc
+            description: ""
+          - name: udf_descrip_seg
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: gl_periodpostinghistory
+        description: ""
+        columns:
+          - name: accountkey
+            description: ""
+          - name: fiscalperiod
+            description: ""
+          - name: fiscalyear
+            description: ""
+          - name: debitamount
+            description: ""
+          - name: creditamount
+            description: ""
+          - name: beginningbalance
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""

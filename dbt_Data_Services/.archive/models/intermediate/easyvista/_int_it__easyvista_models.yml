@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: int_easyvista__json_unpacking
+    description: all JSON data about easyvista tickets in table form

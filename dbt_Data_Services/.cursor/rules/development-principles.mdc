@@ -1,0 +1,36 @@
+---
+alwaysApply: true
+---
+
+# Development Principles
+
+## Core Philosophy
+
+### Build for Cooke's Unique Business Model
+- **Seafood industry focus**: Understand aquaculture, wild fisheries, processing, logistics, and distribution workflows
+- **Vertical integration**: Support end-to-end operations from farming/hatcheries → processing → logistics → distribution → sales
+- **Global operations**: Solutions must work across 14 countries with different regulations, currencies, and business practices
+- **Diverse operations**: Saltwater farming, feed operations, biological inventory, processing operations, logistics & shipping, quality control, corporate safety, IT infrastructure
+
+### Cooke-Specific, Not Generic Solutions
+- **Understand Cooke's processes**: Focus on actual business logic, not industry standards from other companies
+- **Multi-entity awareness**: Account for complex organizational structure from acquisitions
+- **Real requirements**: Validate against actual Cooke operations, not theoretical best practices
+- **Practical over theoretical**: What works for SaaS or retail may not work for a vertically integrated seafood company
+
+## Decision-Making Framework
+
+Before building any feature, ask:
+1. **Which Cooke business units/systems are affected?**
+2. **How does this support integration of acquired companies?**
+3. **Does this align with Cooke's vertically integrated seafood operations?**
+4. **Will this work across our global operations (14 countries)?**
+5. **Is this simple enough to maintain but robust enough for our complex environment?**
+
+### Development Mindset
+When working on this project:
+- ✅ Ask: "Does this solve Cooke's actual problem?"
+- ✅ Consider: "How does this support M&A integration?"
+- ✅ Validate: "Does this work with our multi-system landscape?"
+- ❌ Avoid: Building generic solutions or following "best practices" that don't fit Cooke's needs
+- ❌ Avoid: Assuming patterns from other industries apply to a vertically integrated seafood company

@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: kontali
+    description: ""
+    database: kontali
+    tables:
+      - name: kontali_api_response
+        description: ""
+        columns:
+          - name: curve_name
+            description: ""
+          - name: start_date
+            description: ""
+          - name: end_date
+            description: ""
+          - name: json_data
+            description: ""
+          - name: category
+            description: ""
+          - name: timeseries_type
+            description: ""
+          - name: lastupdatedate
+            description: ""
+          - name: executionid
+            description: ""
+
+      - name: kontali_curves
+        description: ""
+        columns:
+          - name: id
+            description: ""
+          - name: curve_name
+            description: ""
+          - name: curve_category
+            description: ""
+
+      - name: kontali_curve_taxonomy
+        description: ""
+        columns:
+          - name: curvename
+            description: ""
+          - name: taxonomy_detail
+            description: ""
+          - name: lastupdatedate
+            description: ""
+          - name: executionid
+            description: ""

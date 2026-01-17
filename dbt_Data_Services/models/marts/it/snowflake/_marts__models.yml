@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_snowflake__accounts
+  - name: dim_snowflake__rates
+  - name: dim_snowflake__warehouses
+  - name: dim_snowflake__most_expensive_queries
+  - name: fct_snowflake__usage__daily
+  - name: dim_snowflake__daily_expense
+  - name: fct_snowflake__warehouse_usage__daily
+  - name: fct_snowflake___daily_usage_billed_cad

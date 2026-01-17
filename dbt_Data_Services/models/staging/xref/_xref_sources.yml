@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: xref
+    description: ""
+    database: fishtalk
+    tables:
+      - name: site_components
+        description: ""
+        columns:
+          - name: site
+            description: ""
+          - name: siteid
+            description: ""
+          - name: component
+            description: ""
+          - name: growth_model
+            description: ""
+          - name: mortality_model
+            description: ""

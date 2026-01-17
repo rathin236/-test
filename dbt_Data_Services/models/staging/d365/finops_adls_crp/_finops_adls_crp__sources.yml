@@ -1,0 +1,1181 @@
+version: 2
+
+sources:
+  - name: finops_adls_crp
+    description: ""
+    database: d365
+    tables:
+      - name: unitofmeasureconversion
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: denominator
+            description: ""
+          - name: factor
+            description: ""
+          - name: fromunitofmeasure
+            description: ""
+          - name: inneroffset
+            description: ""
+          - name: numerator
+            description: ""
+          - name: outeroffset
+            description: ""
+          - name: product
+            description: ""
+          - name: rounding
+            description: ""
+          - name: tounitofmeasure
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: invent_table
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: itemid
+            description: ""
+          - name: abccontributionmargin
+            description: ""
+          - name: abcrevenue
+            description: ""
+          - name: abctieup
+            description: ""
+          - name: abcvalue
+            description: ""
+          - name: alcoholstrength_ru
+            description: ""
+          - name: approxtaxvalue_br
+            description: ""
+          - name: autoreportfinished
+            description: ""
+          - name: batchmergedatecalculationmethod
+            description: ""
+          - name: batchnumgroupid
+            description: ""
+          - name: bomlevel
+            description: ""
+          - name: bommanualreceipt
+            description: ""
+          - name: bomunitid
+            description: ""
+          - name: costgroupid
+            description: ""
+          - name: costmodel
+            description: ""
+          - name: customsexporttariffcodetable_in
+            description: ""
+          - name: customsimporttariffcodetable_in
+            description: ""
+          - name: defaultdimension
+            description: ""
+          - name: density
+            description: ""
+          - name: depth
+            description: ""
+          - name: excisetariffcodes_in
+            description: ""
+          - name: eximproductgrouptable_in
+            description: ""
+          - name: fiscallifoavoidcalc
+            description: ""
+          - name: fiscallifonormalvalue
+            description: ""
+          - name: fiscallifonormalvaluecalc
+            description: ""
+          - name: forecastdmpinclude
+            description: ""
+          - name: grossdepth
+            description: ""
+          - name: grossheight
+            description: ""
+          - name: grosswidth
+            description: ""
+          - name: height
+            description: ""
+          - name: icmsonservice_br
+            description: ""
+          - name: intrastatcommodity
+            description: ""
+          - name: intrastatexclude
+            description: ""
+          - name: inventfiscallifogroup
+            description: ""
+          - name: itembuyergroupid
+            description: ""
+          - name: itemdimcostprice
+            description: ""
+          - name: itemtype
+            description: ""
+          - name: matchingpolicy
+            description: ""
+          - name: minimumpalletquantity
+            description: ""
+          - name: namealias
+            description: ""
+          - name: netweight
+            description: ""
+          - name: ngpcodestable_fr
+            description: ""
+          - name: pdsbestbefore
+            description: ""
+          - name: pdscwwmsminimumpalletqty
+            description: ""
+          - name: pdscwwmsqtyperlayer
+            description: ""
+          - name: pdscwwmsstandardpalletqty
+            description: ""
+          - name: pdspotencyattribrecording
+            description: ""
+          - name: pdsshelfadvice
+            description: ""
+          - name: pdsshelflife
+            description: ""
+          - name: pdstargetfactor
+            description: ""
+          - name: pdsvendorcheckitem
+            description: ""
+          - name: phantom
+            description: ""
+          - name: pmfproducttype
+            description: ""
+          - name: pmfyieldpct
+            description: ""
+          - name: primaryvendorid
+            description: ""
+          - name: prodflushingprincip
+            description: ""
+          - name: prodgroupid
+            description: ""
+          - name: prodpoolid
+            description: ""
+          - name: product
+            description: ""
+          - name: purchmodel
+            description: ""
+          - name: qtyperlayer
+            description: ""
+          - name: reqgroupid
+            description: ""
+          - name: salescontributionratio
+            description: ""
+          - name: salesmodel
+            description: ""
+          - name: salespercentmarkup
+            description: ""
+          - name: salespricemodelbasic
+            description: ""
+          - name: scrapconst
+            description: ""
+          - name: scrapvar
+            description: ""
+          - name: serialnumgroupid
+            description: ""
+          - name: servicecodetable_in
+            description: ""
+          - name: skipintracompanysync_ru
+            description: ""
+          - name: sortcode
+            description: ""
+          - name: standardpalletquantity
+            description: ""
+          - name: statisticsfactor
+            description: ""
+          - name: taraweight
+            description: ""
+          - name: taxationorigin_br
+            description: ""
+          - name: taxpackagingqty
+            description: ""
+          - name: unitvolume
+            description: ""
+          - name: usealtitemid
+            description: ""
+          - name: width
+            description: ""
+          - name: wmsarrivalhandlingtime
+            description: ""
+          - name: wmspickingqtytime
+            description: ""
+          - name: dsa_in
+            description: ""
+          - name: exciserecordtype_in
+            description: ""
+          - name: hsncodetable_in
+            description: ""
+          - name: serviceaccountingcodetable_in
+            description: ""
+          - name: exempt_in
+            description: ""
+          - name: productlifecyclestateid
+            description: ""
+          - name: scaleindicator_br
+            description: ""
+          - name: nongst_in
+            description: ""
+          - name: taxratetype
+            description: ""
+          - name: intrastatchargeperkg
+            description: ""
+          - name: hmimindicator
+            description: ""
+          - name: coodualuseproduct
+            description: ""
+          - name: costbomlevel
+            description: ""
+          - name: revrecexcludefromcarveout
+            description: ""
+          - name: revrecmedianprice
+            description: ""
+          - name: revrecmedianpricemaximumtolerance
+            description: ""
+          - name: revrecmedianpriceminimumtolerance
+            description: ""
+          - name: revrecrevenuerecognitionenabled
+            description: ""
+          - name: revrecrevenuetype
+            description: ""
+          - name: revrecbundle
+            description: ""
+          - name: dataareaid
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: createddatetime
+            description: ""
+          - name: createdby
+            description: ""
+          - name: displayhazard_mx
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: bomwhsreleasepolicy
+            description: ""
+
+      - name: invent_table_module
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: allocatemarkup
+            description: ""
+          - name: enddisc
+            description: ""
+          - name: intercompanyblocked
+            description: ""
+          - name: itemid
+            description: ""
+          - name: markup
+            description: ""
+          - name: markupseccur_ru
+            description: ""
+          - name: maximumretailprice_in
+            description: ""
+          - name: moduletype
+            description: ""
+          - name: overdeliverypct
+            description: ""
+          - name: pdspricingprecision
+            description: ""
+          - name: price
+            description: ""
+          - name: pricedate
+            description: ""
+          - name: priceqty
+            description: ""
+          - name: priceseccur_ru
+            description: ""
+          - name: priceunit
+            description: ""
+          - name: taxitemgroupid
+            description: ""
+          - name: taxwithholdcalculate_th
+            description: ""
+          - name: taxwithholditemgroupheading_th
+            description: ""
+          - name: underdeliverypct
+            description: ""
+          - name: unitid
+            description: ""
+          - name: taxgstreliefcategory_my
+            description: ""
+          - name: retailinventoryavailabilitybuffer
+            description: ""
+          - name: dataareaid
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: createddatetime
+            description: ""
+          - name: createdby
+            description: ""
+          - name: basepricepurchase
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: eco_res_product
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: displayproductnumber
+            description: ""
+          - name: instancerelationtype
+            description: ""
+          - name: pdscwproduct
+            description: ""
+          - name: producttype
+            description: ""
+          - name: searchname
+            description: ""
+          - name: servicetype
+            description: ""
+          - name: engchgproductcategorydetails
+            description: ""
+          - name: engchgproductreleasepolicy
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: relationtype
+            description: ""
+          - name: engchgproductreadinesspolicy
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: eco_res_product_translation
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: description
+            description: ""
+          - name: languageid
+            description: ""
+          - name: name
+            description: ""
+          - name: product
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: unitofmeasure
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: decimalprecision
+            description: ""
+          - name: symbol
+            description: ""
+          - name: systemofunits
+            description: ""
+          - name: unitofmeasureclass
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: cust_table
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: paymtermid
+            description: ""
+          - name: accountnum
+            description: ""
+          - name: accountstatement
+            description: ""
+          - name: affiliated_ru
+            description: ""
+          - name: bankcustpaymidtable
+            description: ""
+          - name: blocked
+            description: ""
+          - name: cashdiscbasedays
+            description: ""
+          - name: companynafcode
+            description: ""
+          - name: companytype_mx
+            description: ""
+          - name: consday_jp
+            description: ""
+          - name: creditcardaddressverification
+            description: ""
+          - name: creditcardaddressverificationlevel
+            description: ""
+          - name: creditcardaddressverificationvoid
+            description: ""
+          - name: creditcardcvc
+            description: ""
+          - name: creditmax
+            description: ""
+          - name: currency
+            description: ""
+          - name: custclassificationid
+            description: ""
+          - name: custexcludecollectionfee
+            description: ""
+          - name: custexcludeinterestcharges
+            description: ""
+          - name: custfinaluser_br
+            description: ""
+          - name: custgroup
+            description: ""
+          - name: custtradingpartnercode
+            description: ""
+          - name: custwhtcontributiontype_br
+            description: ""
+          - name: defaultdimension
+            description: ""
+          - name: defaultdirectdebitmandate
+            description: ""
+          - name: dlvmode
+            description: ""
+          - name: einvoice
+            description: ""
+          - name: einvoiceattachment
+            description: ""
+          - name: entrycertificaterequired_w
+            description: ""
+          - name: exportsales_pl
+            description: ""
+          - name: expressbilloflading
+            description: ""
+          - name: federalcomments
+            description: ""
+          - name: fednonfedindicator
+            description: ""
+          - name: fiscaldoctype_pl
+            description: ""
+          - name: forecastdmpinclude
+            description: ""
+          - name: foreignresident_ru
+            description: ""
+          - name: generateincomingfiscaldocument_br
+            description: ""
+          - name: girotype
+            description: ""
+          - name: girotypeaccountstatement
+            description: ""
+          - name: girotypecollectionletter
+            description: ""
+          - name: girotypefreetextinvoice
+            description: ""
+          - name: girotypeinterestnote
+            description: ""
+          - name: girotypeprojinvoice
+            description: ""
+          - name: icmscontributor_br
+            description: ""
+          - name: identificationnumber
+            description: ""
+          - name: incltax
+            description: ""
+          - name: intercompanyallowindirectcreation
+            description: ""
+          - name: intercompanyautocreateorders
+            description: ""
+          - name: intercompanydirectdelivery
+            description: ""
+          - name: inventlocation
+            description: ""
+          - name: inventprofiletype_ru
+            description: ""
+          - name: inventsiteid
+            description: ""
+          - name: invoiceaccount
+            description: ""
+          - name: invoiceaddress
+            description: ""
+          - name: invoicepostingtype_ru
+            description: ""
+          - name: irs_1099_cindicator
+            description: ""
+          - name: isresident_lv
+            description: ""
+          - name: issueownentrycertificate_w
+            description: ""
+          - name: lineofbusinessid
+            description: ""
+          - name: lvpaymtranscodes
+            description: ""
+          - name: maincontactworker
+            description: ""
+          - name: mandatorycreditlimit
+            description: ""
+          - name: mandatoryvatdate_pl
+            description: ""
+          - name: memo
+            description: ""
+          - name: onetimecustomer
+            description: ""
+          - name: ouraccountnum
+            description: ""
+          - name: packagedepositexcempt_pl
+            description: ""
+          - name: party
+            description: ""
+          - name: paymmode
+            description: ""
+          - name: pdsfreightaccrued
+            description: ""
+          - name: rfidcasetagging
+            description: ""
+          - name: rfiditemtagging
+            description: ""
+          - name: rfidpallettagging
+            description: ""
+          - name: servicecodeondlvaddress_br
+            description: ""
+          - name: shipcarrierblindshipment
+            description: ""
+          - name: shipcarrierfuelsurcharge
+            description: ""
+          - name: suframa_br
+            description: ""
+          - name: suframapiscofins_br
+            description: ""
+          - name: taxgroup
+            description: ""
+          - name: taxwithholdcalculate_in
+            description: ""
+          - name: taxwithholdcalculate_th
+            description: ""
+          - name: unitedvatinvoice_lt
+            description: ""
+          - name: usecashdisc
+            description: ""
+          - name: usepurchrequest
+            description: ""
+          - name: vendaccount
+            description: ""
+          - name: websalesorderdisplay
+            description: ""
+          - name: einvoiceregister_it
+            description: ""
+          - name: presencetype_br
+            description: ""
+          - name: taxgstreliefgroupheading_my
+            description: ""
+          - name: custwriteoffrefrecid
+            description: ""
+          - name: isexternallymaintained
+            description: ""
+          - name: cfdienabled_mx
+            description: ""
+          - name: foreigntrade_mx
+            description: ""
+          - name: workflowstate
+            description: ""
+          - name: useoriginaldocumentasfacture_ru
+            description: ""
+          - name: collectionlettercode
+            description: ""
+          - name: blockfloorlimituseinchannel
+            description: ""
+          - name: cfdiskipiepstaxes_mx
+            description: ""
+          - name: simplifytaxintgrexportdocvalidation_cn
+            description: ""
+          - name: simplenational_br
+            description: ""
+          - name: vatnumrecid
+            description: ""
+          - name: vatnumtabletype
+            description: ""
+          - name: usualexporter_it
+            description: ""
+          - name: ispublicsector_it
+            description: ""
+          - name: simplifytaxintgrexporttaxregvalidation_cn
+            description: ""
+          - name: printdynamicqrcode_in
+            description: ""
+          - name: credmaneligiblecreditlimitdate
+            description: ""
+          - name: credmanexclude
+            description: ""
+          - name: credmanaccountstatusid
+            description: ""
+          - name: credmaneligiblecreditmax
+            description: ""
+          - name: credmanbusinessstarted
+            description: ""
+          - name: credmantitleheld
+            description: ""
+          - name: credmancustcreditmaxalt
+            description: ""
+          - name: credmancustomersince
+            description: ""
+          - name: credmanwithagency
+            description: ""
+          - name: credmanstatusreasonid
+            description: ""
+          - name: credmancreditlimitexpirydate
+            description: ""
+          - name: credmancreditlimitdate
+            description: ""
+          - name: credmanlastreviewdate
+            description: ""
+          - name: credmannextschedreviewdate
+            description: ""
+          - name: credmancustunlimitedcredit
+            description: ""
+          - name: revrecdisableintercompany
+            description: ""
+          - name: dataareaid
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: createddatetime
+            description: ""
+          - name: overridesalestax
+            description: ""
+          - name: invoicetype_w
+            description: ""
+          - name: cfditemporaryexport_mx
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: dir_party_table
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: instancerelationtype
+            description: ""
+          - name: languageid
+            description: ""
+          - name: name
+            description: ""
+          - name: namealias
+            description: ""
+          - name: partynumber
+            description: ""
+          - name: primaryaddresslocation
+            description: ""
+          - name: primarycontactemail
+            description: ""
+          - name: primarycontactfax
+            description: ""
+          - name: primarycontactphone
+            description: ""
+          - name: primarycontacttelex
+            description: ""
+          - name: primarycontacturl
+            description: ""
+          - name: primarycontactfacebook
+            description: ""
+          - name: primarycontacttwitter
+            description: ""
+          - name: primarycontactlinkedin
+            description: ""
+          - name: addressbooknames
+            description: ""
+          - name: legacyinstancerelationtype
+            description: ""
+          - name: omoperatingunitnumber
+            description: ""
+          - name: omoperatingunittype
+            description: ""
+          - name: hcmworker
+            description: ""
+          - name: dunsnumberrecid
+            description: ""
+          - name: abc
+            description: ""
+          - name: numberofemployees
+            description: ""
+          - name: orgnumber
+            description: ""
+          - name: anniversaryday
+            description: ""
+          - name: anniversarymonth
+            description: ""
+          - name: anniversaryyear
+            description: ""
+          - name: birthday
+            description: ""
+          - name: birthmonth
+            description: ""
+          - name: birthyear
+            description: ""
+          - name: communicatorsignin
+            description: ""
+          - name: gender
+            description: ""
+          - name: maritalstatus
+            description: ""
+          - name: namesequence
+            description: ""
+          - name: personalsuffix
+            description: ""
+          - name: personaltitle
+            description: ""
+          - name: combinedfedstatefiler
+            description: ""
+          - name: companytype_mx
+            description: ""
+          - name: conversiondate
+            description: ""
+          - name: coregnum
+            description: ""
+          - name: dataarea
+            description: ""
+          - name: foreignentityindicator
+            description: ""
+          - name: isconsolidationcompany
+            description: ""
+          - name: iseliminationcompany
+            description: ""
+          - name: key_
+            description: ""
+          - name: lastfilingindicator
+            description: ""
+          - name: legalnature_it
+            description: ""
+          - name: planningcompany
+            description: ""
+          - name: printinnkppinaddress_ru
+            description: ""
+          - name: resident_w
+            description: ""
+          - name: tax_1099_regnum
+            description: ""
+          - name: validate_1099_onentry
+            description: ""
+          - name: businesscommenceddate_jp
+            description: ""
+          - name: businessinitialcapital_jp
+            description: ""
+          - name: printcorrinvoicelabel_de
+            description: ""
+          - name: printcorrinvoicelabeleffdate_de
+            description: ""
+          - name: printenterpriseregister_no
+            description: ""
+          - name: localizationcountryregioncode
+            description: ""
+          - name: dashboardimagetype
+            description: ""
+          - name: companynafcode
+            description: ""
+          - name: payminstruction_1
+            description: ""
+          - name: payminstruction_2
+            description: ""
+          - name: payminstruction_3
+            description: ""
+          - name: payminstruction_4
+            description: ""
+          - name: companyinitialcapital_fr
+            description: ""
+          - name: eeenablepersonaldatareadlog
+            description: ""
+          - name: eeenablerolechangelog
+            description: ""
+          - name: profitmarginscheme_ae
+            description: ""
+          - name: vatrefund_ae
+            description: ""
+          - name: vatoncustomerbehalf_ae
+            description: ""
+          - name: taxablepersonname_ae
+            description: ""
+          - name: declarantname_ae
+            description: ""
+          - name: taxableagentname_ae
+            description: ""
+          - name: taxableagencyname_ae
+            description: ""
+          - name: organizationtype
+            description: ""
+          - name: description
+            description: ""
+          - name: isactive
+            description: ""
+          - name: teammembershipcriterion
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: createddatetime
+            description: ""
+          - name: createdby
+            description: ""
+          - name: relationtype
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: dir_person_name
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: firstname
+            description: ""
+          - name: lastnameprefix
+            description: ""
+          - name: lastname
+            description: ""
+          - name: middlename
+            description: ""
+          - name: person
+            description: ""
+          - name: validfrom
+            description: ""
+          - name: validfromtzid
+            description: ""
+          - name: validto
+            description: ""
+          - name: validtotzid
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: createdby
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+
+      - name: dir_party_location
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: islocationowner
+            description: ""
+          - name: ispostaladdress
+            description: ""
+          - name: isprimary
+            description: ""
+          - name: isprimarytaxregistration
+            description: ""
+          - name: isprivate
+            description: ""
+          - name: isrolebusiness
+            description: ""
+          - name: isroledelivery
+            description: ""
+          - name: isrolehome
+            description: ""
+          - name: isroleinvoice
+            description: ""
+          - name: location
+            description: ""
+          - name: party
+            description: ""
+          - name: postaladdressroles
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: assignmentdate
+            description: ""
+          - name: assignmentdatetzid
+            description: ""
+
+      - name: dir_party_postal_address_view
+        description: ""
+        columns:
+          - name: party
+            description: ""
+          - name: partylocation
+            description: ""
+          - name: isprimary
+            description: ""
+          - name: islocationowner
+            description: ""
+          - name: isprimarytaxregistration
+            description: ""
+          - name: tablerecid
+            description: ""
+          - name: partition
+            description: ""
+          - name: recid
+            description: ""
+          - name: locationname
+            description: ""
+          - name: address
+            description: ""
+          - name: streetnumber
+            description: ""
+          - name: street
+            description: ""
+          - name: city
+            description: ""
+          - name: zipcode
+            description: ""
+          - name: state
+            description: ""
+          - name: county
+            description: ""
+          - name: countryregionid
+            description: ""
+          - name: district
+            description: ""
+          - name: timezone
+            description: ""
+          - name: longitude
+            description: ""
+          - name: latitude
+            description: ""
+          - name: location
+            description: ""
+          - name: validfrom
+            description: ""
+          - name: validto
+            description: ""
+          - name: isprivate
+            description: ""
+          - name: districtname
+            description: ""
+          - name: postaladdress
+            description: ""
+          - name: isocode
+            description: ""
+          - name: streetid_ru
+            description: ""
+          - name: houseid_ru
+            description: ""
+          - name: flatid_ru
+            description: ""
+          - name: privateforparty
+            description: ""
+          - name: xrecid_logisticspostaladdress
+            description: ""
+          - name: xrecversion_logisticspostaladdress
+            description: ""
+          - name: cityrecid
+            description: ""
+          - name: partition2
+            description: ""
+
+      - name: hcmworker
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: person
+            description: ""
+          - name: personnelnumber
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: createddatetime
+            description: ""
+          - name: createdby
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+      - name: invent_item_group_item
+        description: ""
+        columns:
+          - name: recid
+            description: ""
+          - name: _sys_row_id
+            description: ""
+          - name: lsn
+            description: ""
+          - name: last_processed_change_date_time
+            description: ""
+          - name: data_lake_modified_date_time
+            description: ""
+          - name: itemdataareaid
+            description: ""
+          - name: itemgroupdataareaid
+            description: ""
+          - name: itemgroupid
+            description: ""
+          - name: itemid
+            description: ""
+          - name: partition
+            description: ""
+          - name: recversion
+            description: ""
+          - name: modifieddatetime
+            description: ""
+          - name: modifiedby
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""

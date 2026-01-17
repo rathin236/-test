@@ -1,0 +1,60 @@
+version: 2
+
+sources:
+  - name: aquacom
+    description: ""
+    database: staging_prod
+    tables:
+      - name: inspections_raw
+        description: ""
+        columns:
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""
+
+      - name: work_orders_raw
+        description: ""
+        columns:
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""
+
+      - name: localities_raw
+        description: ""
+        columns:
+          - name: json_data
+            description: ""
+          - name: transactionid
+            description: ""
+          - name: create_date
+            description: ""
+          - name: modified_date
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_batch
+            description: ""
+          - name: _fivetran_index
+            description: ""

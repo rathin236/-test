@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_fivetran__connectors_joined
+    description: Collects connector information, types, creation date from different tables
+
+  - name: dim_fivetran__latest_syncs
+    description: It captures the latest sync information, number of rows added along with the basic connector info
+
+  - name: dim_fivetran__destination
+    description: it houses the destination info, country, and region
+
+  - name: dim_fivetran__usage_cost
+    description: includes the monthly usage cost by company
+
+  - name: dim_fivetran__no_mar
+    description: includes all the connectors without any mar
+
+  - name: dim_fivetran__monthly_summary
+    description: includes monthly summary of all the syncs per connector

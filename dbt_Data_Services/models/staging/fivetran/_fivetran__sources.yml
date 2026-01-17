@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: fivetran
+    description: 'Internal fivetran log data'
+    database: fivetran
+    schema: fivetran_log
+    tables:
+      - name: account
+      - name: connector
+      - name: connector_type
+      - name: destination
+      - name: fivetran_audit
+      - name: incremental_mar
+      - name: log
+      - name: resource membership
+      - name: role
+      - name: role_permission
+      - name: team
+      - name: team_membership
+      - name: usage_cost
+      - name: user
+      - name: company_name
+      - name: company_connector
+      - name: application_name

@@ -1,0 +1,67 @@
+name: sqlfluff-ci-1
+
+parameters:
+  - name: jobName
+    default: 'SQLFluffCI'
+  - name: jobDisplay
+    default: 'Lint .sql files with SQLFluff'
+
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+  - job: ${{ parameters.jobName }}
+    timeoutInMinutes: 10
+    displayName: ${{ parameters.jobDisplay }}
+
+    workspace:
+      clean: outputs
+
+    steps:
+      # Checkout repo
+      - checkout: self
+        fetchDepth: 0
+        clean: true
+
+      # List Pipeline directory and Build Source Version
+      - script: |
+          ls -R $(System.DefaultWorkingDirectory)
+        displayName: List directory contents
+
+      - script: |
+          echo "Build.SourceVersion: $(Build.SourceVersion)"
+        displayName: Print Build.SourceVersion
+
+      # Install SQLFluff
+      - script: |
+          pip install sqlfluff
+        displayName: Install SQLFluff
+
+      # Test SQLFluff Installation and list all .sql files in repo
+      - script: |
+          sqlfluff --version
+          echo "All changes in this commit:"
+          git diff --no-commit-id --name-only -r origin/main  | grep '\.sql$' ||
+          echo "No SQL files changed."
+        displayName: Test SQLFluff Install, List all .sql files
+
+      # Lint SQL
+      - script: |
+          changed=( $(git diff --no-commit-id --name-only -r origin/main  | grep '\.sql$') )
+          if [[ "${#changed[@]}" -gt 0 ]]; then
+            failed=false
+            for filename in "${changed[@]}"; do
+              if [[ -f "$filename" ]]; then
+                echo "linting $filename"
+                sqlfluff lint "$filename" --dialect snowflake || failed=true
+              else
+                echo "File not found: $filename"
+              fi
+            done
+            if [[ $failed == true ]]; then
+              exit 1
+            fi
+          fi
+        displayName: Lint .sql files

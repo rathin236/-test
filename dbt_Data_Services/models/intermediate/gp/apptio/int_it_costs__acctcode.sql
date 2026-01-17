@@ -1,0 +1,34 @@
+{{config(materialized='table') }}
+
+
+{% set schema_list = dbt_utils.get_column_values(table=ref("int_it_costs__valid_schemas"), column='NAME') %}
+
+{% for schema in schema_list %}
+
+    SELECT DISTINCT 
+        
+        '{{ schema }}' AS COMPANY
+        ,(CASE WHEN TRIM(ACM.ACTIVE)=0 THEN 'INACTIVE' WHEN TRIM(ACM.ACTIVE)=1 THEN 'ACTIVE' ELSE 'UNDEFINED' END) AS STATUS
+        , TRIM(AIM.ACTINDX) AS ACTINDX
+        , TRIM(AIM.ACTNUMBR_1) AS NATURAL
+        , TRIM(SEG1.DSCRIPTN) AS NATURAL_DESC
+        , TRIM(AIM.ACTNUMBR_2) AS COSTCENTER
+        , TRIM(SEG2.DSCRIPTN) AS COSTCENTER_DESC
+        , TRIM(AIM.ACTNUMBR_3) AS DEPARTMENT
+        , TRIM(SEG3.DSCRIPTN) AS DEPARTMENT_DESC
+        , TRIM(AIM.ACTNUMST) AS ACTNUMST
+        , TRIM(ACTDESCR) AS ACTNUMST_DESC
+        
+        FROM GP.{{ schema }}.GL00105 AIM
+        LEFT JOIN GP.{{ schema }}.GL00100 ACM ON TRIM(ACM.ACTINDX)=TRIM(AIM.ACTINDX) AND ACM._FIVETRAN_DELETED='FALSE'
+        LEFT JOIN GP.{{ schema }}.GL40200 SEG1 ON trim(SEG1.SGMNTID)=TRIM(AIM.ACTNUMBR_1) AND SEG1.SGMTNUMB='1' AND SEG1._FIVETRAN_DELETED='FALSE'
+        LEFT JOIN GP.{{ schema }}.GL40200 SEG2 ON trim(SEG2.SGMNTID)=TRIM(AIM.ACTNUMBR_2) AND SEG2.SGMTNUMB='2' AND SEG2._FIVETRAN_DELETED='FALSE'
+        LEFT JOIN GP.{{ schema }}.GL40200 SEG3 ON trim(SEG3.SGMNTID)=TRIM(AIM.ACTNUMBR_3) AND SEG3.SGMTNUMB='3' AND SEG3._FIVETRAN_DELETED='FALSE'
+
+        WHERE AIM._FIVETRAN_DELETED='FALSE'
+
+    {% if not loop.last %}
+        UNION ALL
+    {% endif %}
+
+{% endfor %}

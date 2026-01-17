@@ -1,0 +1,77 @@
+---
+alwaysApply: true
+---
+
+# Cooke Inc. Business Context & Development Guidelines
+
+## Company Background
+Cooke Inc. is a **global, vertically integrated seafood company** - the largest privately held seafood company in the world:
+- Founded 1985, headquartered in Saint John, New Brunswick, Canada
+- Operates in **14 countries** with ~13,000 employees
+- **Vertically integrated**: Aquaculture and wild fishery operations
+- **Heavy focus on M&A**: ~100 acquisitions including major ones like Icicle Seafoods (2016), Omega Protein (2017), Tassal (2022)
+
+## This Project's Purpose
+This dbt_Data_Services repository builds the **best analytics platform for Cooke** - transforming raw Snowflake data into curated datasets for reporting, analytics, reverse ETL, and data science applications across all business units.
+
+## Critical Development Principles
+
+### 1. Build for Cooke's Unique Business Model
+- **Seafood industry specific**: Understand aquaculture, wild fisheries, processing, logistics, and distribution workflows
+- **Vertical integration**: Support end-to-end operations from farming/hatcheries → processing → logistics → distribution → sales
+- **Global operations**: Solutions must work across 14 countries with different regulations, currencies, and business practices
+- **Diverse operations**: Saltwater farming, feed operations, biological inventory, processing operations, logistics & shipping, quality control, corporate safety, IT infrastructure
+
+### 2. M&A Integration is Paramount
+- **Multiple systems integration**: The company operates many acquired systems that must be integrated:
+  - D365 (Microsoft Dynamics)
+  - GP (Great Plains)
+  - SAP (European operations - Cooke Europe, Morubel, Slade Gorton)
+  - IFS (various subsidiaries)
+  - Northscope
+  - Navision
+  - And many others from acquisitions
+- **Data harmonization**: Build models that unify data from diverse sources into consistent formats
+- **Legacy system support**: Maintain support for acquired company systems while building unified analytics
+- **Integration-first mindset**: Every solution should consider how it supports integration of new acquisitions
+
+### 3. Business Domain Priorities
+This platform serves multiple critical domains - understand and prioritize Cooke's needs:
+- **Global Sales**: Multi-system sales data (D365, Northscope, CRM, etc.)
+- **Global Inventory**: Standardized inventory tracking across systems
+- **Finance**: AP/AR, vendor spend, financial reporting, donations across all entities
+- **Global Procurement**: Requisition management, purchasing workflows across systems
+- **Processing**: Production operations, yield reporting, process analytics (Boomi, Fresh Yield)
+- **Logistics & EDI**: Shipping, transportation, electronic data interchange (EDI 856)
+- **Saltwater Operations**: Farming, biological inventory, feed operations, aquaculture
+- **IT Operations**: Snowflake usage, Power BI analytics, system monitoring, infrastructure metrics
+- **Corporate Performance Management (CPM)**: Fishtalk, OneStream, SAP integration
+- **Quality & Safety**: QC scanners, quality assurance, corporate safety tracking
+- **Ancillary Services**: Exchange rates, supporting business functions, reference data
+- **Subsidiaries & Acquisitions**: Bioriginal, IFS systems, Navision, Urner Berry operations
+
+### 4. Never Build Generic or "Best for Another Company" Solutions
+- **Cooke-specific business logic**: Understand Cooke's unique processes, not industry standards from other companies
+- **Multi-entity operations**: Solutions must account for Cooke's complex organizational structure from acquisitions
+- **Real business requirements**: Validate against actual Cooke operations, not theoretical best practices from other industries
+- **Practical over theoretical**: What works for a SaaS company or retailer may not work for a vertically integrated seafood company
+
+### 5. Simplicity with M&A Complexity in Mind
+- Keep solutions simple and maintainable
+- But account for the complexity of integrating multiple systems and entities
+- Design for extensibility when new acquisitions are integrated
+- Use consistent naming, schemas, and patterns across all integrated systems
+
+## What This Means for Development
+When working on this project:
+- Ask: "Does this solve Cooke's actual problem?" not "Is this a best practice?"
+- Consider: "How does this support M&A integration?" for every feature
+- Validate: "Does this work with our multi-system landscape (D365, GP, SAP, IFS, etc.)?"
+- Remember: We're building an analytics platform for a global seafood company with ~100 acquisitions, not a generic business intelligence tool
+
+## Key Questions to Ask Before Building
+1. Which Cooke business units/systems are affected?
+2. How does this support integration of acquired companies?
+3. Does this align with Cooke's vertically integrated seafood operations?
+4. Will this work across our global operations (14 countries)?
+5. Is this simple enough to maintain but robust enough for our complex environment?

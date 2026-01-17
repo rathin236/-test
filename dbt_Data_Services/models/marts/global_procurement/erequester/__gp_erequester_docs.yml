@@ -1,0 +1,64 @@
+models:
+  - name: dim__vendors_ereq
+    description:
+      This model serves as a detailed reference for vendor information, consolidating
+      data from the 'dim_gp' model. It provides comprehensive details about vendors,
+      including their identification, classification, and status, as well as their contact
+      and financial information. This model is essential for understanding vendor relationships
+      and managing vendor-related processes.
+    columns:
+      - name: company_id
+        description: Unique identifier for the company associated with the vendor.
+      - name: vendor_id
+        description: Unique identifier for the vendor.
+      - name: vendor_name
+        description: The name of the vendor.
+      - name: vendor_class
+        description: Classification of the vendor based on predefined categories.
+      - name: created_date
+        description: The date when the vendor record was created.
+      - name: userdef1
+        description: User-defined field for additional vendor information.
+      - name: payment_terms_id
+        description: Identifier for the payment terms associated with the vendor.
+      - name: address_1
+        description: Primary address line for the vendor.
+      - name: address_2
+        description: Secondary address line for the vendor.
+      - name: address_3
+        description: Tertiary address line for the vendor.
+      - name: city
+        description: City where the vendor is located.
+      - name: state
+        description: State where the vendor is located.
+      - name: zip_code
+        description: Postal code for the vendor's location.
+      - name: country
+        description: Country where the vendor is located.
+      - name: currency_id
+        description: Currency identifier used for transactions with the vendor.
+      - name: tax_id
+        description: Tax identification number for the vendor.
+      - name: vendor_status
+        description: Current status of the vendor, indicating if they are active or inactive.
+      - name: ten99_type
+        description: Type of 1099 form applicable to the vendor for tax purposes.
+      - name: vendor_type
+        description: Type of vendor, indicating their role or function.
+      - name: sk_vendor_global
+        description: Global unique identifier for the vendor.
+        tests:
+          - not_null
+          - unique
+      - name: vendor_type_sort
+        description: Numeric value used for sorting vendors by type.
+      - name: sk_company_id
+        description:
+          Unique identifier for the company associated with the vendor, used
+          for sorting.
+      - name: vend_terms
+        description: Numeric representation of the vendor's payment terms.
+      - name: tns_flag
+        description: Flag indicating special terms and conditions applicable to the vendor.
+      - name: risk_level_flag
+        description: Indicator of the vendor's risk level.

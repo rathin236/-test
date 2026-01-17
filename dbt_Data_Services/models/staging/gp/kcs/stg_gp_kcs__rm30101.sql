@@ -1,0 +1,87 @@
+with source as (
+
+    select * from {{ source('kcs_dbo', 'rm30101') }}
+
+),
+
+renamed as (
+
+    select
+        lstusred,
+        taxschid,
+        frtamnt,
+        slstercd,
+        ppsamded,
+        adrscode,
+        curtrxam,
+        pstusrid,
+        disavamt,
+        bktslsam,
+        duedate,
+        ortrxamt,
+        eftflag,
+        lstedtdt,
+        tax_date,
+        cprcstnm,
+        shipmthd,
+        noteindx,
+        bktfrtam,
+        wrofamnt,
+        postdate,
+        docdate,
+        bchsourc,
+        miscamnt,
+        delete1,
+        taxamnt,
+        ectrx,
+        distknam,
+        aplywith,
+        dex_row_id,
+        cspornbr,
+        custnmbr,
+        trxdscrn,
+        slsamnt,
+        curncyid,
+        voiddate,
+        bachnumb,
+        comdlram,
+        cashamnt,
+        rmdtypal,
+        backouttradedisc,
+        trxsorce,
+        simplifd,
+        voidstts,
+        bktmscam,
+        costamnt,
+        frtschid,
+        electronic,
+        saledate,
+        cheknmbr,
+        dscdlram,
+        glpostdt,
+        dex_row_ts,
+        gstdsamt,
+        dinvpdof,
+        corrctn,
+        slprsnid,
+        trdisamt,
+        slschdid,
+        factoring,
+        mscschid,
+        directdebit,
+        pymtrmid,
+        docnumbr,
+        discrtnd,
+        discdate,
+        cshrctyp,
+        dscpctam,
+        balfwdnm,
+        _fivetran_deleted,
+        _fivetran_synced
+
+    from source
+
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

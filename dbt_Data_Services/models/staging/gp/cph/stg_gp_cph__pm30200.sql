@@ -1,0 +1,101 @@
+with
+
+source as (
+
+    select {{ convert_columns('cph_dbo', 'pm30200') }}
+    from {{ source('cph_dbo', 'pm30200') }}
+
+),
+
+renamed as (
+
+    select
+        doctype,
+        vchrnmbr,
+        docdate,
+        un1099am,
+        cbvat,
+        gstdsamt,
+        noteindx,
+        pstgdate,
+        curncyid,
+        ptdusrid,
+        pgramsbj,
+        voided,
+        taxamnt,
+        pyenttyp,
+        backouttradedisc,
+        pymtrmid,
+        workflow_status,
+        taxinvreqd,
+        aplywith,
+        duedate,
+        prchdate,
+        ten99amnt,
+        hold,
+        vndchknm,
+        modifdt,
+        cardname,
+        distknam,
+        dinvpdof,
+        discdate,
+        ppstaxrt,
+        trdisamt,
+        bktfrtam,
+        dex_row_id,
+        curtrxam,
+        mscschid,
+        ttlpymts,
+        prctdisc,
+        tax_date,
+        docnumbr,
+        shipmthd,
+        bchsourc,
+        chekbkid,
+        posteddt,
+        vadcdtro,
+        bktmscam,
+        trxdscrn,
+        dscdlram,
+        mdfusrid,
+        ten99type,
+        docamnt,
+        ectrx,
+        retnagam,
+        frtschid,
+        pchschid,
+        vendorid,
+        dex_row_ts,
+        ten99boxnumber,
+        frtamnt,
+        cntrltyp,
+        taxschid,
+        voidpdate,
+        ponumber,
+        prchamnt,
+        mscchamt,
+        discamnt,
+        disavtkn,
+        ictrx,
+        bktpuram,
+        wrofamnt,
+        lngdesc,
+        electronic,
+        corrctn,
+        simplifd,
+        docprinted,
+        ppsamded,
+        invoicereceiptdate,
+        bachnumb,
+        pordnmbr,
+        trxsorce,
+        disamtav,
+        _fivetran_deleted,
+        _fivetran_synced
+
+    from source
+
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, 'FALSE') = 'FALSE'

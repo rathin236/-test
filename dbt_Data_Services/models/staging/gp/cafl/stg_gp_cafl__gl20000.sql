@@ -1,0 +1,86 @@
+with source as (
+
+    select * from {{ source('cafl_dbo', 'gl20000') }}
+
+),
+
+renamed as (
+
+    select
+        dex_row_id,
+        original_je_seq_num,
+        original_je_year,
+        trxsorce,
+        origseqnum,
+        correcting_je,
+        user_defined_text01,
+        crdtamnt,
+        ppsgnmbr,
+        periodid,
+        orgntsrc,
+        xchgrate,
+        originje,
+        ictrx,
+        ortrxsrc,
+        dta_gl_status,
+        ratetpid,
+        orpstddt,
+        dscriptn,
+        ordocnum,
+        dta_index,
+        trxdate,
+        ormstrnm,
+        pstgnmbr,
+        qkofset,
+        ledger_id,
+        ordbtamt,
+        orcrdamt,
+        uswhpstd,
+        rctrxseq,
+        ormstrid,
+        actindx,
+        exgtblid,
+        original_je,
+        apprvldt,
+        rtclcmtd,
+        dex_row_ts,
+        correspondingunit,
+        orcomid,
+        openyear,
+        seqnumbr,
+        denxrate,
+        curncyid,
+        docdate,
+        refrence,
+        correcting_je_year,
+        sourcdoc,
+        noteindx,
+        orctrnum,
+        mctrxstt,
+        back_out_je_year,
+        lstdtedt,
+        series,
+        voided,
+        lastuser,
+        debitamt,
+        adjustment_transaction,
+        user_defined_text02,
+        time1,
+        orgnatyp,
+        back_out_je,
+        polldtrx,
+        ortrxtyp,
+        aprvluserid,
+        exchdate,
+        origdtaseries,
+        currnidx,
+        jrnentry,
+        _fivetran_deleted,
+        _fivetran_synced
+
+    from source
+
+)
+
+select * from renamed
+where coalesce(_fivetran_deleted, false) = false

@@ -1,0 +1,776 @@
+version: 2
+
+sources:
+  - name: fast_bi_dwh_dbo
+    description: ""
+    database: morubel
+    tables:
+      - name: factgeneralledger
+        description: ""
+        columns:
+          - name: factgeneralledgerid
+            description: ""
+          - name: dimcontrollingareaid
+            description: ""
+          - name: dimprofitcenterid
+            description: ""
+          - name: amountloccurrency
+            description: ""
+          - name: creditamountdoccurrency
+            description: ""
+          - name: dimpostingkeyid
+            description: ""
+          - name: amountdoccurrency
+            description: ""
+          - name: appliedexchangeratetransactioncurrency
+            description: ""
+          - name: dimcompanyid
+            description: ""
+          - name: appliedexchangeratelocalcurrency
+            description: ""
+          - name: ledger
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: fiscalyear
+            description: ""
+          - name: creditamountloccurrency
+            description: ""
+          - name: dimpostingdateid
+            description: ""
+          - name: dimlocalcurrencyid
+            description: ""
+          - name: referencename
+            description: ""
+          - name: debitamountgroupcurrency
+            description: ""
+          - name: dimglaccountid
+            description: ""
+          - name: debitcreditindicator
+            description: ""
+          - name: postingperiod
+            description: ""
+          - name: amountgroupcurrency
+            description: ""
+          - name: dimcostelementid
+            description: ""
+          - name: referencenumber
+            description: ""
+          - name: accountdocumentnumber
+            description: ""
+          - name: dimtransactioncurrencyid
+            description: ""
+          - name: dimgroupcurrencyid
+            description: ""
+          - name: debitamountdoccurrency
+            description: ""
+          - name: accountdocumentlinenumber
+            description: ""
+          - name: debitamountloccurrency
+            description: ""
+          - name: dimaccountsdocumenttypeid
+            description: ""
+          - name: creditamountgroupcurrency
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: appliedexchangerategroupcurrency
+            description: ""
+          - name: dimcostcenterid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: dimcompany
+        description: ""
+        columns:
+          - name: dimcompanyid
+            description: ""
+          - name: companycountryname
+            description: ""
+          - name: companyname
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: bk_companyid
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: currency
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: factaccountspayable
+        description: ""
+        columns:
+          - name: factaccountspayableid
+            description: ""
+          - name: dimpostingkeyid
+            description: ""
+          - name: dimtransactioncurrencyid
+            description: ""
+          - name: appliedexchangeratetransactioncurrency
+            description: ""
+          - name: dimlocalcurrencyid
+            description: ""
+          - name: diminvoicedateid
+            description: ""
+          - name: netpaymenttermsperiod
+            description: ""
+          - name: dimaccountsdocumenttypeid
+            description: ""
+          - name: dimcreditcontrolareaid
+            description: ""
+          - name: dimgroupcurrencyid
+            description: ""
+          - name: appliedexchangeratelocalcurrency
+            description: ""
+          - name: amountlocalcurrency
+            description: ""
+          - name: dimcompanyid
+            description: ""
+          - name: invoicenumber
+            description: ""
+          - name: dimglaccountid
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: dimoutstandingperiodid
+            description: ""
+          - name: accountdocumentlinenumber
+            description: ""
+          - name: fiscalyear
+            description: ""
+          - name: accountdocumentnumber
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: appliedexchangerategroupcurrency
+            description: ""
+          - name: clearingdocumentnumber
+            description: ""
+          - name: dimpaymentdateid
+            description: ""
+          - name: amountgroupcurrency
+            description: ""
+          - name: assignmenttype
+            description: ""
+          - name: dimvendorid
+            description: ""
+          - name: dimpaymenttermsid
+            description: ""
+          - name: dimoutstandingstatusid
+            description: ""
+          - name: amountdoccurrency
+            description: ""
+          - name: dimduedateid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: factaccountsreceivable
+        description: ""
+        columns:
+          - name: factaccountsreceivableid
+            description: ""
+          - name: dimcreditcontrolareaid
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: appliedexchangeratelocalcurrency
+            description: ""
+          - name: dimsalesgroupid
+            description: ""
+          - name: dimoutstandingperiodid
+            description: ""
+          - name: dimduedateid
+            description: ""
+          - name: fiscalyear
+            description: ""
+          - name: amountgroupcurrency
+            description: ""
+          - name: invoicenumber
+            description: ""
+          - name: appliedexchangerategroupcurrency
+            description: ""
+          - name: amountdoccurrency
+            description: ""
+          - name: dimtransactioncurrencyid
+            description: ""
+          - name: dimgroupcurrencyid
+            description: ""
+          - name: dimpaymentdateid
+            description: ""
+          - name: dimcustomerid
+            description: ""
+          - name: assignmenttype
+            description: ""
+          - name: accountdocumentnumber
+            description: ""
+          - name: dimpaymenttermsid
+            description: ""
+          - name: dimglaccountid
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: accountdocumentlinenumber
+            description: ""
+          - name: netpaymenttermsperiod
+            description: ""
+          - name: dimpostingkeyid
+            description: ""
+          - name: dimaccountsdocumenttypeid
+            description: ""
+          - name: dimlocalcurrencyid
+            description: ""
+          - name: dimcompanyid
+            description: ""
+          - name: appliedexchangeratetransactioncurrency
+            description: ""
+          - name: diminvoicedateid
+            description: ""
+          - name: dimoutstandingstatusid
+            description: ""
+          - name: clearingdocumentnumber
+            description: ""
+          - name: amountlocalcurrency
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: dimdate
+        description: ""
+        columns:
+          - name: dimdateid
+            description: ""
+          - name: iscurrentmonth
+            description: ""
+          - name: weekname
+            description: ""
+          - name: yearid
+            description: ""
+          - name: monthofyearname
+            description: ""
+          - name: yearname
+            description: ""
+          - name: iscurrentweek
+            description: ""
+          - name: daynameshort
+            description: ""
+          - name: weekisocontinuednameshort
+            description: ""
+          - name: weekisoofyearname
+            description: ""
+          - name: quartername
+            description: ""
+          - name: datetime
+            description: ""
+          - name: quarterofyearname
+            description: ""
+          - name: dayofweekname
+            description: ""
+          - name: weekisoofyearid
+            description: ""
+          - name: dayofweekid
+            description: ""
+          - name: weekisocontinuednamelong
+            description: ""
+          - name: quarterid
+            description: ""
+          - name: datecalculation
+            description: ""
+          - name: periodofyearid
+            description: ""
+          - name: periodofyearname
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: weekisocontinuedid
+            description: ""
+          - name: quarterofyearid
+            description: ""
+          - name: iscurrentweeknumeric
+            description: ""
+          - name: periodid
+            description: ""
+          - name: monthofyearid
+            description: ""
+          - name: daynamelong
+            description: ""
+          - name: monthid
+            description: ""
+          - name: periodname
+            description: ""
+          - name: weekid
+            description: ""
+          - name: monthname
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: dimglaccount
+        description: ""
+        columns:
+          - name: dimglaccountid
+            description: ""
+          - name: glaccountcode
+            description: ""
+          - name: bk_chartofaccountsid
+            description: ""
+          - name: balancesheetaccountindicator
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: glaccountname
+            description: ""
+          - name: bk_glaccountid
+            description: ""
+          - name: plstatementaccounttype
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: dimcostcenter
+        description: ""
+        columns:
+          - name: dimcostcenterid
+            description: ""
+          - name: profitcenter
+            description: ""
+          - name: businessarea
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: personresponsible
+            description: ""
+          - name: bk_controllingareaid
+            description: ""
+          - name: businessareaname
+            description: ""
+          - name: bk_costcenterid
+            description: ""
+          - name: costcentername
+            description: ""
+          - name: controllingareaname
+            description: ""
+          - name: profitcentername
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: companycode
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: dimcustomer
+        description: ""
+        columns:
+          - name: dimcustomerid
+            description: ""
+          - name: vatnumber
+            description: ""
+          - name: customeraccountgroupname
+            description: ""
+          - name: vendornumber
+            description: ""
+          - name: foodservicesector
+            description: ""
+          - name: franchisorbrand
+            description: ""
+          - name: customercountryname
+            description: ""
+          - name: customerindustryname
+            description: ""
+          - name: language
+            description: ""
+          - name: street
+            description: ""
+          - name: customername
+            description: ""
+          - name: createdon
+            description: ""
+          - name: customernielsenid
+            description: ""
+          - name: tradingpartner
+            description: ""
+          - name: franchisorpartner
+            description: ""
+          - name: franchisorsector
+            description: ""
+          - name: customerpostalcode
+            description: ""
+          - name: customerindicator
+            description: ""
+          - name: createdby
+            description: ""
+          - name: l2
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: l3
+            description: ""
+          - name: customergroup
+            description: ""
+          - name: transportationzone
+            description: ""
+          - name: bk_customerid
+            description: ""
+          - name: city
+            description: ""
+          - name: franchise
+            description: ""
+          - name: subgroup
+            description: ""
+          - name: datasource
+            description: ""
+          - name: customerclassificationname
+            description: ""
+          - name: taxnumber2
+            description: ""
+          - name: customerregionname
+            description: ""
+          - name: taxnumber1
+            description: ""
+          - name: accountgroup
+            description: ""
+          - name: internationallocationnumber2
+            description: ""
+          - name: authorizationgroup
+            description: ""
+          - name: internationallocationnumber1
+            description: ""
+          - name: district
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: dimvendor
+        description: ""
+        columns:
+          - name: dimvendorid
+            description: ""
+          - name: vendorcompanycodename
+            description: ""
+          - name: vendorname
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: hasmsc
+            description: ""
+          - name: bscistatus
+            description: ""
+          - name: vendorcountryname
+            description: ""
+          - name: hasglobalgap
+            description: ""
+          - name: hasorganic
+            description: ""
+          - name: bk_vendorid
+            description: ""
+          - name: hasasc
+            description: ""
+          - name: hasbap
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: dimcurrency
+        description: ""
+        columns:
+          - name: dimcurrencyid
+            description: ""
+          - name: bk_currencyid
+            description: ""
+          - name: modifiedetlrunid
+            description: ""
+          - name: createdetlrunid
+            description: ""
+          - name: currencyname
+            description: ""
+          - name: _fivetran_deleted
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+
+      - name: faglflext
+        description: ""
+        columns:
+          - name: ryear
+            description: ""
+          - name: osl03
+            description: ""
+          - name: msl15
+            description: ""
+          - name: msl07
+            description: ""
+          - name: activ
+            description: ""
+          - name: hsl11
+            description: ""
+          - name: hsl14
+            description: ""
+          - name: scntr
+            description: ""
+          - name: tsl04
+            description: ""
+          - name: msl11
+            description: ""
+          - name: hsl06
+            description: ""
+          - name: ksl13
+            description: ""
+          - name: ksl07
+            description: ""
+          - name: rldnr
+            description: ""
+          - name: objnr03
+            description: ""
+          - name: hslvt
+            description: ""
+          - name: kokrs
+            description: ""
+          - name: tsl08
+            description: ""
+          - name: rcntr
+            description: ""
+          - name: ksl03
+            description: ""
+          - name: tsl09
+            description: ""
+          - name: cost_elem
+            description: ""
+          - name: tsl05
+            description: ""
+          - name: ksl10
+            description: ""
+          - name: hsl04
+            description: ""
+          - name: tsl16
+            description: ""
+          - name: msl02
+            description: ""
+          - name: tsl11
+            description: ""
+          - name: rbusa
+            description: ""
+          - name: rmvct
+            description: ""
+          - name: osl05
+            description: ""
+          - name: tsl14
+            description: ""
+          - name: segment
+            description: ""
+          - name: objnr07
+            description: ""
+          - name: tsl10
+            description: ""
+          - name: objnr06
+            description: ""
+          - name: msl04
+            description: ""
+          - name: tsl13
+            description: ""
+          - name: ksl06
+            description: ""
+          - name: msl16
+            description: ""
+          - name: sfarea
+            description: ""
+          - name: osl14
+            description: ""
+          - name: mslvt
+            description: ""
+          - name: msl13
+            description: ""
+          - name: objnr04
+            description: ""
+          - name: msl03
+            description: ""
+          - name: rrcty
+            description: ""
+          - name: prctr
+            description: ""
+          - name: rtcur
+            description: ""
+          - name: osl04
+            description: ""
+          - name: faglflextid
+            description: ""
+          - name: ksl05
+            description: ""
+          - name: drcrk
+            description: ""
+          - name: msl10
+            description: ""
+          - name: timestamp
+            description: ""
+          - name: msl06
+            description: ""
+          - name: objnr00
+            description: ""
+          - name: kslvt
+            description: ""
+          - name: ksl14
+            description: ""
+          - name: tsl02
+            description: ""
+          - name: awtyp
+            description: ""
+          - name: hsl15
+            description: ""
+          - name: objnr05
+            description: ""
+          - name: hsl09
+            description: ""
+          - name: tsl12
+            description: ""
+          - name: objnr08
+            description: ""
+          - name: msl01
+            description: ""
+          - name: osl11
+            description: ""
+          - name: ksl11
+            description: ""
+          - name: objnr01
+            description: ""
+          - name: osl15
+            description: ""
+          - name: rfarea
+            description: ""
+          - name: ksl01
+            description: ""
+          - name: osl01
+            description: ""
+          - name: ksl12
+            description: ""
+          - name: racct
+            description: ""
+          - name: hsl10
+            description: ""
+          - name: sbusa
+            description: ""
+          - name: rassc
+            description: ""
+          - name: ksl02
+            description: ""
+          - name: tslvt
+            description: ""
+          - name: tsl03
+            description: ""
+          - name: hsl08
+            description: ""
+          - name: rclnt
+            description: ""
+          - name: osl06
+            description: ""
+          - name: hsl16
+            description: ""
+          - name: osl07
+            description: ""
+          - name: msl08
+            description: ""
+          - name: osl12
+            description: ""
+          - name: tsl01
+            description: ""
+          - name: tsl15
+            description: ""
+          - name: hsl05
+            description: ""
+          - name: tsl06
+            description: ""
+          - name: pprctr
+            description: ""
+          - name: rpmax
+            description: ""
+          - name: ksl08
+            description: ""
+          - name: hsl02
+            description: ""
+          - name: msl05
+            description: ""
+          - name: runit
+            description: ""
+          - name: ksl15
+            description: ""
+          - name: hsl01
+            description: ""
+          - name: psegment
+            description: ""
+          - name: osl09
+            description: ""
+          - name: tsl07
+            description: ""
+          - name: rbukrs
+            description: ""
+          - name: ksl04
+            description: ""
+          - name: msl12
+            description: ""
+          - name: rvers
+            description: ""
+          - name: hsl12
+            description: ""
+          - name: ksl16
+            description: ""
+          - name: osl02
+            description: ""
+          - name: hsl03
+            description: ""
+          - name: oslvt
+            description: ""
+          - name: logsys
+            description: ""
+          - name: osl13
+            description: ""
+          - name: hsl07
+            description: ""
+          - name: osl10
+            description: ""
+          - name: ksl09
+            description: ""
+          - name: osl16
+            description: ""
+          - name: msl09
+            description: ""
+          - name: hsl13
+            description: ""
+          - name: objnr02
+            description: ""
+          - name: osl08
+            description: ""
+          - name: msl14
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+          - name: _fivetran_deleted
+            description: ""

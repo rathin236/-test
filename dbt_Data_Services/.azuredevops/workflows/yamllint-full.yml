@@ -1,0 +1,40 @@
+name: YAMLlin full repo check
+
+parameters:
+  - name: jobName
+    default: 'yamllintCI'
+  - name: jobDisplay
+    default: 'Lint .yml files with yamllint'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+  - job: ${{ parameters.jobName}}
+    timeoutInMinutes: 30
+    displayName: ${{ parameters.jobDisplay }}
+
+    workspace:
+      clean: outputs
+
+    steps:
+      # Checkout repo
+      - checkout: self
+        fetchDepth: 1
+        clean: true
+
+      # Install yamllint
+      - script: |
+          pip install yamllint
+        displayName: Download yamllint
+
+      # Test yamllint installation and list all .yml files in the repo
+      - script: |
+          yamllint --version
+          git ls-files | grep '\.yml$'
+        displayName: Test yamllint Install, list all .yml files
+
+      # Lint YAML
+      - script: |
+          git ls-files | grep '\.yml$' | yamllint .
+        displayName: Lint .yml files

@@ -1,0 +1,11 @@
+doctype,document_type
+0,Reserved for balance carried forward records
+1,Sale / Invoice
+2,Reserved for scheduled payments
+3,Debit Memo
+4,Finance Charge
+5,Service / Repair
+6,Warranty
+7,Credit Memo
+8,Return
+9,Payment

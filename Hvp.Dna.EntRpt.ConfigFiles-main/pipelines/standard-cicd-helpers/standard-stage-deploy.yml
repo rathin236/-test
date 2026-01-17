@@ -1,0 +1,194 @@
+parameters:
+- name: majorVersion 
+  displayName: 'Major Version'
+  type: string
+
+- name: minorVersion
+  displayName: 'Minor Version'
+  type: string
+
+- name: patchVersion
+  displayName: 'Patch Version'
+  type: string   
+
+- name: utilityVersion
+  displayName: 'Utility package version'
+  type: string
+  default: '*'     
+
+- name: solutionName
+  displayName: 'solutionName'
+  type: string
+
+- name: deployToDev
+  displayName: 'Deploy to Development Environment'
+  type: boolean
+
+- name: deployToQa
+  displayName: 'Deploy to Q&A Environment'
+  type: boolean
+
+- name: deployToUat
+  displayName: 'Deploy To UAT Environment'
+  type: boolean
+
+- name: deployToProd
+  displayName: 'Deploy to PROD Environment'
+  type: boolean
+
+- name: deploymentPlatform
+  displayName: 'Deployment Platform'
+  type: string
+
+- name: deploymentOs
+  displayName: 'Deployment OS'
+  type: string
+  values:
+   - 'windows'
+   - 'linux'
+
+- name: groupShortName
+  displayName: 'Group Short Name'
+  type: string
+
+- name: resourceShortName
+  displayName: 'Resource Group Short Name'
+  type: string
+
+- name: platformSequence
+  displayName: 'Platform Sequence'
+  type: string
+
+- name: ignoreScanResults
+  displayName: 'Ignore Scan Results'
+  type: boolean 
+  default: true
+
+- name: createWorkItems
+  type: boolean
+  default: true
+
+- name: resourceType
+  type: string
+  values:
+   - 'databricks'
+   - 'sql'
+   - 'adf'
+   - 'configs'
+
+- name: variables
+  displayName: 'Variables'
+  type: object
+  default: []
+
+
+stages:
+
+  # Build Stage
+  - template: ${{ format('standard-job-build-{0}.yml', parameters.resourceType) }}
+    parameters:
+      deploymentPlatform: ${{ parameters.deploymentPlatform }}
+      deploymentOs: ${{ parameters.deploymentOs }}
+      variables: ${{ parameters.variables }}
+
+  # Deploy to Dev
+#  - template: ${{ format('standard-stage-deploy-{0}.yml', parameters.resourceType) }}
+#    parameters:
+#      dependsOn: 'Build'
+#      condition: and(or(${{ parameters.deployToDev }}, ${{ parameters.deployToQa }}), succeeded('Build'))
+#      environment: 'd'
+#      resourceShortName: ${{ parameters.resourceShortName }}
+#      groupShortName:  ${{ parameters.groupShortName }}
+#      platformSequence: ${{ parameters.platformSequence }}
+#      deploymentPlatform: ${{ parameters.deploymentPlatform }}
+#      deploymentOs: ${{ parameters.deploymentOs }}
+#      variables: ${{ parameters.variables }}
+      
+  # Deploy to QA
+  - template: ${{ format('standard-stage-deploy-{0}.yml', parameters.resourceType) }}
+    parameters:
+      dependsOn: ${{ replace(replace(replace(replace(parameters.resourceType, 'sql', 'build'), 'adf', 'Deploy_Dev'), 'databricks', 'Deploy_Dev'), 'configs', 'build') }}
+      condition: and(${{ parameters.deployToQa }}, succeeded())
+      environment: 'q'
+      resourceShortName: ${{ parameters.resourceShortName }}
+      groupShortName:  ${{ parameters.groupShortName }}
+      platformSequence: ${{ parameters.platformSequence }}
+      deploymentPlatform: ${{ parameters.deploymentPlatform }}
+      deploymentOs: ${{ parameters.deploymentOs }}
+      variables: ${{ parameters.variables }}
+      stagesAfterDeploy:
+        - template: /git-helpers/stages-qa-version.yml@templates         # Tag QA
+          parameters:
+            groupShortName: ${{ parameters.groupShortName }}
+            deploymentPlatform: ${{ parameters.deploymentPlatform }}
+            majorVersion: ${{ parameters.majorVersion }}
+            minorVersion: ${{ parameters.minorVersion }}
+            patchVersion: ${{ parameters.patchVersion }}
+            ignoreScanResults: ${{ parameters.ignoreScanResults }}
+            utilityVersion: ${{ parameters.utilityVersion }}
+
+  # Deploy to UAT
+  - template: ${{ format('standard-stage-deploy-{0}.yml', parameters.resourceType) }}
+    parameters:
+      dependsOn: 'Build'
+      environment: 't'
+      resourceShortName: ${{ parameters.resourceShortName }}
+      groupShortName:  ${{ parameters.groupShortName }}
+      platformSequence: ${{ parameters.platformSequence }}
+      deploymentPlatform: ${{ parameters.deploymentPlatform }}
+      deploymentOs: ${{ parameters.deploymentOs }}
+      variables: ${{ parameters.variables }}
+      condition: and(${{ parameters.deployToUat }}, succeeded('Build'))
+      stagesBeforeDeploy:
+        - template: /standard-cicd-helpers/standard-job-code-scan-checkmarx.yml@templates
+          parameters:
+            scanStage: 'non-prod'
+            dependsOn: 'Build'
+            condition: and(succeeded('Build'), ${{ parameters.deployToQa }})
+            solutionName: ${{ parameters.solutionName }}
+
+  # Deploy to Prod
+  - template: ${{ format('standard-stage-deploy-{0}.yml', parameters.resourceType) }}
+    parameters:
+      dependsOn: Tag_For_Release
+      environment: 'p'
+      resourceShortName: ${{ parameters.resourceShortName }}
+      groupShortName:  ${{ parameters.groupShortName }}
+      platformSequence: ${{ parameters.platformSequence }}
+      deploymentPlatform: ${{ parameters.deploymentPlatform }}
+      deploymentOs: ${{ parameters.deploymentOs }}
+      variables: ${{ parameters.variables }}
+      stagesBeforeDeploy:
+        - template: /standard-cicd-helpers/standard-job-code-scan-checkmarx.yml@templates
+          parameters:
+            scanStage: 'release'
+            dependsOn: 
+              - 'Build'
+            condition: and(succeeded('Build'), ${{ parameters.deployToProd }})
+            solutionName: '$(Build.Repository.Name)'
+            
+        - template: /git-helpers/stages-release-version.yml@templates     # Tag Release
+          parameters:
+            groupShortName: ${{ parameters.groupShortName }}
+            deploymentPlatform: ${{ parameters.deploymentPlatform }}
+            deployToProd: ${{ parameters.deployToProd }}
+            majorVersion: ${{ parameters.majorVersion }}
+            minorVersion: ${{ parameters.minorVersion }}
+            patchVersion: ${{ parameters.patchVersion }}
+            ignoreScanResults: ${{ parameters.ignoreScanResults }}
+            utilityVersion: ${{ parameters.utilityVersion }}
+      stagesAfterDeploy:
+        - template: /git-helpers/stages-main-version.yml@templates
+          parameters:
+            deploymentPlatform: ${{ parameters.deploymentPlatform }}
+            majorVersion: ${{ parameters.majorVersion }}
+            minorVersion: ${{ parameters.minorVersion }}
+            patchVersion: ${{ parameters.patchVersion }}
+        - template: /git-helpers/stages-hotfix-version.yml@templates
+          parameters:
+            groupShortName: ${{ parameters.groupShortName }}
+            deploymentPlatform: ${{ parameters.deploymentPlatform }}
+            majorVersion: ${{ parameters.majorVersion }}
+            minorVersion: ${{ parameters.minorVersion }}
+            patchVersion: ${{ parameters.patchVersion }}
+            utilityVersion: ${{ parameters.utilityVersion }}

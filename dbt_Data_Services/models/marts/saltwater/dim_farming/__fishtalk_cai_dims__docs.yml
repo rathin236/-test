@@ -1,0 +1,225 @@
+models:
+  - name: dim_companies
+    description:
+      This model consolidates company-related data from various sources,
+      providing a comprehensive view of company attributes and relationships. It includes
+      internal and external identifiers, names, locations, and status indicators, facilitating
+      analysis of company structures and hierarchies.
+    columns:
+      - name: ft_company_sk
+        description: A surrogate key uniquely identifying each company record.
+        tests:
+          - unique
+          - not_null
+      - name: company_id
+        description: The internal identifier for the company.
+      - name: group_id
+        description: The identifier for the group to which the company belongs.
+      - name: parent_org_unit_id
+        description: The identifier for the parent organizational unit of the company.
+      - name: parent_id
+        description:
+          The identifier for the parent entity, either group or organizational
+          unit.
+      - name: org_unit_type_id
+        description: The identifier representing the type of organizational unit.
+      - name: official_company_id
+        description: The official external identifier for the company.
+      - name: company_name
+        description: The name of the company.
+      - name: location_name
+        description: The name of the location associated with the company.
+      - name: province
+        description: The province where the company is located.
+      - name: is_active
+        description: Indicates whether the company is currently active.
+  - name: dim_containers
+    description:
+      This model consolidates container data from various sources, providing
+      a unified view of container attributes and their organizational context. It combines
+      physical and planned container data to facilitate comprehensive analysis of container
+      usage and management.
+    columns:
+      - name: ft_container_sk
+        description: A surrogate key uniquely identifying each container record.
+        tests:
+          - unique
+          - not_null
+      - name: container_id
+        description: The original identifier for the container from the source system.
+      - name: container_name
+        description: The name assigned to the container, used for identification and reference.
+      - name: group_id
+        description: Identifier for the group to which the container belongs.
+      - name: org_unit_id
+        description: Identifier for the organizational unit associated with the container.
+      - name: parent_id
+        description:
+          Identifier for the parent entity of the container, determined by
+          group or stand association.
+      - name: container_type_id
+        description: Identifier representing the type of container.
+      - name: feed_method_id
+        description: Identifier for the feeding method used for the container.
+      - name: stand_id
+        description: Identifier for the stand associated with the container.
+      - name: sort_index
+        description: A numerical value used to sort containers in a specific order.
+      - name: is_active
+        description: Indicates whether the container is currently active.
+  - name: dim_enterprises
+    description:
+      This model consolidates enterprise data from various sources, providing
+      a comprehensive view of enterprise attributes, including location, hierarchy,
+      and status. It is used to analyze enterprise structures and relationships within
+      the organization.
+    columns:
+      - name: ft_enterprise_sk
+        description: A surrogate key uniquely identifying each enterprise record.
+        tests:
+          - unique
+          - not_null
+      - name: enterprise_id
+        description: The unique identifier for the enterprise.
+      - name: parent_org_unit_id
+        description: The identifier for the parent organizational unit of the enterprise.
+      - name: parent_id
+        description:
+          The identifier for the parent entity, which could be a group or organizational
+          unit.
+      - name: enterprise_name
+        description: The name of the enterprise.
+      - name: location_name
+        description: The name of the location associated with the enterprise.
+      - name: province
+        description:
+          The province where the enterprise is located, derived from the county
+          information.
+      - name: is_active
+        description: Indicates whether the enterprise is currently active.
+  - name: dim_populations
+    description:
+      This model consolidates population data from various sources, focusing
+      on fish populations and their associated containers. It filters out populations
+      involved in subtransfers and calculates additional attributes like fish group
+      and date ranges for analysis.
+    columns:
+      - name: scenario_id
+        description:
+          A static identifier for the scenario, used for consistent reference
+          across analyses.
+      - name: population_id
+        description: Unique identifier for each fish population.
+        tests:
+          - unique
+          - not_null
+      - name: container_id
+        description: Identifier for the container associated with the fish population.
+      - name: population_name
+        description: Name of the fish population.
+      - name: species_id
+        description: Identifier for the species of the fish population.
+      - name: start_time
+        description: Timestamp indicating when the population started.
+      - name: end_time
+        description: Timestamp indicating when the population ended.
+      - name: input_year
+        description: Year the population data was inputted.
+      - name: input_number
+        description: Project number associated with the population input.
+      - name: running_number
+        description: Sequential number for tracking the population.
+      - name: fish_group
+        description:
+          Concatenated string representing the fish group, combining year,
+          project, and running numbers.
+      - name: start_date
+        description: Date when the population started.
+      - name: end_date
+        description: Date when the population ended, adjusted to the next day if applicable.
+  - name: dim_insurances
+    description: This model consolidates insurance profile data with pricing details
+      to provide a comprehensive view of insurance policies, including policy numbers,
+      descriptions, and associated pricing metrics such as price per fish and price
+      per kg. It is useful for analyzing insurance coverage and pricing strategies across
+      different species and weight ranges.
+    columns:
+    - name: ft_insurance_sk
+      tests:
+         - unique
+         - not_null
+      description: A surrogate key uniquely identifying each insurance profile entry.
+    - name: site_id
+      description: The identifier for the site or organizational unit associated with
+        the insurance policy.
+    - name: policy_id
+      description: The unique identifier for the insurance policy.
+    - name: policy_date
+      description: The date when the insurance policy was issued.
+    - name: policy_number
+      description: The official number assigned to the insurance policy.
+    - name: policy_description
+      description: A detailed description of the insurance policy.
+    - name: currency_id
+      description: The identifier for the currency used in the pricing details.
+    - name: species_id
+      description: The identifier for the species associated with the insurance policy.
+    - name: from_weight
+      description: The starting weight range for which the pricing applies.
+    - name: to_weight
+      description: The ending weight range for which the pricing applies.
+    - name: price_per_fish
+      description: The price assigned per individual fish within the specified weight
+        range.
+    - name: price_per_kg
+      description: The price assigned per kilogram within the specified weight range.
+  - name: dim_sites
+    description: This model consolidates site-related data from various sources, providing
+      a comprehensive view of site attributes, identifiers, and geographical information.
+      It is used to analyze and manage site operations, including organizational hierarchy,
+      location details, and production stages.
+    columns:
+    - name: ft_site_sk
+      description: A surrogate key uniquely identifying each site record.
+      tests:
+        - unique
+        - not_null
+    - name: site_id
+      description: The unique identifier for the site.
+    - name: group_id
+      description: The identifier for the group to which the site belongs.
+    - name: parent_org_unit_id
+      description: The identifier for the parent organizational unit of the site.
+    - name: parent_id
+      description: The identifier for the parent entity, either group or organizational
+        unit.
+    - name: org_unit_type_id
+      description: The identifier for the type of organizational unit.
+    - name: official_site_id
+      description: The official identifier for the site.
+    - name: official_site_number
+      description: The official number assigned to the site.
+    - name: global_localization_number
+      description: The global localization number for the site.
+    - name: company_number
+      description: The company number associated with the site.
+    - name: site_name
+      description: The name of the site.
+    - name: location_name
+      description: The name of the location where the site is situated.
+    - name: county
+      description: The county where the site is located.
+    - name: organization_type
+      description: The type of organization, such as Site, Company, or Enterprise.
+    - name: prod_stage
+      description: The production stage of the site, indicating its operational focus.
+    - name: is_active
+      description: Indicates whether the site is currently active.
+    - name: max_biomass
+      description: The maximum biomass capacity of the site.
+    - name: max_volume
+      description: The maximum volume capacity of the site.
+    - name: longitude
+      description: The geographical longitude of the site.
+    - name: latitude
+      description: The geographical latitude of the site.

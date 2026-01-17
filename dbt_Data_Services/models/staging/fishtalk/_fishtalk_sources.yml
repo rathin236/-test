@@ -1,0 +1,115 @@
+version: 2
+
+sources:
+  - name: fishtalk
+    description: ""
+    database: fishtalk
+    schema: cai_fishtalk_dbo
+    tables:
+      - name: containers
+        description: ""
+
+      - name: organisationunit
+        description: ""
+
+      - name: publicstatusvalues
+        description: ""
+
+      - name: feedreceptions
+        description: ""
+
+      - name: feedreceptionbatches
+        description: ""
+
+      - name: feedbatch
+        description: ""
+
+      - name: feedstore
+        description: ""
+
+      - name: publicmortalitystatus
+        description: ""
+
+      - name: locations
+        description: ""
+
+      - name: county
+        description: ""
+
+      - name: organisationrelations
+        description: ""
+
+      - name: organisationunitproperties
+        description: ""
+
+      - name: populations
+        description: ""
+
+      - name: mortalitycauses
+        description: ""
+
+      - name: planpopulationstatus
+        description: ""
+
+      - name: organisationunitgroupings
+        description: ""
+
+      - name: stand
+        description: ""
+
+      - name: subtransfers
+        description: ""
+
+      - name: publictranslations
+        description: ""
+
+      - name: plancontainer
+        description: ""
+
+      - name: plansite
+        description: ""
+
+      - name: planninggroups
+        description: ""
+
+      - name: publicplanpopulation
+        description: ""
+
+      - name: action
+        description: ""
+
+      - name: actionmetadata
+        description: ""
+
+      - name: planaction
+        description: ""
+
+      - name: planactionmetadata
+        description: ""
+
+      - name: inputprojects
+        description: ""
+
+      - name: harvestcauses
+        description: ""
+
+      - name: publicplanstatusvalues
+        description: ""
+
+      - name: operations
+        description: ""
+
+      - name: fishgrouphistory
+        description: ""
+
+      - name: pricetabledetails
+        description: ""
+
+      - name: pricetable
+        description: ""
+
+      - name: insuranceprofilesassigned
+        description: ""
+
+      - name: insuranceprofile
+        description: ""
